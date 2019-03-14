@@ -10,7 +10,8 @@
   - Create
   - Instantiate
     
-** Installation 
+** Installation / Interaction
+- REPL
 - Juno
 - Jupyter
 - JuliaBox
