@@ -10,24 +10,41 @@
   - Create
   - Instantiate
     
-** Installation / Verwendung
+** Installation 
 - Juno
 - Jupyter
 - JuliaBox
 - Repl.it
 - Weave
 
+** Workflows
+Entwicklungs-workflow z.B. 
+- module / module und revise 
+- include / include und revise
+- Projekte
+- Packages
+
+** Performance Tips
+
 ** Buildins
+- unicode input
 - linear algebra
-- IO (read, write, binary)
+- IO (read, write, binary, external programs)
 - custom types
+- functions / methods
+- modules
+- missing values
+- parallel computing
+- Date / Time
+- Printf (besser Formatting)
   
 ** Packages
 - Plotting: Plots, Makie
-- Data: CSV, DataFrames, Excel, FortranFiles, MatlabFiles, JLD, HDF5,
+- Data, serialization: CSV, DataFrames, Excel, FortranFiles, MatlabFiles, JLD, HDF5,
   JSON
 - Stats: Distributions, Interpolations
 - Utility: ProgressMeter, BenchmarkTools, Revise
+- Formatting
 
 ** Git
 - clone
