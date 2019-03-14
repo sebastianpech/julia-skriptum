@@ -55,6 +55,7 @@ Entwicklungs-workflow z.B.
 - Tensors: TensorOperations, Tensors
 - Symbolic Calculations: SymPy
 - Regression stuff: Polynomials
+- Webscraping: ?
 
 ** Git
 - clone
@@ -79,6 +80,9 @@ Entwicklungs-workflow z.B.
 - Polynomial regression
 - Monte Carlo simulation
 - Lineare Gleichungssysteme
+- FEM Stabmodell
+- Fraktale
+- Daten von Website laden und parsen
 
 * Wo gibts Hilfe
 
