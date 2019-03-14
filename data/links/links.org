@@ -13,3 +13,6 @@ https://cheatsheets.quantecon.org/
 
 Julia doc
 https://docs.julialang.org/
+
+Julia package list
+https://juliaobserver.com/
