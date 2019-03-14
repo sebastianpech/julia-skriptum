@@ -1,16 +1,45 @@
 * Inhalte
-- package manager
+
+** Package Manager
+- Install
+- Status
+- Update
+- Install not registered
+- Remove
+- Projects
+  - Create
+  - Instantiate
+    
+** Installation / Verwendung
+- Juno
+- Jupyter
+- JuliaBox
+- Repl.it
+- Weave
+
+** Buildins
 - linear algebra
+- IO (read, write, binary)
 - custom types
-- IO
-- packages
-- plotting
-- installation / verwendung
-  - Juno
-  - Jupyter
-  - JuliaBox
-  - Repl.it
-  - ...
+  
+** Packages
+- Plotting: Plots, Makie
+- Data: CSV, DataFrames, Excel, FortranFiles, MatlabFiles, JLD, HDF5,
+  JSON
+- Stats: Distributions, Interpolations
+- Utility: ProgressMeter, BenchmarkTools, Revise
+
+** Git
+- clone
+- add
+- commit
+- branch
+- merge
+- tag
 
 * Beispiele
-- bewegungsgleichungen 
+
+- Bewegungsgleichungen, Shape / Energy optimization, Newtonian stuff,
+  Pendulum
+- Bauphysik / Temperatur
+- FFT
