@@ -60,6 +60,9 @@ Entwicklungs-workflow z.B.
   Pendulum
 - Bauphysik / Temperatur
 - FFT
+- FDM
+- Nummerische Integration
+- Von-Mises Balken (Newton Raphson)
 
 * Wo gibts Hilfe
 
