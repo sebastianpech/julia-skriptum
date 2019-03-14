@@ -60,3 +60,11 @@ Entwicklungs-workflow z.B.
   Pendulum
 - Bauphysik / Temperatur
 - FFT
+
+* Wo gibts Hilfe
+
+- Slack
+- Github
+- discourse.julialang.org 
+- reddit
+- YoutTube
