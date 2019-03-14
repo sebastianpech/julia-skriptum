@@ -41,6 +41,7 @@ Entwicklungs-workflow z.B.
 - Mutable vs. Immutable
 - Find / Replace / Regex
 - Documentation
+- Combination mit Fortran, Julia, Matlab, Python
   
 ** Packages
 - Plotting: Plots, Makie
