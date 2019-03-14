@@ -10,3 +10,6 @@ https://www.reddit.com/r/Julia/comments/b0x9c4/how_to_learn_julia_a_resources_gu
 
 Cheatsheet python vs matlab vs julia
 https://cheatsheets.quantecon.org/
+
+Julia doc
+https://docs.julialang.org/
