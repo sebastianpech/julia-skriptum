@@ -1,0 +1,16 @@
+* Inhalte
+- package manager
+- linear algebra
+- custom types
+- IO
+- packages
+- plotting
+- installation / verwendung
+  - Juno
+  - Jupyter
+  - JuliaBox
+  - Repl.it
+  - ...
+
+* Beispiele
+- bewegungsgleichungen 
