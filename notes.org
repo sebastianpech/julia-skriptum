@@ -70,4 +70,4 @@ Entwicklungs-workflow z.B.
 - Github
 - discourse.julialang.org 
 - reddit
-- YoutTube
+- YouTube
