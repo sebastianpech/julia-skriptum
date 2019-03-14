@@ -1,1 +1,10 @@
 Julia Tutorial Github https://github.com/sylvaticus/juliatutorial 
+Ist auch als pdf (eventuell nicht die aktuelle) version im data Ordner
+gesichter
+
+https://www.techrepublic.com/article/how-to-learn-julia-a-resources-guide-for-developers/
+Keine Ahnung wie gut die Bücher tatsächlich sind, muss man sich genau
+ansehen.
+Reddit thread dazu:
+https://www.reddit.com/r/Julia/comments/b0x9c4/how_to_learn_julia_a_resources_guide_for/
+
