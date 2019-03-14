@@ -84,6 +84,9 @@ Entwicklungs-workflow z.B.
 - FEM Stabmodell
 - Fraktale
 - Daten von Website laden und parsen
+- Grundlagen Mathe Zeug:
+  - Eulersche Zahl über nummerische Diff. oder nummerische Integration
+  - PI über Monte Carlo
 
 * Wo gibts Hilfe
 
@@ -93,3 +96,4 @@ Entwicklungs-workflow z.B.
 - reddit
 - YouTube
 - juliaobserver
+  
