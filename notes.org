@@ -67,7 +67,7 @@ Entwicklungs-workflow z.B.
 * Beispiele
 
 - Bewegungsgleichungen, Shape / Energy optimization, Newtonian stuff,
-  Pendulum
+  Pendulum, Elastischer Stoß
 - Bauphysik / Temperatur
 - FFT
 - FDM
