@@ -31,20 +31,28 @@ Entwicklungs-workflow z.B.
 - linear algebra
 - IO (read, write, binary, external programs)
 - custom types
-- functions / methods
+- functions / methods / multiple dispatch
 - modules
 - missing values
 - parallel computing
 - Date / Time
 - Printf (besser Formatting)
+- Iterators
+- Mutable vs. Immutable
+- Find / Replace / Regex
+- Documentation
   
 ** Packages
 - Plotting: Plots, Makie
-- Data, serialization: CSV, DataFrames, Excel, FortranFiles, MatlabFiles, JLD, HDF5,
-  JSON
+- Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5,
+  JSON, XML
+- DataFrames, Tables
 - Stats: Distributions, Interpolations
-- Utility: ProgressMeter, BenchmarkTools, Revise
+- Utility: ProgressMeter, BenchmarkTools, Revise, TimerOutputs, ProfileView
 - Formatting
+- Tensors: TensorOperations, Tensors
+- Symbolic Calculations: SymPy
+- Regression stuff: Polynomials
 
 ** Git
 - clone
@@ -53,6 +61,8 @@ Entwicklungs-workflow z.B.
 - branch
 - merge
 - tag
+- remote
+- github and julia
 
 * Beispiele
 
@@ -63,6 +73,10 @@ Entwicklungs-workflow z.B.
 - FDM
 - Nummerische Integration
 - Von-Mises Balken (Newton Raphson)
+- Koordinaten Transformationen
+- Polynomial regression
+- Monte Carlo simulation
+- Lineare Gleichungssysteme
 
 * Wo gibts Hilfe
 
@@ -71,3 +85,4 @@ Entwicklungs-workflow z.B.
 - discourse.julialang.org 
 - reddit
 - YouTube
+- juliaobserver
