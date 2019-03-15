@@ -16,3 +16,8 @@ https://docs.julialang.org/
 
 Julia package list
 https://juliaobserver.com/
+
+* Videos
+
+JuliaCon 2018 | Why Julia is the most suitable language for science | George Datseris
+https://www.youtube.com/watch?v=7y-ahkUsIrY
