@@ -31,7 +31,7 @@ Entwicklungs-workflow z.B.
 - unicode input
 - linear algebra
 - IO (read, write, binary, external programs)
-- custom types
+- data types / custom types
 - functions / methods / multiple dispatch
 - modules
 - missing values
@@ -42,8 +42,10 @@ Entwicklungs-workflow z.B.
 - Mutable vs. Immutable
 - Find / Replace / Regex
 - Documentation
-- Combination mit Fortran, Julia, Matlab, Python
+- Kombination mit Fortran, Julia, Matlab, Python
 - control-flow
+- Vector vs. Tuple vs. Set
+- Named Tuples
   
 ** Packages
 - Plotting: Plots, Makie
