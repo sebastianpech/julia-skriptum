@@ -59,6 +59,7 @@ Entwicklungs-workflow z.B.
 - Symbolic Calculations: SymPy
 - Regression stuff: Polynomials
 - Webscraping: ?
+- Uniful: Gutes beispiel für schönen code in julia, eventuell brauchbar.
 
 ** Git
 - clone
@@ -98,4 +99,5 @@ Entwicklungs-workflow z.B.
 - reddit
 - YouTube
 - juliaobserver
+  
   
