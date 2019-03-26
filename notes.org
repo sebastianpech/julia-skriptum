@@ -60,6 +60,7 @@ Entwicklungs-workflow z.B.
 - Regression stuff: Polynomials
 - Webscraping: ?
 - Uniful: Gutes beispiel für schönen code in julia, eventuell brauchbar.
+- Debuggin
 
 ** Git
 - clone

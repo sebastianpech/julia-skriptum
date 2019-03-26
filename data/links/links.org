@@ -17,6 +17,9 @@ https://docs.julialang.org/
 Julia package list
 https://juliaobserver.com/
 
+Debugging
+https://julialang.org/blog/2019/03/debuggers
+
 * Videos
 
 JuliaCon 2018 | Why Julia is the most suitable language for science | George Datseris
