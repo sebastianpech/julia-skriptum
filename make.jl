@@ -6,5 +6,5 @@ using Weave
 
 weave("julia-skriptum.jmd",
       out_path=joinpath(pwd(),"build"), # Output into build directory
-      doctype = "md2pdf"
-      )
+      doctype = "md2pdf",
+      template = "julia-skriptum.tpl")
