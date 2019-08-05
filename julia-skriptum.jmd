@@ -170,7 +170,7 @@ Uniful, Measurements, usw ...
 filesystem zeug (readdir, rm, ...)
 text dateien einlesen
 
-Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, XML
+Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, BSON, XML
 
 # Plotting
 
