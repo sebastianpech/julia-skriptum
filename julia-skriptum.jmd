@@ -5,25 +5,165 @@ author : Sebastian Pech, Raphael Suda
 date: 26. Julia 2019
 ---
 
-# Test
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+# Intro
+Warum, vgl. Python, Matlab
+# Installation
+# Interaktion
+## REPL
+- Repl modes
+  - Help
+  - Shell
+  - Pkg
+## Juno
+## Jupyter
+# Hilfe
 
-```julia
-function somefunction(x)
-    x^2
-end
-```
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+- Hilfe Repl-Mode
+- [Offizielle Dokumentation](https://docs.julialang.org/)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/julia)
+- [Discourse](https://discourse.julialang.org/)
+- [Github](https://github.com/)
+
+
+# Variablen
 
 ```{julia; term=true}
-somefunction(2)
-@show somefunction(3.5)
+a = 1
+b = 2
+summe = a+b
 ```
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-```{julia; caption="Das ist ein Test plot"; label="plt:1"}
-using Plots
-x = 0:0.1:2π
-plot(x,sin)
+Unicode
+```{julia; term=true}
+α = 3.1
+4*α
 ```
+
+## Welche Variablennamen sind erlaubt?
+
+# Datentypen
+## Boolean
+## Zahlen
+Int, Float, Complex, Rational
+Konvertieren und runden
+## Char und String
+find replace
+## String zu Zahl und Zahl zu String
+## Funktionen mit Zahlen
+zero, one, rand ...
+
+# Arrays, Vektoren, Matrizen, Tensoren, Tuple, Set
+## Arrays
+### Erzeugen
+### Verändern
+### Bezug zu Strings
+## Tuple
+### Bezug zu Arrays
+## Sortieren, Filtern, Finden, Map, reduce
+## Sets
+### Set operationen
+
+# Funktionen
+https://docs.julialang.org/en/v1/manual/functions/
+kw argumente, args..., return, dokumentation
+
+# Lineare Algebra
+
+```{julia}
+using LinearAlgebra
+```
+
+```math
+   x - y = 22\;\text{und}\;2x + 3y = 11
+```
+
+```math
+   \mathbf{A}\mathbf{b}=\mathbf{c}
+```
+
+```{julia; term=true}
+A = [1 -1
+     2  3]
+det(A)
+c = [22, 11]
+A_inv = inv(A)
+b = A_inv*c
+b ≈ A\c
+A*b ≈ c
+```
+
+## Mathematische Funktionen und Symbole
+
+Identity (lazy), exp, sin, cos, pi
+
+## Aufgabe: Löse das Gleichungssystem 
+
+```math
+   x - y + z = 22\;\text{und}\;2x + 3y = 11\;\text{und}\;10x-y/2+5z=0
+```
+
+```{julia;}
+A = [1 -1 1
+     2  3 0
+     10 -0.5 5]
+@show det(A)
+c = [22, 11, 0]
+@show A\c
+```
+
+## Aufgabe: Verwende die Funktionen `eigvals` und `eigvecs` 
+
+um die obige Matrix zu Zerlegen und kontrolliere das Ergebnis für den ersten Eigenvektor und 
+in dem die Matrix durch die Eigenvektoren und Eigenwerte wieder hergestellt wird.
+
+```{julia;}
+A = [1 -1 1
+     2  3 0
+     10 -0.5 5]
+λ = eigvals(A)
+ϕ = eigvecs(A)
+@show A*ϕ[:,1] ≈ λ[1]*ϕ[:,1]
+@show ϕ*Diagonal(λ)*inv(ϕ) ≈ A
+```
+
+# Controlflow
+
+## if, elseif, else
+
+### Aufgabe: Schreibe ein Skript das eine Ziffer einliest und diese in Worten darstellt.
+```
+ readline()
+```
+
+## Schleifen for, while
+### Aufgabe: Berechne PI mittels Monte-Carlo-Simulation
+### Aufgabe: Integriere eine Beliebige Funktion nummerisch
+
+# Methoden
+
+Multiple dispatch
+
+# Debugging
+
+# Spezielle Datentypen
+Date und Datetime
+Uniful, Measurements, usw ...
+
+# FileIO
+filesystem zeug (readdir, rm, ...)
+text dateien einlesen
+
+Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, XML
+
+# Plotting
+
+# Symbolische Berechnungen
+SymPy, ...
+
+# Regressionsaufgaben, Interpolation
+Polynomial, Spline, ...
+Interpolations
+
+# Statistik
+Buildins und Distributions und Dataframes
+
