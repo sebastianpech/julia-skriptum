@@ -1,6 +1,6 @@
-* Inhalte
+# Inhalte
 
-** Package Manager
+## Package Manager
 - Install
 - Status
 - Update
@@ -10,7 +10,7 @@
   - Create
   - Instantiate
     
-** Installation / Interaction
+## Installation / Interaction
 - REPL
 - Juno
 - Jupyter
@@ -18,16 +18,16 @@
 - Repl.it
 - Weave
 
-** Workflows
+## Workflows
 Entwicklungs-workflow z.B. 
 - module / module und revise 
 - include / include und revise
 - Projekte
 - Packages
 
-** Performance Tips
+## Performance Tips
 
-** Buildins
+## Buildins
 - unicode input
 - linear algebra
 - IO (read, write, binary, external programs)
@@ -47,7 +47,7 @@ Entwicklungs-workflow z.B.
 - Vector vs. Tuple vs. Set
 - Named Tuples
   
-** Packages
+## Packages
 - Plotting: Plots, Makie
 - Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5,
   JSON, XML
@@ -62,17 +62,17 @@ Entwicklungs-workflow z.B.
 - Uniful: Gutes beispiel für schönen code in julia, eventuell brauchbar.
 - Debuggin
 
-** Git
+## Git
 - clone
 - add
 - commit
-- branch
+- branc 
 - merge
 - tag
 - remote
 - github and julia
 
-* Beispiele
+# Beispiele
 
 - Bewegungsgleichungen, Shape / Energy optimization, Newtonian stuff,
   Pendulum, Elastischer Stoß
@@ -92,7 +92,7 @@ Entwicklungs-workflow z.B.
   - Eulersche Zahl über nummerische Diff. oder nummerische Integration
   - PI über Monte Carlo
 
-* Wo gibts Hilfe
+# Wo gibts Hilfe
 
 - Slack
 - Github
