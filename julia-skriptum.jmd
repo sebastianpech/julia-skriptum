@@ -171,9 +171,11 @@ Uniful, Measurements, usw ...
 
 # FileIO
 filesystem zeug (readdir, rm, ...)
-text dateien einlesen
+text dateien einlesen (DelimitedFiles, CSV)
 
 Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, BSON, XML
+
+## Aufgabe: Daten einlesen 2 spaltig getrennt mir ; und , als dezimaltrennzeichen
 
 # Plotting
 ## Aufgabe: Plot der Berechnung von Pi mittels Monte-Carlo
