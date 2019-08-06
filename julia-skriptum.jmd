@@ -176,6 +176,12 @@ text dateien einlesen
 Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, BSON, XML
 
 # Plotting
+## Aufgabe: Plot der Berechnung von Pi mittels Monte-Carlo
+- Scatter (Hervorheben der Punkte im kreis)
+- Filled line
+## Aufgabe: Neue funktion die kummulativ nummerisch integrieren
+- plot sin(x)
+- integrieren sin(x) und plot
 
 # Symbolische Berechnungen
 SymPy, ...
