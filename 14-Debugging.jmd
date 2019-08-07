@@ -1,1 +1,99 @@
+---
+options:
+      hold: true
+---
+
 # Debugging
+
+## Grundlagen und einfache Fälle
+
+Debugging bezeichnet die Suche und das Entfernen von Fehlern aus einem Programm.
+Besonders bei sehr komplexer Software mit vielen verschachtelten Funktionen und unterschiedlichen Eingabewerten kann es schwierig sein, sich die Programmlogik für jeden Fall vorzustellen.
+Daher gibt es in Julia Tools die bei der Suche nach Fehlern helfen können.
+
+Die einfachste Form des Debuggings funktioniert durch Hinzufügen von print-Befehlen.
+Das Macro `@show` ist dafür besonders geeignet, da es neben dem Wert auch den Namen einer Variable ausgibt.
+
+```julia
+a = 100.1
+@show a
+```
+
+In der folgenden Funktion hat sich ein Fehler eingeschlichen.
+
+```julia; results="hidden"
+"Berechne x^n"
+function bug_pow(x::Number,n::Int)
+    x_pow = x
+    for i in 1:n
+        x_pow *= x
+    end
+    return x_pow
+end
+```
+
+Eigentlich sollte die Funktion $x^n$ berechnen, die Ergebnisse stimmen allerdings nicht:
+
+```julia
+bug_pow(3.5,6), 3.5^6
+```
+
+Um den Fehler zu finden kann ein print-Statement in der `for`-Schleife eingefügt werden um `i` und `x_pow` auszugeben.
+
+```julia; results="hidden"
+"Berechne x^n"
+function bug_show_pow(x::Number,n::Int)
+    x_pow = x
+    for i in 1:n
+        @show i,x_pow
+        x_pow *= x
+    end
+    return x_pow
+end
+```
+
+Ein erneuert Aufruf der Funktioniert liefert folgende Ausgabe.
+
+```julia
+bug_show_pow(3.5,6)
+```
+
+Offensichtlich wird in der Schleife `x`, 6-mal multipliziert, allerdings startet `x_pow` nicht mit 1 sonder mit `x` was gesamt $x^{n+1}$ ergibt.
+
+Diese Methode des Debuggings funktioniert bei einfachen Fällen hat aber den Nachteil, dass der Code verändert werden muss.
+Julia bietet in Kombination mit dem [Debugger-Paket](https://github.com/JuliaDebug/Debugger.jl) und Juno einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
+ 
+## Das Debugger-Paket
+
+Mit einem klassischen Debugger ist es möglich die Ausführung des Quellcodes zu unterbrechen und schrittweise zu analysieren.
+Dabei gibt es die Möglichkeit sogenannte *Breakpoints* zu setzen, an welchen der Code unterbrochen werden soll.
+
+Um die Funktion `bug_pow` mit dem Debugger zu analysieren muss der Debugger-Modus über einen Klick auf den Debugknopf gestartet werden.
+
+![Debugknopf in Juno](./data/img/debugger-01.png)
+
+Über die Seitenleiste mit den Zeilennummern kann nun durch einen Klick ein Breakpoint gesetzt werden. Dadurch wird die Ausführung in der 4. Zeile angehalten.
+
+![Erster Breakpoint](./data/img/debugger-02.png)
+
+Mit dem Befehl `Juno.@run` startet der Debugger die Ausführung und stoppt beim ersten Breakpoint.
+Um direkt in der ersten Zeile der Funktion zu stoppen kann der Befehl `Juno.@enter` verwendet werden.
+
+```julia; term=true; eval=false
+Juno.@run bug_pow(3.5,6)
+```
+
+![Erster Halt](./data/img/debugger-03.png)
+
+Mit einem Blick in den Workspace kann man erkennen, dass im ersten Schleifendurchgang `i == 1`, `x_pow` bereits einen Wert ungleich 1 hat. 
+Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der Ausführung:
+
+- *Continue*: Funktioniert wie der Befehl `Juno.@run` und lässt den Code bis zum nächsten Breakpoint laufen.
+- *Finish Funktion*: Läuft bis zum Ende der aktuellen Funktion oder bis zum nächsten Breakpoint.
+- *Next line*: Springt zur nächsten Zeile.
+- *Step to Selected Line*: Sprint zur im Editor ausgewählten Zeile oder bis zum nächsten Breakpoint.
+- *Next Expression*: Sprint zum nächsten Ausdruck (z.B. `2*3+1` stoppt bei `2*3`, der nächste Ausdruck ist dann `6+1`)
+- *Step into Function*: Funktioniert wie der Befehl `Juno.@enter` und springt in die erste Zeile der aktuellen Funktion.
+- *Stop Debugging*: Beendet das Debugging.
+
+Nähere Informationen zum Debugger gibt es in diesem Blogeintrag: https://julialang.org/blog/2019/03/debuggers.
