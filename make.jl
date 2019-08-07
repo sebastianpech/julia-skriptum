@@ -26,6 +26,18 @@ files = ["01-Intro.jmd",
          "17-Plotting.jmd",
          "18-Ausblick.jmd"]
 
+# Check if a set of special files should be compiled
+if length(ARGS) != 0
+    files = ARGS
+    # Throw error if a file is unknown
+    for f in files
+        isfile(f) || @error "File '$f' not found."
+    end
+    if !all(isfile.(files))
+        exit(0)
+    end
+end
+
 # Weave all jmd files to tex files
 for f in files
     @info "Weaving file"
