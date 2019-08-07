@@ -1,0 +1,15 @@
+# Variablen
+
+```{julia; term=true}
+a = 1
+b = 2
+summe = a+b
+```
+
+Unicode
+```{julia; term=true}
+α = 3.1
+4*α
+```
+
+## Welche Variablennamen sind erlaubt?

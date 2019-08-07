@@ -1,0 +1,58 @@
+# Lineare Algebra
+
+```{julia}
+using LinearAlgebra
+```
+
+```math
+   x - y = 22\;\text{und}\;2x + 3y = 11
+```
+
+```math
+   \mathbf{A}\mathbf{b}=\mathbf{c}
+```
+
+```{julia; term=true}
+A = [1 -1
+     2  3]
+det(A)
+c = [22, 11]
+A_inv = inv(A)
+b = A_inv*c
+b ≈ A\c
+A*b ≈ c
+```
+
+## Mathematische Funktionen und Symbole
+
+Identity (lazy), exp, sin, cos, pi
+
+## Aufgabe: Löse das Gleichungssystem 
+
+```math
+   x - y + z = 22\;\text{und}\;2x + 3y = 11\;\text{und}\;10x-y/2+5z=0
+```
+
+```{julia;}
+A = [1 -1 1
+     2  3 0
+     10 -0.5 5]
+@show det(A)
+c = [22, 11, 0]
+@show A\c
+```
+
+## Aufgabe: Verwende die Funktionen `eigvals` und `eigvecs` 
+
+um die obige Matrix zu Zerlegen und kontrolliere das Ergebnis für den ersten Eigenvektor und 
+in dem die Matrix durch die Eigenvektoren und Eigenwerte wieder hergestellt wird.
+
+```{julia;}
+A = [1 -1 1
+     2  3 0
+     10 -0.5 5]
+λ = eigvals(A)
+ϕ = eigvecs(A)
+@show A*ϕ[:,1] ≈ λ[1]*ϕ[:,1]
+@show ϕ*Diagonal(λ)*inv(ϕ) ≈ A
+```

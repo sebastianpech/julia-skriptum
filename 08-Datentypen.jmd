@@ -1,0 +1,12 @@
+# Datentypen
+## Boolean
+Logische Operationen, Operator precedence
+## Zahlen
+Int, Float, Complex, Rational
+Konvertieren und runden
+Operator precedence
+## Char und String und Symbol
+find replace
+## String zu Zahl und Zahl zu String
+## Funktionen mit Zahlen
+zero, one, rand ...

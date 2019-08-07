@@ -10,41 +10,29 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1.2ex}
 
-\hypersetup
-       {   pdfauthor = { {{{:author}}} },
-           pdftitle={ {{{:title}}} },
-           colorlinks=TRUE,
-           linkcolor=black,
-           citecolor=blue,
-           urlcolor=blue
-       }
+{{{ :stylesheet }}}
 
-{{#:title}}
-    \title{
-        \sffamily
-        {{{ :title }}}
-        {{#:subtitle}}
-            \\\normalsize{
-            {{{ :subtitle }}}
-            }
-        {{/:subtitle}}
-    }
-{{/:title}}
+\hypersetup {   pdfauthor = {Sebastian Pech, Raphael Suda},
+  pdftitle={Programmieren im Bauingenieurwesen},
+  colorlinks=TRUE,
+  linkcolor=black,
+  citecolor=blue,
+  urlcolor=blue
+}
 
-{{#:author}}
-\author{\sffamily {{{ :author }}} }
-{{/:author}}
+\title{
+  Programmieren im Bauingenieurwesen
+  \normalsize{Einführung und Grundlagen}
+}
 
-{{#:date}}
-\date{\sffamily {{{ :date }}} }
-{{/:date}}
+\author{\sffamily Sebastian Pech, Raphael Suda }
 
-{{ :highlight }}
+\date{\today}
 
 \begin{document}
 
-{{#:title}}\maketitle{{/:title}}
+\maketitle
 
-{{{ :body }}}
+{{{:files}}}
 
 \end{document}
