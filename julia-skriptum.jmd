@@ -20,12 +20,13 @@ was ist ein skript, was ist eine funktion, usw ...
 ## Jupyter
 # Hilfe
 
-- Hilfe Repl-Mode
+- Hilfe Repl-Mode event. auch Juno?
 - [Offizielle Dokumentation](https://docs.julialang.org/)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/julia)
 - [Discourse](https://discourse.julialang.org/)
 - [Github](https://github.com/)
-
+ 
+# Kommentare
 
 # Variablen
 
@@ -43,18 +44,23 @@ Unicode
 
 ## Welche Variablennamen sind erlaubt?
 
+# Fehlermeldungen
+Welche fehler gibt es, Backtrace
+
 # Datentypen
 ## Boolean
+Logische Operationen, Operator precedence
 ## Zahlen
 Int, Float, Complex, Rational
 Konvertieren und runden
-## Char und String
+Operator precedence
+## Char und String und Symbol
 find replace
 ## String zu Zahl und Zahl zu String
 ## Funktionen mit Zahlen
 zero, one, rand ...
 
-# Arrays, Vektoren, Matrizen, Tensoren, Tuple, Set
+# Arrays, Vektoren, Matrizen, Tensoren, Tuple, Set, Dict
 ## Arrays
 ### Erzeugen
 ### Verändern
@@ -64,10 +70,14 @@ zero, one, rand ...
 ## Sortieren, Filtern, Finden, Map, reduce
 ## Sets
 ### Set operationen
+## Dict
 
-# Funktionen
+# Funktionen und Scope
+docstrings
 https://docs.julialang.org/en/v1/manual/functions/
 kw argumente, args..., return, dokumentation
+
+global / local
 
 # Lineare Algebra
 
@@ -139,6 +149,7 @@ A = [1 -1 1
 
 ## Schleifen for, while
 ### Performance Optimierung Julia
+#### Macros @time, Benchmarktools 
 ### Aufgabe: Berechne PI mittels Monte-Carlo-Simulation
 ### Aufgabe: Integriere eine Beliebige Funktion nummerisch
 ### Aufgabe: Wie hoch ist die Wahrscheinlichkeit
@@ -184,16 +195,18 @@ Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, BSON, XML
 ## Aufgabe: Neue funktion die kummulativ nummerisch integrieren
 - plot sin(x)
 - integrieren sin(x) und plot
+## Aufgabe: Von Statistik aufgabe X,Y wobei X die anzahl an versuchen und Y P ist
 
-# Symbolische Berechnungen
+# Ausblick weitere Pakete
+
+## Symbolische Berechnungen
 SymPy, ...
 
-# Regressionsaufgaben, Interpolation
+## Regressionsaufgaben, Interpolation
 Polynomial, Spline, ...
 Interpolations
 
-# Statistik
+## Statistik
 Buildins und Distributions und Dataframes
 
-# Ausblick weitere Pakete
 
