@@ -13,13 +13,18 @@ end
 
 function calc_t_p(ti,ta,p_par_i,p_par_a,Rs,sds,Ri,Ra)
     N_schicht = length(Rs)+1
-    t = zeros(typeof(ti),N_schicht)
-    p = zeros(typeof(p_par_i),N_schicht)
+    output_type = promote_type(
+        typeof(ti), typeof(ta),
+        typeof(Ri), typeof(Ra),
+        eltype(sds), eltype(Rs))
+    t = zeros(output_type,N_schicht)
+    p = zeros(output_type,N_schicht)
     Δt = ti-ta
     dtdR = Δt/(Ri+sum(Rs)+Ra)
     dpdsd = (p_par_i-p_par_a)/sum(sds)
     t[1] = ti-dtdR*Ri
     p[1] = p_par_i
+    kondensat = false
     for sidx in 2:N_schicht
         t[sidx] = t[sidx-1]-dtdR*Rs[sidx-1]
         p_sat_i = p_sat(t[sidx])
@@ -29,11 +34,10 @@ function calc_t_p(ti,ta,p_par_i,p_par_a,Rs,sds,Ri,Ra)
         else
             p[sidx] = p_sat_i
             dpdsd = (p_sat_i-p_par_a)/sum(sds[sidx:end])
+            kondensat = true
         end
     end
-    @assert t[end]-dtdR*Ra ≈ ta
-    @assert p[end] ≈ p_par_a
-    return t,p
+    return t,p,kondensat
 end
 
 # Innen Klima
@@ -65,3 +69,4 @@ x = vcat(0.0,cumsum(sds)...)
 plt = plot(x,[p p_sat.(ts)],label=["P" "PS"])
 plot!(plt,[x[1],x[end]],[p_par_i, p_par_a],label=["TP"],line=(:dash))
 plot!(twinx(plt),x,ts,ylim=(-30,30),legend=:none,line=:red)
+
