@@ -1,3 +1,5 @@
+using Plots
+
 R(d,λ) = d/λ
 sd(d,μ) = μ*d
 
@@ -9,26 +11,29 @@ function p_sat(temp)
     end
 end
 
-function t_qs(ti::Number,Δts::Vector{<:Number},Δti::Number,Δta::Number)
-    ts = zeros(typeof(ti),length(Δts)+2)
-    ts[1] = ti
-    ts[2] = ts[1]-Δti
-    for (i,Δt) in enumerate(Δts)
-        ts[i+2] = ts[i+1]-Δt
+function calc_t_p(ti,ta,p_par_i,p_par_a,Rs,sds,Ri,Ra)
+    N_schicht = length(Rs)+1
+    t = zeros(typeof(ti),N_schicht)
+    p = zeros(typeof(p_par_i),N_schicht)
+    Δt = ti-ta
+    dtdR = Δt/(Ri+sum(Rs)+Ra)
+    dpdsd = (p_par_i-p_par_a)/sum(sds)
+    t[1] = ti-dtdR*Ri
+    p[1] = p_par_i
+    for sidx in 2:N_schicht
+        t[sidx] = t[sidx-1]-dtdR*Rs[sidx-1]
+        p_sat_i = p_sat(t[sidx])
+        p_trial = p[sidx-1]-dpdsd*sds[sidx-1]
+        if p_trial < p_sat_i
+            p[sidx] = p_trial
+        else
+            p[sidx] = p_sat_i
+            dpdsd = (p_sat_i-p_par_a)/sum(sds[sidx:end])
+        end
     end
-    ts[end] = ts[end-1]-Δta
-    return ts
-end
-
-function p_real(p_sats,p_par_i,p_par_a,sds)
-    p_real = similar(p_sats)
-    p_real[1] = p_par_i
-    ds₀ = (p_par_i-p_par_a)/sum(sds)
-    for (i,sd) in enumerate(sds)
-        p_trial = p_real[i]-sd*ds₀
-        p_real[i+1] = p_trial
-    end
-    return p_real
+    @assert t[end]-dtdR*Ra ≈ ta
+    @assert p[end] ≈ p_par_a
+    return t,p
 end
 
 # Innen Klima
@@ -51,19 +56,12 @@ p_par_i = φi*p_sat(ti)
 p_par_a = φa*p_sat(ta)
 
 Rs  = R.(d,λ)
-ΣR = Ri + sum(Rs) + Ra
-
 sds = sd.(d,μ)
-Σsd = sum(sds)
 
-Δt = ti-ta
-q = Δt/ΣR
+ts,p = calc_t_p(ti,ta,p_par_i,p_par_a,Rs,sds,Ri,Ra)
 
-# Schichttemperaturen
-ts = t_qs(ti,q.*Rs,Ri*q,Ra*q)
+x = vcat(0.0,cumsum(sds)...) 
 
-# Schichtsättigungsdampfdruck
-p_sats = p_sat.(ts[1:end])
-
-# Vorhandener Schichtdampfdruck
-p_vorh = p_real(p_sats,p_par_i,p_par_a,sds)
+plt = plot(x,[p p_sat.(ts)],label=["P" "PS"])
+plot!(plt,[x[1],x[end]],[p_par_i, p_par_a],label=["TP"],line=(:dash))
+plot!(twinx(plt),x,ts,ylim=(-30,30),legend=:none,line=:red)
