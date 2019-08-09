@@ -1,3 +1,4 @@
+Int, Float, Complex, Rational
 # Datentypen
 Ein grundlegender Baustein von Programmen sind Werte (*values*), wie zum Beispiel Zahlen oder Buchstaben.
 Jeder Wert gehört zu einem bestimmten Datentypen.
@@ -10,9 +11,8 @@ typeof('c')
 typeof(true)
 ```
 
-Alle Typen in Julia sind in einer Art Hierarchie strukturiert.
-Beispielsweise ist `Integer` ein Subtyp von `Real` und Real wiederum ein Subtyp von `Number`.
-Dabei hat er Datentyp `Real` neben `Integer` noch weitere Subtypen.
+## Char und String und Symbol
+find replace
 ## Zahlen
 In Julia sind verschiedene Datentypen für Zahlen definiert.
 Im Beispiel oben ist der ganzzahlige Wert `2` vom Typ `Int64` und `42.0` vom Typ `Float64`.
@@ -26,16 +26,41 @@ typeof(23//4)
 Mithilfe der Operatoren `+`, `-`, `*` und `/` können Zahlen addiert, subtrahiert, multipliziert und dividiert werden:
 ```julia; term=true
 17 + 2
-13 - 4
-1 * 19
+13.0 - 4
+1.0 * 19.0
 38 / 2
 ```
+Während der Datentyp des Ergebnisses einer Addition, Subtraktion und Multiplikation abhängig vom Datentyp der Eingangswerte ist, ergibt eine Division immer eine Float-Zahl.
+Potenzen werden mit `^` eingegeben:
+```julia; term=true
+2^3
+```
 
+Die Reihenfolge der Operationen folgt dabei den üblichen mathematischen Regeln:
+	1. Klammern, 
+	2. Potenzen,
+	3. Multiplikation und Division und
+	4. Addition und Subtraktion.
+Gleichrangige Operationen führt Julia immer der Reihe nach von links nach rechts aus.
+Klammern bieten die Möglichkeit, den Code zu strukturieren und besser lesbar zu machen, auch wenn diese nicht immer notwendig sind:
+```julia; term=true
+d = 5
+A = d^2*pi/4
+A = (d^2 * pi) / 4
+```
+
+Die Funktionen `string()` und `parse()` konvertieren Zahlen in Strings und umgekehrt:
+```julia; term=true
+string(19.0)
+parse(Int64,"17.0")
+```
 
 Konvertieren und runden
 Operator precedence
-## Char und String und Symbol
-find replace
+Alle Typen in Julia sind in einer Art Hierarchie strukturiert.
+Beispielsweise ist `Integer` ein Subtyp von `Real` und Real wiederum ein Subtyp von `Number`.
+Dabei hat er Datentyp `Real` neben `Integer` noch weitere Subtypen.
+Mehr dazu unter Multiple Dispatch.
 ## Boolean
 Logische Operationen, Operator precedence
 ## String zu Zahl und Zahl zu String
