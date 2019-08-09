@@ -22,7 +22,7 @@ Meist ist dadurch bereits ohne Kommentare ersichtlich, wofür die Variable verwe
 
 Variablen-Namen können beliebig lange sein und nahezu alle Unicode-Zeichen enthalten, dürfen allerdings nicht mit Zahlen beginnen.
 Großbuchstaben können in Variablen-Namen verwendet werden, meist werden aber nur Kleinbuchstaben verwendet.
-Unicode-Zeichen, wie zum Beispiel α, können in der Julia REPL durch Eingeben von Abkürzungen ähnlich zu \LaTeX und drücken der TAB-Taste erstellt werden (`\alpha TAB`).
+Unicode-Zeichen, wie zum Beispiel α, können in der Julia REPL durch Eingeben von Abkürzungen ähnlich zu \\LaTeX und drücken der TAB-Taste erstellt werden (`\alpha TAB`).
 Bei aus mehreren Wörten zusammengesetzten Variablen-Namen bietet es sich an, die Wörter durch einen Unterstrich, `_`, zu trennen.
 
 Wird ein ungültiger Name für eine Variable verwendet, tritt ein *Syntax Error* auf:
@@ -30,5 +30,5 @@ Wird ein ungültiger Name für eine Variable verwendet, tritt ein *Syntax Error*
 42number = "meaning of life"
 ```
 
-Zusätzlich tritt ein *Syntax Error* auf, wenn festgelegte *keywords* (\zB `for` oder `end`) als Name festgelegt werden.
-Die Julia Dokumentation enthält noch nähere Informationen zu Variablen und deren Namen: \url{https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/variables.html}.
+Zusätzlich tritt ein *Syntax Error* auf, wenn festgelegte *keywords* (z.B. `for` oder `end`) als Name festgelegt werden.
+Die Julia Dokumentation enthält noch nähere Informationen zu Variablen und deren Namen: [https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/variables.html](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/variables.html).
