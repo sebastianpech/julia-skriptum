@@ -1,7 +1,118 @@
-# FileIO
-filesystem zeug (readdir, rm, ...)
-text dateien einlesen (DelimitedFiles, CSV)
+```julia; echo=false
+temporary_directory = mktempdir()
+current_workding_directory = pwd()
+cd(temporary_directory)
+mkdir("Ordner01")
+touch("Datei01.txt")
+touch("Datei02.txt")
+touch(joinpath("Ordner01","Datei03.txt"))
+```
 
-Data serialization: CSV, Excel, FortranFiles, MAT, JLD, HDF5, JSON, BSON, XML
+# Arbeiten mit Dateien und dem Dateisystem
+
+Beim Automatisieren von Prozessen kommt es oft vor, dass große Dateimengen (z.B. Messwerte) eingelesen und verarbeitet werden müssen.
+Dafür ist es notwendig, zum Einen die Dateien bzw. Dateinamen zu finden und zum Anderen benötigt man eine Möglichkeit Dateien einzulesen.
+
+## Das Dateisystem
+
+Julia biete eine einheitliches Interface um auf das Dateisystem des Computers zuzugreifen.
+Wird ein Juliaprozess ausgeführt läuft er in dem Verzeichnis in dem er gestartet wurde, dem sogenannten "working directory".
+Anzeigen lässt sich dieses mit der Funktion `pwd` für "print working direcory".
+
+```julia; term=true
+pwd()
+```
+
+Die Funktion `readdir` gibt alle Dateien und Ordner eines Verzeichnisses aus.
+
+```julia; term=true
+readdir() # Standardmäßig wird das working directory verwendet
+readdir("Ordner01")
+```
+
+Die Ausgabe von `readdir` besteht allerdings nur aus den Datei- oder Ordnernamen als `String`, es ist also nicht möglich zu erkennen, ob es sich um einen Ordner oder eine Datei handelt.
+Dafür gibt es die Funktionen `isdir` und `isfile`.
+
+```julia; term=true
+isdir.(readdir()), isfile.(readdir())
+```
+
+Weitere praktische Funktionen, z.B. zum Verschieben und Löschen von Dateien sind in der Dokumentation unter https://docs.julialang.org/en/v1/base/file/ angeführt.
+
+## Arbeiten mit Dateien
+
+Beim Einlesen von Dateien kann grob in zwei Typen unterschieden werden:
+- einfache Textdateien und
+- Binärdateien.
+
+Textdateien sind solche die mit einem simplen Editor geöffnet werden können und für die es nicht notwendig ist die Daten vor der Verarbeitung zu Dekodieren. Klassische Formate sind csv, txt, tex, xml.
+
+Ein solche Datei kann mit der Funktion `open` geöffnet werden. `open` erfordert neben der Angabe des Dateipfades, auch einen Modus.
+Beim Umgang mit Dateien gibt es die folgenden Modi:
+- `r` read: Die Datei wird nur gelesen.
+- `w` write: Die Datei wird erzeugt (bzw. überschrieben falls sie vorhanden ist) und mit Daten gefüllt.
+- `a` append: Die Datei wird um Daten erweitert.
+
+```julia; term=true
+f = open("Datei04.txt","w")
+readdir()
+```
+`open` öffnet einen sogenannten Stream zu der Datei. Um nun Text in die neue Datei zu schreiben, muss dieser Text zuerst in den Stream g geschrieben werden. Das ist mit dem `write` Befehl möglich. 
+
+```julia; term=true
+write(f,"Erste Zeile\n")
+write(f,"Zweite Zeile")
+```
+
+Dadurch landen die Texte zuerst im Stream. Erst wenn der Stream mit `close` geschlossen wird, werden die Daten geschrieben.
+
+```julia; term=true
+close(f)
+```
+
+Das Pendant zu `write` ist die Funktion `read` die eine Datei vollständig mit einem angegeben Dateitypen einliest. Da es häufig vorkommt, dass eine Datei aufgeteilt in die einzelnen Zeilen benötigt wird gibt es noch die Funktion `readlines` die ein `String`-`Array` zurück gibt.
+
+```julia; term=true
+f = open("Datei04.txt","r")
+read(f,String)
+close(f)
+f = open("Datei04.txt","r")
+readlines(f)
+close(f)
+```
+
+Generell sollten Streams immer mit `close` geschlossen werden wenn sie nicht mehr in Verwendung sind.
+
+### Strukturierte Textdateien
+
+Besonders häufig ist es notwendig Textdateien mit einer gewissen Struktur einzulesen.
+Für sehr einfache Fälle mit homogenen Daten wie z.B. einer Zahlenmatrix, kann das in Julia enthaltene `DelimitedFiles`-Paket verwendet werden.
+
+```julia; term=true
+using DelimitedFiles
+A = rand(2,2)
+writedlm("MeineMatrix.txt",A)
+isfile("MeineMatrix.txt")
+f = open("MeineMatrix.txt","r")
+readlines(f)
+close(f)
+B = readdlm("MeineMatrix.txt")
+A == B
+```
+
+Weiter Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html zu finden.
+
+Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, eventuell auch bei fehlenden Daten schnell an seine Grenzen.
+Um ein stabiles Einlesen von solchen Dateien zu ermöglichen gibt es das `CSV`-Paket.
+
+3. CSV einlesen mit CSV.jl
+6. Binary Speichern mit BSON
+
+Sonstige Pakete:
+Excel, MAT
 
 ## Aufgabe: Daten einlesen 2 spaltig getrennt mir ; und , als dezimaltrennzeichen
+
+```julia; echo=false
+cd(current_workding_directory)
+```
