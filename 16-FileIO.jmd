@@ -1,4 +1,4 @@
-```julia; echo=false
+```julia; echo=false; results="hidden"
 temporary_directory = mktempdir()
 current_workding_directory = pwd()
 cd(temporary_directory)
@@ -6,6 +6,15 @@ mkdir("Ordner01")
 touch("Datei01.txt")
 touch("Datei02.txt")
 touch(joinpath("Ordner01","Datei03.txt"))
+
+open("Datei05.csv","w") do f
+    write(f,"""
+    time;temp;Status
+    1;12,0;A
+    2;13,1;A
+    5; 9;B
+    10;14;A""")
+end
 ```
 
 # Arbeiten mit Dateien und dem Dateisystem
@@ -102,15 +111,47 @@ A == B
 
 Weiter Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html zu finden.
 
-Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, eventuell auch bei fehlenden Daten schnell an seine Grenzen.
+Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, oder auch bei fehlenden Daten schnell an seine Grenzen.
 Um ein stabiles Einlesen von solchen Dateien zu ermöglichen gibt es das `CSV`-Paket.
+Das `CSV`-Paket biete eine Vielzahl von Optionen die es erlauben den Einlesevorgang genau an die gegebene Datei anzupassen.
 
-3. CSV einlesen mit CSV.jl
-6. Binary Speichern mit BSON
+Bei der folgenden Datei kann es sich um eine sehr übliche, bei einer Messung aufgezeichneten, Datei handeln.
 
-Sonstige Pakete:
-Excel, MAT
+```julia; term=true
+f = open("Datei05.csv","r")
+readlines(f)
+close(f)
+```
 
+Es gibt eine Kopfzeile, verwendete Datentypen sind `Int`, `Float` und `String` und die `Float`-Zahlen sind anstelle eines Punktes mit einem Komma getrennt.
+
+'readdlm' liest die Datei zwar ein, das Resultat ist aber noch nicht sinnvoll verwendbar:
+
+```julia; term=true
+readdlm("Datei05.csv")
+```
+
+Mit einem Blick in die Hilfe von `readdlm` können wir das Ergebnis durch angeben des Trennzeichens mit `delim=';'` und überspringen der Kopfzeile mit `skipstart=1` etwas verbessern.
+
+```julia; term=true
+readdlm("Datei05.csv",';',skipstart=1)
+```
+
+Um die Daten nun nutzbar zu machen, müssten noch die Kommas durch Punkte und die daraus resultierenden String in Zahlen umgewandelt werden.
+Das `CSV.jl` biete für diesen Fall schon alle nötigen Optionen zum Einlesen:
+
+```julia; term=true
+using CSV, DataFrames
+messwerte = DataFrame(CSV.File("Datei05.csv",delim=';',decimal=',',types=[Int,Float64,String]))
+```
+
+Durch das Konvertieren in einen `DataFrame` ist jetzt auch der Zugriff auf einzelne Werte sehr einfach möglich:
+
+```julia; term=true
+messwerte.temp, messwerte.Status
+```
+
+Weitere Optionen unter: https://juliadata.github.io/CSV.jl/stable/
 ## Aufgabe: Daten einlesen 2 spaltig getrennt mir ; und , als dezimaltrennzeichen
 
 ```julia; echo=false
