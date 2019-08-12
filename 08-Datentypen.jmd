@@ -30,7 +30,7 @@ Mithilfe der Operatoren `+`, `-`, `*` und `/` können Zahlen addiert, subtrahier
 1.0 * 19.0
 38 / 2
 ```
-Während der Datentyp des Ergebnisses einer Addition, Subtraktion und Multiplikation abhängig vom Datentyp der Eingangswerte ist, ergibt eine Division immer eine Float-Zahl.
+Während der Datentyp des Ergebnisses einer Addition, Subtraktion und Multiplikation abhängig vom Datentyp der Eingangswerte ist, ergibt ie Division zweier ganzzahliger Werte immer eine Flaot-Zahl..
 Potenzen werden mit `^` eingegeben:
 ```julia; term=true
 2^3
@@ -52,17 +52,56 @@ A = (d^2 * pi) / 4
 Die Funktionen `string()` und `parse()` konvertieren Zahlen in Strings und umgekehrt:
 ```julia; term=true
 string(19.0)
-parse(Int64,"17.0")
+parse(Int64,"17")
+parse(Float64,"1.2345")
 ```
 
-Konvertieren und runden
-Operator precedence
+`float()` und `Int()` wandeln beliebige Zahlen in Float-Zahlen bzw. in ganzzahlige Werte um.
+Bei Verwendung von `Int()` muss gewährleistet sein, dass die übergebene Zahl tatsächlich ganzzahlig ist, sonst meldet Julia einen `InexactError`.
+```julia; term=true
+float(3)
+float(4//3)
+Int(2.3)
+Int(2.0)
+Int(4//4)
+```
+
+Zum Runden von Zahlen eignen sich die Funktionen `round()`, `floor()` und `ceil()`.
+```julia; term=true
+round(1.47)
+floor(1.47)
+ceil(1.47)
+```
+Während erstere zur nächstliegenden ganzen Zahl rundet, ermöglichen die anderen beiden Funktionen ab- und aufrunden von Zahlen.
+Die Anzahl der zu rundenden Stellen kann über die zusätzlichen Argumente `digits` und `sigdigits` festgelegt werden.
+```julia; term=true
+round(345.123; digits=2)
+round(345.123; sigdigits=2)
+```
+Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
+Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` bereits ab der ersten Stelle der Zahl zählt.
+
 Alle Typen in Julia sind in einer Art Hierarchie strukturiert.
 Beispielsweise ist `Integer` ein Subtyp von `Real` und Real wiederum ein Subtyp von `Number`.
 Dabei hat er Datentyp `Real` neben `Integer` noch weitere Subtypen.
 Mehr dazu unter Multiple Dispatch.
 ## Boolean
 Logische Operationen, Operator precedence
-## String zu Zahl und Zahl zu String
+true
+false
+modulus
+floor division
+==
+!=
+\ne TAB
+<
+>
+<=
+\le TAB
+>=
+\ge TAB
+&&
+||
+!
 ## Funktionen mit Zahlen
-zero, one, rand ...
+zero (additive identity), one (multiplicative identity), rand ...
