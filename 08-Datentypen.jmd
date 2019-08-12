@@ -172,7 +172,7 @@ Dabei hat er Datentyp `Real` neben `Integer` noch weitere Subtypen.
 Mehr dazu unter Multiple Dispatch.
 ## Booleans
 Eine Zahl vom Typ *Bool* kann entweder den Wert `true` oder `false` annehmen.
-
+Verschiedene Operationen in Julia geben eine Zahl vom Typ `Bool` zurück, wie zum Beispiel das Vergleichen zweier Zahlen:
 ```julia; term=true
 x = 13
 y = 17.0
@@ -186,9 +186,26 @@ x ≥ y # \ge TAB
 x <= y
 x ≤ y # \le TAB
 ```
-Logische Operationen, Operator precedence
-&&
-||
+
+Mit den Operatoren `>` und `<` können auch zwei Wörter auf ihre alphabetische Reihenfolge überprüft werden:
+```julia; term=true
+"apple" > "banana"
+"apple" < "banana"
+"apple" > "Banana"
+```
+Dabei ist zu beachten, dass Großbuchstaben immer vor Kleinbuchstaben eingeordnet werden.
+
+Alle Ausdrücke die eine Zahl vom Typ `Bool` zurückgeben können mit den logischen Operatoren `&&` (*and*), `||` (*or*) und `!` (*not*) kombiniert werden.
+```julia; term=true
+s = "melon";
+s > "banana" && length(s) == 6
+s > "banana" || length(s) == 6
+```
+Bei `&&` müssen beide Ausdrücke vor und nach dem Operator `true` ergeben, damit der gesamte Ausdruck `true` ist.
+Damit der Ausdruck mit `||` erfüllt ist und `true` ergibt, muss lediglich einer der beiden Ausdrücke erfüllt sein.
+
+Operator precedence
 !
 ## Funktionen mit Zahlen
 zero (additive identity), one (multiplicative identity), rand ...
+
