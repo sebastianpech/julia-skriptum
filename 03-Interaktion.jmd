@@ -1,7 +1,7 @@
 # Interaktion
 
-Um Julia auszuführen gibt es verschieden Möglichkeit:
-- Interaktiv in Form der REPL (Read-eval-print loop) über das Programmicon oder Eingabe von `julia` in einer Konsole.
+Um Julia auszuführen gibt es verschieden Möglichkeiten:
+- Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in einer Konsole.
 - Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]`.
 - In einem Editor der Julia unterstützt (z.B. Juno)
 - Als sogenanntes Notebook mit Jupyter.
@@ -13,9 +13,9 @@ Die Funktionalität, wie es auch im Namen REPL steckt besteht darin:
 1. *Read*: Einen Befehl einzulesen
 2. *Eval*: Den eingelesenen Befehl auszuwerten
 3. *Print*: Das Ergebnis auszugeben
-4. *loop*: Zurück zu 1. und auf den nächsten Befehl warten
+4. *Loop*: Zurück zu 1. und auf den nächsten Befehl warten
 
-Die REPL kann durch Starten von Julia über das Programmicon oder den Befehl `julia` geöffnet werden.
+Die REPL kann durch Starten von Julia über das Programm-Icon oder den Befehl `julia` geöffnet werden.
 Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt
 
 ![REPL Fenster direkt nach dem Start](data/img/repl-01.png)
@@ -23,7 +23,7 @@ Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Ab
 Der Cursor steht nach dem Text `julia> ` welcher Prompt genannt wird.
 Die REPL befindet sich jetzt im "Julian mode". Das bedeutet jetzt können Julia-Befehle eingegeben und ausgewertet werden.
 
-Julia kennt noch drei weiter Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
+Julia kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
 1. "Help mode" (`help?>`) durch `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
 2. Paketmanager (`(v1.1) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Funktionen installiert werden können.
 3. "Shell mode" (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem 

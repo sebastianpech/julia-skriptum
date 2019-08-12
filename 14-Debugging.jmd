@@ -7,7 +7,7 @@ options:
 
 ## Grundlagen und einfache Fälle
 
-Debugging bezeichnet die Suche und das Entfernen von Fehlern aus einem Programm.
+Debugging bezeichnet die Suche und das Entfernen von Fehlern (sogenannten *bugs*) aus einem Programm.
 Besonders bei sehr komplexer Software mit vielen verschachtelten Funktionen und unterschiedlichen Eingabewerten kann es schwierig sein, sich die Programmlogik für jeden Fall vorzustellen.
 Daher gibt es in Julia Tools die bei der Suche nach Fehlern helfen können.
 
@@ -52,8 +52,7 @@ function bug_show_pow(x::Number,n::Int)
 end
 ```
 
-Ein erneuert Aufruf der Funktioniert liefert folgende Ausgabe.
-
+Ein erneuerter Aufruf der Funktion liefert folgende Ausgabe:
 ```julia
 bug_show_pow(3.5,6)
 ```
@@ -89,10 +88,10 @@ Mit einem Blick in den Workspace kann man erkennen, dass im ersten Schleifendurc
 Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der Ausführung:
 
 - *Continue*: Funktioniert wie der Befehl `Juno.@run` und lässt den Code bis zum nächsten Breakpoint laufen.
-- *Finish Funktion*: Läuft bis zum Ende der aktuellen Funktion oder bis zum nächsten Breakpoint.
+- *Finish Function*: Läuft bis zum Ende der aktuellen Funktion oder bis zum nächsten Breakpoint.
 - *Next line*: Springt zur nächsten Zeile.
-- *Step to Selected Line*: Sprint zur im Editor ausgewählten Zeile oder bis zum nächsten Breakpoint.
-- *Next Expression*: Sprint zum nächsten Ausdruck (z.B. `2*3+1` stoppt bei `2*3`, der nächste Ausdruck ist dann `6+1`)
+- *Step to Selected Line*: Springt zur im Editor ausgewählten Zeile oder bis zum nächsten Breakpoint.
+- *Next Expression*: Springt zum nächsten Ausdruck (z.B. `2*3+1` stoppt bei `2*3`, der nächste Ausdruck ist dann `6+1`)
 - *Step into Function*: Funktioniert wie der Befehl `Juno.@enter` und springt in die erste Zeile der aktuellen Funktion.
 - *Stop Debugging*: Beendet das Debugging.
 

@@ -24,7 +24,7 @@ Dafür ist es notwendig, zum Einen die Dateien bzw. Dateinamen zu finden und zum
 
 ## Das Dateisystem
 
-Julia biete eine einheitliches Interface um auf das Dateisystem des Computers zuzugreifen.
+Julia bietet ein einheitliches Interface um auf das Dateisystem des Computers zuzugreifen.
 Wird ein Juliaprozess ausgeführt läuft er in dem Verzeichnis in dem er gestartet wurde, dem sogenannten "working directory".
 Anzeigen lässt sich dieses mit der Funktion `pwd` für "print working direcory".
 
@@ -54,9 +54,9 @@ Beim Einlesen von Dateien kann grob in zwei Typen unterschieden werden:
 - einfache Textdateien und
 - Binärdateien.
 
-Textdateien sind solche die mit einem simplen Editor geöffnet werden können und für die es nicht notwendig ist die Daten vor der Verarbeitung zu Dekodieren. Klassische Formate sind csv, txt, tex, xml.
+Textdateien sind solche die mit einem simplen Editor geöffnet werden können und für die es nicht notwendig ist, die Daten vor der Verarbeitung zu Dekodieren. Klassische Formate sind csv, txt, tex, xml.
 
-Ein solche Datei kann mit der Funktion `open` geöffnet werden. `open` erfordert neben der Angabe des Dateipfades, auch einen Modus.
+Eine solche Datei kann mit der Funktion `open` geöffnet werden. `open` erfordert neben der Angabe des Dateipfades, auch einen Modus.
 Beim Umgang mit Dateien gibt es die folgenden Modi:
 - `r` read: Die Datei wird nur gelesen.
 - `w` write: Die Datei wird erzeugt (bzw. überschrieben falls sie vorhanden ist) und mit Daten gefüllt.
@@ -66,7 +66,7 @@ Beim Umgang mit Dateien gibt es die folgenden Modi:
 f = open("Datei04.txt","w")
 readdir()
 ```
-`open` öffnet einen sogenannten Stream zu der Datei. Um nun Text in die neue Datei zu schreiben, muss dieser Text zuerst in den Stream g geschrieben werden. Das ist mit dem `write` Befehl möglich. 
+`open` öffnet einen sogenannten Stream zu der Datei. Um nun Text in die neue Datei zu schreiben, muss dieser Text zuerst in den Stream geschrieben werden. Das ist mit dem `write` Befehl möglich. 
 
 ```julia; term=true
 write(f,"Erste Zeile\n")
@@ -109,13 +109,13 @@ B = readdlm("MeineMatrix.txt")
 A == B
 ```
 
-Weiter Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html zu finden.
+Weitere Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html zu finden.
 
 Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, oder auch bei fehlenden Daten schnell an seine Grenzen.
 Um ein stabiles Einlesen von solchen Dateien zu ermöglichen gibt es das `CSV`-Paket.
 Das `CSV`-Paket biete eine Vielzahl von Optionen die es erlauben den Einlesevorgang genau an die gegebene Datei anzupassen.
 
-Bei der folgenden Datei kann es sich um eine sehr übliche, bei einer Messung aufgezeichneten, Datei handeln.
+Bei der folgenden Datei kann es sich um eine sehr übliche, bei einer Messung aufgezeichnete, Datei handeln.
 
 ```julia; term=true
 f = open("Datei05.csv","r")
@@ -131,14 +131,14 @@ Es gibt eine Kopfzeile, verwendete Datentypen sind `Int`, `Float` und `String` u
 readdlm("Datei05.csv")
 ```
 
-Mit einem Blick in die Hilfe von `readdlm` können wir das Ergebnis durch angeben des Trennzeichens mit `delim=';'` und überspringen der Kopfzeile mit `skipstart=1` etwas verbessern.
+Mit einem Blick in die Hilfe von `readdlm` können wir das Ergebnis durch Angeben des Trennzeichens mit `delim=';'` und Überspringen der Kopfzeile mit `skipstart=1` etwas verbessern.
 
 ```julia; term=true
 readdlm("Datei05.csv",';',skipstart=1)
 ```
 
 Um die Daten nun nutzbar zu machen, müssten noch die Kommas durch Punkte und die daraus resultierenden String in Zahlen umgewandelt werden.
-Das `CSV.jl` biete für diesen Fall schon alle nötigen Optionen zum Einlesen:
+Das Paket `CSV.jl` bietet für diesen Fall schon alle nötigen Optionen zum Einlesen:
 
 ```julia; term=true
 using CSV, DataFrames
