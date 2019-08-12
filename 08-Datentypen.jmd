@@ -38,11 +38,58 @@ Nachdem in der ersten Zeile der Variable `fruit` ein `String` zugewiesen wird, g
 Der Ausdruck in den eckigen Klammern heißt dabei *Index* und muss ein Integer sein.
 Die Indexierung in Julia startet bei 1, die Variable `third` beinhaltet also das dritte Zeichen des Strings.
 Für den Zugriff auf das letzte Zeichen kann der Index `end` verwendet werden.
-`Die Anzahl der Zeichen eines Strings kann mit der Funktion `length()` abgefragt werden:
+
+Neben einzelnen Zeichen besteht auch die Möglichkeit auf einen Teil des Strings zuzugreifen.
+Dies erfolgt durch Eingabe des ersten und letzten Index getrennt durch einen Doppelpunkt, `:`.
+```julia; term=true
+fruit[3:end]
+```
+
+Die Anzahl der Zeichen eines Strings kann mit der Funktion `length()` abgefragt werden:
 ```julia; term=true
 length("julia")
 ```
 
+Strings sind nicht veränderbar.
+Austuaschen eines Zeichens durch Zurgriff auf einen bestimmten Index ist daher nicht möglich:
+```julia; term=true
+s = "banana"
+s[3:end] = "nane"
+```
+Mittels `replace()` kann allerdings eine Zeichenfolge im String durch eine neue Zeichenfolge ersetzt und in einer neuen Variable abgespeichert werden:
+```julia; term=true
+s = "banana"
+s_neu = replace(s,"nana"=>"nane")
+@show s
+```
+Das erste Argument der Funktion ist der zu verändernde String.
+Das zweite Argument setzt sich zusammen aus dem String oder Character der ersetzt werden soll, einem Pfeil bestehend aus `=` und `>`, sowie dem String oder Character der eingefügt werden soll.
+Die ursprüngliche Variable `s` bleibt dabei unverändert.
+
+Es gibt mehrere Möglichkeiten Strings zusammenzusetzen.
+Eine davon ist die Verwendung des `*`-Operators.
+```julia; term=true
+s = "Zack"
+s*", "*s*"; "*s*"!"
+```
+Eine weitere Möglichkeit bietet die Funktion `string()`:
+```julia; term=true
+string(s,", ",s,", ",s,"!")
+```
+Diese Varianten werden allerdings schnell unübersichtlich.
+In diesem Fall bietet sich die String Interpolation als übersichtlichere Möglichkeit an:
+```julia; term=true
+"$(s), $(s), $(s)!"
+```
+
+Der `^`-Operator wiederholt einen String beliebig oft:
+```julia; term=true
+"stop"^5
+"$(s), "^2*"$(s)!"
+```
+uppercase, findfirst, findnext, \in TAB, inboth
+
+Symbols?
 
 ## Zahlen
 In Julia sind verschiedene Datentypen für Zahlen definiert.
@@ -68,10 +115,8 @@ Potenzen werden mit `^` eingegeben:
 ```
 
 Die Reihenfolge der Operationen folgt dabei den üblichen mathematischen Regeln:
-	1. Klammern, 
-	2. Potenzen,
-	3. Multiplikation und Division und
-	4. Addition und Subtraktion.
+  1. Klammern, 2. Potenzen, 3. Multiplikation und Division und
+  4. Addition und Subtraktion.
 Gleichrangige Operationen führt Julia immer der Reihe nach von links nach rechts aus.
 Klammern bieten die Möglichkeit, den Code zu strukturieren und besser lesbar zu machen, auch wenn diese nicht immer notwendig sind:
 ```julia; term=true
@@ -112,25 +157,36 @@ round(345.123; sigdigits=2)
 Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
 Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` bereits ab der ersten Stelle der Zahl zählt.
 
+Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷` (*floor division*) und der Modulus-Operator `%`.
+```julia; term=true
+7÷3
+7%3
+```
+`÷` führt eine Division durch und rundet das Ergebnis auf die nächste ganze Zahl ab.
+Der Modulus-Operator gibt den Rest einer Division aus.
+Damit kann zum Beispiel leicht überprüft werden, ob eine Zahl durch eine andere Zahl teilbar ist.
+
 Alle Typen in Julia sind in einer Art Hierarchie strukturiert.
 Beispielsweise ist `Integer` ein Subtyp von `Real` und Real wiederum ein Subtyp von `Number`.
 Dabei hat er Datentyp `Real` neben `Integer` noch weitere Subtypen.
 Mehr dazu unter Multiple Dispatch.
-## Boolean
+## Booleans
+Eine Zahl vom Typ *Bool* kann entweder den Wert `true` oder `false` annehmen.
+
+```julia; term=true
+x = 13
+y = 17.0
+x == y
+x != y
+x ≠ y # \ne TAB
+x > y
+x < y
+x >= y
+x ≥ y # \ge TAB
+x <= y
+x ≤ y # \le TAB
+```
 Logische Operationen, Operator precedence
-true
-false
-modulus
-floor division
-==
-!=
-\ne TAB
-<
->
-<=
-\le TAB
->=
-\ge TAB
 &&
 ||
 !
