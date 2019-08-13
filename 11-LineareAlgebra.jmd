@@ -7,6 +7,8 @@ Das lineare Algebra Paket ist standardmäßig in Julia enthalten und kann wie al
 using LinearAlgebra
 ```
 
+Details zu dem Paket sind unter https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/ zu finden.
+
 ## Lineare Gleichungssysteme
 
 Eine übliche Problemstellung der linearen Algebra ist das Lösen von Gleichungssystemen wie dem folgendem.
