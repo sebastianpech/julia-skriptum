@@ -1,4 +1,4 @@
-# Datentypen
+# Datentypen (RS)
 Ein grundlegender Baustein von Programmen sind Werte (*values*), wie zum Beispiel Zahlen oder Buchstaben.
 Jeder Wert gehört zu einem bestimmten Datentypen.
 Dieser Datentyp kann mit der Funktion `typeof()` abgefragt werden:

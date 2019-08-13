@@ -1,4 +1,4 @@
-# Controlflow
+# Controlflow (SP)
 
 ## if, elseif, else
 
@@ -10,7 +10,7 @@
 ## Schleifen for, while
 ### Performance Optimierung Julia
 #### Macros @time, Benchmarktools 
-### Aufgabe: Berechne PI mittels Monte-Carlo-Simulation
+### Aufgabe: Berech
 ### Aufgabe: Integriere eine Beliebige Funktion nummerisch
 ### Aufgabe: Wie hoch ist die Wahrscheinlichkeit
 ... mit einem idealen Würfel (1-6) 3 x hintereinander 4 zu würfeln
