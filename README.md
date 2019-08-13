@@ -7,11 +7,14 @@ julia make.jl [Datei1.jmd[ Datei2.jmd]]
 # Todo-Liste
 ## SP
 - [ ] Interaktion
+  - [ ] Juno
+  - [ ] Jupyter
 - [ ] Hilfe
 - [ ] Fehlermeldungen
 - [ ] Lineare Algebra
 - [ ] Controlflow
 - [ ] Debugging
+  - [ ] Beispiel Hinzufügen
 - [x] Arbeiten mit Dateien und dem Dateisystem
 
 ## RS
