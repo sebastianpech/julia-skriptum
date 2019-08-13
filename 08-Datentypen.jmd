@@ -10,7 +10,7 @@ typeof('c')
 typeof(true)
 ```
 
-## Char und String und Symbol
+## Characters, Strings und Symbols
 ### Characters
 Ein Wert vom Typ `Char` repräsentiert ein einzelnes Zeichen und ist von einfachen Anführungszeichen umgeben.
 Dabei kann jedes verfügbare *Unicode*-Zeichen als `Char` verwendet werden:
@@ -34,13 +34,13 @@ third = fruit[3]
 last = fruit[end]
 secondlast = fruit[end-1]
 ```
-Nachdem in der ersten Zeile der Variable `fruit` ein `String` zugewiesen wird, greifen die übrigen Zeilen auf diesen `String` zu und weisen jeweils ein Zeichen neuen Variablen zu.
+Nachdem in der ersten Zeile der Variable `fruit` ein `String` zugewiesen wird, greifen die übrigen Zeilen auf diesen `String` zu und weisen jeweils ein Zeichen einer neuen Variablen zu.
 Der Ausdruck in den eckigen Klammern heißt dabei *Index* und muss ein Integer sein.
 Die Indexierung in Julia startet bei 1, die Variable `third` beinhaltet also das dritte Zeichen des Strings.
 Für den Zugriff auf das letzte Zeichen kann der Index `end` verwendet werden.
 
 Neben einzelnen Zeichen besteht auch die Möglichkeit auf einen Teil des Strings zuzugreifen.
-Dies erfolgt durch Eingabe des ersten und letzten Index getrennt durch einen Doppelpunkt, `:`.
+Dies erfolgt durch Eingabe des ersten und letzten Index des Teils, getrennt durch einen Doppelpunkt, `:`.
 ```julia; term=true
 fruit[3:end]
 ```
@@ -51,7 +51,8 @@ length("julia")
 ```
 
 Strings sind nicht veränderbar.
-Austuaschen eines Zeichens durch Zurgriff auf einen bestimmten Index ist daher nicht möglich:
+Austauschen eines Zeichens durch Zurgriff auf einen bestimmten Index ist daher nicht möglich.
+Julia gibt dann einen *Method-Error* aus.
 ```julia; term=true
 s = "banana"
 s[3:end] = "nane"
@@ -59,7 +60,8 @@ s[3:end] = "nane"
 Mittels `replace()` kann allerdings eine Zeichenfolge im String durch eine neue Zeichenfolge ersetzt und in einer neuen Variable abgespeichert werden:
 ```julia; term=true
 s = "banana"
-s_neu = replace(s,"nana"=>"nane")
+s_1 = replace(s,"nana"=>"nane")
+s_2 = replace(s,'a'=>'u')
 @show s
 ```
 Das erste Argument der Funktion ist der zu verändernde String.
@@ -70,7 +72,7 @@ Es gibt mehrere Möglichkeiten Strings zusammenzusetzen.
 Eine davon ist die Verwendung des `*`-Operators.
 ```julia; term=true
 s = "Zack"
-s*", "*s*"; "*s*"!"
+s*", "*s*", "*s*"!"
 ```
 Eine weitere Möglichkeit bietet die Funktion `string()`:
 ```julia; term=true
@@ -87,7 +89,10 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 "stop"^5
 "$(s), "^2*"$(s)!"
 ```
-uppercase, findfirst, findnext, \in TAB, inboth
+
+Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08) und im entsprechenden Bereich der [Julia-Dokumentation](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/strings.html).
+
+### Symbols
 
 Symbols?
 
@@ -100,6 +105,11 @@ Daneben bietet Julia allerdings noch die Typen `Complex` und `Rational` für kom
 typeof(1.3+4im)
 typeof(23//4)
 ```
+Für Zahlen vom Typ `Int` und `Float` gibt es verschiedene Typen, die sich nach ihrer Anzahl an Bits im Speicher unterscheiden.
+Die Zahl am Ende des Typs gibt genau diesen Wert an.
+Neben den Typen `Int64` und `Float64` gibt es daher noch `Int8`, `Int16`, `Int32` und `Int128`, sowie `Float16` und `Float32`.
+Diese Zahlentypen benötigen zwar weniger Speicher (ausgenommen `Int128`), es ist aber zu beachten, dass diese Integer-Typen nur für Zahlen bis zu einer gewissen Größe funktionieren und die beiden Float-Typen weniger Kommastellen bereitstellen als `Float64`.
+Eine Übersicht dazu bietet die Tabellen im Kapitel [Integers and Floating-Point Numbers](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/integers-and-floating-point-numbers.html) in der Julia Dokumentation. 
 
 Mithilfe der Operatoren `+`, `-`, `*` und `/` können Zahlen addiert, subtrahiert, multipliziert und dividiert werden:
 ```julia; term=true
@@ -108,19 +118,21 @@ Mithilfe der Operatoren `+`, `-`, `*` und `/` können Zahlen addiert, subtrahier
 1.0 * 19.0
 38 / 2
 ```
-Während der Datentyp des Ergebnisses einer Addition, Subtraktion und Multiplikation abhängig vom Datentyp der Eingangswerte ist, ergibt ie Division zweier ganzzahliger Werte immer eine Flaot-Zahl..
+Während der Datentyp des Ergebnisses einer Addition, Subtraktion und Multiplikation abhängig vom Datentyp der Eingangswerte ist, ergibt die Division zweier ganzzahliger Werte immer eine Float-Zahl.
 Potenzen werden mit `^` eingegeben:
 ```julia; term=true
 2^3
 ```
 
 Die Reihenfolge der Operationen folgt dabei den üblichen mathematischen Regeln:
-  1. Klammern, 2. Potenzen, 3. Multiplikation und Division und
-  4. Addition und Subtraktion.
+1. Klammern,
+2. Potenzen,
+3. Multiplikation und Division und
+4. Addition und Subtraktion.
 Gleichrangige Operationen führt Julia immer der Reihe nach von links nach rechts aus.
 Klammern bieten die Möglichkeit, den Code zu strukturieren und besser lesbar zu machen, auch wenn diese nicht immer notwendig sind:
 ```julia; term=true
-d = 5
+d = 5;
 A = d^2*pi/4
 A = (d^2 * pi) / 4
 ```
