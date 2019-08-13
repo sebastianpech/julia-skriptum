@@ -1,4 +1,4 @@
-# Lineare Algebra (SP)
+# Lineare Algebra
 
 ```{julia}
 using LinearAlgebra
