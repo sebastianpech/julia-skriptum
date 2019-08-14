@@ -1,14 +1,47 @@
 # Installation
+## Julia
+Julia ist für Windows, macOS und Linux kostenlos auf der Webseite [julialang.org](https://julialang.org) verfügbar.
+Unter [Downloads](https://julialang.org/downloads/) befinden sich die für die Installation notwendigen Dateien.
+### Windows
+Julia ist für Windows 7 oder neuer ind 32 bit und 64 bit verfügbar.
+Folgende Schritte sind für die Installation erforderlich:
+1. Die richtige Version (32 bit oder 64 bit) der Installationsdatei `julia.exe` herunterladen.
+2. Die heruntergeladene Datei ausführen, um Julia zu entpacken.
+Im entpackten Ordner befindet sich die Datei `julia`.
+Diese kann entweder durch Doppelklick oder über die Commandline durch Eingabe des Befehls `julia` ausgeführt werden.
+Sollte bei Aufruf in der Commandline ein Fehler `Der Befehl "julia" ist entweder falsch geschrieben oder konnte nicht gefunden werden` auftreten, wurde Julia wahrscheinlich in der Installation nicht zu den Systemvariablen hinzugefügt.
+Windows kann die Datei `julia` dann nicht finden.
+#TODO Hinzufügen einer Systemvariable unter Windows
 
-  - Download Julia von Website
-  - Installation Julia
-  - Download Atom
-  - Installation Atom
-  - Install Juno in Atom
-  - Install panel, `uber-juno`
-  - Installationspfad einstellen, falls verändert
-  - FAQs Juno
+### macOS
+Julia ist für macOS 10.8 und spätere Versionen verfügbar.
+Für Mac-User befindet sich auf [https://julialang.org/downloads](https://julialang.org/downloads) eine `.dmg`-Datei zum Download.
+Dieses Disk Image muss geöffnet und die darin enthaltene Datei `julia-<version>.app` in den gewünschten Dateipfad (vozugsweise "Programme") kopiert werden.
+Julia kann dann direkt über diese Datei oder Eingabe des Befehls `julia` im terminal ausgeführt werden.
 
-[Julia Downloads](https://julialang.org/downloads/)
-[Atom Download](https://atom.io)
+### Linux
+Zur Installation von Julia auf einem Linux Betriebssystem müssen zuerst die "Generic Binaries" für die richtige Prozessor-Architektur heruntergeladen werden.
+Die Datei im `.tar.gz`-Format muss danach in einen beliebigen Ordner auf dem Computer entpackt werden.
+In diesem Ordner befindet sich unter `bin/` die Datei `julia`.
+Um Julia im Terminal ausführen zu können, muss gewährleistet sein, dass das System diese Datei findet.
+Am einfachsten ist es, einen "Symbolic Link" in einem der Ordner unter der Systemvariable `PATH` zu erzeugen.
+Welche Ordner in `PATH` hinterlegt sind, kann im Terminal mittels `echo $PATH` abgefragt werden.
+Meist ist `/usr/local/bin` einer davon.
+Folgender Befehl erstellt den Symbolic Link in diesem Ordner:
+```
+sudo ln -s <Pfad zum entpackten Ordner>/bin/julia /usr/local/bin/julia
+```
+Danach kann Julia durch Eingabe von `julia` im Terminal gestartet werden.
 
+## Juno
+Generell reicht es aus, Julia zu installieren und über die Command Line zu benutzen.
+Entwicklungsumgebungen wie zum Beispiel *Juno* bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
+Dazu muss zuerst der erweiterbare Texteditor *Atom* installiert werden.
+Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [atom.io](https://atom.io) erhältlich.
+
+Nach der Installation von Atom muss *Juno* in Atom installiert werden.
+Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (`Strg+,` oder `Cmd+,` bzw. über die Menüleiste) und dort das Installations-Panel auszuwählen.
+Durch Installation des Pakets `uber-juno` (am einfachsten über die Suchleiste) kann Juno in Atom verwendet werden.
+Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter Packages > Julia > Settings im Feld "Julia Path" der tatsächliche Dateipfad angegeben werden.
+
+Wenn die Installation funktioniert hat, kann unter Packages > Julia > Open Console die REPL geöffnet und durch drücken der Taste `Enter` eine Julia-Session gestartet werden.
