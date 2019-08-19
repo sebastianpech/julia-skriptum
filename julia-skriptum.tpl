@@ -2,13 +2,13 @@
 
 \usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{bm}
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{hyperref}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1.2ex}
+
+\usepackage[ngerman]{babel}
 
 {{{ :stylesheet }}}
 
