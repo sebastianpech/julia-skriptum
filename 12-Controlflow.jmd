@@ -12,6 +12,20 @@
 #### Macros @time, Benchmarktools 
 ### Aufgabe: Berechne PI mittels Monte-Carlo-Simulation
 ### Aufgabe: Integriere eine Beliebige Funktion nummerisch
+Simpson und / oder trapezoid
+
+Simpson:
+```julia
+function ∫(f::Function, a::Number, b::Number, n::Number)
+    n % 2 == 0 || error("`n` must be even")
+    h = (b-a)/n
+    s = f(a) + f(b)
+    s += 4*mapreduce(f,+,a .+ (1:2:n) * h)
+    s += 2*mapreduce(f,+,a .+ (2:2:n-1) * h)
+    return h/3 * s
+end
+```
+
 ### Aufgabe: Wie hoch ist die Wahrscheinlichkeit
 ... mit einem idealen Würfel (1-6) 3 x hintereinander 4 zu würfeln
 
