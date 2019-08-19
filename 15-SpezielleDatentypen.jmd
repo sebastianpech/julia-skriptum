@@ -1,11 +1,17 @@
 # Spezielle Datentypen
 ## Date und Datetime
 
+```julia
+using Dates
+```
+
 ### Aufgabe: Melusines Geburtstag
 Ein Mann verwechselt Tages- und Monatszahl und erscheint daher sechs Wochen zu früh zu einem Termin. Um welchen Tag handelt es sich?
 https://www.spektrum.de/raetsel/melusines-geburtstag/1660200?fbclid=IwAR0aMzBGaMoHL8Z2s8UIGPTCFO79Xh-ntcZVqPqdi86hsEkKp0-wXMWkpuQ
 
 ```julia
+isdate(x,y) = Day(x).value == Month(y).value && Day(y).value == Month(x).value
+
 for d in range(Date(2017,1,1),Date(2017,12,31),step=Day(1))
     if isdate(d,d+Week(6))
         @show d
@@ -13,5 +19,4 @@ for d in range(Date(2017,1,1),Date(2017,12,31),step=Day(1))
 end
 ```
 
-Date und Datetime
-Uniful, Measurements, usw ...
+## Uniful, Measurements, usw ...
