@@ -1,9 +1,11 @@
 # Extra Pakete
 ## Highlights.jl
 
-Die Version von Highlights.jl muss bis zum Merge von 
+Die Version von Highlights.jl muss bis zum Merge von
+ 
 - [JuliaDocs/Highlights.jl#34](https://github.com/JuliaDocs/Highlights.jl/pull/34)
 - [JuliaDocs/Highlights.jl#30](https://github.com/JuliaDocs/Highlights.jl/pull/30)
+
 extra geladen werden:
 
 ```
