@@ -1,13 +1,106 @@
-# Controlflow
+# Kontrollstruktur
 
-## if, elseif, else
+Der Code in den bisher behandelten Beispiele setzte sich aus einer sich nicht verzweigenden Verkettung von Befehlen zusammen.
+Für sehr rudimentäre Programme mag das ausreichen, in den meisten Fällen werden aber Verzweigungen in Form von `if`-Bedingungen und Schleifen benötigt.
+
+## Verzweigungen
+
+Dieses Konstrukt erlaubt es, abhängig von einer *Bedingung* (die ausgewertet vom Typ `Bool` sein muss) einen Codeteil auszuführen oder zu überspringen.
+Die einfachste Form ist das `if`-Statement:
+
+```julia;
+x = -1
+if x < 0
+    println("x ist negativ.")
+end
+```
+
+In diesem Beispiel ist die *Bedingung* `x > 0`. Wie bereits im Abschnitt zu den Datentypen gezeigt, ergibt die Auswertung dieses Ausdrucks einen Wert vom Typ `Bool`:
+
+```julia; term=true
+x < 0
+typeof(x < 0)
+```
+
+Die zweite Form ist die Kombination aus `if` und `else`. `else` bezeichnet den Zweig der ausgeführt wird, falls die Bedingung nicht erfüllt ist.
+
+```julia;
+x = 1
+if x < 0
+    println("x ist negativ.")
+else
+    println("x ist positiv.")
+end
+```
+
+Da `x < 0` ausgewertet `j x < 0` ergibt, wird der `if`-Zweig übersprungen und der `else`-Zweig ausgeführt.
+
+Die dritte Form ist im Grunde eine vereinfachte Schreibweise für Kombinationen von Form eins und Form zwei.
+Der folgende Code 
+
+```julia;
+x = 9
+if x < 0
+    println("x ist negativ.")
+else
+    if x <= 10 
+        println("x ist eine Zahl von 0 bis 10.")
+    else
+        println("x ist größer als 10.")
+    end
+end
+```
+
+kann einfacher und übersichtlicher durch `elseif` geschrieben werden.
+
+```julia;
+x = 9
+if x < 0
+    println("x ist negativ.")
+elseif x <= 10 
+    println("x ist eine Zahl von 0 bis 10.")
+else
+    println("x ist größer als 10.")
+end
+```
+
+
+### Aufgabe: Schreibe ein Funktion die Gerade oder Ungerade für eine Zahl ausgiebt
+
+```julia
+function gerade_ungerade(x::Int)
+    if x % 2 == 0
+        println("Gerade")
+    else
+        println("Ungerade")
+    end
+end
+```
+
+```julia; term=true
+gerade_ungerade(11)
+gerade_ungerade(218)
+```
 
 ### Aufgabe: Schreibe ein Skript das eine Ziffer einliest und diese in Worten darstellt.
-```
- readline()
+
+Definiere dafür zuerst eine Funktion die für den Benutzer "{}Ziffer eingeben: "{} anzeigt und dann auf die Eingabe wartet.
+Die Ausgabe eines Textes ohne Zeilenumbruch ist mit `print` möglich. Ein `String` kann durch die Funktion `readline` eingelesen werden.
+Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
+
+```bash
+julia ziffer_bezeichnung.jl
+Ziffer eingeben: 3
+Drei
+
+julia ziffer_bezeichnung.jl
+Ziffer eingeben: 10
+Falsche Eingabe. Es werden nur einzelne Ziffern unterstützt.
 ```
 
 ## Schleifen for, while
+
+
 ### Performance Optimierung Julia
 #### Macros @time, Benchmarktools 
 ### Aufgabe: Berechne PI mittels Monte-Carlo-Simulation
