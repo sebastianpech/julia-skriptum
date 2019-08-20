@@ -96,3 +96,38 @@ Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der 
 - *Stop Debugging*: Beendet das Debugging.
 
 Nähere Informationen zum Debugger gibt es in diesem Blogeintrag: https://julialang.org/blog/2019/03/debuggers.
+
+## Aufgabe: Finde den Fehler in der folgenden Funktion
+
+Die Funktion berechnet den größten gemeinsamer Teiler zweier Zahlen `a` und `b`.
+
+```julia
+function ggt(a::Int,b::Int)
+    for teiler in min(a,b):-1:0
+        if a%teiler == 0 && b%teiler == 0
+            return teiler
+        end
+    end
+    return 1
+end
+```
+
+Julia hat mit der Funktion `gcd` bereits eine Implementierung dieser Aufgabe.
+Damit lässt sich an 1000 zufälligen Zahlenkombinationen zwischen 1 und 1000 einfach zeigen, dass die Funktion `ggt` für viele Fälle das korrekte Ergebnis liefert:
+
+```julia; term=true
+a = rand(1:1000,1000); b = rand(1:1000,1000);
+ggt.(a,b) == gcd.(a,b)
+```
+
+Für die folgenden Fälle stimmt das Ergebnis allerdings nicht.
+
+```julia; term=true
+ggt(10,0) == gcd(10,0)
+ggt(0,10) == gcd(0,10)
+ggt(-2304,8) == gcd(-2304,288)
+```
+
+Finde die Fehler mit dem Debugger und korrigiere die Funktion.
+
+
