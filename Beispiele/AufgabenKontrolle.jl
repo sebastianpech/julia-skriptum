@@ -34,7 +34,7 @@ macro Aufgabe02(code)
             end
         catch e
             redirect_stdin(_stdin)
-            # redirect_stdout(_stdout)
+            redirect_stdout(_stdout)
             println("Fehler bei Aufgabe 02!")
             rethrow(e)
         end
