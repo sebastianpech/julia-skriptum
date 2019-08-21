@@ -57,36 +57,6 @@ Da dieser Ablauf sehr häufig vorkommt und sich abhängig von ``\mathbf{A}`` gut
 A\c
 ```
 
-### Aufgabe: Löse das Gleichungssystem 
-
-```math
-   x - y + z = 22\;\text{und}\;2x + 3y = 11\;\text{und}\;10x-y/2+5z=0
-```
-
-```{julia;}
-A = [1 -1 1
-     2  3 0
-     10 -0.5 5]
-@show det(A)
-c = [22, 11, 0]
-@show A\c
-```
-
-### Aufgabe: Verwende die Funktionen `eigvals` und `eigvecs` 
-
-um die obige Matrix zu Zerlegen und kontrolliere das Ergebnis für den ersten Eigenvektor und 
-in dem die Matrix durch die Eigenvektoren und Eigenwerte wieder hergestellt wird.
-
-```{julia;}
-A = [1 -1 1
-     2  3 0
-     10 -0.5 5]
-λ = eigvals(A)
-ϕ = eigvecs(A)
-@show A*ϕ[:,1] ≈ λ[1]*ϕ[:,1]
-@show ϕ*Diagonal(λ)*inv(ϕ) ≈ A
-```
-
 ## Vektorfunktionen
 
 Das lineare Algebra Paket beinhaltet auch Funktionen zur Berechnung des Skalarprodukts `dot` oder `·`, des Kreuzprodukts `cross` oder `×` und der Länge `norm` von Vektoren.
@@ -103,10 +73,41 @@ Das lineare Algebra Paket beinhaltet auch Funktionen zur Berechnung des Skalarpr
 norm([1,2,3])
 ```
 
-### Aufgabe: Berechne den Winkel zwischen den Vektoren v1 und v2
+## Aufgaben
+
+### Löse das Gleichungssystem 
+
+```math
+   x - y + z = 22\;\text{und}\;2x + 3y = 11\;\text{und}\;10x-y/2+5z=0
+```
+
+```{julia;}
+A = [1 -1 1
+     2  3 0
+     10 -0.5 5]
+@show det(A)
+c = [22, 11, 0]
+@show A\c
+```
+
+### Verwende die Funktionen `eigvals` und `eigvecs` 
+
+um die obige Matrix zu Zerlegen und kontrolliere das Ergebnis für den ersten Eigenvektor und 
+in dem die Matrix durch die Eigenvektoren und Eigenwerte wieder hergestellt wird.
+
+```{julia;}
+A = [1 -1 1
+     2  3 0
+     10 -0.5 5]
+λ = eigvals(A)
+ϕ = eigvecs(A)
+@show A*ϕ[:,1] ≈ λ[1]*ϕ[:,1]
+@show ϕ*Diagonal(λ)*inv(ϕ) ≈ A
+```
+
+### Berechne den Winkel zwischen den Vektoren v1 und v2
 
 ```julia
 v1 = [1,5]; v2 = [3,7]
 acos(v1⋅v2/(norm(v1)*norm(v2)))
 ```
-

@@ -152,7 +152,9 @@ messwerte.temp, messwerte.Status
 ```
 
 Weitere Optionen unter: https://juliadata.github.io/CSV.jl/stable/
-## Aufgabe: Daten einlesen 2 spaltig getrennt mir ; und , als dezimaltrennzeichen
+
+## Aufgaben
+### Daten einlesen 2 spaltig getrennt mir ; und , als dezimaltrennzeichen
 
 ```julia; echo=false
 cd(current_workding_directory)

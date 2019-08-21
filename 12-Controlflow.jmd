@@ -64,56 +64,6 @@ else
 end
 ```
 
-
-### Aufgabe: Schreibe ein Funktion die Gerade oder Ungerade für eine Zahl ausgiebt
-
-```julia
-function gerade_ungerade(x::Int)
-    if x % 2 == 0
-        println("Gerade")
-    else
-        println("Ungerade")
-    end
-end
-```
-
-```julia; term=true
-gerade_ungerade(11)
-gerade_ungerade(218)
-```
-
-### Aufgabe: Schreibe ein Skript das eine Ziffer einliest und diese in Worten darstellt.
-
-Definiere dafür zuerst eine Funktion die für den Benutzer "{}Ziffer eingeben: "{} anzeigt und dann auf die Eingabe wartet.
-Die Ausgabe eines Textes ohne Zeilenumbruch ist mit `print` möglich. Ein `String` kann durch die Funktion `readline` eingelesen werden.
-Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
-
-```bash
-julia ziffer_bezeichnung.jl
-Ziffer eingeben: 3
-Drei
-
-julia ziffer_bezeichnung.jl
-Ziffer eingeben: 10
-Falsche Eingabe. Es werden nur einzelne Ziffern unterstützt.
-```
-
-### Aufgabe: Skript Flächeninhalt
-
-Schreibe ein Skript das den Benutzer dazu auffordert den Radius eines Kreises einzugeben und nach der Eingabe den Flächeninhalt und den Umfang ausgibt. Beide Ergebnisse sollen auf zwei Dezimalstellen gerundet werden.
-Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
-
-```bash
-julia kreis.jl
-Radius eingeben: 3
-A = 28.27
-U = 18.85
-
-julia kreis.jl
-Radius eingeben: abc
-Falsche Eingabe.
-```
-
 ## Schleifen
 
 Computer sind besonders gut geeignet um repetitive Aufgaben zu lösen.
@@ -197,28 +147,6 @@ sammle_vokale("Finde die Vokale in diesem Satz. Gehe aber nicht weiter als bis z
 `break` wird oft auch in Kombination mit `while`-Schleifen verwendet die endlos laufen. 
 Wenn Beispielsweise in der Schleife auf eine Dateneingabe gewartet wird, oder die Abbruchbedingung sehr komplex ist.
 In diesem Fall kann eine Endlosschleife absichtlich durch Verwenden der Bedingung `true` konstruiert werden.
-
-### Aufgabe: Skript Flächeninhalt mehrmalige Eingabe
-
-Erweitere das Skript zur Berechnung des Flächeninhalts des Kreises so, dass der Benutzer nach einer Eingabe gleich eine weitere Eingabe machen kann.
-Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird.
-
-```bash
-julia kreis.jl
-Radius eingeben: 3
-A = 28.27
-U = 18.85
-
-Radius eingeben: abc
-Falsche Eingabe.
-
-Radius eingeben: 1.2
-A = 4.52
-U = 7.54
-
-Radius eingeben:
-Programm Beendet!
-```
 
 ### Performance Optimierung Julia
 
@@ -388,8 +316,81 @@ Eine Konstante darf sich nicht ändern, damit ist der Code wieder Typenstabil.
 GRAV_BESCHL = "Neuer Wert"
 ```
 
-### Aufgabe: Berechne PI mittels Monte-Carlo-Simulation
-### Aufgabe: Integriere eine Beliebige Funktion nummerisch
+## Aufgaben
+
+### Schreibe ein Funktion die Gerade oder Ungerade für eine Zahl ausgibt
+
+```julia
+function gerade_ungerade(x::Int)
+    if x % 2 == 0
+        println("Gerade")
+    else
+        println("Ungerade")
+    end
+end
+```
+
+```julia; term=true
+gerade_ungerade(11)
+gerade_ungerade(218)
+```
+
+### Schreibe ein Skript das eine Ziffer einliest und diese in Worten darstellt.
+
+Definiere dafür zuerst eine Funktion die für den Benutzer "{}Ziffer eingeben: "{} anzeigt und dann auf die Eingabe wartet.
+Die Ausgabe eines Textes ohne Zeilenumbruch ist mit `print` möglich. Ein `String` kann durch die Funktion `readline` eingelesen werden.
+Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
+
+```bash
+julia ziffer_bezeichnung.jl
+Ziffer eingeben: 3
+Drei
+
+julia ziffer_bezeichnung.jl
+Ziffer eingeben: 10
+Falsche Eingabe. Es werden nur einzelne Ziffern unterstützt.
+```
+
+### Skript Flächeninhalt
+
+Schreibe ein Skript das den Benutzer dazu auffordert den Radius eines Kreises einzugeben und nach der Eingabe den Flächeninhalt und den Umfang ausgibt. Beide Ergebnisse sollen auf zwei Dezimalstellen gerundet werden.
+Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
+
+```bash
+julia kreis.jl
+Radius eingeben: 3
+A = 28.27
+U = 18.85
+
+julia kreis.jl
+Radius eingeben: abc
+Falsche Eingabe.
+```
+
+### Skript Flächeninhalt mehrmalige Eingabe
+
+Erweitere das Skript zur Berechnung des Flächeninhalts des Kreises so, dass der Benutzer nach einer Eingabe gleich eine weitere Eingabe machen kann.
+Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird.
+
+```bash
+julia kreis.jl
+Radius eingeben: 3
+A = 28.27
+U = 18.85
+
+Radius eingeben: abc
+Falsche Eingabe.
+
+Radius eingeben: 1.2
+A = 4.52
+U = 7.54
+
+Radius eingeben:
+Programm Beendet!
+```
+
+### Berechne PI mittels Monte-Carlo-Simulation
+### Integriere eine Beliebige Funktion nummerisch
 Simpson und / oder trapezoid
 
 Simpson:
@@ -404,7 +405,7 @@ function ∫(f::Function, a::Number, b::Number, n::Number)
 end
 ```
 
-### Aufgabe: Wie hoch ist die Wahrscheinlichkeit
+### Wie hoch ist die Wahrscheinlichkeit
 ... mit einem idealen Würfel (1-6) 3 x hintereinander 4 zu würfeln
 
 ```{julia;}

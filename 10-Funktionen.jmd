@@ -3,6 +3,7 @@ docstrings
 https://docs.julialang.org/en/v1/manual/functions/
 kw argumente, args..., return, dokumentation
 
-global / local
+global / loca
 
-## Aufgabe: Schreibe funktionen für Berechnung von Kreis Fläche und Umfang
+## Aufgaben
+### Schreibe funktionen für Berechnung von Kreis Fläche und Umfang

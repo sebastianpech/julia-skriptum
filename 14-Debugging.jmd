@@ -97,7 +97,8 @@ Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der 
 
 Nähere Informationen zum Debugger gibt es in diesem Blogeintrag: https://julialang.org/blog/2019/03/debuggers.
 
-## Aufgabe: Finde den Fehler in der folgenden Funktion
+## Aufgaben
+### Finde den Fehler in der folgenden Funktion
 
 Die Funktion berechnet den größten gemeinsamer Teiler zweier Zahlen `a` und `b`.
 
