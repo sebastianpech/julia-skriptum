@@ -24,6 +24,7 @@ typeof('x')
 Strings werden von doppelten Anführungszeichen umgeben.
 ```julia; term=true
 "Das ist ein String"
+
 typeof("19.0")
 ```
 Ein `String` ist eine Aneinanderreihung von `Char`-Werten.
