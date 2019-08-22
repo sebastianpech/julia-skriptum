@@ -1,11 +1,236 @@
-# Arrays, Vektoren, Matrizen, Tensoren, Tuple, Set, Dict
+# Arrays, Tuple, Set, Dict
+Dieses Kapitel beinhaltet einige wichtige Typen in Julia, die mehrere Werte aufnehmen können.
 ## Arrays
-### Erzeugen
-### Verändern
-### Bezug zu Strings
+Wie ein *String* ist ein *Array* eine geordnete Abfolge von Werten.
+Während ein String aus Werte vom Typ *Char* besteht, können Arrays Werte aller möglichen Typen enthalten.
+Die Werte innerhalb eines Arrays heißen *Elemente*.
+
+Arrays können auf verschiedenste Weisen erzeugt werden.
+Alle Elemente getrennt durch `,` innerhalb von eckigen Klammer zu schreiben ist die einfachste Variante:
+```julia
+primes = [2, 3, 5, 7, 11, 13]
+baustoffe = ["Holz", "Beton", "Stahl"]
+```
+
+Die erste Zeile erzeugt ein Array aus sechs Int-Zahlen, die zweite Zeile erzeugt ein Array aus drei Strings.
+Die Elemente eines Arrays müssen aber nicht vom gleichen Typ sein; sogar Arrays innerhalb von Arrays sind möglich:
+```julia
+stahl = ["S235", 235.0, [10, 20]]
+```
+Mit `typeof()` kann der Typ eines Arrays abgefragt werden:
+```julia; term=true
+typeof(primes)
+typeof(races)
+typeof(location)
+```
+Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind und an zweiter Stelle, welche Dimension das Array hat.
+Ein *leeres Array* hat keine Elemente und kann zum Beispiel mit leeren, eckigen Klammern (`[]`) erzeugt werden.
+Das so erzeugte leere Array ist dabei vom Typ `Array{Any,1}`.
+Ein leeres Array mit Werten eines bestimmten Typs, wie zum Beispiel `Float64`, kann mittels `Array{Float64,1}()` erzeugt werden:
+```julia; term=true
+[]
+Array{Float64,1}()
+```
+
+### Arrays sind veränderbar
+Die Syntax für den Zugriff auf ein bestimmtes Element eines Arrays ist dieselbe wie beim Zugriff auf einen Character innerhalb eines Strings: das Array, direkt gefolgt von einer Int-Zahl als Index innerhalb eckiger Klammern.
+```julia; term=true
+baustoffe[2]
+```
+
+Wie bei Strings kann auch auf Teile eines Arrays zugegriffen werden:
+```julia; term=true
+primes[2:4]
+primes[3:end]
+```
+
+Anders als Strings sind Arrays allerdings veränderbar.
+Das heißt, einzelne Elemente eines Arrays können durch den `=`-Operator neu zugewiesen werden.
+Der zugewiesenen Datentyp muss mit dem Typen des Arrays übereinstimmern.
+```julia; term=true
+baustoffe[3] = "Ziegel"
+baustoffe[2] = 2
+print(baustoffe)
+```
+
+Folgendes Verhalten kann dabei möglicherweise zu Verwirrung führen:
+```julia; term=true
+a = [1, 4, 3]
+b = a
+b[2] = 2
+@show a b;
+```
+Verändern eines Wertes im Array `b` verändert also auch den Array `a`.
+Das liegt daran, dass der Ausdruck `b = a` den Array `a` **nicht** kopiert, sondern auf ihn verweist.
+Zum Kopieren eines Arrays eignet sich die Funktion `copy()`.
+```julia; term=true
+a = [1, 4, 3]
+b = copy(a)
+b[2] = 2
+@show a b;
+```
+
+### Funktionen der Array Library
+`length` gibt die Anzahl der Elemente eines Arrays zurück.
+Ein Array innerhalb eines Arrays ist dabei ein Element.
+```julia; term=true
+length(primes)
+length(stahl)
+length(stahl[3])
+```
+
+`push!` fügt ein neues Element am Ende des Arrays ein:
+```julia; term=true
+fib = [1, 1, 2, 3, 5];
+push!(fib, 8);
+@show fib
+```
+
+`append!` hängt einen Array am Ende des Arrays an:
+```julia; term=true
+append!(fib, [13, 21, 34]);
+@show fib
+```
+
+`insert!` fügt ein Element bei einem bestimmten Idex in das Array ein:
+```julia; term=true
+countdown = [5, 4, 3, 1, 0];
+insert!(countdown, 4, 2)  # Die Zahl 2 wird an vierter Stelle eingefügt
+```
+
+`sort!` sortiert die Elemente eines Ararys vom niedrigsten zum höchsten Wert:
+```julia; term=true
+c = ['d', 'g', 'a', 'w', 'f'];
+sort!(c);
+@show c
+```
+
+`sort` hingegen erzeugt eine sortierte Kopie des Arrays:
+```julia; term=true
+c1 = ['d', 'g', 'a', 'w', 'f'];
+c2 = sort(c1);
+@show c1 c2
+```
+
+Generell hat sich in Julia etabliert, dass Funktionen, die direkt ihr Argument verändern mit `!` enden.
+
+### Elemente löschen
+Es gibt verschiedene Möglichkeiten einzelne Elemente aus einem Array zu löschen.
+`pop!` entfernt das letzte Element aus dem Array und gibt dieses Element zurück:
+```julia; term=true
+a = ['a', 'b', 'c'];
+pop!(a)
+@show a
+```
+
+Das erste Element eines Arrays kann mittels `popfirst!` entfernt werden:
+```julia; term=true
+a = ['a', 'b', 'c'];
+popfirst!(a)
+@show a
+```
+
+Ist der Index des zu entfernenden Elements bekannt, kann dieses mit `splice!` aus dem Array gelöscht werden:
+```julia; term=true
+a = ['a', 'b', 'c'];
+splice!(a, 2)
+@show a
+```
+
+Ähnlich funktioniert auch `deleteat!`.
+Der Unterschied ist dabei, dass nicht das entfernte Element, sondern das Array zurückgegeben wird:
+´´´julia; term=true
+a = ['a', 'b', 'c'];
+deleteat!(a,2)
+@show a
+```
+
+### Strings und Arrays
+Strings und Arrays sind in manchen Punkten sehr ähnlich.
+Ein String ist eine Abfolge von Characters und da ein Array mit beliebigen Datentypen befüllt werden kann, ist ein Array aus Characters auch eine Abfolge von Characters.
+Trotzdem sind beides verschiedene Typen mit unterschiedlichen Eigenschaften.
+`collect` konvertiert einen String in ein Array von Characters:
+```julia; term=true
+a = collect("spam");
+print(a)
+```
+
+Mittels `split` ein String entlang bestimmter Zeichen in mehrere Teile getrennt werden.
+So können beispielsweise Sätze in einzelne Worte aufgeteilt werden:
+```julia; term=true
+s1 = split("Julia ist großartig");  # Standardmäßig wird bei jedem Leerzeichen getrennt
+print(s1)
+s2 = split("Stahl;Beton;Ziegel;Holz",';');  # Als zweites Argument kann das Trennzeichen festgelegt werden
+print(s2)
+```
+
+`join` verbindet ein Array aus Strings zu einem einzelnen String:
+```julia; term=true
+s1 = split("julia ist großartig");
+sort!(s1);
+s2 = join(s1,' ');
+print(s2)
+```
+
+### Mehrdimensionale Arrays
+In vielen numerischen Aufgaben sind zwei- oder mehrdimensionale Arrays hilfreich.
+In Julia wird ein zweidimensionales Array auch als *Matrix* bezeichnet.
+Die eingabe erfolgt wie bei eindimensionalen Arrays in eckigen Klammern, allerdings werden die Elemente zeilenweise mit Leerzeichen zwischen den Elementen einer Zeile und Semikola zwischen den Zeilen eingegeben.
+Alternativ kann auch ein Zeilenumbruch anstatt der Semikola eingefügt werden.
+```julia; term=true
+a = [1 2; 3 4]
+b = [4 2
+	 3 1]
+```
+
+Eine `mxn`-Matrix hat `m` Zeilen und `n` Spalten.
+Mit der Syntax `matrix[m,n]` kann auf ein Element der Matrix zugegriffen werden.
+Ebenso kann auf Teile der Matrix zugegriffen werden.
+Ein Doppelpunkt `:` ohne Indizes bezeichnet dabei die gesamte Zeile oder Spalte.
+```julia; term=true
+m = rand(3,6)
+m[2,3]
+m[1:2,6]
+m[3,:]
+```
+
+Die Funktion `rand` erzeugt Zufallszahlen in unterschiedlicher Art.
+Ohne Argumente wirt eine einzelne Zufahlszahl zwischen 0 und 1 zurückgegeben.
+Es können allerdings auch mehrere Int-Zahlen als Argumente übergeben werden.
+Dabei gibt die erste Zahl die Anzahl der Elemente in erster Dimension, die zweite Zahl die Anzahl der Elemente in zweiter Dimension, usw. an.
+`rand(3, 2, 4)` erzeugt also ein dreidimensionales `3x2x4`-Array voller Zufallszahlen zwischen 0 und 1.
+```julia; term=true
+rand()
+rand(2)
+rand(2,2)
+rand(3,2,4)
+```
+
+- zero
+- ones
+### Broadcasting
+Viele Operationen in Julia können elementweise aus Arrays angewendet werden.
+Diese Vorgehensweise wird auch *Broadcasting* genannt.
+Dazu wird bei Operatoren wie `+` und `^` ein `.` vorangestellt oder bei Funktionen ein `.` hinter dem Funktionsnamen angehängt:
+```julia; term=true
+a = [1 2 3; 3 4 5];
+a .^2
+a .+ 4
+b = ["Tom" "Jerry"; "Michael" "John"];
+length.(b)
+```
+
 ## Tuple
+- like Ararys, but Immutable
+- comma separated list, but better with round brackets
+- one element Tuple with final comma
+- empty Tuple with tuple()
+- indexing
+- slicing
+
 ### Bezug zu Arrays
 ## Sortieren, Filtern, Finden, Map, reduce
-## Sets
-### Set operationen
 ## Dict
+- Indizes jeden Typs
+- collection of indices (keys), collection of values, each key associated with a values --> key-value-pair
+- 
