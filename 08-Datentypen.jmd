@@ -10,7 +10,7 @@ typeof('c')
 typeof(true)
 ```
 
-## Characters, Strings und Symbols
+## Characters und Strings
 ### Characters
 Ein Wert vom Typ `Char` repräsentiert ein einzelnes Zeichen und ist von einfachen Anführungszeichen umgeben.
 Dabei kann jedes verfügbare *Unicode*-Zeichen als `Char` verwendet werden:
@@ -92,10 +92,6 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 ```
 
 Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08) und im entsprechenden Bereich der [Julia-Dokumentation](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/strings.html).
-
-### Symbols
-
-Symbols?
 
 ## Zahlen
 In Julia sind verschiedene Datentypen für Zahlen definiert.
@@ -213,12 +209,17 @@ Alle Ausdrücke die eine Zahl vom Typ `Bool` zurückgeben können mit den logisc
 s = "melon";
 s > "banana" && length(s) == 6
 s > "banana" || length(s) == 6
+!(s > "banana" && length(s) == 6)
 ```
 Bei `&&` müssen beide Ausdrücke vor und nach dem Operator `true` ergeben, damit der gesamte Ausdruck `true` ist.
 Damit der Ausdruck mit `||` erfüllt ist und `true` ergibt, muss lediglich einer der beiden Ausdrücke erfüllt sein.
 
-Operator precedence
-!
-## Funktionen mit Zahlen
-zero (additive identity), one (multiplicative identity), rand ...
-
+Wie bei den arithmetischen Operationen wird auch bei logischen Operatoren eine definierte Reihenfolge eingehalten.
+Zuerst werden alle vergleichenden Operatoren ausgewertet (`==`, `!=`, `≠`, `>`, `<`, `>=`, `<=`, `≥`, `≤`), danach die Operatoren `&&` und `||`.
+Vergleichende Operatoren können aneinandergekettet werden.
+Das Ergebnis der Aneinanderkettung von Vergleichen ist gleich dem Ergebnis von mit `&&` ausgewerteten Vergleichen:
+```julia; term=true
+a = 1; b = 1; c = 2;
+a == b < c > a
+a == b && b < c && c > a
+```
