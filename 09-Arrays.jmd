@@ -26,11 +26,14 @@ typeof(location)
 Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind und an zweiter Stelle, welche Dimension das Array hat.
 Ein *leeres Array* hat keine Elemente und kann zum Beispiel mit leeren, eckigen Klammern (`[]`) erzeugt werden.
 Das so erzeugte leere Array ist dabei vom Typ `Array{Any,1}`.
-Ein leeres Array mit Werten eines bestimmten Typs, wie zum Beispiel `Float64`, kann mittels `Array{Float64,1}()` erzeugt werden:
+Ein leeres Array mit Werten eines bestimmten Typs, wie zum Beispiel `Float64`, kann mittels `Array{Float64,1}()` oder `Float64[]` erzeugt werden:
 ```julia; term=true
 []
 Array{Float64,1}()
+Float64[]
 ```
+
+Mit der Schreibweise `Float64[]` können allerdings nur eindimensionale Arrays erzeugt werden.
 
 ### Arrays sind veränderbar
 Die Syntax für den Zugriff auf ein bestimmtes Element eines Arrays ist dieselbe wie beim Zugriff auf einen Character innerhalb eines Strings: das Array, direkt gefolgt von einer Int-Zahl als Index innerhalb eckiger Klammern.
@@ -155,7 +158,7 @@ a = collect("spam");
 print(a)
 ```
 
-Mittels `split` ein String entlang bestimmter Zeichen in mehrere Teile getrennt werden.
+Mittels `split` kann ein String entlang bestimmter Zeichen in mehrere Teile getrennt werden.
 So können beispielsweise Sätze in einzelne Worte aufgeteilt werden:
 ```julia; term=true
 s1 = split("Julia ist großartig");  # Standardmäßig wird bei jedem Leerzeichen getrennt
