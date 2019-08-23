@@ -1,10 +1,10 @@
 # Extra Pakete
 ## Highlights.jl
 
-Offene PRs Highlights.jl:
+PRs Highlights.jl:
  
-- [JuliaDocs/Highlights.jl#34](https://github.com/JuliaDocs/Highlights.jl/pull/34)
-- [JuliaDocs/Highlights.jl#30](https://github.com/JuliaDocs/Highlights.jl/pull/30)
+- [ ] [JuliaDocs/Highlights.jl#34](https://github.com/JuliaDocs/Highlights.jl/pull/34)
+- [ ] [JuliaDocs/Highlights.jl#30](https://github.com/JuliaDocs/Highlights.jl/pull/30)
 
 Installation:
 
@@ -17,9 +17,9 @@ Installation:
 Erst wenn die beiden PRs von Highlights.jl gemerged sind, ist es sinnvoll einen PR bei
 Weave.jl zu machen.
 
-Offene PRs Weave.jl:
+PRs Weave.jl:
 
-- [JunoLab/Weave.jl/#239](https://github.com/JunoLab/Weave.jl/pull/239)
+- [x] [JunoLab/Weave.jl/#239](https://github.com/JunoLab/Weave.jl/pull/239)
 
 Installation:
 
