@@ -1,5 +1,91 @@
 # Plotting
 
+Die grafische Darstellung von Daten ist viele Wissenschaften ein immens wichtiger Punkt.
+Julia bietet eine Reihe von Paketen zum ''Plotten''. 
+Das Plots.jl Paket vereint diese in einer Sprache zum beschreiben von Grafiken.
+Geladen wird das Paket wie alle anderen mittels
+
+```julia
+using Plots
+```
+
+Plots.jl bieten eine sehr großen Funktionsumfang, wodurch es bei jedem Neustart von Julia durchaus länger dauern kann, bis der erste Plot sichtbar wird.
+
+In Plots.jl werden meistens Datenvektoren dargestellt.
+Das Paket biete Implementierungen für einige Elementstypen wie
+
+- Alle Zahlentypen in Julia
+- `Date` und `DateTime`
+- Zahlen aus Measurements.jl
+
+und ist sehr leicht erweiterbar.
+
+Die einfachste Form von Plot kann folgendermaßen erzeugt werden:
+
+```julia
+x = 0:0.1:2π
+y = sin.(x)
+plot(x,y)
+```
+
+Dabei handelt es sich um einen Linienplot.
+Das erste Argument der Funktion `plot` sind die x-Werte, das zweite die y-Werte, die Länge der beiden Vektoren muss dabei übereinstimmen.
+
+Jeder Aufruf von `plot` erzeugt ein *Plotobjekt*, das dann weiterverwendet werden kann.
+
+```julia
+plt = plot(x,y)
+plt
+```
+
+Um mehrere Daten, übereinander, in einem Plot darzustellen gibt es die Möglichkeit dies direkt mit einem Aufruf von `plot`
+
+```julia
+y2 = cos.(x)
+plot(x,[y y2]) # plot([x x2],[y y2]) für verschiedene x-Werte
+```
+
+oder durch nachträgliches hinzufügen mit `plot!`
+
+```julia
+plot!(plt,x,y2)
+```
+
+zu machen.
+
+Plots.jl bietet sogenannte *Magic Arguments*. Damit ist es möglich die Darstellung der Daten zu verändern, wobei von der Bedeutung des Konfigurationswertes, auf die zugehörige Einstellung geschlossen wird.
+
+Beispielsweise:
+- `:red` deutet Auf einen Farbwahl hin
+- `(0,10)` deutet bei Achskonfigurationen auf den Minimal- und den Maximalwert der Achse hin
+- `:log` deutet bei Achskonfigurationen auf die Wahl einer logarithmischen Skalierung hin
+
+Der Plot mit Sinus und Cosinus kann damit optisch vervollständigt werden:
+
+```julia
+plot(x,[y,y2],
+     line=([:green :red], :solid, 4),
+     label=["sin(x)" "cos(x)"],
+     xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"])),
+     yaxis=("y(x)"),
+     title="Sinus und Cosinus")
+```
+
+Dabei haben die Argumente den folgenden Effekt:
+
+- `line=([:green :red], :solid, 4)`: Stelle `y` grün, `y2` rot, beide als durchgezogene Linie mit der Stärke 4 dar.
+- `label=["sin(x)" "cos(x)"]`: Bezeichne `y` in der Legende mit sin(x) und `y2` mit cos(x).
+- `xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"]))`: Setzte den Text unter der x-Achse auf x und schreibe an die Stellen von 0, π und 2π anstelle der Werte die entsprechenden Texte.
+- `yaxis=("y(x)")`: Setze den Text neben der y-Achse auf y(x)
+- `title="Sinus und Cosinus"`: Setze den Plottitel auf Sinus und Cosinus
+
+- Beschränken auf X,Y, Z
+- Lines
+- Scatter
+- bar / histogram
+- layout
+- Attributes:
+  - Marker
 ## Aufgaben
 ### Plot der Berechnung von Pi mittels Monte-Carlo
 - Scatter (Hervorheben der Punkte im kreis)
