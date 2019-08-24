@@ -18,7 +18,7 @@ Die Funktionalität, wie es auch im Namen REPL steckt besteht darin:
 Die REPL kann durch Starten von Julia über das Programm-Icon oder den Befehl `julia` geöffnet werden.
 Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt
 
-![REPL Fenster direkt nach dem Start](data/img/repl-01.png)
+![REPL Fenster direkt nach dem Start](../data/img/repl-01.png)
 
 Der Cursor steht nach dem Text `julia> ` welcher Prompt genannt wird.
 Die REPL befindet sich jetzt im "Julian mode". Das bedeutet jetzt können Julia-Befehle eingegeben und ausgewertet werden.

@@ -69,11 +69,11 @@ Dabei gibt es die Möglichkeit sogenannte *Breakpoints* zu setzen, an welchen de
 
 Um die Funktion `bug_pow` mit dem Debugger zu analysieren muss der Debugger-Modus über einen Klick auf den Debugknopf gestartet werden.
 
-![Debugknopf in Juno](./data/img/debugger-01.png)
+![Debugknopf in Juno](../data/img/debugger-01.png)
 
 Über die Seitenleiste mit den Zeilennummern kann nun durch einen Klick ein Breakpoint gesetzt werden. Dadurch wird die Ausführung in der 4. Zeile angehalten.
 
-![Erster Breakpoint](./data/img/debugger-02.png)
+![Erster Breakpoint](../data/img/debugger-02.png)
 
 Mit dem Befehl `Juno.@run` startet der Debugger die Ausführung und stoppt beim ersten Breakpoint.
 Um direkt in der ersten Zeile der Funktion zu stoppen kann der Befehl `Juno.@enter` verwendet werden.
@@ -82,7 +82,7 @@ Um direkt in der ersten Zeile der Funktion zu stoppen kann der Befehl `Juno.@ent
 Juno.@run bug_pow(3.5,6)
 ```
 
-![Erster Halt](./data/img/debugger-03.png)
+![Erster Halt](../data/img/debugger-03.png)
 
 Mit einem Blick in den Workspace kann man erkennen, dass im ersten Schleifendurchgang `i == 1`, `x_pow` bereits einen Wert ungleich 1 hat. 
 Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der Ausführung:
