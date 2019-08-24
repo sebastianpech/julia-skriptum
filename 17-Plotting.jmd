@@ -84,12 +84,57 @@ Dabei haben die Argumente den folgenden Effekt:
 - `yaxis=("y(x)")`: Setze den Text neben der y-Achse auf y(x)
 - `title="Sinus und Cosinus"`: Setze den Plottitel auf Sinus und Cosinus
 
-- Lines
-- Scatter
-- bar / histogram
-- layout
-- Attributes:
-  - Marker
+Für eine gute Datenvisualisierung reichen Linienplots nicht aus.
+Plots.jl hat eine große Anzahl an verschiedenen Visualisierungsarten, in weiterer Folge werden Scatterplots, Balkendiagramme und Histogramme besprochen.
+Generell können alle gezeigten Option bei den anderen Diagrammarten ebenfalls verwendet und unterschiedliche Plots kombiniert werden. 
+
+## Scatterplot
+
+Scatterplot ermöglichen die Ausgabe von einzelnen Punkten, bei denen es nicht sinnvoll ist sie mit einer Linie zu verbinden.
+Um Scatterplots zu formatieren muss `line` durch `marker` ersetzt werden.
+
+```julia
+x = rand(30)
+y = rand(30)
+scatter(x,y,marker=(:circle,3,:orange))
+```
+
+## Barchart
+
+Balkendiagramme werden meist verwendet um Häufigkeiten darzustellen. 
+Plots.jl biete dafür die `bar`-Funktion.
+Um Balkendiagramme zu formatieren kann `line` und `fill` verwendet werden.
+
+```julia
+x = 0:0.5:2π
+y = sin.(x)
+bar(x,y,line=(:red),fill=(:green,.3))
+```
+
+Histogramme sind im Grunde Balkendiagramme, allerdings werden sie ausschließlich zum Anzeigen von Häufigkeitsverteilungen verwendet. 
+Ein großer Vorteil der `histogram`-Funktion ist, dass die Verteilung nicht ermittelt werden muss.
+
+Für die folgenden Werte soll ein Histogramm erstellt werden:
+```julia
+label = [1,1,2,3,1,4,4,1,1,7]
+```
+Soll die `bar`-Funktion verwendet werden, müsste zuerst die Häufigkeit jeder Zahl in `label` gezählt werden.
+Mit `histogram` ist das nicht notwendig:
+```julia
+histogram(label)
+```
+
+## Kombination verschiedener Visualisierungsarten
+
+Die einfachste Methode Plots zu kombinieren ist durch Verwendung der mit `!` gekennzeichneten Pendants der Plotfunktion, `plot!`, `scatter!`, `bar!`, `histogram!`.
+
+```julia
+x = 0:0.1:2π
+y = sin.(x)
+plt = plot(x,y,line=(2))
+scatter!(plt,rand(40)*6,1 .- rand(40)*2,marker=(:x))
+```
+
 ## Aufgaben
 ### Plot der Berechnung von Pi mittels Monte-Carlo
 - Scatter (Hervorheben der Punkte im kreis)
