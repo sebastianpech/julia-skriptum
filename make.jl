@@ -48,17 +48,18 @@ for f in files
 end
 
 @info "Creating main tex-Document"
+cd("build")
 tmppath = tempname()
 io = open(tmppath,"w")
 style = Weave.stylesheet(MIME("text/latex"),Highlights.Themes.DefaultTheme)
-latex_template = Mustache.template_from_file("julia-skriptum.tpl")
+latex_template = Mustache.template_from_file(joinpath(@__DIR__,"julia-skriptum.tpl"))
 print(io,render(latex_template,
-                files=join(["\\input{build/$(splitext(f)[1]).tex}" for f in files],"\n"),
+                files=join(["\\input{$(splitext(f)[1]).tex}" for f in files],"\n"),
                 stylesheet=Weave.stylesheet(MIME("text/latex"),Highlights.Themes.DefaultTheme)))
 close(io)
 
 latex_cmd = "xelatex"
-cmd = `$latex_cmd -shell-escape -interaction=batchmode -halt-on-error $tmppath -output-directory build`
+cmd = `$latex_cmd -shell-escape -interaction=batchmode -halt-on-error $tmppath`
 
 try
     @info "Running latex command"
@@ -66,11 +67,11 @@ try
     out = read(cmd,String)
     @info "Second run"
     out = read(cmd,String)
-    mv(basename(tmppath)*".pdf",joinpath("build","julia-skriptum.pdf"),force=true)
+    mv(basename(tmppath)*".pdf",joinpath(@__DIR__,"build","julia-skriptum.pdf"),force=true)
 catch e
     failed_path = "failed_"*basename(tmppath)*".tex"
     mv(tmppath,failed_path,force=true)
-    cmd = `$latex_cmd -shell-escape -interaction=nonstopmode $(failed_path) -output-directory build`
+    cmd = `$latex_cmd -shell-escape -interaction=nonstopmode $(failed_path)`
     @warn "Error converting document to pdf. Try running latex manually" cmd
 finally
     @info "Cleaning temporary files"
