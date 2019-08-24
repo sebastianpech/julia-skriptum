@@ -1,3 +1,8 @@
+---
+options:
+      out_width : 0.7\linewidth
+---
+
 # Plotting
 
 Die grafische Darstellung von Daten ist viele Wissenschaften ein immens wichtiger Punkt.
@@ -79,7 +84,6 @@ Dabei haben die Argumente den folgenden Effekt:
 - `yaxis=("y(x)")`: Setze den Text neben der y-Achse auf y(x)
 - `title="Sinus und Cosinus"`: Setze den Plottitel auf Sinus und Cosinus
 
-- Beschränken auf X,Y, Z
 - Lines
 - Scatter
 - bar / histogram
