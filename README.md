@@ -21,6 +21,10 @@ PRs Weave.jl:
 
 - [x] [JunoLab/Weave.jl/#239](https://github.com/JunoLab/Weave.jl/pull/239)
 
+Issues in Weave.jl:
+
+- [ ] [JunoLab/Weave.jl#240](https://github.com/JunoLab/Weave.jl/issues/240)
+
 Installation:
 
 ```
