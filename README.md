@@ -20,6 +20,7 @@ Weave.jl zu machen.
 PRs Weave.jl:
 
 - [x] [JunoLab/Weave.jl/#239](https://github.com/JunoLab/Weave.jl/pull/239)
+- [ ] [JunoLab/Weave.jl/#241](https://github.com/JunoLab/Weave.jl/pull/241)
 
 Issues in Weave.jl:
 
