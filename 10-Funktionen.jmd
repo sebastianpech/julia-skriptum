@@ -1,9 +1,37 @@
 # Funktionen und Scope
-docstrings
-https://docs.julialang.org/en/v1/manual/functions/
-kw argumente, args..., return, dokumentation
+  - Bereits verwendete Beispiele von Funktionen
+  - Argument wird übergeben, return value wird zurückgegeben
+  - Funktion mit mehreren Argumenten
+  - Math functions (log, sin, sqrt)
+  - Argument can include any kind of expression (e.g. Operators)
+  - Adding new functions
+    - function ... end
+    - f(x) = ...
+    - function names like variable names
+    - empty brackets --> no arguments
+    - indentation for readability
+    - body of the function can contain any number of statements
+  - functions are good for faster and shorter code, especially with repetetive code
+    - easier debugging
+    - make changes in one place if the code repeats often
+    - debug parts one at a time
+    - reusable code
+    - performance improvements
+  - flow of execution
+  - Docstrings und Hilfe
+  - global and local scope (variables and parameters)
+  - return values
+    - REPL --> return value is shown directly
+    - script --> return values are lost, if not assigned to a variable
+  - debugging
+    - often the most difficult work in coding
+    - like detective work --> you are confronted with clues and habe to infer the process and events that led to the result you see
+    - also like experimental science --> hypothesis why program is wrong, modify the rpogram, try again
+  - special arguments
+    - keywords
+    - args...
 
-global / loca
+https://docs.julialang.org/en/v1/manual/functions/
 
 ## Aufgaben
 ### Schreibe funktionen für Berechnung von Kreis Fläche und Umfang
