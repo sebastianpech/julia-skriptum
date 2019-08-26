@@ -146,12 +146,15 @@ parse(Float64,"1.2345")
 
 `float()` und `Int()` wandeln beliebige Zahlen in Float-Zahlen bzw. in ganzzahlige Werte um.
 Bei Verwendung von `Int()` muss gewährleistet sein, dass die übergebene Zahl tatsächlich ganzzahlig ist, sonst meldet Julia einen `InexactError`.
+`trunc` wandelt eine Float-Zahl direkt in ein Integer um und rundet ignotiert dabei die Nachkommastellen.
 ```julia; term=true
 float(3)
 float(4//3)
 Int(2.3)
 Int(2.0)
 Int(4//4)
+trunc(3.99999)
+trunc(-2.3)
 ```
 
 Zum Runden von Zahlen eignen sich die Funktionen `round()`, `floor()` und `ceil()`.
