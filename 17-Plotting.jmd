@@ -1,6 +1,6 @@
 ---
 options:
-      out_width : 0.7\linewidth
+      out_width : 70 %
 ---
 
 # Plotting
