@@ -126,7 +126,7 @@ Für die folgenden Fälle stimmt das Ergebnis allerdings nicht.
 ```julia; term=true
 ggt(10,0) == gcd(10,0)
 ggt(0,10) == gcd(0,10)
-ggt(-2304,8) == gcd(-2304,288)
+ggt(-2304,288) == gcd(-2304,288)
 ```
 
 Finde die Fehler mit dem Debugger und korrigiere die Funktion.
