@@ -42,10 +42,12 @@ length(pwd())
 ```
 
 Manchen Funktionen können sogenannte *keyword arguments* übergeben werden.
-
-  - return values
-    - REPL --> return value is shown directly
-    - script --> return values are lost, if not assigned to a variable
+`round` ist beispielsweise eine solche Funktion.
+Mit dem *keyword* `digits` gefolgt von `=` und einer Int-Zahl, kann die Anzahl der Nachkommastellen festgelegt werden.
+```julia; term=true
+round(2.3345323,digits=2)
+```
+Gerade bei Funktionen mit vielen (optionalen) Argumenten sind keyword arguments sehr hilfreich, da sie in beliebiger Reihenfolge an die Funktion übergeben werden können.
 
 ## Neue Funktionen erstellen
 
