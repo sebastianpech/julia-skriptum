@@ -1,9 +1,60 @@
-# Funktionen und Scope
-  - Bereits verwendete Beispiele von Funktionen
-  - Argument wird übergeben, return value wird zurückgegeben
-  - Funktion mit mehreren Argumenten
-  - Math functions (log, sin, sqrt)
-  - Argument can include any kind of expression (e.g. Operators)
+# Funktionen
+In den vorhergehenden Kapiteln wurden schon einige Funktionen verwendet (z.B. `abs`, `typeof` oder `length`).
+Eine Funktion wird durch ihren Namen, gefolgt von runden Klammern aufgerufen.
+Innerhalb dieser runden Klammern stehen die *Argumente* der Funktion.
+Vereinfacht lässt sich eine Funktion durch eine Box darstellen, der Werte (die Argumente) zugeführt werden.
+Innerhalb der Box wird dann Code ausgeführt und oft am Ende ein Ergebnis (*return value*) zurückgegeben.
+Der return value kann einfach einer Variable zugewiesen werden:
+```julia; term=true
+l = length("spam")
+@show l
+```
+Während manche Funktionen keine Argumente benötigen, erfordern andere Funktionen mehrere Eingangswerte.
+```julia; term=true
+pwd()
+length("banana")
+```
+`pwd` zeigt den aktuellen Arbeitspfad an (*print working directory*) und erfordert dabei keine Argumente.
+
+Analog gibt es sowohl Funktionen die keinen *return value* zurückgeben, als auch Funktionen die mehrere Ergebnisse ausgeben.
+```julia; term=true
+p = println("Diese Zeile wird angezeigt, println weist p aber keinen Wert zu")
+println(p)
+a = [10,35,4,65,9];
+maximum(a)
+findmax(a)
+```
+Der erste Aufruf von `println` schreibt zwar das Übergebene Argument in der REPL, `println(p)` zeigt allerdings keinen Wert an.
+Das liegt daran, dass `println` keinen return value an die Variable `p` übergibt (genau genommen gibt die Funktion einen Wert vom Typ `Nothing` zurück).
+In der nächsten Zeile wird der Array `a` erstellt.
+Auf Arrays wird später noch genauer eingegangen.
+Während `maximum` nur den Maximalwert von `a` zurückgibt, ermittelt `findmax` zusätzlich die Stelle des Maximalwertes.
+
+Die Argumente einer Funktion können verschiedenste Ausdrücke sein.
+Sowohl Werte und Variablen, als auch Funktionen können als Argument übergeben werden.
+Julia wertet diese Ausdrücke dann aus und übergibt das Ergebnis an die Funktion.
+```julia; term=true
+s1 = "foo";
+s2 = "bar";
+string(s1, s2)
+round(20/9)
+length(pwd())
+```
+
+Manchen Funktionen können sogenannte *keyword arguments* übergeben werden.
+
+  - return values
+    - REPL --> return value is shown directly
+    - script --> return values are lost, if not assigned to a variable
+
+## Neue Funktionen erstellen
+
+  - functions are good for faster and shorter code, especially with repetetive code
+    - easier debugging
+    - make changes in one place if the code repeats often
+    - debug parts one at a time
+    - reusable code
+    - performance improvements
   - Adding new functions
     - function ... end
     - f(x) = ...
@@ -11,27 +62,19 @@
     - empty brackets --> no arguments
     - indentation for readability
     - body of the function can contain any number of statements
-  - functions are good for faster and shorter code, especially with repetetive code
-    - easier debugging
-    - make changes in one place if the code repeats often
-    - debug parts one at a time
-    - reusable code
-    - performance improvements
   - flow of execution
   - Docstrings und Hilfe
-  - global and local scope (variables and parameters)
-  - return values
-    - REPL --> return value is shown directly
-    - script --> return values are lost, if not assigned to a variable
-  - debugging
-    - often the most difficult work in coding
-    - like detective work --> you are confronted with clues and habe to infer the process and events that led to the result you see
-    - also like experimental science --> hypothesis why program is wrong, modify the rpogram, try again
-  - special arguments
-    - keywords
-    - args...
 
 https://docs.julialang.org/en/v1/manual/functions/
+
+## Scope
+  - global and local scope (variables and parameters)
+
+## Methoden
+  - Type System --> Supertypes und subtypes
+    - small type tree
+  - different behaviour of functions on different types
+  - type declaration with `::`
 
 ## Aufgaben
 ### Schreibe funktionen für Berechnung von Kreis Fläche und Umfang
