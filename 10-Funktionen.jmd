@@ -50,6 +50,66 @@ round(2.3345323,digits=2)
 Gerade bei Funktionen mit vielen (optionalen) Argumenten sind keyword arguments sehr hilfreich, da sie in beliebiger Reihenfolge an die Funktion übergeben werden können.
 
 ## Neue Funktionen erstellen
+Vor allem für Operationen die oft wiederholt werden, ist es sinnvoll eigene Funktionen zu definieren; und zwar aus folgenden Gründen:
+  - 
+
+
+Die Definition einer eigenen Funktion beginnt mit dem keyword `function` am Zeilenanfang, gefolgt vom Funktionsnamen und den Argumenten in runden Klammern.
+Danach folgen beliebig viele Zeilen Code und ein abschließendes `end`.
+Funktionsnamen können wie Variablennamen gebildet werden.
+Groß- und Kleinbuchstaben sind zulässig, es dürfen nahezu alle Unicode-Zeichen verwendet werden.
+Der Name darf alelrdings nicht mit einer Zahl beginnen oder einem von Julia verwendeten Keyword entsprechen.
+Zusätzlich sollte ein Name nicht gleichzeitig für eine Funktion und eine Variable verwendet werden.
+Bei jedem Aufruf der Funktion werden die Zeilen zwischen `function` und `end` ausgeführt und das Ergebnis der letzten Zeile als return value zurückgegeben.
+```julia
+function my_square(x)
+	println("Quadrat von $(x) wird berechnet...")  # Diese Zeile wird angezeigt
+	x^2  # Diese Zeile wird ausgeführt und als return value ausgegeben
+end
+```
+```julia; term=true
+my_square(3)
+my_square(8)
+```
+
+Die Funktion `my_square` schreibt zuerst einen String in die REPL und gibt dann das Quadrat des übergebenen Arguments zurück.
+Generell ist es in Julia nicht notwendig den Block innerhalb der Funktionsdefinition einzurücken, dadurch wird der Code allerdings wesentlich übersichtlicher.
+
+Funktionen ohne Argumente können durch leere Klammern erstellt werden:
+```julia
+function hello_world()
+	println("Hello World")
+end
+```
+
+Für die Definition besonders kurzer Funktionen eignet sich folgende Abkürzung:
+```julia
+my_square(x) = x^2
+```
+
+Eine neue Funktion kann im Code erst verwendet werden, nachdem sie definiert wurde.
+Da Julia ein Skript vom Beginn an Zeile für Zeile bis zum Ende ausführt, ist es daher sinnvoll die Funktionsdefinitionen an den Anfang des Skripts zu schreiben.
+
+Im Abschnitt Hilfe wird beschrieben, dass Julia selbstdokumentiert ist.
+Diese Dokumentation erfolgt durch sogenannte Docstrings direkt vor der Funktionsdefinition.
+Ein Docstring wird durch drei einfache Anführungszeichen begrenzt und kann folgendermaßen aussehen:
+```julia
+'''
+
+	my_square(x)
+
+Schreibe "Quadrat von x wird berechnet..." in die REPL und gib das Quadrat von x zurück.
+'''
+function my_square(x)
+	println("Quadrat von $(x) wird berechnet...")
+	x^2
+end
+```
+
+Nach Ausführung dieses Code-Blocks wird in der Hilfe zu `my_square` das Docstring angezeigt.
+
+Mehr Informationen zu Funktionen gibt es in der Dokumentation unter [Manual/Functions](https://docs.julialang.org/en/v1/manual/functions/).
+
 
   - functions are good for faster and shorter code, especially with repetetive code
     - easier debugging
@@ -57,26 +117,31 @@ Gerade bei Funktionen mit vielen (optionalen) Argumenten sind keyword arguments 
     - debug parts one at a time
     - reusable code
     - performance improvements
-  - Adding new functions
-    - function ... end
-    - f(x) = ...
-    - function names like variable names
-    - empty brackets --> no arguments
-    - indentation for readability
-    - body of the function can contain any number of statements
-  - flow of execution
-  - Docstrings und Hilfe
-
-https://docs.julialang.org/en/v1/manual/functions/
 
 ## Scope
-  - global and local scope (variables and parameters)
+Die *scope* einer Variable ist ein Bereich in dem diese Variable sichtbar ist.
+In Julia gibt es die *global scope* und *local scope*.
+Die Definition einer Funktion erzeugt eine solche local scope.
+Auf eine Variable in der global scope kann auch in einer local scope zugegriffen werden.
+Umgekehrt ist es nicht möglich in der global scope auf eine Variable einer local scope zuzugreifen:
+```julia
+function f(x)
+	a = x^2
+end
+```
+```julia;term=true
+a = 1
+f(3)
+print(a)
+```
 
+Mehr Informationen zu Scopes gibt es in der Dokumentation unter [Manual/Scope of Variables](https://docs.julialang.org/en/v1/manual/variables-and-scoping/).
 ## Methoden
   - Type System --> Supertypes und subtypes
     - small type tree
   - different behaviour of functions on different types
   - type declaration with `::`
 
+Mehr Informationen zu Funktionen gibt es in der Dokumentation unter [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
 ## Aufgaben
 ### Schreibe funktionen für Berechnung von Kreis Fläche und Umfang
