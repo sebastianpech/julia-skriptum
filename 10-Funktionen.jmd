@@ -58,13 +58,14 @@ Die Definition einer eigenen Funktion beginnt mit dem keyword `function` am Zeil
 Danach folgen beliebig viele Zeilen Code und ein abschließendes `end`.
 Funktionsnamen können wie Variablennamen gebildet werden.
 Groß- und Kleinbuchstaben sind zulässig, es dürfen nahezu alle Unicode-Zeichen verwendet werden.
-Der Name darf alelrdings nicht mit einer Zahl beginnen oder einem von Julia verwendeten Keyword entsprechen.
+Der Name darf allerdings nicht mit einer Zahl beginnen oder einem von Julia verwendeten Keyword entsprechen.
 Zusätzlich sollte ein Name nicht gleichzeitig für eine Funktion und eine Variable verwendet werden.
 Bei jedem Aufruf der Funktion werden die Zeilen zwischen `function` und `end` ausgeführt und das Ergebnis der letzten Zeile als return value zurückgegeben.
+der return value einer Funktion kann aber auch mit dem Keyword `return` festgelegt werden.
 ```julia
 function my_square(x)
 	println("Quadrat von $(x) wird berechnet...")  # Diese Zeile wird angezeigt
-	x^2  # Diese Zeile wird ausgeführt und als return value ausgegeben
+	return x^2  # Diese Zeile wird ausgeführt und als return value ausgegeben
 end
 ```
 ```julia; term=true
@@ -102,7 +103,7 @@ Schreibe "Quadrat von x wird berechnet..." in die REPL und gib das Quadrat von x
 '''
 function my_square(x)
 	println("Quadrat von $(x) wird berechnet...")
-	x^2
+	return x^2
 end
 ```
 
@@ -134,14 +135,44 @@ a = 1
 f(3)
 print(a)
 ```
+Selbst wenn in der Funktion `a` ein Wert zugewiesen wird, bleibt der Wert von a unverändert, da die Zuweisung in der ersten Zeile (`a = 1`) in der global scope geschieht und die zweite Zuweisung (`a = x^2`) in der loacal scope der Funktion ausgeführt wird.
+Die beiden Variablen heißen zwar gleich, beeinflussen sich aber gegenseitig nicht.
+Nachdem die Funktion ausgeführt wurde, werden alle Variablen der loacal scope dieser Funktion gelöscht und können nicht mehr aufgerufen werden.
+Nur noch der return value bleibt im Speicher (sofern dieser einer Variable zugewiesen wird).
+```julia
+function g(x)
+	v = "fuer immer verloren"
+	x
+end
+```
+```julia;term=true
+a = g(3)
+print(v)
+```
 
 Mehr Informationen zu Scopes gibt es in der Dokumentation unter [Manual/Scope of Variables](https://docs.julialang.org/en/v1/manual/variables-and-scoping/).
 ## Methoden
-  - Type System --> Supertypes und subtypes
-    - small type tree
-  - different behaviour of functions on different types
-  - type declaration with `::`
+Ein Wesentliches Feature von Funktionen Julia ist *Multiple Dispatch*.
+Eine Funktion kann abhängig davon, welchen Datentyp die Argumente haben und wieviele Argumente übergeben werden unterschiedliche Operationen ausführen.
+```julia;term=true
+my_mult(x::Number) = x*2
+my_mult(x::String) = x^2
+my_mult(x::String,y::Int64) = x^y
+my_mult(1.45)
+my_mult("spam")
+my_mult("foo",4)
+```
+Die Funktion `my_mult` hat nun 3 *Methoden*.
+Die erste Methode ist für ein Argument vom Typ `Number` definiert.
+Über `::` gefolgt vom Datentypen wird dieser dem Argument zugewiesen.
+In Julia sind Datentypen in einer Hierarchie strukturiert.
+Jeder Typ kann einen übergeordneten *Supertype* und/oder mehrere untergeordnete *Subtypes* haben.
+Eine Methode für einen bestimmten Datentypen kann auch auf dessen Subtypen angewendet werden.
+Eine für `Number` definierte Funktion kann daher auch auf alle möglichen Integer- und Float-Typen, aber auch komplexe und rationale Zahlen angewendet werden, da es sich dabei um Subtypen von `Number` (oder um Subtypen von Subtypen von Subtypen ... von `Number`) handelt.
+Die zweite Methode wird angewendet wenn ein `String` an die Funktion übergeben wird und die dritte Funktion wird nur dann angewendet wenn zusätzlich zu einem `String` eine `Int64`-Zahl Argument ist. 
 
-Mehr Informationen zu Funktionen gibt es in der Dokumentation unter [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
+Abhängig von den eingegebenen Argumenten sucht Julia die passende Methode aus, wenn keine Methode für die Art und Anzahl von Argumenten definiert ist, gibt Julia einen *MethodError* zurück.
+
+Mehr Informationen zu Methoden und Multiple Dispatch gibt es in der Dokumentation unter [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
 ## Aufgaben
 ### Schreibe funktionen für Berechnung von Kreis Fläche und Umfang
