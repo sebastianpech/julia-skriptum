@@ -1,14 +1,15 @@
 \documentclass[10pt,a4paper]{article}
 
+\usepackage{fontspec}
+\setmonofont[Path = ../font/,Scale=MatchLowercase]{DejaVuSansMono}
+\usepackage{amsmath}
+
 \usepackage[a4paper,text={16.5cm,25.2cm},centering]{geometry}
-\usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{hyperref}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1.2ex}
-
-\usepackage[ngerman]{babel}
 
 {{{ :stylesheet }}}
 
