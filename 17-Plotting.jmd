@@ -1,6 +1,8 @@
 ---
 options:
       out_width : 70 %
+      fig_env : center
+      fig_pos : ""
 ---
 
 # Plotting
