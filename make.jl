@@ -75,6 +75,7 @@ catch e
     @warn "Error converting document to pdf. Try running latex manually" cmd
 finally
     @info "Cleaning temporary files"
+    foreach(x->(@warn x),filter(x->occursin("warning",lowercase(x)),readlines(basename(tmppath)*".log")))
     rm(tmppath)
     rm.(readdir(Glob.GlobMatch("$(basename(tmppath)).*")))
 end
