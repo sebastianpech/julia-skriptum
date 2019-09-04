@@ -175,4 +175,54 @@ Abhängig von den eingegebenen Argumenten sucht Julia die passende Methode aus, 
 
 Mehr Informationen zu Methoden und Multiple Dispatch gibt es in der Dokumentation unter [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
 ## Aufgaben
-### Schreibe funktionen für Berechnung von Kreis Fläche und Umfang
+### Schreibe eine Funktion, die ihr Argument dreimal printed
+Schreibe eine Funktion `print_three`, die ein beliebiges Argument dreimal in einer Zeile printed.
+```julia
+function print_three(a)
+	println(string(a," ",a," ",a))
+end
+```
+```julia;term=true
+print_three("spam")
+print_three(19)
+```
+
+### Schreibe eine Funktion, die zwei Funktionen verkettet
+Schreibe eine Funktion `verkette(f,g,x)`, die die beiden Funktionen `f` und `g` verkettet und für `x` auswertet (`f(g(x))`).
+Die Ausgewertete Funktion soll als return value zurückgegeben werden.
+```julia
+function verkette(f, g, x)
+	return f(g(x))
+end
+```
+```julia;term=true
+f(x) = x+2
+g(x) = x^2
+verkette(f,g,3)
+verkette(length,g,"spam")
+``` 
+
+### Schreibe Funktionen für Berechnung von Fläche und Umfang eines Kreises
+Schreibe zwei Funktionen `kreis_flaeche(r)` und `kreis_umfang(r)`, die den Radius eines Kreises als Argument benötigen und dann die Fläche oder den Umfang dieses Kreises als return value zurückgeben.
+```julia
+kreis_flaeche(r) = r^2*π
+kreis_umfang(r) = 2*r*π
+```
+```julia;term=true
+kreis_flaeche(3)
+kreis_umfang(3)
+2 * kreis_flaeche(5)/kreis_umfang(5)
+```
+
+### Schreibe eine Funktion, die Fläche und Umfang eines Kreises printed
+Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Fläche und Radius dieses Kreises printed.
+```julia
+function kreis(r)
+	println("r = $(r)")
+	println("A = $(kreis_flaeche(r))")
+	println("U = $(kreis_umfang(r))")
+end
+```
+```julia;term=true
+kreis(3)
+```
