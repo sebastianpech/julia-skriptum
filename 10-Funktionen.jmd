@@ -95,12 +95,11 @@ Im Abschnitt Hilfe wird beschrieben, dass Julia selbstdokumentiert ist.
 Diese Dokumentation erfolgt durch sogenannte Docstrings direkt vor der Funktionsdefinition.
 Ein Docstring wird durch drei einfache Anführungszeichen begrenzt und kann folgendermaßen aussehen:
 ```julia
-'''
-
+"""
 	my_square(x)
 
 Schreibe "Quadrat von x wird berechnet..." in die REPL und gib das Quadrat von x zurück.
-'''
+"""
 function my_square(x)
 	println("Quadrat von $(x) wird berechnet...")
 	return x^2
