@@ -44,7 +44,7 @@ for f in files
     weave(f,
           out_path="build", # Output into build directory
           doctype = "md2tex",
-          template = "part.tpl")
+          template = "part.tpl",escape_unicode=false)
 end
 
 @info "Creating main tex-Document"
