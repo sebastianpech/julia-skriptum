@@ -3,8 +3,8 @@
 
 PRs Highlights.jl:
  
-- [ ] [JuliaDocs/Highlights.jl#34](https://github.com/JuliaDocs/Highlights.jl/pull/34)
-- [ ] [JuliaDocs/Highlights.jl#30](https://github.com/JuliaDocs/Highlights.jl/pull/30)
+- [x] [Fix repl_splitter for first char in newline being non-ascii](https://github.com/JuliaDocs/Highlights.jl/pull/34)
+- [ ] [Fix LaTeX escaping in text nodes and add unicode conversion](https://github.com/JuliaDocs/Highlights.jl/pull/30)
 
 Installation:
 
@@ -19,12 +19,9 @@ Weave.jl zu machen.
 
 PRs Weave.jl:
 
-- [x] [JunoLab/Weave.jl/#239](https://github.com/JunoLab/Weave.jl/pull/239)
-- [ ] [JunoLab/Weave.jl/#241](https://github.com/JunoLab/Weave.jl/pull/241)
-
-Issues in Weave.jl:
-
-- [ ] [JunoLab/Weave.jl#240](https://github.com/JunoLab/Weave.jl/issues/240)
+- [x] [Fix displayed output produced by capture_output](https://github.com/JunoLab/Weave.jl/pull/239)
+- [ ] [Improve usage of different figure environments in latex](https://github.com/JunoLab/Weave.jl/pull/241)
+- [ ] [Add argument to weave function to disable unicode escape](https://github.com/JunoLab/Weave.jl/pull/244)
 
 Installation:
 
