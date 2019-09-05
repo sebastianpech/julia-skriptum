@@ -13,18 +13,17 @@ files = ["01-Intro.jmd",
          "04-Hilfe.jmd",
          "05-Kommentare.jmd",
          "06-Variablen.jmd",
-         "07-Fehlermeldungen.jmd",
-         "08-Datentypen.jmd",
+         "07-Datentypen.jmd",
+         "08-Funktionen.jmd",
          "09-Arrays.jmd",
-         "10-Funktionen.jmd",
+         "10-Fehlermeldungen.jmd",
          "11-LineareAlgebra.jmd",
          "12-Controlflow.jmd",
          "13-Methoden.jmd",
          "14-Debugging.jmd",
          "15-SpezielleDatentypen.jmd",
          "16-FileIO.jmd",
-         "17-Plotting.jmd",
-         "18-Ausblick.jmd"]
+         "17-Plotting.jmd"]
 
 # Check if a set of special files should be compiled
 if length(ARGS) != 0
