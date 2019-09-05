@@ -7,3 +7,11 @@ Das Paket kann wie alle anderen Pakete mit `using` geladen werden.
 using Statistics
 ```
 
+- std
+- var
+- mean
+- median
+- Distributions paket
+- (cor)
+- (cov)
+- (quantile)
