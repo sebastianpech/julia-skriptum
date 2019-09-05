@@ -137,6 +137,28 @@ plt = plot(x,y,line=(2))
 scatter!(plt,rand(40)*6,1 .- rand(40)*2,marker=(:x))
 ```
 
+## Speichern von Plots
+
+Bisher konnten die Plots nur in einem extra Fenster angezeigt werden.
+In den meisten Fällen benötigt man diese in einem Grafikformat für ein anders Dokument.
+Plots.jl biete dafür die Funktion `savefig` in zwei Varianten:
+
+```julia; eval=false
+savefig("mein_plot_1.png")
+```
+
+speichert den Inhalt des aktuellen Plotfensters und
+
+```julia; eval=false
+savefig(plt,"mein_plot_2.png")
+```
+
+speichert `plt`.
+Das Dateiformat wird dabei automatisch aus dem Dateinamen extrahiert.
+Die obigen Aufrufe erzeugen `png`-Dateien.
+Alternativ wird häufig auch das Format `pdf` verwendet. 
+`pdf` hat den Vorteil, dass die Grafik als Vektorgrafik erzeugt wird und damit ohne Qualitätsverlust auf eine beliebige Größe skaliert werden kann.
+
 ## Aufgaben
 ### Plot der Berechnung von Pi mittels Monte-Carlo
 - Scatter (Hervorheben der Punkte im kreis)
