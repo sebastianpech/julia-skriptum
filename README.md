@@ -20,7 +20,7 @@ Weave.jl zu machen.
 PRs Weave.jl:
 
 - [x] [Fix displayed output produced by capture_output](https://github.com/JunoLab/Weave.jl/pull/239)
-- [ ] [Improve usage of different figure environments in latex](https://github.com/JunoLab/Weave.jl/pull/241)
+- [x] [Improve usage of different figure environments in latex](https://github.com/JunoLab/Weave.jl/pull/241)
 - [ ] [Add argument to weave function to disable unicode escape](https://github.com/JunoLab/Weave.jl/pull/244)
 
 Installation:
