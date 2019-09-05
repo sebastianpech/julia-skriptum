@@ -381,4 +381,13 @@ dict_merge(d1, d2)
 
 ### Tuples zusammenfügen
 Schreibe eine Funktion `tuple_append` die zwei Tuples als Argumente nimmt, das zweite an das erste anhängt und as zusammengefügte Tuple als return value zurückgibt.
-
+```julia
+function tuple_append(t1, t2)
+	return Tuple(append!(collect(t1),collect(t2)))
+end
+```
+```julia;term=true
+t1 = ('a','b')
+t2 = ('c','d','e')
+tuple_append(t1,t2)
+```
