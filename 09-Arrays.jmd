@@ -292,3 +292,93 @@ Die Funktionen `keys` und `values` geben Arrays mit den keys oder values eines D
 keys(de2sp)
 values(de2sp)
 ```
+
+## Aufgaben
+### Drei Arrays zusammenhängen
+Schreibe eine Funktion `connect_three` die drei Arrays als Argumente nimmte und diese Arrays zu einem Array zusammenfügt.
+Die Funktion muss nur für Arrays mit gleichem Datentypen funktionieren (z.B. dreimal Array{String,1} oder dreimal Array{Any,1}).
+```julia
+function connect_three(a,b,c)
+	return append!(append!(a,b),c)
+end
+```
+```julia;term=true
+a = [1, 1, 2];
+b = [3, 5];
+c = [8, 13];
+connect_three(a,b,c)
+```
+
+### Innere Werte eines Arrays
+Schreibe eine Funktion `interior` die ein Array als Argument nimmt und ein neues Array zurückgibt, das alle Werte bis auf den ersten und  den letzten enthält.
+```julia
+function interior(a)
+	return a[2:end-1]
+end
+```
+```julia;term=true
+a = [0,1,2,3,4];
+res1 = interior(a)
+res2 = interior(res1)
+```
+
+### Ist das Array sortiert?
+Schreibe eine Funktion `issort` die ein Array als Argument nimmt, überprüft ob dieses Array sortiert ist und dementsprechend `true` oder `false` zurückgibt.
+```julia
+function issort(a)
+	return a == sort(a)
+end
+```
+```julia;term=true
+a = [3,2,5,1];
+b = sort(a);
+issort(a)
+issort(b)
+```
+
+### Anagram-Test
+Schreibe eine Funktion `isanagram` die zwei Strings als Argumente nimmt, überprüft ob diese Strings Anagramme sind und dementsprechend `ture` oder `false` zurückgibt.
+Groß- und Kleinschreibung soll dabei nicht berücksichtigt werden (`Stein` ist gleichwertig zu `stein`).
+Zwei Wörter sind Anagramme, wenn die Buchstaben eines Wortes durch Umordnen das zweite Wort ergeben.
+```julia
+function isanagram(s1, s2)
+	return sort(collect(lowercase(s1))) == sort(collect(lowercase(s2)))
+end
+```
+```julia;term=true
+isanagram("spam","eggs")
+isanagram("Stein","niest")
+```
+
+### N-tes Element eines Dict ausgeben
+Schreibe eine Funktion `dict_index(d,n)` die ein Dict `d` und eine Int-Zahl `n` als Argumente nimmt und das `n`-te Element dieses Dicts, sortiert nach den keys zurückgibt.
+```julia
+function dict_index(d, n)
+	return d[sort(collect(keys(d)))[n]]
+end
+```
+```julia;term=true
+d = Dict("a"=>1,"b"=>2, "c"=>3, "d"=>4)
+dict_index(d, 2)
+```
+
+### Dictionaries zusammenfügen
+Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als return value zurückgibt.
+```julia
+function dict_merge(d1, d2)
+	k = collect(keys(d1))
+	append!(k,collect(keys(d2)))
+	v = collect(values(d1))
+	append!(v,collect(values(d2)))
+	return Dict(zip(k,v))
+end
+```
+```julia;term=true
+d1 = Dict("Hans"=>85.3,"Michael"=>74.9)
+d2 = Dict("Lisa"=>56.1,"Anna"=>68.1)
+dict_merge(d1, d2)
+```
+
+### Tuples zusammenfügen
+Schreibe eine Funktion `tuple_append` die zwei Tuples als Argumente nimmt, das zweite an das erste anhängt und as zusammengefügte Tuple als return value zurückgibt.
+
