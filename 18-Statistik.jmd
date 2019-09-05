@@ -12,6 +12,9 @@ using Statistics
 - mean
 - median
 - Distributions paket
+  - Distribution types
+  - Create distrbution sample values plot
+  - fit distribution to some data maybe with a random noise
 - (cor)
 - (cov)
 - (quantile)
