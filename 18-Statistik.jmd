@@ -14,33 +14,32 @@ Das Paket kann wie alle anderen Pakete mit `using` geladen werden.
 using Statistics
 ```
 
-Für die folgenden Beispiele wird die Iris-Datenbank[^1] geladen.
-Sie enthält eine Sammlung von Abmessungen und Spezies von 150 Iris Blumen und ist im Paket `RDatasets` enthalten.
+Um die folgenden Beispiele anschaulich zu machen, werden Testdaten benötigt.
+Diese werden aus der Iris-Datenbank[^1] entnommen.
+Die Datenbank enthält Abmessungen und Spezies von 150 Iris Blumen und ist im Paket `RDatasets` enthalten.
+
+[^1]: <https://en.wikipedia.org/wiki/Iris_flower_data_set>
 
 ```julia; results="hidden"
 using RDatasets
 iris = dataset("datasets", "iris")
 ```
 
-`iris` ist ein `DataFrame` mit den Spalten:
+Dir Variable `iris` ist ein `DataFrame` mit den Spalten:
 
 ```julia
 names(iris)
 ```
 
-Eine Zeile sieht z.B. so aus:
+Die ersten vier Spalten enthalten `Float`-Zahlen mit Längenangaben und die letzte Spalte enthält einen `String` mit der Spezies der Pflanze.
 
-```julia
-iris[3,:]
-```
-
-Häufig benötigte Funktionen in für Statistische Berechnungen sind
+Häufig benötigte Funktionen für statistische Berechnungen sind
 - Mittelwert `mean()`,
 - Standardabweichung `std()`,
 - Median `median()` und
-- Varianz `var()`
+- Varianz `var()`.
 
-Für die Spalte `SepalLength` können die Werte folgendermaßen ermittelt werden:
+Für die Spalte `SepalLength` können mit diesen Funktionen die folgenden Werte ermittelt werden:
 ```julia; term=true
 mean(iris.SepalLength)
 std(iris.SepalLength)
@@ -48,50 +47,58 @@ median(iris.SepalLength)
 var(iris.SepalLength)
 ```
 
-Neben diesen Funktionen gibt es noch Funktion zur Berechnung der Kovarianz (`cov`) und des Pearson-Korrelationskoeffizient (`cor`).
-Details dazu in der Dokumentation unter [Standard Library/Statistics](https://docs.julialang.org/en/v1/stdlib/Statistics).
+Neben diesen Funktionen gibt es noch weitere: zur Berechnung der Kovarianz (`cov()`), des Pearson-Korrelationskoeffizient (`cor()`) und der Quantile (`quantile()`).
+Nähere Details dazu sind in der Dokumentation unter [Standard Library/Statistics](https://docs.julialang.org/en/v1/stdlib/Statistics) zu finden.
 
-In vielen Fällen ist es notwendig Verteilungsfunktionen zu verwenden.
-In Distributions.jl sind dafür die bestimmenden Funktionen für eine Reihe von verschiedenen Verteilungen definiert.
-Zusätzlich enthält das Paket Funktionen zum "fitting" und "sampling" von Daten.
-Das Paket kann wie folgt geladen werden:
+Oft ist es erforderlich Annahmen zu Wahrscheinlichkeitsverteilungen gewisser Daten zu treffen.
+In Distributions.jl sind dafür die notwendigen Funktionen für eine Reihe von verschiedenen Verteilungen definiert.
+Zusätzlich enthält das Paket Funktionen zum "Fitting" und "Sampling" von Daten und kann wie folgt geladen werden:
 
 ```julia
 using Distributions
 ```
 
-Zusätzlich wird Plots.jl geladen, um die Daten zu visualisieren.
+Um die Daten in den folgenden Beispielen zu visualisieren wird ebenfalls Plots.jl geladen:
 
 ```julia
 using Plots
 ```
 
-Es ist beispielsweise Möglich einer Zufallszahl eine gewisse Verteilung (Normalverteilung mit Mittelwert 2.5 und Standardabweichung 0.5) zugrunde zu legen:
+Beim "Sampling" geht es darum Zufallszahlen aus einer gewissen Verteilung zu ziehen.
+Ein Zufallszahlengenerator, mit einer zugrundeliegenden Normalverteilung (Mittelwert 2.5 und Standardabweichung 0.5), kann folgendermaßen erzeugt werden:
 
 ```julia
-d1 = Normal(2.5,0.5)
-d2 = Gumbel(2.5)
+d = Normal(2.5,0.5)
 ```
 
-Mit `rand` können nun z.B. 1000 Zufallszahlen, die dieser Verteilung entsprechen, generiert werden:
+Mit `rand` generiert man nun z.B. 1000 Zufallszahlen, die dieser Verteilung entsprechen.
 
 ```julia
-data1 = rand(d1,1000)
-data2 = rand(d2,1000)
-histogram([data1 data2],layout=grid(2,1),label=["Normal", "Gumbel"])
+data = rand(d,1000)
+histogram(data)
 ```
 
-Weitere Funktionen können der [Dokumentation](https://juliastats.github.io/Distributions.jl/stable/)[^2]  entnommen werden.
+Weitere Verteilungen sind in der [Dokumentation](https://juliastats.github.io/Distributions.jl/stable/)[^2] gelistet.
 
-Neben dem "sampling" von Daten ist auch das "Fitting" von Verteilungsfunktionen möglich.
+[^2]: <https://juliastats.github.io/Distributions.jl/stable/>
 
+Neben dem "Sampling" von Daten ist auch das "Fitting", also ermitteln der Parameter für Verteilungsfunktionen, möglich.
+Dafür wird die Funktion `fit` verwendet.
+In einem ersten Schritt werden für die Spalte `SepalLength` aus den Daten in `iris` die Parameter für eine Normalverteilung ermittelt:
 ```julia
 d = fit(Normal, iris.SepalLength)
+```
+
+Der Vergleich mit den zuvor ermittelten Werten zeigt eine ungefähre Übereinstimmung.
+Um die Qualität des "Fittings" zu beurteilen, werden ein normalisiertes Histogramm der Daten und die Dichtefunktion der ermittelten Verteilung dargestellt.
+```julia
 plt = histogram(iris.SepalLength,normed=true)
-x = collect(minimum(iris.SepalLength):0.01:maximum(iris.SepalLength))
-y = pdf(d,x)
+x = 3:0.1:9
+# Berechnen der Werte der Dichtefunktion für d an den Stellen in x
+y = pdf.(d,x)
 plot!(plt,x,y)
 ```
 
-[^1]: [https://en.wikipedia.org/wiki/Iris_flower_data_set](https://en.wikipedia.org/wiki/Iris_flower_data_set)
-[^2]: [https://juliastats.github.io/Distributions.jl/stable/](https://juliastats.github.io/Distributions.jl/stable/)
+Offensichtlich passt die Dichtefunktion gut zu den Messwerten.
+Die angepasste Normalverteilung kann jetzt wie zuvor für das Generieren von Zufallswerten verwendet werden.
+
