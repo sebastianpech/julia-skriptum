@@ -1,0 +1,9 @@
+# Statistik
+
+In Julia sind einige grundlegende Statistikfunktionen im `Statistics` Paket enthalten.
+Das Paket kann wie alle anderen Pakete mit `using` geladen werden.
+
+```julia
+using Statistics
+```
+

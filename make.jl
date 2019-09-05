@@ -23,7 +23,8 @@ files = ["01-Intro.jmd",
          "14-Debugging.jmd",
          "15-SpezielleDatentypen.jmd",
          "16-FileIO.jmd",
-         "17-Plotting.jmd"]
+         "17-Plotting.jmd",
+         "18-Statistik.jmd"]
 
 # Check if a set of special files should be compiled
 if length(ARGS) != 0
