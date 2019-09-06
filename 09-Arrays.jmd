@@ -184,7 +184,7 @@ In vielen numerischen Aufgaben sind zwei- oder mehrdimensionale Arrays hilfreich
 In Julia wird ein zweidimensionales Array auch als *Matrix* bezeichnet.
 Die Eingabe erfolgt wie bei eindimensionalen Arrays in eckigen Klammern, allerdings werden die Elemente zeilenweise mit Leerzeichen zwischen den Elementen einer Zeile und Semikola zwischen den Zeilen eingegeben.
 Alternativ kann auch ein Zeilenumbruch anstatt der Semikola eingefügt werden.
-```julia; term=true
+```julia; results="hidden"
 a = [1 2; 3 4]
 b = [4 2
 	 3 1]
