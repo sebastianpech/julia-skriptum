@@ -7,14 +7,14 @@ Die Werte innerhalb eines Arrays heißen *Elemente*.
 
 Arrays können auf verschiedenste Weisen erzeugt werden.
 Alle Elemente getrennt durch `,` innerhalb von eckigen Klammer zu schreiben ist die einfachste Variante:
-```julia
+```julia;results="hidden"
 primes = [2, 3, 5, 7, 11, 13]
 baustoffe = ["Holz", "Beton", "Stahl"]
 ```
 
 Die erste Zeile erzeugt ein Array aus sechs Int-Zahlen, die zweite Zeile erzeugt ein Array aus drei Strings.
 Die Elemente eines Arrays müssen aber nicht vom gleichen Typ sein; sogar Arrays innerhalb von Arrays sind möglich:
-```julia
+```julia;results="hidden"
 stahl = ["S235", 235.0, [10, 20]]
 ```
 Mit `typeof()` kann der Typ eines Arrays abgefragt werden:
@@ -48,8 +48,8 @@ primes[3:end]
 ```
 
 Anders als Strings sind Arrays allerdings veränderbar.
-Das heißt, einzelne Elemente eines Arrays können durch den `=`-Operator neu zugewiesen werden.
-Der zugewiesenen Datentyp muss mit dem Typen des Arrays übereinstimmern.
+Das heißt, einzelne Elemente oder Teile eines Arrays können durch den `=`-Operator neu zugewiesen werden.
+Der zugewiesenen Datentyp muss mit dem Typen des Arrays übereinstimmen.
 ```julia; term=true
 baustoffe[3] = "Ziegel"
 baustoffe[2] = 2
@@ -58,19 +58,21 @@ print(baustoffe)
 
 Folgendes Verhalten kann dabei möglicherweise zu Verwirrung führen:
 ```julia; term=true
-a = [1, 4, 3]
-b = a
-b[2] = 2
-@show a b;
+a = [1, 4, 3];
+b = a;
+b[2] = 2;
+println("a = $(a)")
+println("b = $(b)")
 ```
 Verändern eines Wertes im Array `b` verändert also auch den Array `a`.
 Das liegt daran, dass der Ausdruck `b = a` den Array `a` **nicht** kopiert, sondern auf ihn verweist.
 Zum Kopieren eines Arrays eignet sich die Funktion `copy()`.
 ```julia; term=true
-a = [1, 4, 3]
-b = copy(a)
-b[2] = 2
-@show a b;
+a = [1, 4, 3];
+b = copy(a);
+b[2] = 2;
+println("a = $(a)")
+println("b = $(b)")
 ```
 
 ### Funktionen der Array Library
@@ -86,33 +88,35 @@ length(stahl[3])
 ```julia; term=true
 fib = [1, 1, 2, 3, 5];
 push!(fib, 8);
-@show fib
+println(fib)
 ```
 
 `append!` hängt einen Array am Ende des Arrays an:
 ```julia; term=true
 append!(fib, [13, 21, 34]);
-@show fib
+println(fib)
 ```
 
-`insert!` fügt ein Element bei einem bestimmten Idex in das Array ein:
+`insert!` fügt ein Element bei einem bestimmten Index in das Array ein:
 ```julia; term=true
 countdown = [5, 4, 3, 1, 0];
-insert!(countdown, 4, 2)  # Die Zahl 2 wird an vierter Stelle eingefügt
+insert!(countdown, 4, 2);  # Die Zahl 2 wird an vierter Stelle eingefügt
+println(countdown)
 ```
 
 `sort!` sortiert die Elemente eines Ararys vom niedrigsten zum höchsten Wert:
 ```julia; term=true
 c = ['d', 'g', 'a', 'w', 'f'];
 sort!(c);
-@show c
+println(c)
 ```
 
-`sort` hingegen erzeugt eine sortierte Kopie des Arrays:
+`sort` hingegen erzeugt eine **sortierte Kopie** des Arrays:
 ```julia; term=true
 c1 = ['d', 'g', 'a', 'w', 'f'];
 c2 = sort(c1);
-@show c1 c2
+println("c1 = $(c1)")
+println("c2 = $(c2)")
 ```
 
 Generell hat sich in Julia etabliert, dass Funktionen, die direkt ihr Argument verändern mit `!` enden.
@@ -123,29 +127,29 @@ Es gibt verschiedene Möglichkeiten einzelne Elemente aus einem Array zu lösche
 ```julia; term=true
 a = ['a', 'b', 'c'];
 pop!(a)
-@show a
+print(a)
 ```
 
 Das erste Element eines Arrays kann mittels `popfirst!` entfernt werden:
 ```julia; term=true
 a = ['a', 'b', 'c'];
 popfirst!(a)
-@show a
+print(a)
 ```
 
 Ist der Index des zu entfernenden Elements bekannt, kann dieses mit `splice!` aus dem Array gelöscht werden:
 ```julia; term=true
 a = ['a', 'b', 'c'];
 splice!(a, 2)
-@show a
+print(a)
 ```
 
 Ähnlich funktioniert auch `deleteat!`.
 Der Unterschied ist dabei, dass nicht das entfernte Element, sondern das Array zurückgegeben wird:
-´´´julia; term=true
+```julia; term=true
 a = ['a', 'b', 'c'];
 deleteat!(a,2)
-@show a
+print(a)
 ```
 
 ### Strings und Arrays
@@ -178,7 +182,7 @@ print(s2)
 ### Mehrdimensionale Arrays
 In vielen numerischen Aufgaben sind zwei- oder mehrdimensionale Arrays hilfreich.
 In Julia wird ein zweidimensionales Array auch als *Matrix* bezeichnet.
-Die eingabe erfolgt wie bei eindimensionalen Arrays in eckigen Klammern, allerdings werden die Elemente zeilenweise mit Leerzeichen zwischen den Elementen einer Zeile und Semikola zwischen den Zeilen eingegeben.
+Die Eingabe erfolgt wie bei eindimensionalen Arrays in eckigen Klammern, allerdings werden die Elemente zeilenweise mit Leerzeichen zwischen den Elementen einer Zeile und Semikola zwischen den Zeilen eingegeben.
 Alternativ kann auch ein Zeilenumbruch anstatt der Semikola eingefügt werden.
 ```julia; term=true
 a = [1 2; 3 4]
@@ -186,7 +190,7 @@ b = [4 2
 	 3 1]
 ```
 
-Eine `mxn`-Matrix hat `m` Zeilen und `n` Spalten.
+Eine `m`x`n`-Matrix hat `m` Zeilen und `n` Spalten.
 Mit der Syntax `matrix[m,n]` kann auf ein Element der Matrix zugegriffen werden.
 Ebenso kann auf Teile der Matrix zugegriffen werden.
 Ein Doppelpunkt `:` ohne Indizes bezeichnet dabei die gesamte Zeile oder Spalte.
@@ -210,7 +214,7 @@ rand(3,2,4)
 ```
 
 ### Broadcasting
-Viele Operationen in Julia können elementweise aus Arrays angewendet werden.
+Viele Operationen in Julia können elementweise auf Arrays angewendet werden.
 Diese Vorgehensweise wird auch *Broadcasting* genannt.
 Dazu wird bei Operatoren wie `+` und `^` ein `.` vorangestellt oder bei Funktionen ein `.` hinter dem Funktionsnamen angehängt:
 ```julia; term=true

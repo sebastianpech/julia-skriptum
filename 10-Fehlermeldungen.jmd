@@ -1,19 +1,19 @@
 # Exceptions
 
-Ein Programm zu schreiben ist eine komplexe Aufgabe, bei der es häufig dazu kommt, dass ein Programm nicht das macht was es tun soll und mit einem Fehler abbricht.
+Ein Programm zu schreiben ist eine komplexe Aufgabe, bei der es häufig dazu kommt, dass es nicht das macht was es tun soll und mit einem Fehler abbricht.
 
 Grob können diese Fehler in *Syntax Errors*, *Logical Errors* und *Runtime Errors* eingeteilt werden.
 
 ## Syntax Errors
 
 Ein *Syntax Error* tritt in den meisten Fällen bereits vor der eigentlichen Ausführung des Programms auf und wird durch einen falsch geschriebenen Befehl verursacht.
-Dies Betrifft hauptsächlich Keywords der Programmiersprache (`if`, `else`, `function`, ...) und ungültige Variablennamen.
+Dies betrifft hauptsächlich Keywords der Programmiersprache (`if`, `else`, `function`, ...) und ungültige Variablennamen.
 
 ```julia
 42number = "meaning of life"
 ```
 
-Nach auftreten des Fehlers wird das Programm unterbrochen. Die Fehlermeldung wird mit `Error:` eingeleitet und enthält den Hinweis `synatx`.
+Nach Auftreten des Fehlers wird das Programm unterbrochen. Die Fehlermeldung wird mit `Error:` eingeleitet und enthält den Hinweis `syntax`.
 Üblicherweise gibt Julia Hinweise darauf was das Problem verursacht hat, es lohnt sich also immer Fehlermeldungen zu lesen.
 
 ## Logical Errors
@@ -38,9 +38,9 @@ Das Problem mit logischen Fehler ist, dass das Programm ohne Fehlermeldung läuf
 
 ## Runtime Errors
 
-*Runtime Errors* sind Fehler die während der Laufzeit der Programms auftreten.
-In Julia gibt es eine Vielzahl von solchen Fehlern die immer dann ausgelöst werden, wenn etwas unvorhergesehenes passiert.
-In weiterer Folge werden nur die häufigsten behandelt, eine vollständige Liste befindet sich unter https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1.
+*Runtime Errors* sind Fehler die während der Laufzeit des Programms auftreten.
+In Julia gibt es eine Vielzahl von solchen Fehlern die immer dann ausgelöst werden, wenn etwas Unvorhergesehenes passiert.
+In weiterer Folge werden nur die häufigsten behandelt, eine vollständige Liste befindet sich in der Dokumentation unter [Manual/Control Flow/Exception Handling](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1).
 
 `BoundsError`
 

@@ -7,11 +7,11 @@ Das lineare Algebra Paket ist standardmäßig in Julia enthalten und kann wie al
 using LinearAlgebra
 ```
 
-Details zu dem Paket sind unter https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/ zu finden.
+Details zu dem Paket sind unter [Standard Library/Linear Algebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) in der Dokumentation zu finden.
 
 ## Lineare Gleichungssysteme
 
-Eine übliche Problemstellung der linearen Algebra ist das Lösen von Gleichungssystemen wie dem folgendem.
+Eine übliche Problemstellung der linearen Algebra ist das Lösen von Gleichungssystemen wie dem folgenden:
 
 ```math
    x - y = 22\;\text{und}\;2x + 3y = 11
@@ -19,7 +19,7 @@ Eine übliche Problemstellung der linearen Algebra ist das Lösen von Gleichungs
 
 Um das System zu lösen müssen zuerst die Koeffizientenmatrix und der Vektor auf der rechten Seite definiert werden.
 
-```{julia}
+```{julia;results="hidden"}
 A = [1 -1
      2  3]
 c = [22, 11]

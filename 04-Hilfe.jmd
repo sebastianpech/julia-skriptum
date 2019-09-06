@@ -1,7 +1,7 @@
 # Hilfe
 
 Julia Quellcode ist selbst-dokumentiert. Das bedeutet, dass die Beschreibung und Hilfe für Funktionen direkt in den Code geschrieben wird. 
-Beim Programmieren muss dabei eine Richtlinie eingehalten werden, damit die Hilfe für eine Funktion vom Benutzer auch aufgerufen werden kann.
+Beim Programmieren muss dabei eine Richtlinie eingehalten werden, damit die Hilfe für eine Funktion vom Benutzer auch aufgerufen werden kann (siehe Docstrings im Abschnitt Funktionen).
 
 Wie schon im Abschnitt zur Interaktion beschrieben, gibt es einen eigenen REPL-Mode der die Hilfe für Funktionen anzeigt.
 Dieser Modus kann durch Eingabe von `?` direkt nach `julia>` aktiviert werden. 
@@ -33,7 +33,7 @@ search: abs abs2 abspath AbstractSet abstract type AbstractChar AbstractDict Abs
   -9223372036854775808
 ```
 
-Die Hilfe zu den Funktionen ist auch unter https://docs.julialang.org erreichbar. Dort wurde die Dokumentation gesammelt und um nützliche Tipps und Erklärungen erweitert.
+Die Hilfe zu den Funktionen ist auch unter [docs.julialang.org](https://docs.julialang.org) erreichbar. Dort wurde die Dokumentation gesammelt und um nützliche Tipps und Erklärungen erweitert.
 
 Falls Probleme oder Unklarheiten bei der Verwendung von Julia auftreten, gibt es verschiedene Kanäle über die Fragen gestellt werden können:
 
