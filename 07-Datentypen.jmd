@@ -98,7 +98,7 @@ Diese wird allerdings erst im Kapitel *Arrays* erklärt.
 
 Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^1] und in der Dokumentation unter [Manual/Strings](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/strings.html) erläutert.
 
-[^1]: <https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08>
+[^1]: [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)
 ## Zahlen
 In Julia sind verschiedene Datentypen für Zahlen definiert.
 Im Beispiel oben ist der ganzzahlige Wert `2` vom Typ `Int64` und `42.0` vom Typ `Float64`.
