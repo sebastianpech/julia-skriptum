@@ -98,7 +98,7 @@ Diese wird allerdings erst im Kapitel *Arrays* erklärt.
 
 Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^1] und in der Dokumentation unter [Manual/Strings](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/strings.html) erläutert.
 
-[^1]: [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)
+[^1]: <https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08>
 ## Zahlen
 In Julia sind verschiedene Datentypen für Zahlen definiert.
 Im Beispiel oben ist der ganzzahlige Wert `2` vom Typ `Int64` und `42.0` vom Typ `Float64`.
@@ -175,7 +175,7 @@ round(345.123; sigdigits=2)
 Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
 Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` bereits ab der ersten Stelle der Zahl zählt.
 
-Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^1] (*floor division*) und der Modulus-Operator, `%`.
+Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^2] (*floor division*) und der Modulus-Operator, `%`.
 ```julia; term=true
 7÷3
 7%3
@@ -184,7 +184,7 @@ Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^1] (*fl
 Der Modulus-Operator gibt den Rest einer Division aus.
 Damit kann zum Beispiel leicht überprüft werden, ob eine Zahl durch eine andere Zahl teilbar ist.
 
-[^1]: `÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.
+[^2]: `÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.
 
 Alle Typen in Julia sind in einer Art Hierarchie strukturiert.
 Beispielsweise ist `Integer` ein Subtyp von `Real` und `Real` wiederum ein Subtyp von `Number`.
