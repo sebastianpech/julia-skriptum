@@ -46,7 +46,7 @@ Dafür gibt es die Funktionen `isdir` und `isfile`.
 isdir.(readdir()), isfile.(readdir())
 ```
 
-Weitere praktische Funktionen, z.B. zum Verschieben und Löschen von Dateien sind in der Dokumentation unter https://docs.julialang.org/en/v1/base/file/ angeführt.
+Weitere praktische Funktionen, z.B. zum Verschieben und Löschen von Dateien sind in der Dokumentation unter [Base/Filesystem](https://docs.julialang.org/en/v1/base/file/) angeführt.
 
 ## Arbeiten mit Dateien
 
@@ -109,7 +109,7 @@ B = readdlm("MeineMatrix.txt")
 A == B
 ```
 
-Weitere Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html zu finden.
+Weitere Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter [Standard Library/Delimited Files](https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html) zu finden.
 
 Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, oder auch bei fehlenden Daten schnell an seine Grenzen.
 Um ein stabiles Einlesen von solchen Dateien zu ermöglichen gibt es das `CSV`-Paket.
@@ -152,9 +152,7 @@ messwerte.temp, messwerte.Status
 ```
 
 Ein `DataFrame` ist ein Datentyp der besonders für die Verarbeitung von tabellarischen Daten geeignet ist.
-Nähere Details zu DataFrames können der [Dokumentation](https://juliadata.github.io/DataFrames.jl/stable/)[^1] entnommen werden.
-
-Weitere Optionen unter: https://juliadata.github.io/CSV.jl/stable/
+Nähere Details zu [DataFrames](https://juliadata.github.io/DataFrames.jl/stable/)[^1] und [CSV.jl](https://juliadata.github.io/CSV.jl/stable/)[^2] können der jeweiligen Dokumentation entnommen werden.
 
 ## Aufgaben
 ### Daten einlesen 2 spaltig getrennt mir ; und , als dezimaltrennzeichen
@@ -163,4 +161,5 @@ Weitere Optionen unter: https://juliadata.github.io/CSV.jl/stable/
 cd(current_workding_directory)
 ```
 
-[^1]: https://juliadata.github.io/DataFrames.jl/stable/
+[^1]: <https://juliadata.github.io/DataFrames.jl/stable/>
+[^2]: <https://juliadata.github.io/CSV.jl/stable/>

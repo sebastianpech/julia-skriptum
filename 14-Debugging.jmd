@@ -60,8 +60,10 @@ bug_show_pow(3.5,6)
 Offensichtlich wird in der Schleife `x`, 6-mal multipliziert, allerdings startet `x_pow` nicht mit 1 sonder mit `x` was gesamt $x^{n+1}$ ergibt.
 
 Diese Methode des Debuggings funktioniert bei einfachen Fällen hat aber den Nachteil, dass der Code verändert werden muss.
-Julia bietet in Kombination mit dem [Debugger-Paket](https://github.com/JuliaDebug/Debugger.jl) und Juno einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
- 
+Julia bietet in Kombination mit [Debugger.jl](https://github.com/JuliaDebug/Debugger.jl)[^1] und Juno einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
+
+[^1]: <https://github.com/JuliaDebug/Debugger.jl>
+
 ## Das Debugger-Paket
 
 Mit einem klassischen Debugger ist es möglich die Ausführung des Quellcodes zu unterbrechen und schrittweise zu analysieren.
@@ -95,7 +97,9 @@ Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der 
 - *Step into Function*: Funktioniert wie der Befehl `Juno.@enter` und springt in die erste Zeile der aktuellen Funktion.
 - *Stop Debugging*: Beendet das Debugging.
 
-Nähere Informationen zum Debugger gibt es in diesem Blogeintrag: https://julialang.org/blog/2019/03/debuggers.
+Nähere Informationen zum Debugger gibt es in diesem [Blogeintrag](https://julialang.org/blog/2019/03/debuggers)[^2]. 
+
+[^2]: <https://julialang.org/blog/2019/03/debuggers>
 
 ## Aufgaben
 ### Finde den Fehler in der folgenden Funktion

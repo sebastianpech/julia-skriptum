@@ -1,5 +1,4 @@
 # Kontrollstruktur
-**Dokumentation**: [Manual/Control Flow](https://docs.julialang.org/en/v1/manual/control-flow/)
 
 Der Code in den bisher behandelten Beispiele setzte sich aus einer sich nicht verzweigenden Verkettung von Befehlen zusammen.
 Für sehr rudimentäre Programme mag das ausreichen, in den meisten Fällen werden aber Verzweigungen in Form von `if`-Bedingungen und Schleifen benötigt.
@@ -186,7 +185,7 @@ Dieser Vorgang ist sehr wichtig um eine performante Ausführung zu ermöglichen 
 Stabilität bedeutet hier, dass sich der Datentyp einer Variable mit der Laufzeit nicht ändert.
 Eine mögliche Fehlerquelle dafür ist im folgendem Beispiel zu sehen[^1].
 
-[^1]: http://www.johnmyleswhite.com/notebook/2013/12/06/writing-type-stable-code-in-julia/
+[^1]: <http://www.johnmyleswhite.com/notebook/2013/12/06/writing-type-stable-code-in-julia/>
 
 ```julia
 function summe_sin_A(n::Int)
