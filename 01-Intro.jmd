@@ -1,6 +1,46 @@
 # Intro
-Warum, vgl. Python, Matlab
-## Begriffe
-was ist ein skript, was ist eine funktion, usw ...
-Erklärung der Formatierung (Befehle, Ausgabe, ...)
-Viele der Begriffe in Englisch, da es keine sinvolle, direkte Übersetzung ins Deutsche gibt
+
+Diese Lehrunterlagen dienen der Unterstützung bei der Lehrveranstaltung (LVA) Programmieren im Bauingenieurwesen. 
+Alle Inhalte die in der LVA besprochen werden, sind chronologisch geordnet in diesem Dokument gelistet und durch nützliche Informationen und Beispiele ergänzt. 
+Einige Abschnitte schließen mit einer Aufgabensammlung, welche zum Erlagen einer positiven Benotung der LVA gelöst und in den TUWEL Kurs hochgeladen werden müssen.
+
+Ziel der LVA ist es einen ersten aber umfassenden Einblick in die Welt der Programmiersprachen zu geben.
+Inhalte die über die Grundlagen des klassischen Programmierens hinausgehenden, sind dabei auf das Studium des Bauingenieurwesens zugeschnitten.
+
+Wir haben selbst erlebt, dass in einigen Master LVAs und besonders bei der Diplomarbeit Programmierkenntnisse erforderlich gefordert werden.
+Nach dem Besuch der LVA sollten daher Aufgaben wie Versuchsauswertungen, Adaption von bestehenden Programmen oder erstellen eigener Programme unter Anleitung gemeistert werden können.
+
+Die nötigen Inhalte um selbständig Programme zu Konzeptionieren und zu Programmieren werden in der LVA nicht abgedeckt. Dieses Thema ist komplex und erfordert bereits etwas Erfahrung. Für Interessierte sind aber in einigen Abschnitten Verweise auf weiterführende Informationen angegeben.
+
+## Programmiersprache
+
+Die Welt der Programmiersprachen ist vielfältig und groß. Es gibt einer Vielzahl von Anwendungsgebieten für die spezifische Sprachen entwickelt wurden.
+Da viele Aufgaben von Bauingenieuren naturwissenschaftliches und mathematisches fundiert sind, liegt es nahe in dieser LVA einer der sogenannten "Wissenschaftlichen Sprachen" zu verwenden.
+
+Der Begriff ist etwas diffus, bezeichnet aber am ehesten Sprachen die mathematische Objekte wie Vektoren und Matrizen implementiert haben oder über Statistikbibliotheken verfügen.
+Einige Vertreter dieser Klasse sind Matlab, R, Python mit SciPy und Julia.
+
+Jede dieser Sprachen hat ihre Vor- und Nachteile.
+Matlab wir besonders häufig im universitären Bereich genutzt und biete ein benutzerfreundliches Interface.
+R ist besonders auf statische Auswertungen zugeschnitten.
+Python ist von dieser Gruppe die allgemeinste Sprache und ist einer der beliebtesten Programmiersprachen überhaupt.
+Julia ist eine der jüngeren Programmiersprachen, zeichnet sich aber durch ein sehr gutes Sprachdesign und hohe Performance aus.
+
+In den Anfängen dieser LVA wurde Matlab gelehrt, was hauptsächlich der starken Verbreitung an der Universität geschuldet war.
+Ein Nachteil von Matlab ist: Eine nicht universitäre Lizenz ist sehr teuer.
+Wir wollen aber, dass alle Studenten, auch noch nach ihrem Studium, Zugang zu der Software haben und ihren Arbeitsalltag mit Programmierkenntnissen vereinfachen können.
+
+Python ist frei verfügbar und weit verbreitet.
+Ein Nachteil im Zusammenhang mit der LVA ist aber, dass sich die Programmiersprache relativ stark vom Matlab unterscheidet und wir nicht wollen, dass Programmieranfänger mit zwei sehr verschiedenen Sprachen konfrontiert werden,
+
+Julia ist ebenfalls frei verfügbar und hat eine zu Matlab sehr ähnliche Syntax.
+Das und das stringente Sprachdesign sind für uns Grund genug Julia in dieser LVA zu verwenden.
+
+<!-- Auf gemeinsame Sprachkonstrukte hinweisen -->
+<!-- Was kann ich machen wenn ich mit python oder matlab in kontakt komme -->
+<!-- Wie werden die Lehrunterlagen verwendet -->
+<!-- wie wird das kontrollprogramm für die hausaufgaben verwendet -->
+<!-- ## Begriffe -->
+<!-- was ist ein skript, was ist eine funktion, usw ... -->
+<!-- Erklärung der Formatierung (Befehle, Ausgabe, ...) -->
+<!-- Viele der Begriffe in Englisch, da es keine sinvolle, direkte Übersetzung ins Deutsche gibt -->
