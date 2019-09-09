@@ -11,7 +11,8 @@ twoside]{scrartcl}
 \usepackage{graphicx}
 
 \usepackage[left=2.0cm,right=2.0cm,top=1.5cm,bottom=2cm,includehead,marginparwidth=2.5cm,marginparsep=1mm]{geometry}
-
+\usepackage{csquotes}
+\usepackage[naustrian]{babel}
 \usepackage[
 headsepline,
 automark

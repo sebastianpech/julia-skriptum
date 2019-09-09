@@ -7,6 +7,10 @@ using Highlights
 using Mustache
 using Glob
 
+# Add additional markdown escape character
+Weave.WeaveMarkdown.Markdown._latexescape_chars['"'] = "\"{}"
+
+
 files = ["01-Intro.jmd",
          "02-Installation.jmd",
          "03-Interaktion.jmd",
@@ -38,14 +42,43 @@ if length(ARGS) != 0
     end
 end
 
+##### Stage 1
 # Weave all jmd files to tex files
 for f in files
-    @info "Weaving file"
+    @info "Weaving file $f"
     weave(f,
           out_path="build", # Output into build directory
           doctype = "md2tex",
           template = "part.tpl",escape_unicode=false)
 end
+
+#### Stage 2
+# Replace all escaped commands that should actually be forwarded.
+
+cmd_single_arg(cmd) = Regex("{\\\\textbackslash}(?<cmd>$cmd)\\\\{(?<attrib>.*?)\\\\}") => s"\\\g<cmd>{\g<attrib>}"
+
+forward_this = [
+    cmd_single_arg("enquote"),
+    cmd_single_arg("latex"),
+]
+
+@info "Replacing commands for forwarding"
+
+for f_jmd in files
+    global forward_this
+    f_tex = splitext(f_jmd)[1]*".tex"
+    lines = readlines(joinpath("build",f_tex))
+    open(joinpath("build",f_tex),"w") do out
+        println.(Ref(out),map(lines) do l
+            reduce(forward_this,init=l) do str,rep
+                replace(str,rep)
+            end
+        end)
+    end
+end
+
+#### Stage 3
+# Compile Main document
 
 @info "Creating main tex-Document"
 cd("build")

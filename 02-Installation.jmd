@@ -15,7 +15,7 @@ Diese kann entweder durch Doppelklick oder über die Commandline durch Eingabe d
 Sollte bei Aufruf in der Commandline ein Fehler `Der Befehl "julia" ist entweder falsch geschrieben oder konnte nicht gefunden werden` auftreten, wurde der Installationspfad wahrscheinlich in der Installation nicht zur Systemvariable `PATH` hinzugefügt.
 Windows kann die Datei `julia` dann nicht finden.
 Unter von [Java](https://www.java.com/de/download/help/path.xml)[^2] befindet sich eine kurze Erklärung zur Einrichtung der Systemvariable `PATH`.
-Der Punkt "Geben Sie ... den Wert der Umgebungvariable PATH an." in dieser Erklärung ist dabei folgendermaßen zu verstehen:
+Der Punkt \enquote{Geben Sie ... den Wert der Umgebungvariable PATH an.} in dieser Erklärung ist dabei folgendermaßen zu verstehen:
 Unter Path sind alle Pfade gespeichert, die bei der Eingabe eines Befehls in der Commandline, nach übereinstimmenden Befehlen durchsucht werden.
 Die Pfade sind dabei durch Semikola `;` voneinander getrennt.
 Unter diesem Punkt der Anleitung ist daher der Pfad der Julia-Installation am Ende der Variable hinzuzufügen:
@@ -32,15 +32,15 @@ Pfad01;Pfad02;Pfad03;Julia-Pfad
 ### macOS
 Julia ist für macOS 10.8 und spätere Versionen verfügbar.
 Für Mac-User befindet sich auf [julialang.org](https://julialang.org) unter [Downloads](https://julialang.org/downloads)[^1] eine `.dmg`-Datei zum Download.
-Dieses Disk Image muss geöffnet und die darin enthaltene Datei `julia-<version>.app` in den gewünschten Dateipfad (vozugsweise "Programme") kopiert werden.
+Dieses Disk Image muss geöffnet und die darin enthaltene Datei `julia-<version>.app` in den gewünschten Dateipfad (vozugsweise Programme) kopiert werden.
 Julia kann dann direkt über diese Datei oder Eingabe des Befehls `julia` im Terminal ausgeführt werden.
 
 ### Linux
-Zur Installation von Julia auf einem Linux Betriebssystem müssen zuerst die "Generic Binaries" für die richtige Prozessor-Architektur heruntergeladen werden.
+Zur Installation von Julia auf einem Linux Betriebssystem müssen zuerst die \enquote{Generic Binaries} für die richtige Prozessor-Architektur heruntergeladen werden.
 Die Datei im `.tar.gz`-Format muss danach in einen beliebigen Ordner auf dem Computer entpackt werden.
 In diesem Ordner befindet sich unter `bin/` die Datei `julia`.
 Um Julia im Terminal ausführen zu können, muss gewährleistet sein, dass das System diese Datei findet.
-Am einfachsten ist es, einen "Symbolic Link" in einem der Ordner unter der Systemvariable `PATH` zu erzeugen.
+Am einfachsten ist es, einen \enquote{Symbolic Link} in einem der Ordner unter der Systemvariable `PATH` zu erzeugen.
 Welche Ordner in `PATH` hinterlegt sind, kann im Terminal mittels `echo $PATH` abgefragt werden.
 Meist ist `/usr/local/bin` einer davon.
 Folgender Befehl erstellt den Symbolic Link in diesem Ordner:
@@ -60,6 +60,6 @@ Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der We
 Nach der Installation von Atom muss *Juno* in Atom installiert werden.
 Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (`Strg+,` oder `Cmd+,` bzw. über die Menüleiste) und dort das Installations-Panel auszuwählen.
 Durch Installation des Pakets `uber-juno` (am einfachsten über die Suchleiste) kann Juno in Atom verwendet werden.
-Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter Packages > Julia > Settings im Feld "Julia Path" der tatsächliche Dateipfad angegeben werden.
+Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter Packages > Julia > Settings im Feld \enquote{Julia Path} der tatsächliche Dateipfad angegeben werden.
 
 Wenn die Installation funktioniert hat, kann unter Packages > Julia > Open Console die REPL geöffnet und durch drücken der Taste `Enter` eine Julia-Session gestartet werden.
