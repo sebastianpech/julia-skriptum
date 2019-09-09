@@ -1,7 +1,7 @@
 # Interaktion
 
 Um Julia auszuführen gibt es verschieden Möglichkeiten:
-- Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in einer Konsole.
+- Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in der Commandline.
 - Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]` in der Commandline.
 - In einem Editor der Julia unterstützt (z.B. Juno)
 - Als sogenanntes Notebook mit Jupyter.
@@ -9,38 +9,40 @@ Um Julia auszuführen gibt es verschieden Möglichkeiten:
 Jupyter Notebooks eignen sich um Berechnungen zu Dokumentieren und z.B. um Grafiken und Formeln zu erweitern, sprengen aber den Rahmen der LVA.
 Für Interessierte ist hier auf das Paket [IJulia.jl](https://github.com/JuliaLang/IJulia.jl)[^1] verwiesen, welches Julia für Jupyter Notebooks aktiviert.
 
-[^1]: <https://github.com/JuliaLang/IJulia.jl>
+[^1**: <https://github.com/JuliaLang/IJulia.jl>
 
 ## Die REPL
 
-Die REPL biete die rudimentärste Methode des Zugriffs aus Julia.
+Die REPL biete die rudimentärste Methode des Zugriffs auf Julia.
 Die Funktionalität, wie es auch im Namen REPL steckt, besteht darin:
-1. *Read*: Einen Befehl einzulesen
-2. *Eval*: Den eingelesenen Befehl auszuwerten
-3. *Print*: Das Ergebnis auszugeben
-4. *Loop*: Zurück zu 1. und auf den nächsten Befehl warten
+1. **R**ead: Einen Befehl einzulesen
+2. **E**val: Den eingelesenen Befehl auszuwerten
+3. **P**rint: Das Ergebnis auszugeben
+4. **L**oop: Zurück zu 1. und auf den nächsten Befehl warten
 
 Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in Juno geöffnet werden.
-<!-- Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt -->
-<!-- ![REPL Fenster direkt nach dem Start](../data/img/repl-01.png) -->
+Ausführen der Funktion `exit()` oder drücken von `Strg-D` schließt die REPL.
+
+Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt
+![REPL Fenster direkt nach dem Start](../data/img/repl-01.png)
 
 Nach dem Start steht der Cursor nach dem Text `julia> ` welcher Prompt genannt wird.
-Die REPL befindet sich jetzt im \enquote{Julian mode}. Das bedeutet jetzt können Julia-Befehle eingegeben und ausgewertet werden.
+Die REPL befindet sich jetzt im \enquote{Julian mode}. Das bedeutet jetzt können Julia Befehle eingegeben und ausgewertet werden.
 
-Julia kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
+Die REPL kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
 1. \enquote{Help mode} (`help?>`) durch `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
 2. Paketmanager (`(v1.1) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Funktionen installiert werden können.
-3. \enquote{Shell mode} (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem 
+3. \enquote{Shell mode} (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem.
 
-Der "Julian mode" ist immer durch drücken der Backspace-Taste erreichbar, wenn der Cursor direkt hinter der Prompt steht.
+Der "Julian mode" ist, wenn der Cursor direkt hinter der Prompt steht, immer durch drücken der Backspace-Taste erreichbar, 
 
 ## Ausführung als Skript
 
 Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`') kann über die Commandline ausgeführt werden.
 Je nach Betriebsystem ist diese über einen anderen Weg erreichbar:
-- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination windows+r (Run) und Eingabe von \enquote{cmd}, im erschienen Fenster, gefolgt von Enter erreichbar.
-- macOS: In macOS wird die Commandline Terminal genannt. Über die Spotlight-Suche (cmd+space) und Eingabe von \enquote{Terminal} gelangt man zu der richtigen App.
-- Linux: Linux-User sollte wissen wie sie zur Commandline gelangen.
+- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination `windows+r` (Run) und Eingabe von \enquote{cmd}, im erschienen Fenster, gefolgt von `Enter` erreichbar.
+- macOS: In macOS wird die Commandline Terminal genannt. Über die Spotlight-Suche (`cmd+space`) und Eingabe von \enquote{Terminal} gelangt man zu der richtigen App.
+- Linux: Linux User sollte wissen wie sie zur Commandline gelangen.
 
 Die Commandline ist wie die Julia REPL aufgebaut und funktioniert nach dem selben Prinzip.
 Die wichtigsten Befehle für die Navigation sind:
@@ -49,10 +51,10 @@ Die wichtigsten Befehle für die Navigation sind:
 - `ls`: Liste den Inhalt des aktuellen Verzeichnisses auf.
 Diese Befehle genügen zum Lösen der Aufgaben, je nach Betriebssystem sind aber noch sehr viele weitere verfügbar.
 
-Durch die Installation von Julia ist auch der Befehl `julia` Verfügbar.
+Durch die Installation von Julia ist wird der Befehl `julia` verfügbar.
 Soll ein Skript `mein-script.jl` ausgeführt werden, ist das durch eine Eingabe von `julia mein-script.jl` in der Commandline möglich.
 `mein-script.jl` ist dabei der Pfad zu der auszuführenden Datei.
-Bei dieser Angabe handelt es sich um einen sogenannte relativen Pfad, bezogen auf das aktuelle Verzeichnis.
+Bei dieser Angabe handelt es sich um einen sogenannte relativen Pfad, relativ bezogen auf das aktuelle Verzeichnis.
 Befindet sich die Datei in einem Unterordner `scripts` würde der Befehl
 - unter Windows: `julia scripts\mein-script.jl` und
 - unter macOS und Linux `julia scripts/mein-script.jl`
@@ -60,16 +62,20 @@ lauten.
 Das Gegenstück zu relativen Pfaden sind absolute Pfade.
 Ein absoluter Pfad bezieht sich immer auf das Laufwerk z.B. `C:\` oder `/`.
 
-Generell empfehlen wir, wenn möglich, mit relativen Pfaden zu arbeiten, da das Skript dann auf jeden Gerät ohne Anpassung der Pfade ausgeführt werden kann.
-Im folgenden Beispiel wird eine Datei `meinedatei.txt` einmal mit einem absoluten und einmal mit einem relativen Pfad geöffnet.
+Generell empfehlen wir mit relativen Pfaden zu arbeiten, da das Skript dann auf jedem Gerät ohne Anpassung der Pfade ausgeführt werden kann.
+Im folgenden Beispiel wird eine Datei `meinedatei.txt` mit einem absoluten und mit einem relativen Pfad geöffnet.
 
 ```julia; eval=false
-file = open("/Users/someuser/meinedatei.txt")
-file = open("meinedatei.txt")
+file = open("/Users/someuser/meinedatei.txt") # Absoluter Pfad unter Linux
+file = open("C:\\Benuter\\meinedatei.txt") # Absoluter Pfad unter Window
+file = open("meinedatei.txt") # Relativer Pfad
 ```
 
-Der absolute Pfad funktioniert nur dann, wenn auf jedem Gerät auf dem der Befehl ausgeführt wird auch der Ordner `/Users/someuser` vorhanden ist. 
+Die absoluten Pfad funktioniert nur dann, wenn auf jedem Gerät auf dem der Befehl ausgeführt wird auch der Ordner mit dem exakt gleichen Pfad vorhanden ist.
 Liegt `meinedatei.txt` allerdings immer im Verzeichnis in dem das Skript gestartet wird, kann die Datei beim relativen Pfad unabhängig vom Gerät gefunden werden.
+Im Windows Pfad wird als Trennzeichen `\\` verwendet, obwohl der Windows Pfad eigentlich nur einen einzelnen `\` enthält.
+Das ist erforderlich da `\` einen sogenannten \enquote{special character} einleitet. 
+Nähere Informationen zu diesem Thema werden im Abschnitt Strings gegeben.
 
 ## Juno Spezifika
 
@@ -78,6 +84,19 @@ Diese REPL unterstützt den vollen Funktionsumfang der Julia REPL.
 
 Neben der REPL sind Befehle auch direkt aus der Datei, die gerade editiert wird, heraus ausführbar.
 Durch Drücken von `Strg+Enter` unter Windows und Linux bzw. `Shift+Enter` unter macOS, kann die aktuelle Zeile an die REPL geschickt werden.
+Damit können schnell auch größere Codeblöcke ausgeführt werden, da die Funktion automatisch syntaktisch sinnvolle Zeilen aus der Umgebung gruppiert.
+
+```julia; eval=false
+function meine_funktion()
+    return 10
+end
+
+x = 10
+y = 12
+```
+
+Wird z.B. im oberen Beispiel die `Strg+Enter` bzw. `Shift+Enter` in der Zeile `return 10` gedrückt, werden auch die Zeile davor und danach ausgewertet.
+Im Gegensatz dazu wird beim Senden der Zeile `x = 10` nur diese Zeile ausgeführt.
 
 Auf der Website von [Juno](https://junolab.org/)[^2] sind weitere Funktionen in einer interaktiven Grafik erklärt.
 
