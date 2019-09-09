@@ -20,7 +20,7 @@ Meist ist dadurch bereits ohne Kommentare ersichtlich, wofür die Variable verwe
 
 Variablen-Namen können beliebig lange sein und nahezu alle Unicode-Zeichen enthalten, dürfen allerdings nicht mit Zahlen beginnen.
 Großbuchstaben können in Variablen-Namen verwendet werden, meist kommen aber nur Kleinbuchstaben zum Einsatz.
-Unicode-Zeichen, wie zum Beispiel `α`, können in der Julia REPL durch Eingeben von Abkürzungen ähnlich zu LaTeX und drücken der TAB-Taste erstellt werden (z. B. `\alpha TAB`).
+Unicode-Zeichen, wie zum Beispiel `α`, können in der Julia REPL durch Eingeben von Abkürzungen ähnlich zu \LaTeX{} und drücken der TAB-Taste erstellt werden (z. B. `\alpha TAB`).
 Bei aus mehreren Wörten zusammengesetzten Variablen-Namen bietet es sich an, die Wörter durch einen Unterstrich, `_`, zu trennen (z. B. `sum_of_squares`).
 
 Wird ein ungültiger Name für eine Variable verwendet, tritt ein *Syntax Error* auf:

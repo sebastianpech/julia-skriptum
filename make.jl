@@ -59,7 +59,7 @@ cmd_single_arg(cmd) = Regex("{\\\\textbackslash}(?<cmd>$cmd)\\\\{(?<attrib>.*?)\
 
 forward_this = [
     cmd_single_arg("enquote"),
-    cmd_single_arg("latex"),
+    cmd_single_arg("LaTeX"),
 ]
 
 @info "Replacing commands for forwarding"
