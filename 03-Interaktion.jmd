@@ -2,33 +2,85 @@
 
 Um Julia auszuführen gibt es verschieden Möglichkeiten:
 - Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in einer Konsole.
-- Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]`.
+- Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]` in der Commandline.
 - In einem Editor der Julia unterstützt (z.B. Juno)
 - Als sogenanntes Notebook mit Jupyter.
 
-## REPL
+Jupyter Notebooks eignen sich um Berechnungen zu Dokumentieren und z.B. um Grafiken und Formeln zu erweitern, sprengen aber den Rahmen der LVA.
+Für Interessierte ist hier auf das Paket [IJulia.jl](https://github.com/JuliaLang/IJulia.jl)[^1] verwiesen, welches Julia für Jupyter Notebooks aktiviert.
+
+[^1]: <https://github.com/JuliaLang/IJulia.jl>
+
+## Die REPL
 
 Die REPL biete die rudimentärste Methode des Zugriffs aus Julia.
-Die Funktionalität, wie es auch im Namen REPL steckt besteht darin:
+Die Funktionalität, wie es auch im Namen REPL steckt, besteht darin:
 1. *Read*: Einen Befehl einzulesen
 2. *Eval*: Den eingelesenen Befehl auszuwerten
 3. *Print*: Das Ergebnis auszugeben
 4. *Loop*: Zurück zu 1. und auf den nächsten Befehl warten
 
-Die REPL kann durch Starten von Julia über das Programm-Icon oder den Befehl `julia` geöffnet werden.
-Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt
+Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in Juno geöffnet werden.
+<!-- Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt -->
+<!-- ![REPL Fenster direkt nach dem Start](../data/img/repl-01.png) -->
 
-![REPL Fenster direkt nach dem Start](../data/img/repl-01.png)
-
-Der Cursor steht nach dem Text `julia> ` welcher Prompt genannt wird.
-Die REPL befindet sich jetzt im "Julian mode". Das bedeutet jetzt können Julia-Befehle eingegeben und ausgewertet werden.
+Nach dem Start steht der Cursor nach dem Text `julia> ` welcher Prompt genannt wird.
+Die REPL befindet sich jetzt im \enquote{Julian mode}. Das bedeutet jetzt können Julia-Befehle eingegeben und ausgewertet werden.
 
 Julia kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
-1. "Help mode" (`help?>`) durch `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
+1. \enquote{Help mode} (`help?>`) durch `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
 2. Paketmanager (`(v1.1) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Funktionen installiert werden können.
-3. "Shell mode" (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem 
+3. \enquote{Shell mode} (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem 
 
 Der "Julian mode" ist immer durch drücken der Backspace-Taste erreichbar, wenn der Cursor direkt hinter der Prompt steht.
 
-## Juno
-## Jupyter
+## Ausführung als Skript
+
+Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`') kann über die Commandline ausgeführt werden.
+Je nach Betriebsystem ist diese über einen anderen Weg erreichbar:
+- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination windows+r (Run) und Eingabe von \enquote{cmd}, im erschienen Fenster, gefolgt von Enter erreichbar.
+- macOS: In macOS wird die Commandline Terminal genannt. Über die Spotlight-Suche (cmd+space) und Eingabe von \enquote{Terminal} gelangt man zu der richtigen App.
+- Linux: Linux-User sollte wissen wie sie zur Commandline gelangen.
+
+Die Commandline ist wie die Julia REPL aufgebaut und funktioniert nach dem selben Prinzip.
+Die wichtigsten Befehle für die Navigation sind:
+- `pwd`: Gibt das aktuelle Verzeichnis aus (Auch \enquote{Working Directory} genannt).
+- `cd pfad`: Wechselt in das Verzeichnis `pfad`.
+- `ls`: Liste den Inhalt des aktuellen Verzeichnisses auf.
+Diese Befehle genügen zum Lösen der Aufgaben, je nach Betriebssystem sind aber noch sehr viele weitere verfügbar.
+
+Durch die Installation von Julia ist auch der Befehl `julia` Verfügbar.
+Soll ein Skript `mein-script.jl` ausgeführt werden, ist das durch eine Eingabe von `julia mein-script.jl` in der Commandline möglich.
+`mein-script.jl` ist dabei der Pfad zu der auszuführenden Datei.
+Bei dieser Angabe handelt es sich um einen sogenannte relativen Pfad, bezogen auf das aktuelle Verzeichnis.
+Befindet sich die Datei in einem Unterordner `scripts` würde der Befehl
+- unter Windows: `julia scripts\mein-script.jl` und
+- unter macOS und Linux `julia scripts/mein-script.jl`
+lauten.
+Das Gegenstück zu relativen Pfaden sind absolute Pfade.
+Ein absoluter Pfad bezieht sich immer auf das Laufwerk z.B. `C:\` oder `/`.
+
+Generell empfehlen wir, wenn möglich, mit relativen Pfaden zu arbeiten, da das Skript dann auf jeden Gerät ohne Anpassung der Pfade ausgeführt werden kann.
+Im folgenden Beispiel wird eine Datei `meinedatei.txt` einmal mit einem absoluten und einmal mit einem relativen Pfad geöffnet.
+
+```julia; eval=false
+file = open("/Users/someuser/meinedatei.txt")
+file = open("meinedatei.txt")
+```
+
+Der absolute Pfad funktioniert nur dann, wenn auf jedem Gerät auf dem der Befehl ausgeführt wird auch der Ordner `/Users/someuser` vorhanden ist. 
+Liegt `meinedatei.txt` allerdings immer im Verzeichnis in dem das Skript gestartet wird, kann die Datei beim relativen Pfad unabhängig vom Gerät gefunden werden.
+
+## Juno Spezifika
+
+Juno enthält eine integrierte REPL, die über Packages > Juno > Show Console geöffnet werden kann.
+Diese REPL unterstützt den vollen Funktionsumfang der Julia REPL.
+
+Neben der REPL sind Befehle auch direkt aus der Datei, die gerade editiert wird, heraus ausführbar.
+Durch Drücken von `Strg+Enter` unter Windows und Linux bzw. `Shift+Enter` unter macOS, kann die aktuelle Zeile an die REPL geschickt werden.
+
+Auf der Website von [Juno](https://junolab.org/)[^2] sind weitere Funktionen in einer interaktiven Grafik erklärt.
+
+[^2]: <https://junolab.org>
+
+

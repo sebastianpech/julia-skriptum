@@ -62,4 +62,4 @@ Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (
 Durch Installation des Pakets `uber-juno` (am einfachsten über die Suchleiste) kann Juno in Atom verwendet werden.
 Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter Packages > Julia > Settings im Feld \enquote{Julia Path} der tatsächliche Dateipfad angegeben werden.
 
-Wenn die Installation funktioniert hat, kann unter Packages > Julia > Open Console die REPL geöffnet und durch drücken der Taste `Enter` eine Julia-Session gestartet werden.
+Wenn die Installation funktioniert hat, kann unter Packages > Juno > Open Console die REPL geöffnet und durch drücken der Taste `Enter` eine Julia-Session gestartet werden.
