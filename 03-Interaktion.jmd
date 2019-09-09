@@ -9,7 +9,7 @@ Um Julia auszuführen gibt es verschieden Möglichkeiten:
 Jupyter Notebooks eignen sich um Berechnungen zu Dokumentieren und z.B. um Grafiken und Formeln zu erweitern, sprengen aber den Rahmen der LVA.
 Für Interessierte ist hier auf das Paket [IJulia.jl](https://github.com/JuliaLang/IJulia.jl)[^1] verwiesen, welches Julia für Jupyter Notebooks aktiviert.
 
-[^1**: <https://github.com/JuliaLang/IJulia.jl>
+[^1]: <https://github.com/JuliaLang/IJulia.jl>
 
 ## Die REPL
 
@@ -31,14 +31,14 @@ Die REPL befindet sich jetzt im \enquote{Julian mode}. Das bedeutet jetzt könne
 
 Die REPL kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
 1. \enquote{Help mode} (`help?>`) durch `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
-2. Paketmanager (`(v1.1) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Funktionen installiert werden können.
+2. Paketmanager (`(v1.2) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Funktionen installiert werden können.
 3. \enquote{Shell mode} (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem.
 
-Der "Julian mode" ist, wenn der Cursor direkt hinter der Prompt steht, immer durch drücken der Backspace-Taste erreichbar, 
+Der \enquote{Julian mode} ist, wenn der Cursor direkt hinter der Prompt steht, immer durch drücken der Backspace-Taste erreichbar, 
 
 ## Ausführung als Skript
 
-Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`') kann über die Commandline ausgeführt werden.
+Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`) kann über die Commandline ausgeführt werden.
 Je nach Betriebsystem ist diese über einen anderen Weg erreichbar:
 - Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination `windows+r` (Run) und Eingabe von \enquote{cmd}, im erschienen Fenster, gefolgt von `Enter` erreichbar.
 - macOS: In macOS wird die Commandline Terminal genannt. Über die Spotlight-Suche (`cmd+space`) und Eingabe von \enquote{Terminal} gelangt man zu der richtigen App.
@@ -102,4 +102,112 @@ Auf der Website von [Juno](https://junolab.org/)[^2] sind weitere Funktionen in 
 
 [^2]: <https://junolab.org>
 
+## Spezielle REPL-Modes
 
+### Hilfe
+
+Julia Quellcode ist selbst-dokumentiert. Das bedeutet, dass die Beschreibung und Hilfe für Funktionen direkt in den Code geschrieben wird. 
+Beim Programmieren muss dabei eine Richtlinie eingehalten werden, damit die Hilfe für eine Funktion vom Benutzer auch aufgerufen werden kann (siehe Docstrings im Abschnitt Funktionen).
+
+Wie schon im Abschnitt zur Interaktion beschrieben, gibt es einen eigenen REPL-Mode der die Hilfe für Funktionen anzeigt.
+Dieser Modus kann durch Eingabe von `?` direkt nach `julia>` aktiviert werden. 
+Die Prompt sollte sich dann in `help?>` ändern. 
+Jetzt kann jede beliebige Funktionen (z.B. `abs` für den Absolutwert einer Zahl) eingegeben werden.
+Durch bestätigen mit Enter erscheint die folgende Ausgabe:
+
+```julia; term=true; eval=false
+help?> abs
+search: abs abs2 abspath AbstractSet abstract type AbstractChar AbstractDict AbstractFloat AbstractArray AbstractRange AbstractString AbstractVector
+
+  abs(x)
+
+  The absolute value of x.
+
+  When abs is applied to signed integers, overflow may occur, resulting in the return of a negative value. This overflow occurs only when abs is applied to
+  the minimum representable value of a signed integer. That is, when x == typemin(typeof(x)), abs(x) == x < 0, not -x as might be expected.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> abs(-3)
+  3
+
+  julia> abs(1 + im)
+  1.4142135623730951
+
+  julia> abs(typemin(Int64))
+  -9223372036854775808
+```
+
+Die Hilfe zu den Funktionen ist auch unter [docs.julialang.org](https://docs.julialang.org) erreichbar. Dort wurde die Dokumentation gesammelt und um nützliche Tipps und Erklärungen erweitert.
+
+Falls Probleme oder Unklarheiten bei der Verwendung von Julia auftreten, gibt es verschiedene Kanäle über die Fragen gestellt werden können:
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/julia)[^3]
+- [Discourse](https://discourse.julialang.org/)[^4]
+- [Github](https://github.com/)[^5]
+
+Github ist die zentrale Plattform auf der Julia Pakete (und auch Julia selbst) verwaltet werden. Findet man eine Fehler kann man dort eine Nachricht schreiben und direkt mit Entwicklerinnen Kontakt aufnehmen.
+
+[^3]: <https://stackoverflow.com/questions/tagged/julia>
+[^4]: <https://discourse.julialang.org/>
+[^5]: <https://github.com/>
+
+### Paketmanager
+
+Julia zeichnet sich durch eine sehr aktive Community aus, die Basiskomponenten der Sprache laufen um neue Funktionen erweitert.
+Solche Erweiterungen werden durch Pakete zu Julia hinzugefügt.
+
+Der Paketmanager kann aus der REPL durch Eingabe von `]` direkt nach `julia>` aktiviert werden.
+Die Prompt ändert sich dann in `(v1.2) pkg>`.
+Der Paketmanager ist ein sehr mächtiges Tool dessen Funktionsumfang unter [Standard Library/Pkg](https://docs.julialang.org/en/v1/stdlib/Pkg/) dokumentiert ist.
+Im Zuge der LVA beschränken wir uns auf installieren, aktualisieren und entfernen von Paketen.
+
+Ein Paket z.B. `Example.jl` kann durch `add` installiert werden:
+```julia;term=true; eval=false
+(v1.2) pkg> add Example
+  Updating registry at `~/.julia/registries/General`
+  Updating git-repo `https://github.com/JuliaRegistries/General.git`
+ Resolving package versions...
+ Installed Example ─ v0.5.3
+  Updating `~/.julia/environments/v1.2/Project.toml`
+  [7876af07] + Example v0.5.3
+  Updating `~/.julia/environments/v1.2/Manifest.toml`
+  [7876af07] + Example v0.5.3
+```
+
+Gibt es neue Versionen von Pakete können diese gesammelt mit `update` aktualisiert werden:
+```julia;term=true; eval=false
+(v1.2) pkg> update
+  Updating registry at `~/.julia/registries/General`
+  Updating git-repo `https://github.com/JuliaRegistries/General.git`
+  Updating git-repo `https://github.com/JunoLab/Atom.jl.git`
+ Resolving package versions...
+  Updating `~/.julia/environments/v1.2/Project.toml`
+ [no changes]
+  Updating `~/.julia/environments/v1.2/Manifest.toml`
+ [no changes]
+```
+
+Soll ein Paket entfernt werden kann der Befehl `rm` verwendet werden:
+```julia;term=true; eval=false
+(v1.2) pkg> rm Example
+  Updating `~/.julia/environments/v1.2/Project.toml`
+  [7876af07] - Example v0.5.3
+  Updating `~/.julia/environments/v1.2/Manifest.toml`
+  [7876af07] - Example v0.5.3
+```
+
+## Aufgaben
+
+### Pakete für die LVA
+
+Installiere die folgenden Pakete:
+- CSV.jl
+- DataFrames.jl
+- Plots.jl
+- DelimitedFiles.jl
+- Unitful.jl
+- Measurements.jl
+- Debugger.jl
+- RDatasets.jl

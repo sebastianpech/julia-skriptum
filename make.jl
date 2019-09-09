@@ -14,7 +14,6 @@ Weave.WeaveMarkdown.Markdown._latexescape_chars['"'] = "\"{}"
 files = ["01-Intro.jmd",
          "02-Installation.jmd",
          "03-Interaktion.jmd",
-         "04-Hilfe.jmd",
          "05-Kommentare.jmd",
          "06-Variablen.jmd",
          "07-Datentypen.jmd",
