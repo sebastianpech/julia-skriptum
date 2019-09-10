@@ -200,9 +200,10 @@ Soll ein Paket entfernt werden kann der Befehl `rm` verwendet werden:
 
 ## Aufgaben
 
-### Pakete für die LVA
+### Installation der für die LVA benötigten Pakete
 
-Installiere die folgenden Pakete:
+Die folgenden Pakete sollen mit dem Paketmanager installiert werden.
+
 - CSV.jl
 - DataFrames.jl
 - Plots.jl
@@ -211,3 +212,10 @@ Installiere die folgenden Pakete:
 - Measurements.jl
 - Debugger.jl
 - RDatasets.jl
+
+Die Aufgabe kann durch Kontrolle eines leeren Codeblocks kontrolliert werden:
+
+```julia; eval=false
+@Aufgabe "3.5.1" begin
+end
+```
