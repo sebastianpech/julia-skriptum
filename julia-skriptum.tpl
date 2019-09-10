@@ -9,6 +9,7 @@ twoside]{scrartcl}
 \setmonofont[Path = ../font/,Scale=MatchLowercase]{DejaVuSansMono}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{float}
 
 \usepackage[left=2.0cm,right=2.0cm,top=1.5cm,bottom=2cm,includehead,marginparwidth=2.5cm,marginparsep=1mm]{geometry}
 \usepackage{csquotes}
@@ -88,6 +89,10 @@ automark
   citecolor=blue,
   urlcolor=blue
 }
+
+\makeatletter
+\renewcommand*{\fps@figure}{H}
+\makeatother
 
 \title{Programmieren im Bauingenieurwesen}
 \subtitle{Einführung und Grundlagen}
