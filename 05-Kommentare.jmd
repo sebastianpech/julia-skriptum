@@ -14,7 +14,7 @@ A = ( d^2 * π ) / 4  # Fläche eines Kreises
 Alle Zeichen ab dem `#` bis zum Zeilenende werden ignoriert und haben keine Auswirkung auf die Programmausführung.
 
 Am sinnvollsten sind Kommentare, die nicht offensichtliche Eigenschaften des Programms erklären.
-Dieser Kommentar ist beispielsweise redundant und nutzlos:
+Dieser Kommentar ist beispielsweise redundant und nicht sinnvoll:
 ```julia; results="hidden"
 d = 10  # weise d den Wert 10 zu
 ```

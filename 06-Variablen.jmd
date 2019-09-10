@@ -9,12 +9,21 @@ n = 19
 α = 17.32
 ```
 Die erste Zeile weist der Variable `message` ein `String` zu, die zweite Zeile übergibt ein `Integer` an die Variable `n` und die dritte Zeile weist `α` eine Zahl vom Typ `Float` zu.
+Einige relevante Datentypen werden später im Abschnitt Datentypen genauer beschrieben.
 
 Nach der Zuweisung von Variablen können diese im Code verwendet werden:
 ```julia; term=true
 a = 1; b = 2;
 summe = a + b
 ```
+Im ersten Ausdruck dieses Beispiels werden den Variablen `a` und `b` ganzzahlige Werte zugewiesen.
+Die beiden Semikola (`;`) haben dabei unterschiedliche Funktionen.
+Das erste Semikolon trennt die beiden Zuweisungen voneinander.
+Auf diese Weise können beide Zuweisungen in einer Zeile erfolgen.
+Das abschließende Semikolon unterbindet die Ausgabe des letzten Wertes in der REPL.
+Ohne dieses Semikolon würde nach Eingabe des ersten Ausdruckes der Wert `2` in der REPL ausgegeben werden.
+Um das Skriptum etwas kompakter zu halten, wird in vielen Beispiel diese Schreibweise verwendet.
+
 Generell sollten aussagekräftige Namen für Variablen gewählt werden.
 Meist ist dadurch bereits ohne Kommentare ersichtlich, wofür die Variable verwendet wird.
 

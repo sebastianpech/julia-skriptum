@@ -58,7 +58,7 @@ Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der We
 [^3]: <https://atom.io>
                                                                          
 Nach der Installation von Atom muss *Juno* in Atom installiert werden.
-Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (`Strg+,` oder `Cmd+,` bzw. über die Menüleiste) und dort das Installations-Panel auszuwählen.
+Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (`Strg`+`,` oder `Cmd`+`,` bzw. über die Menüleiste) und dort das Installations-Panel auszuwählen.
 Durch Installation des Pakets `uber-juno` (am einfachsten über die Suchleiste) kann Juno in Atom verwendet werden.
 Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter Packages > Julia > Settings im Feld \enquote{Julia Path} der tatsächliche Dateipfad angegeben werden.
 
