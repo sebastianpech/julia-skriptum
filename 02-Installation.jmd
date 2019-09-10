@@ -12,9 +12,9 @@ Folgende Schritte sind für die Installation erforderlich:
 2. Die heruntergeladene Datei ausführen, um Julia zu entpacken.
 Im entpackten Ordner befindet sich die Datei `julia`.
 Diese kann entweder durch Doppelklick oder über die Commandline durch Eingabe des Befehls `julia` ausgeführt werden.
-Sollte bei Aufruf in der Commandline ein Fehler `Der Befehl "julia" ist entweder falsch geschrieben oder konnte nicht gefunden werden` auftreten, wurde der Installationspfad wahrscheinlich in der Installation nicht zur Systemvariable `PATH` hinzugefügt.
+Sollte bei Aufruf in der Commandline ein Fehler \enquote{`Der Befehl "julia" ist entweder falsch geschrieben oder konnte nicht gefunden werden`} auftreten, wurde der Installationspfad wahrscheinlich bei der Installation nicht zur Systemvariable `PATH` hinzugefügt.
 Windows kann die Datei `julia` dann nicht finden.
-Unter von [Java](https://www.java.com/de/download/help/path.xml)[^2] befindet sich eine kurze Erklärung zur Einrichtung der Systemvariable `PATH`.
+Unter diesem [Link](https://www.java.com/de/download/help/path.xml)[^2] befindet sich eine kurze Erklärung zur Einrichtung der Systemvariable `PATH`.
 Der Punkt \enquote{Geben Sie ... den Wert der Umgebungvariable PATH an.} in dieser Erklärung ist dabei folgendermaßen zu verstehen:
 Unter Path sind alle Pfade gespeichert, die bei der Eingabe eines Befehls in der Commandline, nach übereinstimmenden Befehlen durchsucht werden.
 Die Pfade sind dabei durch Semikola `;` voneinander getrennt.
