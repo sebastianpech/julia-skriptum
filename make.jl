@@ -52,13 +52,20 @@ for f in files
 end
 
 #### Stage 2
-# Replace all escaped commands that should actually be forwarded.
+# Replace escaped commands that should actually be forwarded and special unicode characters.
 
 cmd_single_arg(cmd) = Regex("{\\\\textbackslash}(?<cmd>$cmd)\\\\{(?<attrib>.*?)\\\\}") => s"\\\g<cmd>{\g<attrib>}"
+string_replace(uni,rep) = uni=>rep
 
 forward_this = [
     cmd_single_arg("enquote"),
     cmd_single_arg("LaTeX"),
+    # For dataframe rendering
+    string_replace("│","|"),
+    string_replace("─","-"),
+    string_replace("├","|"),
+    string_replace("┼","+"),
+    string_replace("┤","|"),
 ]
 
 @info "Replacing commands for forwarding"

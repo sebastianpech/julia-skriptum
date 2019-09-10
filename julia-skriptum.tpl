@@ -6,7 +6,7 @@ twoside]{scrartcl}
 {{{:juliaversion}}}
 
 \usepackage{fontspec}
-\setmonofont[Path = ../font/,Scale=MatchLowercase]{DejaVuSansMono}
+\setmonofont[Path = ../font/,Scale=MatchLowercase,Mapping=tex-text]{DejaVuSansMono}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
@@ -81,6 +81,10 @@ automark
 \setlength{\parskip}{1.2ex}
 
 {{{ :stylesheet }}}
+
+\lstset{
+literate={-}{-}1
+}
 
 \hypersetup {   pdfauthor = {Sebastian Pech, Raphael Suda},
   pdftitle={Programmieren im Bauingenieurwesen},
