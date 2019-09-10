@@ -75,39 +75,81 @@ norm([1,2,3])
 
 ## Aufgaben
 
+### Lösbarkeit von linearen Gleichungssystemen
+
+Es soll eine Funktion definiert werden, die `true` zurück gibt falls ein lineares Gleichungssystem lösbar ist (nicht zwingend eindeutig) und `false` zurück gibt falls das System nicht lösbar ist.
+
+```julia; echo=false; results="hidden"
+function lösbar(A,b)
+    rank(A) == rank(hcat(A,b))
+end
+```
+
+Beispiele:
+```julia; term=true
+lösbar([1 -1
+        2  3],[22, 11])
+lösbar([1 -1
+        2  3
+        9 -1],[22, 11, 3])
+lösbar([1 3
+        2  8
+        3 11],[9, -3, 6])
+lösbar([1 1
+        2 2],[2, 3])
+```
+
 ### Löse das Gleichungssystem 
 
+Es soll das folgende Gleichungssystem in Matrixform gebracht und gelöst werden.
+
 ```math
-   x - y + z = 22\;\text{und}\;2x + 3y = 11\;\text{und}\;10x-y/2+5z=0
+   x - y + z = 22
+```
+```math
+   2x + 3y = 11
+```
+```math
+   10x-y/2+5z=0
 ```
 
-```{julia;}
-A = [1 -1 1
-     2  3 0
-     10 -0.5 5]
-@show det(A)
-c = [22, 11, 0]
-@show A\c
+Für die Kontrolle muss die allgemeine Form der Kontrollfunktion verwendet werden.
+```julia; eval=false
+@Aufgabe "10.3.2" begin
+    # Code einfügen.
+    # Hier, in der letzten Zeile, muss der Lösungsvektor berechnet werden
+end
 ```
 
-### Verwende die Funktionen `eigvals` und `eigvecs` 
+### Eigenwerte und Eigenvektoren
 
-um die obige Matrix zu Zerlegen und kontrolliere das Ergebnis für den ersten Eigenvektor und 
-in dem die Matrix durch die Eigenvektoren und Eigenwerte wieder hergestellt wird.
+Mit den Funktion `eigvals` und `eigvecs` können Eigenwerte bzw. Eigenvektoren berechnet werden.
+Es soll eine Funktion geschrieben werden die aus Eigenwerten und Eigenvektoren, in dem Format wie sie von den beiden Funktionen für eine Matrix ausgegeben werden, wieder die Matrix rekonstruieren.
 
-```{julia;}
-A = [1 -1 1
-     2  3 0
-     10 -0.5 5]
-λ = eigvals(A)
-ϕ = eigvecs(A)
-@show A*ϕ[:,1] ≈ λ[1]*ϕ[:,1]
-@show ϕ*Diagonal(λ)*inv(ϕ) ≈ A
+```julia; echo=false; results="hidden"
+function rekonstruiere(λ,ϕ)
+    ϕ*Diagonal(λ)*inv(ϕ)
+end
 ```
 
-### Berechne den Winkel zwischen den Vektoren v1 und v2
+Beispiele:
+```julia; term=true
+A = [1 -1 1; 2  3 0; 10 -0.5 5]; λ = eigvals(A); ϕ = eigvecs(A);
+rekonstruiere(λ,ϕ)
+```
+### Winkel zwischen den Vektoren
 
-```julia
-v1 = [1,5]; v2 = [3,7]
-acos(v1⋅v2/(norm(v1)*norm(v2)))
+Es soll eine Funktion definiert werden, die den Winkel in Radiant zwischen zwei Vektoren beliebiger Dimension berechnet.
+
+```julia; echo=false; results="hidden"
+function winkel(v1,v2)
+    acos(v1⋅v2/(norm(v1)*norm(v2)))
+end
+```
+
+Beispiele:
+```julia; term=true
+winkel([1,5],[3,7])
+winkel([2,3,-1],[8,-1,2])
+winkel([1,0,0],[1,0,0])
 ```
