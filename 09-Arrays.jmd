@@ -187,7 +187,7 @@ Alternativ kann auch ein Zeilenumbruch anstatt der Semikola eingefügt werden.
 ```julia; results="hidden"
 a = [1 2; 3 4]
 b = [4 2
-	 3 1]
+     3 1]
 ```
 
 Eine `m`x`n`-Matrix hat `m` Zeilen und `n` Spalten.
@@ -303,7 +303,7 @@ Schreibe eine Funktion `connect_three` die drei Arrays als Argumente nimmte und 
 Die Funktion muss nur für Arrays mit gleichem Datentypen funktionieren (z.B. dreimal Array{String,1} oder dreimal Array{Any,1}).
 ```julia
 function connect_three(a,b,c)
-	return append!(append!(a,b),c)
+    return append!(append!(a,b),c)
 end
 ```
 ```julia;term=true
@@ -317,7 +317,7 @@ connect_three(a,b,c)
 Schreibe eine Funktion `interior` die ein Array als Argument nimmt und ein neues Array zurückgibt, das alle Werte bis auf den ersten und  den letzten enthält.
 ```julia
 function interior(a)
-	return a[2:end-1]
+    return a[2:end-1]
 end
 ```
 ```julia;term=true
@@ -330,7 +330,7 @@ res2 = interior(res1)
 Schreibe eine Funktion `issort` die ein Array als Argument nimmt, überprüft ob dieses Array sortiert ist und dementsprechend `true` oder `false` zurückgibt.
 ```julia
 function issort(a)
-	return a == sort(a)
+    return a == sort(a)
 end
 ```
 ```julia;term=true
@@ -346,7 +346,7 @@ Groß- und Kleinschreibung soll dabei nicht berücksichtigt werden (`Stein` ist 
 Zwei Wörter sind Anagramme, wenn die Buchstaben eines Wortes durch Umordnen das zweite Wort ergeben.
 ```julia
 function isanagram(s1, s2)
-	return sort(collect(lowercase(s1))) == sort(collect(lowercase(s2)))
+    return sort(collect(lowercase(s1))) == sort(collect(lowercase(s2)))
 end
 ```
 ```julia;term=true
@@ -358,7 +358,7 @@ isanagram("Stein","niest")
 Schreibe eine Funktion `dict_index(d,n)` die ein Dict `d` und eine Int-Zahl `n` als Argumente nimmt und das `n`-te Element dieses Dicts, sortiert nach den keys zurückgibt.
 ```julia
 function dict_index(d, n)
-	return d[sort(collect(keys(d)))[n]]
+    return d[sort(collect(keys(d)))[n]]
 end
 ```
 ```julia;term=true
@@ -370,11 +370,11 @@ dict_index(d, 2)
 Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als return value zurückgibt.
 ```julia
 function dict_merge(d1, d2)
-	k = collect(keys(d1))
-	append!(k,collect(keys(d2)))
-	v = collect(values(d1))
-	append!(v,collect(values(d2)))
-	return Dict(zip(k,v))
+    k = collect(keys(d1))
+    append!(k,collect(keys(d2)))
+    v = collect(values(d1))
+    append!(v,collect(values(d2)))
+    return Dict(zip(k,v))
 end
 ```
 ```julia;term=true
@@ -387,7 +387,7 @@ dict_merge(d1, d2)
 Schreibe eine Funktion `tuple_append` die zwei Tuples als Argumente nimmt, das zweite an das erste anhängt und as zusammengefügte Tuple als return value zurückgibt.
 ```julia
 function tuple_append(t1, t2)
-	return Tuple(append!(collect(t1),collect(t2)))
+    return Tuple(append!(collect(t1),collect(t2)))
 end
 ```
 ```julia;term=true

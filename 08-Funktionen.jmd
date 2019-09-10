@@ -96,13 +96,13 @@ Diese Dokumentation erfolgt durch sogenannte Docstrings direkt vor der Funktions
 Ein Docstring wird durch drei einfache Anführungszeichen begrenzt und kann folgendermaßen aussehen:
 ```julia
 """
-	my_square(x)
+    my_square(x)
 
 Schreibe "Quadrat von x wird berechnet..." in die REPL und gib das Quadrat von x zurück.
 """
 function my_square(x)
-	println("Quadrat von $(x) wird berechnet...")
-	return x^2
+    println("Quadrat von $(x) wird berechnet...")
+    return x^2
 end
 ```
 
@@ -126,7 +126,7 @@ Auf eine Variable in der global scope kann auch in einer local scope zugegriffen
 Umgekehrt ist es nicht möglich in der global scope auf eine Variable einer local scope zuzugreifen:
 ```julia
 function f(x)
-	a = x^2
+    a = x^2
 end
 ```
 ```julia;term=true
@@ -140,8 +140,8 @@ Nachdem die Funktion ausgeführt wurde, werden alle Variablen der loacal scope d
 Nur noch der return value bleibt im Speicher (sofern dieser einer Variable zugewiesen wird).
 ```julia
 function g(x)
-	v = "fuer immer verloren"
-	x
+    v = "fuer immer verloren"
+    x
 end
 ```
 ```julia;term=true
@@ -178,7 +178,7 @@ Mehr Informationen zu Methoden und Multiple Dispatch gibt es in der Dokumentatio
 Schreibe eine Funktion `print_three`, die ein beliebiges Argument dreimal in einer Zeile printed.
 ```julia
 function print_three(a)
-	println(string(a," ",a," ",a))
+    println(string(a," ",a," ",a))
 end
 ```
 ```julia;term=true
@@ -191,7 +191,7 @@ Schreibe eine Funktion `verkette(f,g,x)`, die die beiden Funktionen `f` und `g` 
 Die Ausgewertete Funktion soll als return value zurückgegeben werden.
 ```julia
 function verkette(f, g, x)
-	return f(g(x))
+    return f(g(x))
 end
 ```
 ```julia;term=true
@@ -217,9 +217,9 @@ kreis_umfang(3)
 Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Fläche und Radius dieses Kreises printed.
 ```julia
 function kreis(r)
-	println("r = $(r)")
-	println("A = $(kreis_flaeche(r))")
-	println("U = $(kreis_umfang(r))")
+    println("r = $(r)")
+    println("A = $(kreis_flaeche(r))")
+    println("U = $(kreis_umfang(r))")
 end
 ```
 ```julia;term=true
