@@ -96,7 +96,7 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 In diesem Zusammenhang kann auch die Funktion `join` hilfreich sein.
 Diese wird allerdings erst im Kapitel *Arrays* erklärt.
 
-Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^1] und in der Dokumentation unter [Manual/Strings](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/strings.html) erläutert.
+Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^1] und in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) erläutert.
 
 [^1]: [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)
 ## Zahlen

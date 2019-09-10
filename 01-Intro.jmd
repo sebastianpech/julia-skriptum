@@ -1,4 +1,4 @@
-# Intro
+# Einführung und Vorwort
 
 Diese Lehrunterlagen dienen der Unterstützung bei der Lehrveranstaltung (LVA) Programmieren im Bauingenieurwesen. 
 Alle Inhalte die in der LVA besprochen werden, sind chronologisch geordnet in diesem Dokument gelistet und durch nützliche Informationen und Beispiele ergänzt. 
@@ -42,11 +42,98 @@ Da MATLAB in anderen LVAs verwendet wird und wir nicht wollen, dass Programmiera
 Julia ist ebenfalls frei verfügbar und hat eine zu MATLAB sehr ähnliche Syntax.
 Das und das stringente Sprachdesign sind für uns Grund genug Julia in dieser LVA zu verwenden.
 
-<!-- Auf gemeinsame Sprachkonstrukte hinweisen -->
-<!-- Was kann ich machen wenn ich mit python oder matlab in kontakt komme -->
-<!-- Wie werden die Lehrunterlagen verwendet -->
-<!-- wie wird das kontrollprogramm für die hausaufgaben verwendet -->
-<!-- ## Begriffe -->
-<!-- was ist ein skript, was ist eine funktion, usw ... -->
-<!-- Erklärung der Formatierung (Befehle, Ausgabe, ...) -->
-<!-- Viele der Begriffe in Englisch, da es keine sinvolle, direkte Übersetzung ins Deutsche gibt -->
+Die syntaktischen Unterschiede von MATLAB, Python und Julia sind in diesem [Cheatsheet](https://cheatsheets.quantecon.org/)[^1] grob zusammengefasst.
+Wir empfehlen es als erste Hilfe zur Hand zu nehmen, sollte es notwendig sein ein Programm nicht in Julia zu schreiben.
+
+[^1]: <https://cheatsheets.quantecon.org>
+
+## Lehrunterlagen
+
+Die Unterlagen wurden an einigen Stellen um nützliche Verweise auf weiterführende Informationen oder Quellen erweitert.
+Grundsätzlich werden zwei Arten von Links unterschieden:
+Verweise auf die Julia Dokumentation unter <https://docs.julialang.org> werden im Text immer durch Angabe der Abschnittsnamen gemacht.
+Links die nicht auf die Dokumentation verweisen, werden immer mit einer zusätzlichen Fußnote angeben.
+Beispielsweise sind weiter Informationen zu Strings in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) oder auf der Website [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^2] zu finden
+
+[^2]: [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)
+
+Damit können die Links sowohl in der pdf-Version als auch in der Printversion geöffnet werden.
+
+## Kontrollprogramm
+
+Zusätzlich zu den Unterlagen gibt es ein Kontrollprogramm, mit dem die Aufgaben zu den einzelnen Abschnitten kontrolliert werden können.
+Das Programm wird in Form eines eigenständigen Julia Pakets verwendet und muss mit dem Paketmanager durch Eingabe von 
+```
+add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#JuliaSkriptum
+```
+installiert werden (Näheres dazu im Abschnitt Interaktion).
+
+Nach der Installation kann das Paket einfach mit 
+
+```julia; results="none" 
+using JuliaSkriptumKontrolle
+```
+geladen werden.
+
+Bei den Aufgaben geht es meistens darum kurze in sich abgeschlossene Codes oder Funktionen zu schreiben.
+Eine einzelne Funktion kann z.B. wie folgt kontrolliert werden:
+
+```julia; eval=false
+@Aufgabe "1.2.3" function meine_funktion(x,y)
+    # Hier den Code einfügen
+end
+```
+
+Dabei startet die Angabe `@Aufgabe "1.2.3"` die Kontrollmechanismen für die Aufgabe mit der Nummer 1.2.3.
+Die Nummer entspricht immer der Überschriftennummerierung der entsprechenden Aufgabe.
+
+Wird bei einer Aufgabe gefordert mehrere Funktionen oder zusätzliche externe Pakete zu verwenden, kann die allgemeine Version des vorherigen Codes verwendet werden:
+
+```julia; eval=false
+@Aufgabe "2.1.3" begin
+    using EinExtraPaket # Ein Paket laden
+
+    function meine_funktion(x)
+        # Hier den Code einfügen
+    end
+
+    # Hier den anderen Code einfügen
+end
+```
+
+Sind spezielle Angaben notwendig, ist das bei der jeweiligen Aufgabe vermerkt.
+
+Ist eine Aufgabe nicht vollständig korrekt gelöst, wird eine Fehlermeldung ausgegeben.
+Bei der folgenden Aufgabe soll eine Funktion definiert werden die den Winkel zwischen zwei Vektoren beliebiger Dimension berechnet.
+
+```julia
+@Aufgabe "10.3.3" function winkel(v1,v2)
+    v1-v2 # Offensichtlich falsch
+end
+```
+
+Die Abgabe der Aufgaben erfolgt in TUWEL.
+Es sollen alle Aufgaben gesammelt in einer Julia Datei (Endung `.jl`) abgegeben werden.
+Dabei müssen die kontrollierten Aufgaben nacheinander in der Datei (z.B. `meine_loesungen.jl`) angegeben werden:
+
+```julia; eval=false
+@Aufgabe "1.2.3" function meine_funktion(x,y)
+    # Hier den Code einfügen
+end
+
+@Aufgabe "2.1.3" begin
+    using EinExtraPaket # Ein Paket laden
+
+    function meine_funktion(x)
+        # Hier den Code einfügen
+    end
+
+    # Hier den anderen Code einfügen
+end
+
+@Aufgabe "10.3.3" function winkel(v1,v2)
+    v1-v2 # Offensichtlich falsch
+end
+```
+
+Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt, wird wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
