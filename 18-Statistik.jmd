@@ -101,4 +101,3 @@ plot!(plt,x,y)
 
 Offensichtlich passt die Dichtefunktion gut zu den Messwerten.
 Die angepasste Normalverteilung kann jetzt wie zuvor für das Generieren von Zufallswerten verwendet werden.
-

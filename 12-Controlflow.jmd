@@ -320,9 +320,11 @@ GRAV_BESCHL = "Neuer Wert"
 
 ## Aufgaben
 
-### Schreibe ein Funktion die Gerade oder Ungerade für eine Zahl ausgibt
+### Gerade oder Ungerade
 
-```julia
+Schreibe ein Funktion die \enquote{Gerade} oder \enquote{Ungerade} für eine Zahl mit `println` ausgibt.
+
+```julia; results="hidden"; echo=false 
 function gerade_ungerade(x::Int)
     if x % 2 == 0
         println("Gerade")
@@ -332,95 +334,157 @@ function gerade_ungerade(x::Int)
 end
 ```
 
+Beispiele:
 ```julia; term=true
 gerade_ungerade(11)
 gerade_ungerade(218)
 ```
 
-### Schreibe ein Skript das eine Ziffer einliest und diese in Worten darstellt.
-
-Definiere dafür zuerst eine Funktion die für den Benutzer "{}Ziffer eingeben: "{} anzeigt und dann auf die Eingabe wartet.
-Die Ausgabe eines Textes ohne Zeilenumbruch ist mit `print` möglich. Ein `String` kann durch die Funktion `readline` eingelesen werden.
-Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
-
-```bash
-julia ziffer_bezeichnung.jl
-Ziffer eingeben: 3
-Drei
-
-julia ziffer_bezeichnung.jl
-Ziffer eingeben: 10
-Falsche Eingabe. Es werden nur einzelne Ziffern unterstützt.
-```
-
 ### Skript Flächeninhalt
 
-Schreibe ein Skript das den Benutzer dazu auffordert den Radius eines Kreises einzugeben und nach der Eingabe den Flächeninhalt und den Umfang ausgibt. Beide Ergebnisse sollen auf zwei Dezimalstellen gerundet werden.
-Das Skript soll von der *Commandline* wie folgt ausgeführt werden:
+Es soll ein **Skript** zur Berechnung von Flächeninhalt und Umfang eines Kreises erstellt werden das Benutzern erlaubt mehrmals Eingaben zu machen.
+Die Ausgabewerte sollen auf zwei Stellen gerundet werden.
+Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird, wird eine falsche Eingabe gemacht, muss \enquote{Falsche Eingabe} ausgegeben werden.
+
+Die Ausgabe nach Ausführung des Skripts mit `julia kreis.jl` muss exakt mit dem folgenden Text übereinstimmen.
 
 ```bash
-julia kreis.jl
-Radius eingeben: 3
-A = 28.27
-U = 18.85
-
-julia kreis.jl
-Radius eingeben: abc
-Falsche Eingabe.
-```
-
-### Skript Flächeninhalt mehrmalige Eingabe
-
-Erweitere das Skript zur Berechnung des Flächeninhalts des Kreises so, dass der Benutzer nach einer Eingabe gleich eine weitere Eingabe machen kann.
-Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird.
-
-```bash
-julia kreis.jl
 Radius eingeben: 3
 A = 28.27
 U = 18.85
 
 Radius eingeben: abc
-Falsche Eingabe.
+Falsche Eingabe
 
 Radius eingeben: 1.2
 A = 4.52
 U = 7.54
 
 Radius eingeben:
-Programm Beendet!
 ```
 
-### Berechne PI mittels Monte-Carlo-Simulation
-### Integriere eine Beliebige Funktion nummerisch
-Simpson und / oder trapezoid
+Für die Kontrolle mit dem Kontrollprogramm muss die allgemeine Form der Eingabe verwendet werden. 
+Zusätzlich muss die Schleife für die wiederholte Ausführung über eine Funktion gestartet werden.
+Die Funktion muss wie im folgenden Beispiel am Ende des Kontrollblocks stehen.
+Wichtig für die Kontrolle ist, dass alle Ausgaben exakt mit dem Beispiel oben übereinstimmen.
 
-Simpson:
-```julia
-function ∫(f::Function, a::Number, b::Number, n::Number)
-    n % 2 == 0 || error("`n` must be even")
-    h = (b-a)/n
-    s = f(a) + f(b)
-    s += 4*mapreduce(f,+,a .+ (1:2:n) * h)
-    s += 2*mapreduce(f,+,a .+ (2:2:n-1) * h)
-    return h/3 * s
+```julia; eval=false
+@Aufgabe "11.3.2" begin
+    # ...
+    # Platz für Zusatzfunktionen die eventuell verwendet werden
+    # ...
+    function run()
+        # ...
+        # Hauptfunktion die die Schleife beinhaltet
+        # ...
+        while
+            # ...
+        end
+        # ...
+    end
 end
 ```
 
-### Wie hoch ist die Wahrscheinlichkeit
-... mit einem idealen Würfel (1-6) 3 x hintereinander 4 zu würfeln
+### Berechne π
 
-```{julia;}
-throw() = rand(1:6)
-@time P_est = sum([all(i->i==4,(throw() for _ in 1:3)) for __ in 1:100000000])/100000000
-P_corr = 1/6^3
-@show P_est, P_corr
+Die Zahl `π` kann über eine so genannte Monte-Carlo-Simulation angenähert werden.
+Dabei werden zufällig Punkte in einem Quadrat mit bekannter Seitenlänge platziert. 
+Durch Einschreiben eines Kreise in das Quadrat und ermitteln der Anzahl an Punkten die im Kreis gelandet sind, kann die Fläche des Kreises relativ zur Fläche des Quadrates ermittelt werden.
+`π` wird dann einfach über die Kreisflächenformel 
+
+Schreibe eine Funktion die `π` mittels Monte-Carlo-Simulation approximiert.
+Das einziges Argument der Funktion ist die Anzahl an zufällig ermittelten Punkte.
+Um den Rechenaufwand zu reduzieren soll nur ein Vierteilkreis in einem Quadrat berücksichtigt werden.
+Die ermittelte relative Fläche muss dann natürlich noch mit dem Faktor 4 vergrößert werden.
+
+```julia; results="hidden"; echo=false
+function π_mc(n::Int)
+    inside = 0
+    for _ in 1:n
+        inside += rand()^2+rand()^2 <= 1.0
+    end
+    4*inside/n
+end
 ```
 
-... mit einem idealen Würfel (1-6) bei 3 Würfen mindestens 1nen 4er zu würfeln
+Beispiele (mit steigender Anzahl von Punkten steigt auch die Genauigkeit):
 
-```{julia;}
-@time P_est = sum([any(i->i==4,(throw() for _ in 1:3)) for __ in 1:100000000])/100000000
-P_corr = (1/6+5/6*1/6+5/6*5/6*1/6)
-@show P_est, P_corr
+```julia; term=true
+π_mc(10)
+π_mc(100)
+π_mc(1_000_000)
+π_mc(1_000_000_000)
+```
+
+### Numerisch Integrieren
+
+Schreibe eine Funktion die das bestimmte Integral einer beliebigen 2d Funktion definiert durch x- und y-Werte berechnet.
+Verwendet dazu die Trapezregel.
+Zusätzlich zu den x- und y-Werten muss noch der Anfangswert des Integrals angegeben werden. 
+
+```julia; results="hidden"; echo=false
+function ∫(x,y)
+    val = 0.0
+    for i in 1:min(length(x),length(y))-1
+        val += (x[i+1]-x[i])*(y[i]+y[i+1])/2
+    end
+    return val
+end
+```
+
+Beispiele:
+```julia; term=true
+x = collect(0:0.0001:1);
+∫(x,sin.(x.^2))
+∫(x,cos.(x.^2))
+∫(x,x)
+x = collect(0:0.1:2π);
+∫(x,sin.(x))
+x = collect(0:0.01:2π);
+∫(x,sin.(x))
+x = collect(0:0.0001:2π);
+∫(x,sin.(x))
+```
+
+### Wie hoch ist die Wahrscheinlichkeit
+
+Die Monte-Carlo-Simulation kann auch dazu verwendet werden, um Wahrscheinlichkeiten zu approximieren.
+Schreibe zwei Funktionen, welche die Wahrscheinlichkeit abschätzen, dass
+
+1. mit einem idealen Würfel (1-6) 3 x hintereinander 4 gewürfelt wird und
+2. mit einem idealen Würfel (1-6) bei 3 Würfen mindestens ein 4er gewürfelt wird.
+
+Die Idee hinter der Simulation ist die Würfe mit einem Zufallszahlengenerator `rand(1:6)` zu simulieren und anschließen die positiven Ergebnisse in Relation zu den gesamten Würfen zu setzten.
+
+Wie schon bei der Berechnung von `π` soll das einzige Argument bei den Funktionen die Anzahl an zufälligen Würfen sein.
+Die Nummern für die Kontrolle sind die `11.3.5.1` und `11.3.5.2`.
+
+```julia; results="hidden"; echo=false
+throw() = rand(1:6)
+function P_est_1(n)
+    # P_corr = 1/6^3
+    sum([all(i->i==4,(throw() for _ in 1:3)) for __ in 1:n])/n
+end
+function P_est_2(n)
+    # P_corr = (1/6+5/6*1/6+5/6*5/6*1/6)
+    sum([any(i->i==4,(throw() for _ in 1:3)) for __ in 1:n])/n
+end
+```
+
+Beispiele:
+```{julia;term=true}
+P_est_1(10)
+P_est_1(100)
+P_est_1(1_000_000)
+P_est_1(1_000_000_000)
+P_est_2(10)
+P_est_2(100)
+P_est_2(1_000_000)
+P_est_2(1_000_000_000)
+```
+
+Die exakten Ergebnisse sind:
+```julia;term=true
+1/6^3 # Fall 1
+1/6+5/6*1/6+5/6*5/6*1/6 # Fall 
 ```
