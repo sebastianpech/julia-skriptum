@@ -47,4 +47,37 @@ end
     return val
 end
 
-revise()
+@Aufgabe "11.3.5.1" begin
+    throw() = rand(1:6)
+    function P_est_1(n)
+        sum([all(i->i==4,(throw() for _ in 1:3)) for __ in 1:n])/n
+    end
+end
+
+@Aufgabe "11.3.5.2" begin
+    throw() = rand(1:6)
+    function P_est_1(n)
+        sum([all(i->i==4,(throw() for _ in 1:3)) for __ in 1:n])/n
+    end
+end
+
+@Aufgabe "11.3.5.2" begin
+    throw() = rand(1:6)
+    function P_est_2(n)
+        sum([any(i->i==4,(throw() for _ in 1:3)) for __ in 1:n])/n
+    end
+end
+
+@Aufgabe "11.3.6" function my_split(str,c::Char)
+    push_no_empty!(a,b) = b != "" && push!(a,b)
+    arr = String[]
+    last_idx = 1
+    for i in 1:length(str)
+        if str[i] == c
+            push_no_empty!(arr,str[last_idx:i-1])
+            last_idx = i+1
+        end
+    end
+    push_no_empty!(arr,str[last_idx:end])
+    return arr
+end

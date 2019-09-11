@@ -488,3 +488,37 @@ Die exakten Ergebnisse sind:
 1/6^3 # Fall 1
 1/6+5/6*1/6+5/6*5/6*1/6 # Fall 
 ```
+
+### Split
+
+Im Abschnitt zu Strings wurde die Funktion `split` vorgestellt mit der Strings durch trennen bei einem Zeichen, in ein String-Array umgewandelt werden können.
+Bei dieser Aufgabe soll die Funktion nachprogrammiert werden, natürlich ohne die Verwendung von `split`.
+Das Trennzeichen muss vom Typ `char` sein.
+Achtung auch die Sonderfälle
+- kein Trennzeichen
+- Trennzeichen am Anfang,
+- Trennzeichen am Ende und
+- mehrere Trennzeichen nacheinander
+müssen behandelt werden.
+
+```julia; results="hidden"; echo=false
+function my_split(str,c::Char)
+    push_no_empty!(a,b) = b != "" && push!(a,b)
+    arr = String[]
+    last_idx = 1
+    for i in 1:length(str)
+        if str[i] == c
+            push_no_empty!(arr,str[last_idx:i-1])
+            last_idx = i+1
+        end
+    end
+    push_no_empty!(arr,str[last_idx:end])
+    return arr
+end
+```
+
+Beispiele:
+```julia; term=true
+my_split("Das ist ein String",' ')
+my_split(".Das.ist.ein..String.",'.')
+```
