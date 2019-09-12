@@ -60,10 +60,9 @@ s[3:end] = "nane"
 ```
 Mittels `replace()` kann allerdings eine Zeichenfolge im String durch eine neue Zeichenfolge ersetzt und in einer neuen Variable abgespeichert werden:
 ```julia; term=true
-s = "banana"
-s_1 = replace(s,"nana"=>"nane")
-s_2 = replace(s,'a'=>'u')
-s
+s_1 = replace(s,"nana"=>"nane")  # Ersetze im String s "nana" durch "nane"
+s_2 = replace(s,'a'=>'u')  # Ersetze im String s 'a' durch 'u'
+s  # Der String s bleibt unverändert
 ```
 Das erste Argument der Funktion ist der zu verändernde String.
 Das zweite Argument setzt sich zusammen aus dem String oder Character der ersetzt werden soll, einem Pfeil bestehend aus `=` und `>`, sowie dem String oder Character der eingefügt werden soll.
@@ -72,29 +71,25 @@ Die ursprüngliche Variable `s` bleibt dabei unverändert.
 Es gibt mehrere Möglichkeiten Strings zusammenzusetzen.
 Eine davon ist die Verwendung des `*`-Operators.
 ```julia; term=true
-s = "Zack"
-s*", "*s*", "*s*"!"
+name = "Raphael"
+"Der Name"*name*" hat "*length(name)*" Buchstaben."
 ```
 Eine weitere Möglichkeit bietet die Funktion `string()`:
 ```julia; term=true
-string(s,", ",s,", ",s,"!")
+string("Der Name",name," hat ",length(name)," Buchstaben.")
 ```
 Diese Varianten werden allerdings schnell unübersichtlich.
 In diesem Fall bietet sich die String Interpolation als übersichtlichere Möglichkeit an.
 Jeder Ausdruck in runden Klammern nach dem Symbol `$` wird ausgewertet und das Ergebnis in den String eingegliedert.
-In diesem Fall wird nur der Wert der Variable `s` ausgewertet, es könnten aber auch komplexere Ausdrücke wie z.B. `$(length(s^2)+7)` verwendet werden.
+Diese Ausdrücke können nicht nur Werte und Variablen, sondern auch Funktionen und Operatoren enthalten.
 ```julia; term=true
-"$(s), $(s), $(s)!"
+"Der Name $(name) hat $(length(name)) Buchstaben."
 ```
 
 Der `^`-Operator wiederholt einen String beliebig oft:
 ```julia; term=true
 "stop"^5
-"$(s), "^2*"$(s)!"
 ```
-
-In diesem Zusammenhang kann auch die Funktion `join` hilfreich sein.
-Diese wird allerdings erst im Kapitel *Arrays* erklärt.
 
 Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^1] und in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) erläutert.
 
@@ -117,7 +112,7 @@ Eine Übersicht dazu bieten die Tabellen unter [Manual/Integers and Floating-Poi
 Mithilfe der Operatoren `+`, `-`, `*` und `/` können Zahlen addiert, subtrahiert, multipliziert und dividiert werden:
 ```julia; term=true
 17 + 2
-13.0 - 4
+23.0 - 4
 1.0 * 19.0
 38 / 2
 ```
@@ -136,8 +131,8 @@ Gleichrangige Operationen führt Julia immer der Reihe nach von links nach recht
 Klammern bieten die Möglichkeit, den Code zu strukturieren und besser lesbar zu machen, auch wenn diese nicht immer notwendig sind:
 ```julia; term=true
 d = 5;
-A = d^2*π/4
-A = (d^2 * π) / 4
+A = d^2*π/4#OhneAbständeliestsichCodeschwer
+A = (d^2 * π) / 4  # Abstände und Klammern verbessern die Lesbarkeit
 ```
 
 Die Funktionen `string()` und `parse()` konvertieren Zahlen in Strings und umgekehrt:
@@ -149,7 +144,7 @@ parse(Float64,"1.2345")
 
 `float()` und `Int()` wandeln beliebige Zahlen in Float-Zahlen bzw. in ganzzahlige Werte um.
 Bei Verwendung von `Int()` muss gewährleistet sein, dass die übergebene Zahl tatsächlich ganzzahlig ist, sonst meldet Julia einen `InexactError`.
-`trunc` wandelt eine Float-Zahl direkt in ein Integer um und rundet ignotiert dabei die Nachkommastellen.
+`trunc` wandelt eine Float-Zahl direkt in ein Integer um und ignoriert dabei die Nachkommastellen.
 ```julia; term=true
 float(3)
 float(4//3)
@@ -157,7 +152,7 @@ Int(2.3)
 Int(2.0)
 Int(4//4)
 trunc(3.99999)
-trunc(-2.3)
+trunc(-2.3)  # trunc rundet nicht ab!
 ```
 
 Zum Runden von Zahlen eignen sich die Funktionen `round()`, `floor()` und `ceil()`.
@@ -166,14 +161,16 @@ round(1.47)
 floor(1.47)
 ceil(1.47)
 ```
-Während erstere zur nächstliegenden ganzen Zahl rundet, ermöglichen die anderen beiden Funktionen ab- und aufrunden von Zahlen.
+Während erstere Funktion zur nächstliegenden ganzen Zahl rundet, ermöglichen die anderen beiden Funktionen ab- und aufrunden von Zahlen.
 Die Anzahl der zu rundenden Stellen kann über die zusätzlichen Argumente `digits` und `sigdigits` festgelegt werden.
 ```julia; term=true
 round(345.123; digits=2)
 round(345.123; sigdigits=2)
+round(0.00345123; digits=4)
+round(0.00345123; sigdigits=4)
 ```
 Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
-Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` bereits ab der ersten Stelle der Zahl zählt.
+Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` ab der ersten Ziffer ungleich 0 zählt.
 
 Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^2] (*floor division*) und der Modulus-Operator, `%`.
 ```julia; term=true
@@ -186,31 +183,27 @@ Damit kann zum Beispiel leicht überprüft werden, ob eine Zahl durch eine ander
 
 [^2]: `÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.
 
-Alle Typen in Julia sind in einer Art Hierarchie strukturiert.
-Beispielsweise ist `Integer` ein Subtyp von `Real` und `Real` wiederum ein Subtyp von `Number`.
-Dabei hat er Datentyp `Real` neben `Integer` noch weitere Subtypen.
-Mehr dazu unter Multiple Dispatch.
 ## Booleans
-Eine Zahl vom Typ *Bool* kann entweder den Wert `true` oder `false` annehmen.
+Eine Wert vom Typ `Bool` kann entweder `true` oder `false` annehmen.
+Diesen Datentypen kann man sich wie eine Zahl vorstellen, die entweder `0` (im Falle von `false`) oder `1` (im Falle von `true`) ist.
 Verschiedene Operationen in Julia geben eine Zahl vom Typ `Bool` zurück, wie zum Beispiel das Vergleichen zweier Zahlen:
 ```julia; term=true
-x = 13
-y = 17.0
-x == y
-x != y
-x ≠ y # \ne TAB
-x > y
-x < y
-x >= y
-x ≥ y # \ge TAB
-x <= y
-x ≤ y # \le TAB
+x = 13; y = 17.0;
+x == y  # Ist x gleich y?
+x != y  # Ist x ungleich y?
+x ≠ y  # \ne TAB (wie !=)
+x > y  # Ist x größer als y?
+x < y  # Ist x kleiner als y?
+x >= y  # Ist x größer oder gleich y?
+x ≥ y  # \ge TAB (wie >=)
+x <= y  # Ist x kleiner oder gleich y?
+x ≤ y  # \le TAB (wie <=)
 ```
 
 Mit den Operatoren `>` und `<` können auch zwei Wörter auf ihre alphabetische Reihenfolge überprüft werden:
 ```julia; term=true
-"apple" > "banana"
 "apple" < "banana"
+"apple" > "banana"
 "apple" > "Banana"
 ```
 Dabei ist zu beachten, dass Großbuchstaben immer vor Kleinbuchstaben eingeordnet werden.
@@ -224,6 +217,7 @@ s > "banana" || length(s) == 6  # Mindestens eine Bedingung muss true ergeben
 ```
 Bei `&&` müssen beide Ausdrücke vor und nach dem Operator `true` ergeben, damit der gesamte Ausdruck `true` ist.
 Damit der Ausdruck mit `||` erfüllt ist und `true` ergibt, muss lediglich einer der beiden Ausdrücke erfüllt sein.
+`!` kehrt den darauffolgenden logischen Operator um.
 
 Wie bei den arithmetischen Operationen wird auch bei logischen Operatoren eine definierte Reihenfolge eingehalten.
 Zuerst werden alle vergleichenden Operatoren ausgewertet (`==`, `!=`, `≠`, `>`, `<`, `>=`, `<=`, `≥`, `≤`), danach die Operatoren `&&` und `||`.
