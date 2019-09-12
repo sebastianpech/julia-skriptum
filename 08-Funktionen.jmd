@@ -2,30 +2,30 @@
 In den vorhergehenden Kapiteln wurden schon einige Funktionen verwendet (z.B. `abs`, `typeof` oder `length`).
 Eine Funktion wird durch ihren Namen, gefolgt von runden Klammern aufgerufen.
 Innerhalb dieser runden Klammern stehen die *Argumente* der Funktion.
-Vereinfacht lässt sich eine Funktion durch eine Box darstellen, der Werte (die Argumente) zugeführt werden.
-Innerhalb der Box wird dann Code ausgeführt und oft am Ende ein Ergebnis (*return value*) zurückgegeben.
-Der return value kann einfach einer Variable zugewiesen werden:
+Vereinfacht lässt sich eine Funktion durch eine Box erklären, die mit Werten (den Argumenten) befüllt wird.
+Innerhalb der Box wird dann Code ausgeführt und am Ende ein Ergebnis (*Return Value*) zurückgegeben.
+Der Return Value kann einfach einer Variable zugewiesen werden:
 ```julia; term=true
 l = length("spam")
-@show l
 ```
 Während manche Funktionen keine Argumente benötigen, erfordern andere Funktionen mehrere Eingangswerte.
 ```julia; term=true
 pwd()
 length("banana")
+round(3.1415,digits=3)
 ```
-`pwd` zeigt den aktuellen Arbeitspfad an (*print working directory*) und erfordert dabei keine Argumente.
+`pwd` steht für *print working directory* und zeigt den aktuellen Arbeitspfad an.
 
-Analog gibt es sowohl Funktionen die keinen *return value* zurückgeben, als auch Funktionen die mehrere Ergebnisse ausgeben.
+Analog gibt es sowohl Funktionen die keinen *Return Value* zurückgeben, als auch Funktionen die mehrere Ergebnisse ausgeben.
 ```julia; term=true
 p = println("Diese Zeile wird angezeigt, println weist p aber keinen Wert zu")
-println(p)
+p
 a = [10,35,4,65,9];
 maximum(a)
 findmax(a)
 ```
-Der erste Aufruf von `println` schreibt zwar das Übergebene Argument in der REPL, `println(p)` zeigt allerdings keinen Wert an.
-Das liegt daran, dass `println` keinen return value an die Variable `p` übergibt (genau genommen gibt die Funktion einen Wert vom Typ `Nothing` zurück).
+Der erste Aufruf von `println` schreibt zwar das Übergebene Argument in der REPL, die Ausgabe von `p` in der REPL zeigt allerdings keinen Wert an.
+Das liegt daran, dass `println` keinen Return Value an die Variable `p` übergibt (genau genommen gibt die Funktion einen Wert vom Typ `Nothing` zurück).
 In der nächsten Zeile wird der Array `a` erstellt.
 Auf Arrays wird später noch genauer eingegangen.
 Während `maximum` nur den Maximalwert von `a` zurückgibt, ermittelt `findmax` zusätzlich die Stelle des Maximalwertes.
@@ -34,38 +34,37 @@ Die Argumente einer Funktion können verschiedenste Ausdrücke sein.
 Sowohl Werte und Variablen, als auch Funktionen können als Argument übergeben werden.
 Julia wertet diese Ausdrücke dann aus und übergibt das Ergebnis an die Funktion.
 ```julia; term=true
-s1 = "foo";
-s2 = "bar";
+s1 = "foo"; s2 = "bar";
 string(s1, s2)
 round(20/9)
 length(pwd())
 ```
 
-Manchen Funktionen können sogenannte *keyword arguments* übergeben werden.
+Manchen Funktionen können sogenannte *Keyword Arguments* übergeben werden.
 `round` ist beispielsweise eine solche Funktion.
-Mit dem *keyword* `digits` gefolgt von `=` und einer Int-Zahl, kann die Anzahl der Nachkommastellen festgelegt werden.
+Mit dem *Keyword* `digits` gefolgt von `=` und einer Int-Zahl, kann die Anzahl der Nachkommastellen festgelegt werden.
 ```julia; term=true
 round(2.3345323,digits=2)
 ```
-Gerade bei Funktionen mit vielen (optionalen) Argumenten sind keyword arguments sehr hilfreich, da sie in beliebiger Reihenfolge an die Funktion übergeben werden können.
+Gerade bei Funktionen mit vielen (optionalen) Argumenten sind Keyword Arguments sehr hilfreich, da sie in beliebiger Reihenfolge an die Funktion übergeben werden können.
 
 ## Neue Funktionen erstellen
 Vor allem für Operationen die oft wiederholt werden, ist es sinnvoll eigene Funktionen zu definieren; und zwar aus folgenden Gründen:
   - 
 
 
-Die Definition einer eigenen Funktion beginnt mit dem keyword `function` am Zeilenanfang, gefolgt vom Funktionsnamen und den Argumenten in runden Klammern.
+Die Definition einer eigenen Funktion beginnt mit dem Keyword `function` am Zeilenanfang, gefolgt vom Funktionsnamen und den Argumenten in runden Klammern.
 Danach folgen beliebig viele Zeilen Code und ein abschließendes `end`.
 Funktionsnamen können wie Variablennamen gebildet werden.
 Groß- und Kleinbuchstaben sind zulässig, es dürfen nahezu alle Unicode-Zeichen verwendet werden.
 Der Name darf allerdings nicht mit einer Zahl beginnen oder einem von Julia verwendeten Keyword entsprechen.
 Zusätzlich sollte ein Name nicht gleichzeitig für eine Funktion und eine Variable verwendet werden.
-Bei jedem Aufruf der Funktion werden die Zeilen zwischen `function` und `end` ausgeführt und das Ergebnis der letzten Zeile als return value zurückgegeben.
-der return value einer Funktion kann aber auch mit dem Keyword `return` festgelegt werden.
-```julia
+Bei jedem Aufruf der Funktion werden die Zeilen zwischen `function` und `end` ausgeführt und das Ergebnis der letzten Zeile als Return Value zurückgegeben.
+Der Return Value einer Funktion kann aber auch mit dem Keyword `return` festgelegt werden.
+```julia;results="hidden"
 function my_square(x)
 	println("Quadrat von $(x) wird berechnet...")  # Diese Zeile wird angezeigt
-	return x^2  # Diese Zeile wird ausgeführt und als return value ausgegeben
+	return x^2  # Diese Zeile wird ausgeführt und als Return Value ausgegeben
 end
 ```
 ```julia; term=true
@@ -77,14 +76,14 @@ Die Funktion `my_square` schreibt zuerst einen String in die REPL und gibt dann 
 Generell ist es in Julia nicht notwendig den Block innerhalb der Funktionsdefinition einzurücken, dadurch wird der Code allerdings wesentlich übersichtlicher.
 
 Funktionen ohne Argumente können durch leere Klammern erstellt werden:
-```julia
+```julia;results="hidden"
 function hello_world()
 	println("Hello World")
 end
 ```
 
 Für die Definition besonders kurzer Funktionen eignet sich folgende Abkürzung:
-```julia
+```julia;results="hidden"
 my_square(x) = x^2
 ```
 
@@ -93,8 +92,8 @@ Da Julia ein Skript vom Beginn an Zeile für Zeile bis zum Ende ausführt, ist e
 
 Im Abschnitt Hilfe wird beschrieben, dass Julia selbstdokumentiert ist.
 Diese Dokumentation erfolgt durch sogenannte Docstrings direkt vor der Funktionsdefinition.
-Ein Docstring wird durch drei einfache Anführungszeichen begrenzt und kann folgendermaßen aussehen:
-```julia
+Ein Docstring wird durch drei Anführungszeichen begrenzt und kann folgendermaßen aussehen:
+```julia;eval=false
 """
     my_square(x)
 
@@ -110,53 +109,45 @@ Nach Ausführung dieses Code-Blocks wird in der Hilfe zu `my_square` das Docstri
 
 Mehr Informationen zu Funktionen gibt es in der Dokumentation unter [Manual/Functions](https://docs.julialang.org/en/v1/manual/functions/).
 
-
-  - functions are good for faster and shorter code, especially with repetetive code
-    - easier debugging
-    - make changes in one place if the code repeats often
-    - debug parts one at a time
-    - reusable code
-    - performance improvements
-
 ## Scope
-Die *scope* einer Variable ist ein Bereich in dem diese Variable sichtbar ist.
-In Julia gibt es die *global scope* und *local scope*.
-Die Definition einer Funktion erzeugt eine solche local scope.
-Auf eine Variable in der global scope kann auch in einer local scope zugegriffen werden.
-Umgekehrt ist es nicht möglich in der global scope auf eine Variable einer local scope zuzugreifen:
-```julia
+Die *Scope* einer Variable ist ein Bereich in dem diese Variable sichtbar ist.
+In Julia gibt es die *Global Scope* und die *Local Scope*.
+Die Definition einer Funktion erzeugt eine solche Local Scope.
+Auf eine globale Variable kann auch in einer Local Scope zugegriffen werden.
+Umgekehrt ist es nicht möglich in der Global Scope auf eine lokale Variable zuzugreifen:
+```julia;results="hidden"
 function f(x)
     a = x^2
 end
 ```
 ```julia;term=true
-a = 1
-f(3)
-print(a)
+a = 1;  # Globale Variable a erzeugen
+f(3)  # In der Local Scope von f wird die lokale Variable a erzeugt
+a  # Der Aufruf von f verändert die globale Variable a nicht
 ```
-Selbst wenn in der Funktion `a` ein Wert zugewiesen wird, bleibt der Wert von a unverändert, da die Zuweisung in der ersten Zeile (`a = 1`) in der global scope geschieht und die zweite Zuweisung (`a = x^2`) in der loacal scope der Funktion ausgeführt wird.
+Selbst wenn in der Funktion `a` ein Wert zugewiesen wird, bleibt der Wert von a unverändert, da die Zuweisung in der ersten Zeile (`a = 1`) in der Global Scope geschieht und die zweite Zuweisung (`a = x^2`) in der Local Scope der Funktion ausgeführt wird.
 Die beiden Variablen heißen zwar gleich, beeinflussen sich aber gegenseitig nicht.
-Nachdem die Funktion ausgeführt wurde, werden alle Variablen der loacal scope dieser Funktion gelöscht und können nicht mehr aufgerufen werden.
-Nur noch der return value bleibt im Speicher (sofern dieser einer Variable zugewiesen wird).
-```julia
+Nachdem die Funktion ausgeführt wurde, werden alle Variablen der Local Scope dieser Funktion gelöscht und können nicht mehr aufgerufen werden.
+Nur noch der Return Value bleibt im Speicher (sofern dieser einer Variable zugewiesen wird).
+```julia; results="hidden"
 function g(x)
-    v = "fuer immer verloren"
-    x
+    v = "fuer immer verloren"  # Lokale Variable v erzeugen
+    x*2  # Return Value
 end
 ```
 ```julia;term=true
 a = g(3)
-print(v)
+v
 ```
 
 Mehr Informationen zu Scopes gibt es in der Dokumentation unter [Manual/Scope of Variables](https://docs.julialang.org/en/v1/manual/variables-and-scoping/).
 ## Methoden
 Ein Wesentliches Feature von Funktionen Julia ist *Multiple Dispatch*.
-Eine Funktion kann abhängig davon, welchen Datentyp die Argumente haben und wieviele Argumente übergeben werden unterschiedliche Operationen ausführen.
+Eine Funktion kann, abhängig davon welchen Datentyp die Argumente haben und wieviele Argumente übergeben werden, unterschiedliche Operationen ausführen.
 ```julia;term=true
-my_mult(x::Number) = x*2
-my_mult(x::String) = x^2
-my_mult(x::String,y::Int64) = x^y
+my_mult(x::Number) = x*2  # Erste Methode von my_mult
+my_mult(x::String) = x^2  # Zweite Methode von my_mult
+my_mult(x::String,y::Int64) = x^y  # Dritte Methode von my_mult
 my_mult(1.45)
 my_mult("spam")
 my_mult("foo",4)
@@ -174,9 +165,9 @@ Abhängig von den eingegebenen Argumenten sucht Julia die passende Methode aus, 
 
 Mehr Informationen zu Methoden und Multiple Dispatch gibt es in der Dokumentation unter [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
 ## Aufgaben
-### Schreibe eine Funktion, die ihr Argument dreimal printed
-Schreibe eine Funktion `print_three`, die ein beliebiges Argument dreimal in einer Zeile printed.
-```julia
+### Dreimal printen
+Schreibe eine Funktion `print_three`, die ein beliebiges Argument dreimal in einer Zeile printed und dabei einen Abstand zwischen den Argumenten einfügt.
+```julia;echo=false
 function print_three(a)
     println(string(a," ",a," ",a))
 end
@@ -186,10 +177,10 @@ print_three("spam")
 print_three(19)
 ```
 
-### Schreibe eine Funktion, die zwei Funktionen verkettet
+### Zwei Funktionen verketten
 Schreibe eine Funktion `verkette(f,g,x)`, die die beiden Funktionen `f` und `g` verkettet und für `x` auswertet (`f(g(x))`).
-Die Ausgewertete Funktion soll als return value zurückgegeben werden.
-```julia
+Die Ausgewertete Funktion soll als Return Value zurückgegeben werden.
+```julia;echo=false
 function verkette(f, g, x)
     return f(g(x))
 end
@@ -201,25 +192,34 @@ verkette(f,g,3)
 verkette(length,g,"spam")
 ``` 
 
-### Schreibe Funktionen für Berechnung von Fläche und Umfang eines Kreises
-Schreibe zwei Funktionen `kreis_flaeche(r)` und `kreis_umfang(r)`, die den Radius eines Kreises als Argument benötigen und dann die Fläche oder den Umfang dieses Kreises als return value zurückgeben.
-```julia
+### Kreisfläche berechnen
+Schreibe eine Funktion `kreis_flaeche(r)`, die den Radius eines Kreises als Argument benötigt und dann die Fläche dieses Kreises als Return Value zurückgibt.
+```julia;echo=false
 kreis_flaeche(r) = r^2*π
-kreis_umfang(r) = 2*r*π
 ```
 ```julia;term=true
 kreis_flaeche(3)
+kreis_flaeche(2.57)
+```
+
+### Kreisumfang berechnen
+Schreibe eine Funktion `kreis_umfang(r)`, die den Radius eines Kreises als Argument benötigt und dann den Umfang dieses Kreises als Return Value zurückgibt.
+```julia;echo=false
+kreis_umfang(r) = 2*r*π
+```
+```julia;term=true
 kreis_umfang(3)
+kreis_umfang(2.57)
 2 * kreis_flaeche(5)/kreis_umfang(5)
 ```
 
-### Schreibe eine Funktion, die Fläche und Umfang eines Kreises printed
-Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Fläche und Radius dieses Kreises printed.
-```julia
+### Kreiseigenschaften printen
+Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Radius, Fläche und Umfange dieses Kreises auf zwei Nachkommastellen gerundet printed.
+```julia;echo=false
 function kreis(r)
-    println("r = $(r)")
-    println("A = $(kreis_flaeche(r))")
-    println("U = $(kreis_umfang(r))")
+    println("r = $(round(r,digits=2))")
+    println("A = $(round(kreis_flaeche(r),digits=2))")
+    println("U = $(round(kreis_umfang(r),digits=2))")
 end
 ```
 ```julia;term=true
