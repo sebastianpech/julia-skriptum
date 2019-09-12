@@ -81,3 +81,11 @@ end
     push_no_empty!(arr,str[last_idx:end])
     return arr
 end
+
+@Aufgabe "11.3.7" function bsqrt(a)
+    x = a/2
+    while abs(x*x-a) >= 1e-5
+        x = (x+a/x)/2
+    end
+    return x
+end

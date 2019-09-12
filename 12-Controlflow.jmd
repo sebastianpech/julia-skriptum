@@ -418,9 +418,10 @@ Beispiele (mit steigender Anzahl von Punkten steigt auch die Genauigkeit):
 
 ### Numerisch Integrieren
 
-Schreibe eine Funktion die das bestimmte Integral einer beliebigen 2d Funktion definiert durch x- und y-Werte berechnet.
-Verwendet dazu die Trapezregel.
-Zusätzlich zu den x- und y-Werten muss noch der Anfangswert des Integrals angegeben werden. 
+Schreibe eine Funktion die das bestimmte Integral einer beliebigen 1d Funktion definiert durch x- und y-Werte berechnet.
+Verwendet dazu die [Trapezregel](https://de.wikipedia.org/wiki/Trapezregel)[^2].
+
+[^2]: <https://de.wikipedia.org/wiki/Trapezregel> 
 
 ```julia; results="hidden"; echo=false
 function ∫(x,y)
@@ -493,10 +494,10 @@ Die exakten Ergebnisse sind:
 
 Im Abschnitt zu Strings wurde die Funktion `split` vorgestellt mit der Strings durch trennen bei einem Zeichen, in ein String-Array umgewandelt werden können.
 Bei dieser Aufgabe soll die Funktion nachprogrammiert werden, natürlich ohne die Verwendung von `split`.
-Das Trennzeichen muss vom Typ `char` sein.
+Das Trennzeichen muss vom Typ `char` sein und im Gegensatz zur `split` Funktion darf das resultierende Array keine leeren Strings `""` enthalten.
 Achtung auch die Sonderfälle
 - kein Trennzeichen
-- Trennzeichen am Anfang,
+- Trennzeichen am Anfang
 - Trennzeichen am Ende und
 - mehrere Trennzeichen nacheinander
 müssen behandelt werden.
@@ -522,3 +523,54 @@ Beispiele:
 my_split("Das ist ein String",' ')
 my_split(".Das.ist.ein..String.",'.')
 ```
+
+### Wurzelziehen
+
+Nicht immer war Wurzelziehen so komfortabel wie heute.
+Mit der Unterstützung eines Computers oder Taschenrechners gelingt das ganz einfach mit der Funktion `sqrt`.
+In der Literatur findet man allerdings einige Verfahren mit welchen \enquote{händisches} Wurzelziehen möglich ist.
+Eines dieser Verfahren wird [babylonisches Wurzelziehen](https://de.wikipedia.org/wiki/Heron-Verfahren)[^3] genannt.
+
+Zur Berechnung der Quadratwurzel ``x`` von ``a`` wird zuerst eine Zahl ``x_0`` als Kandidat gewählt (z.B. ``x_0 = \frac{a}{2}``).
+Anstelle von ``x=\sqrt{a}`` wird dann die Gleichung mit dem Kandidaten ``x_0 \cdot x_0 \stackrel{!}{=} a`` gelöst.
+Wurde zufällt ``x_0 = x`` gewählt ist der Algorithmus beendet.
+Wahrscheinlicher ist jedoch, dass ``x_0 \cdot x_0 \neq a``.
+Je nach der Wahl von ``x_0`` ist ``x_0^2`` jetzt größer oder kleiner als ``a``, was auch bedeutet, dass ``x_0`` jetzt entsprechend größer oder kleiner als ``x`` ist.
+Ändern wie die Gleichung für ``a`` zu ``x_0 \cdot b = a`` können wir durch Umformen eine zweite Zahl ``b`` ermitteln, für die gilt
+
+```math
+\begin{cases}
+b < x,& \text{wenn } x_0 > x\\
+b > x & \text{wenn } x_0 < x
+\end{cases}
+```
+
+Damit wurde eine obere und eine untere Schranke für ``x`` bestimmt.
+Damit ist jeder Wert innerhalb dieser Schranke eine bessere Annäherung.
+Der nächste Wert ``x_1`` wird dann als Mittelwert von ``x_0`` und ``b`` ermittelt.
+Allgemein ergibt sich daraus der Ausdruck
+
+```math
+x_{n+1} = \frac{x_n + \frac{a}{x_n}}{2}.
+```
+
+Für eine ausreichend hohe Zahl von ``n`` kann damit die Quadratwurzel von ``a`` ermittelt werden.
+Es soll eine Funktion definiert werden, die mit dem beschriebene Verfahren die Quadratwurzel einer beliebigen Zahl mit einem absoluten Fehler von ``10^{-5}`` berechnet. Ein solches Abbruchkriterium wir auch Konvergenzkriterium genannt.
+
+```julia; results="hidden"; echo=false
+function bsqrt(a)
+    x = a/2
+    while abs(x*x-a) > 1e-5
+        x = (x+a/x)/2
+    end
+    return x
+end
+```
+
+Beispiele:
+```julia; term=true
+bsqrt(9)
+bsqrt(103.12)
+```
+
+[^3]: <https://de.wikipedia.org/wiki/Heron-Verfahren>
