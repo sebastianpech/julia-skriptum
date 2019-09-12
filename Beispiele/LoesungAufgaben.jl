@@ -149,4 +149,84 @@ end
     end
 end
 
+# Schreibe eine Funktion die den Lagerbestand für jedes Lager in ein Dict{Int,Dict{String,Int}} ausgibt
+@Aufgabe "15.3.1" begin
+    using CSV
+    using DataFrames
+    function read_lagers()
+        path = "15-3"
+        files = readdir(path)
+        Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
+            dfl = p.second
+            bestand = Dict{String,Int}()
+            for row in eachrow(dfl)
+                (row.Artikel in keys(bestand)) || (bestand[row.Artikel] = 0)
+                bestand[row.Artikel] += row.Bestand
+            end
+            return parse(Int,p.first[6:end-4])=>bestand
+        end)
+    end
+end
+
+# Schreibe eine Funktion die alle Lager ids ausgibt, die mindestes n von a haben
+@Aufgabe "15.3.2" begin
+    using CSV
+    using DataFrames
+    function read_lagers()
+        path = "15-3"
+        files = readdir(path)
+        Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
+            dfl = p.second
+            bestand = Dict{String,Int}()
+            for row in eachrow(dfl)
+                (row.Artikel in keys(bestand)) || (bestand[row.Artikel] = 0)
+                bestand[row.Artikel] += row.Bestand
+            end
+            return parse(Int,p.first[6:end-4])=>bestand
+        end)
+    end
+    function lager_mit(artikel,anzahl)
+        lagers = read_lagers()
+        l_ids = Int[]
+        for i in keys(lagers)
+            l = lagers[i]
+            if artikel in keys(l) && l[artikel] >= anzahl
+                push!(l_ids,i)
+            end
+        end
+        return l_ids
+    end
+end
+
+# Schreibe eine Funktion die den gesamtbestand Berechnet
+@Aufgabe "15.3.3" begin
+    using CSV
+    using DataFrames
+    function read_lagers()
+        path = "15-3"
+        files = readdir(path)
+        Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
+            dfl = p.second
+            bestand = Dict{String,Int}()
+            for row in eachrow(dfl)
+                (row.Artikel in keys(bestand)) || (bestand[row.Artikel] = 0)
+                bestand[row.Artikel] += row.Bestand
+            end
+            return parse(Int,p.first[6:end-4])=>bestand
+        end)
+    end
+    function gesamt_bestand()
+        lagers = read_lagers()
+        bestand = Dict{String,Int}()
+        for i in keys(lagers)
+            l = lagers[i]
+            for k in keys(l)
+                (k in keys(bestand)) || (bestand[k] = 0)
+                bestand[k] += l[k]
+            end
+        end
+        return bestand
+    end
+end
+
 JuliaSkriptumKontrolle.status()
