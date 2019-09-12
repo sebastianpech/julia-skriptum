@@ -577,14 +577,15 @@ bsqrt(103.12)
 
 ### Dictionaries zusammenfügen
 Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als return value zurückgibt.
+Sind Keys in beiden `Dicts` vorhanden sollen die Werte aus dem ersten mit den Werten aus dem zweiten `Dict` überschrieben werden.
 
 ```julia; results="hidden"; echo=false
 function dict_merge(d1, d2)
-    k = collect(keys(d1))
-    append!(k,collect(keys(d2)))
-    v = collect(values(d1))
-    append!(v,collect(values(d2)))
-    return Dict(zip(k,v))
+    d = copy(d1)
+    for k in keys(d2)
+        d[k] = d2[k]
+    end
+    return d
 end
 ```
 ```julia;term=true
