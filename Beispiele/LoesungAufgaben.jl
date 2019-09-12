@@ -89,3 +89,11 @@ end
     end
     return x
 end
+
+@Aufgabe "11.3.8" function dict_merge(d1, d2)
+    k = collect(keys(d1))
+    append!(k,collect(keys(d2)))
+    v = collect(values(d1))
+    append!(v,collect(values(d2)))
+    return Dict(zip(k,v))
+end
