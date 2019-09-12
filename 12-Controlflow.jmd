@@ -557,6 +557,8 @@ x_{n+1} = \frac{x_n + \frac{a}{x_n}}{2}.
 Für eine ausreichend hohe Zahl von ``n`` kann damit die Quadratwurzel von ``a`` ermittelt werden.
 Es soll eine Funktion definiert werden, die mit dem beschriebene Verfahren die Quadratwurzel einer beliebigen Zahl mit einem absoluten Fehler von ``10^{-5}`` berechnet. Ein solches Abbruchkriterium wir auch Konvergenzkriterium genannt.
 
+[^3]: <https://de.wikipedia.org/wiki/Heron-Verfahren>
+
 ```julia; results="hidden"; echo=false
 function bsqrt(a)
     x = a/2
@@ -573,4 +575,20 @@ bsqrt(9)
 bsqrt(103.12)
 ```
 
-[^3]: <https://de.wikipedia.org/wiki/Heron-Verfahren>
+### Dictionaries zusammenfügen
+Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als return value zurückgibt.
+
+```julia; results="hidden"; echo=false
+function dict_merge(d1, d2)
+    k = collect(keys(d1))
+    append!(k,collect(keys(d2)))
+    v = collect(values(d1))
+    append!(v,collect(values(d2)))
+    return Dict(zip(k,v))
+end
+```
+```julia;term=true
+d1 = Dict("Hans"=>85.3,"Michael"=>74.9)
+d2 = Dict("Lisa"=>56.1,"Anna"=>68.1)
+dict_merge(d1, d2)
+```
