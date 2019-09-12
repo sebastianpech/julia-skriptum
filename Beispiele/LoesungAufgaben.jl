@@ -123,6 +123,19 @@ end
     return d
 end
 
+@Aufgabe "13.3.1" begin
+    function ggt(a::Int,b::Int)
+        b == 0 && return a
+        a == 0 && return b
+        for teiler in min(abs(a),abs(b)):-1:0
+            if a%teiler == 0 && b%teiler == 0
+                return teiler
+            end
+        end
+        return 1
+    end
+end
+
 @Aufgabe "14.3.1" begin
     using Dates
     isdate(x,y) = Dates.value(Day(x)) == Dates.value(Month(y)) && Dates.value(Day(y)) == Dates.value(Month(x))

@@ -102,9 +102,10 @@ Nähere Informationen zum Debugger gibt es in diesem [Blogeintrag](https://julia
 [^2]: <https://julialang.org/blog/2019/03/debuggers>
 
 ## Aufgaben
-### Finde den Fehler in der folgenden Funktion
 
-Die Funktion berechnet den größten gemeinsamer Teiler zweier Zahlen `a` und `b`.
+### Finde den Fehler
+
+Die folgende Funktion berechnet den größten gemeinsamer Teiler zweier Zahlen `a` und `b`.
 
 ```julia
 function ggt(a::Int,b::Int)
