@@ -588,6 +588,7 @@ function dict_merge(d1, d2)
     return d
 end
 ```
+
 ```julia;term=true
 d1 = Dict("Hans"=>85.3,"Michael"=>74.9)
 d2 = Dict("Lisa"=>56.1,"Anna"=>68.1)
