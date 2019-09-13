@@ -385,7 +385,7 @@ Wichtig für die Kontrolle ist, dass alle Ausgaben exakt mit dem Beispiel oben �
 end
 ```
 
-### Berechne π
+### Berechne `π`
 
 Die Zahl `π` kann über eine so genannte Monte-Carlo-Simulation angenähert werden.
 Dabei werden zufällig Punkte in einem Quadrat mit bekannter Seitenlänge platziert. 

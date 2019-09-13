@@ -104,13 +104,22 @@ end
 Sind spezielle Angaben notwendig, ist das bei der jeweiligen Aufgabe vermerkt.
 
 Ist eine Aufgabe nicht vollständig korrekt gelöst, wird eine Fehlermeldung ausgegeben.
-Bei der folgenden Aufgabe soll eine Funktion definiert werden die den Winkel zwischen zwei Vektoren beliebiger Dimension berechnet.
+Bei der folgenden Aufgabe soll eine Funktion definiert werden, die den Winkel zwischen zwei Vektoren beliebiger Dimension berechnet.
 
 ```julia
 @Aufgabe "10.3.4" function winkel(v1,v2)
     v1-v2 # Offensichtlich falsch
 end
 ```
+
+Der aktuelle Status aller Aufgaben (Noch nicht behandelt,  Falsch,  Richtig) kann mit der folgenden Funktion angezeigt werden:
+
+```julia
+JuliaSkriptumKontrolle.status()
+```
+
+Die Ausgabe enthält auch die Anzahl an erreichten und möglichen Punkten.
+Da Aufgabe `10.3.4` in einem der vorherigen Beispiele falsch gelöst wurde, steht anstelle von `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`, `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`.
 
 Die Abgabe der Aufgaben erfolgt in TUWEL.
 Es sollen alle Aufgaben gesammelt in einer Julia Datei (Endung `.jl`) abgegeben werden.
@@ -134,6 +143,8 @@ end
 @Aufgabe "10.3.4" function winkel(v1,v2)
     v1-v2 # Offensichtlich falsch
 end
+
+JuliaSkriptumKontrolle.status()
 ```
 
 Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt, wird wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
