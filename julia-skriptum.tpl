@@ -86,6 +86,10 @@ automark
 literate={-}{-}1
 }
 
+\makeatletter
+\renewcommand{\verbatim@font}{\ttfamily\footnotesize}
+\makeatother
+
 \hypersetup {   pdfauthor = {Sebastian Pech, Raphael Suda},
   pdftitle={Programmieren im Bauingenieurwesen},
   colorlinks=TRUE,
