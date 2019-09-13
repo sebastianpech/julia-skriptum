@@ -119,7 +119,7 @@ JuliaSkriptumKontrolle.status()
 ```
 
 Die Ausgabe enthält auch die Anzahl an erreichten und möglichen Punkten.
-Da Aufgabe `10.3.4` in einem der vorherigen Beispiele falsch gelöst wurde, steht anstelle von `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`, `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`.
+Da Aufgabe `10.3.4` in einem der vorherigen Beispiele falsch gelöst wurde, steht anstelle von `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`, `j JuliaSkriptumKontrolle.get_state_string(Val(:failed))`.
 
 Die Abgabe der Aufgaben erfolgt in TUWEL.
 Es sollen alle Aufgaben gesammelt in einer Julia Datei (Endung `.jl`) abgegeben werden.
