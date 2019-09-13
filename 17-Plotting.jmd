@@ -8,7 +8,7 @@ options:
 # Plotting
 
 Die grafische Darstellung von Daten ist viele Wissenschaften ein immens wichtiger Punkt.
-Julia bietet eine Reihe von Paketen zum ''Plotten''. 
+Julia bietet eine Reihe von Paketen zum \enquote{Plotten}. 
 Das Plots.jl Paket vereint diese in einer Sprache zum beschreiben von Grafiken.
 Geladen wird das Paket wie alle anderen mittels
 
@@ -159,11 +159,11 @@ Die obigen Aufrufe erzeugen `png`-Dateien.
 Alternativ wird häufig auch das Format `pdf` verwendet. 
 `pdf` hat den Vorteil, dass die Grafik als Vektorgrafik erzeugt wird und damit ohne Qualitätsverlust auf eine beliebige Größe skaliert werden kann.
 
-## Aufgaben
-### Plot der Berechnung von Pi mittels Monte-Carlo
-- Scatter (Hervorheben der Punkte im kreis)
-- Filled line
-### Neue funktion die kummulativ nummerisch integrieren
-- plot sin(x)
-- integrieren sin(x) und plot
-### Von Statistik aufgabe X,Y wobei X die anzahl an versuchen und Y P ist
+<!-- ## Aufgaben -->
+<!-- ### Plot der Berechnung von Pi mittels Monte-Carlo -->
+<!-- - Scatter (Hervorheben der Punkte im kreis) -->
+<!-- - Filled line -->
+<!-- ### Neue funktion die kummulativ nummerisch integrieren -->
+<!-- - plot sin(x) -->
+<!-- - integrieren sin(x) und plot -->
+<!-- ### Von Statistik aufgabe X,Y wobei X die anzahl an versuchen und Y P ist -->
