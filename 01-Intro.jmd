@@ -107,7 +107,7 @@ Ist eine Aufgabe nicht vollständig korrekt gelöst, wird eine Fehlermeldung aus
 Bei der folgenden Aufgabe soll eine Funktion definiert werden die den Winkel zwischen zwei Vektoren beliebiger Dimension berechnet.
 
 ```julia
-@Aufgabe "10.3.3" function winkel(v1,v2)
+@Aufgabe "10.3.4" function winkel(v1,v2)
     v1-v2 # Offensichtlich falsch
 end
 ```
@@ -131,7 +131,7 @@ end
     # Hier den anderen Code einfügen
 end
 
-@Aufgabe "10.3.3" function winkel(v1,v2)
+@Aufgabe "10.3.4" function winkel(v1,v2)
     v1-v2 # Offensichtlich falsch
 end
 ```
