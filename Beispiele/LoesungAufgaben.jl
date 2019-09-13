@@ -3,6 +3,45 @@ using JuliaSkriptumKontrolle
 @Aufgabe "3.5.1" begin
 end
 
+@Aufgabe "7.4.1" function print_three(a)
+    println(string(a," ",a," ",a))
+end
+
+@Aufgabe "7.4.2" function verkette(f, g, x)
+    return f(g(x))
+end
+
+@Aufgabe "7.4.3" kreis_flaeche(r) = r^2*π
+@Aufgabe "7.4.4" kreis_umfang(r) = 2*r*π
+@Aufgabe "7.4.5" begin
+    kreis_flaeche(r) = r^2*π
+    kreis_umfang(r) = 2*r*π
+    function kreis(r)
+        println("r = $(round(r,digits=2))")
+        println("A = $(round(kreis_flaeche(r),digits=2))")
+        println("U = $(round(kreis_umfang(r),digits=2))")
+    end
+end
+
+@Aufgabe "8.4.1" function connect_three(a,b,c)
+    return append!(append!(a,b),c)
+end
+@Aufgabe "8.4.2" function interior(a)
+    return a[2:end-1]
+end
+@Aufgabe "8.4.3" function issort(a)
+    return a == sort(a)
+end
+@Aufgabe "8.4.4" function isanagram(s1, s2)
+    return sort(collect(lowercase(s1))) == sort(collect(lowercase(s2)))
+end
+@Aufgabe "8.4.5" function dict_index(d, n)
+    return d[sort(collect(keys(d)))[n]]
+end
+@Aufgabe "8.4.6" function tuple_append(t1, t2)
+    return Tuple(append!(collect(t1),collect(t2)))
+end
+
 @Aufgabe "10.3.1" begin
     using LinearAlgebra
 
