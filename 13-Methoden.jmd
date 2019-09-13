@@ -1,5 +1,0 @@
-# Methoden
-  - Type System --> Supertypes und subtypes
-    - small type tree
-  - different behaviour of functions on different types
-  - type declaration with `::`
