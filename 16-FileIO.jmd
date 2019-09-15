@@ -21,7 +21,7 @@ end
 # Arbeiten mit Dateien und dem Dateisystem
 
 Beim Automatisieren von Prozessen kommt es oft vor, dass große Dateimengen (z.B. Messwerte) eingelesen und verarbeitet werden müssen.
-Dafür ist es notwendig, zum Einen die Dateien bzw. Dateinamen zu finden und zum Anderen benötigt man eine Möglichkeit Dateien einzulesen.
+Dafür ist es notwendig, zum einen die Dateien bzw. Dateinamen zu finden und zum anderen benötigt man eine Möglichkeit Dateien einzulesen.
 
 ## Das Dateisystem
 
@@ -37,7 +37,7 @@ Die Funktion `readdir` gibt alle Dateien und Ordner eines Verzeichnisses aus.
 
 ```julia; term=true
 readdir() # Standardmäßig wird das working directory verwendet
-readdir("Ordner01")
+readdir("Ordner01") # Optional kann ein Pfad angegeben werden
 ```
 
 Die Ausgabe von `readdir` besteht allerdings nur aus den Datei- oder Ordnernamen als `String`, es ist also nicht möglich zu erkennen, ob es sich um einen Ordner oder eine Datei handelt.
@@ -80,7 +80,8 @@ Dadurch landen die Texte zuerst im Stream. Erst wenn der Stream mit `close` gesc
 close(f)
 ```
 
-Das Pendant zu `write` ist die Funktion `read` die eine Datei vollständig mit einem angegeben Dateitypen einliest. Da es häufig vorkommt, dass eine Datei aufgeteilt in die einzelnen Zeilen benötigt wird gibt es noch die Funktion `readlines` die ein `String`-`Array` zurück gibt.
+Das Pendant zu `write` ist die Funktion `read`, die eine Datei vollständig mit einem angegeben Dateitypen einliest.
+Da es häufig vorkommt, dass eine Datei aufgeteilt in die einzelnen Zeilen benötigt wird, gibt es noch die Funktion `readlines` die ein `String`-`Array` zurück gibt.
 
 ```julia; term=true
 f = open("Datei04.txt","r")
@@ -110,12 +111,6 @@ B = readdlm("MeineMatrix.txt")
 A == B
 ```
 
-Weitere Optionen wie Angabe eines Trennzeichens sind in der Dokumentation unter [Standard Library/Delimited Files](https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html) zu finden.
-
-Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, oder auch bei fehlenden Daten schnell an seine Grenzen.
-Um ein stabiles Einlesen von solchen Dateien zu ermöglichen gibt es das `CSV`-Paket.
-Das `CSV`-Paket biete eine Vielzahl von Optionen die es erlauben den Einlesevorgang genau an die gegebene Datei anzupassen.
-
 Bei der folgenden Datei kann es sich um eine sehr übliche, bei einer Messung aufgezeichnete, Datei handeln.
 
 ```julia; term=true
@@ -126,7 +121,7 @@ close(f)
 
 Es gibt eine Kopfzeile, verwendete Datentypen sind `Int`, `Float` und `String` und die `Float`-Zahlen sind anstelle eines Punktes mit einem Komma getrennt.
 
-'readdlm' liest die Datei zwar ein, das Resultat ist aber noch nicht sinnvoll verwendbar:
+`readdlm` liest die Datei zwar ein, das Resultat ist aber noch nicht sinnvoll verwendbar:
 
 ```julia; term=true
 readdlm("Datei05.csv")
@@ -138,8 +133,11 @@ Mit einem Blick in die Hilfe von `readdlm` können wir das Ergebnis durch Angebe
 readdlm("Datei05.csv",';',skipstart=1)
 ```
 
-Um die Daten nun nutzbar zu machen, müssten noch die Kommas durch Punkte und die daraus resultierenden String in Zahlen umgewandelt werden.
-Das Paket `CSV.jl` bietet für diesen Fall schon alle nötigen Optionen zum Einlesen:
+Weitere Optionen sind in der Dokumentation unter [Standard Library/Delimited Files](https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/index.html) zu finden.
+
+Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, oder auch bei fehlenden Daten schnell an seine Grenzen.
+Um die Daten von oben nutzbar zu machen, müssten noch die Kommas durch Punkte und die daraus resultierenden String in Zahlen umgewandelt werden.
+Das Paket `CSV.jl` in Kombination mit `DataFrames.jl` bietet für diesen Fall schon alle nötigen Optionen zum Einlesen:
 
 ```julia; term=true
 using CSV, DataFrames
