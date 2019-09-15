@@ -1,6 +1,6 @@
 # Interaktion
 
-Um Julia auszuführen gibt es verschieden Möglichkeiten:
+Um Julia auszuführen, gibt es verschieden Möglichkeiten:
 - Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in der Commandline.
 - Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]` in der Commandline.
 - In einem Editor der Julia unterstützt (z.B. Juno)
@@ -13,7 +13,7 @@ Für Interessierte ist hier auf das Paket [IJulia.jl](https://github.com/JuliaLa
 
 ## Die REPL
 
-Die REPL biete die rudimentärste Methode des Zugriffs auf Julia.
+Die REPL bietet die rudimentärste Methode des Zugriffs auf Julia.
 Die Funktionalität, wie es auch im Namen REPL steckt, besteht darin:
 1. **R**ead: Einen Befehl einzulesen
 2. **E**val: Den eingelesenen Befehl auszuwerten
@@ -26,35 +26,37 @@ Ausführen der Funktion `exit()` oder drücken von `Strg-D` schließt die REPL.
 Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt
 ![REPL Fenster direkt nach dem Start](../data/img/repl-01.png)
 
-Nach dem Start steht der Cursor nach dem Text `julia> ` welcher Prompt genannt wird.
-Die REPL befindet sich jetzt im \enquote{Julian mode}. Das bedeutet jetzt können Julia Befehle eingegeben und ausgewertet werden.
+Nach dem Start steht der Cursor nach dem Text `julia>`, welcher Prompt genannt wird.
+Die REPL befindet sich jetzt im \enquote{Julian mode}.
+Das bedeutet jetzt können Julia-Befehle eingegeben und ausgewertet werden.
 
-Die REPL kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens, direkt nach der Prompt gestartet werden können:
+Die REPL kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeichens direkt nach der Prompt gestartet werden können:
 1. \enquote{Help mode} (`help?>`) durch `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
-2. Paketmanager (`(v1.2) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Funktionen installiert werden können.
+2. Paketmanager (`(v1.2) pkg>`) durch `]`: Startet den Paketmanager mit dem zusätzliche Pakete installiert werden können.
 3. \enquote{Shell mode} (`shell>`) durch `;`: Ermöglicht das Ausführen von Befehlen im Betriebssystem.
 
-Der \enquote{Julian mode} ist, wenn der Cursor direkt hinter der Prompt steht, immer durch drücken der Backspace-Taste erreichbar, 
+Der \enquote{Julian mode} ist, wenn der Cursor direkt hinter der Prompt steht, immer durch drücken der Backspace-Taste erreichbar. 
 
 ## Ausführung als Skript
 
 Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`) kann über die Commandline ausgeführt werden.
 Je nach Betriebsystem ist diese über einen anderen Weg erreichbar:
-- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination `windows+r` (Run) und Eingabe von \enquote{cmd}, im erschienen Fenster, gefolgt von `Enter` erreichbar.
+- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination `windows+r` (Run) und Eingabe von \enquote{cmd}, im erschienenen Fenster, gefolgt von `Enter` erreichbar.
+- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch Drücken der Windows-Taste und Eingabe von `cmd`, gefolgt von `Enter` erreichbar.
 - macOS: In macOS wird die Commandline Terminal genannt. Über die Spotlight-Suche (`cmd+space`) und Eingabe von \enquote{Terminal} gelangt man zu der richtigen App.
-- Linux: Linux User sollte wissen wie sie zur Commandline gelangen.
+- Linux: Linux User sollten wissen wie sie zur Commandline gelangen.
 
 Die Commandline ist wie die Julia REPL aufgebaut und funktioniert nach dem selben Prinzip.
 Die wichtigsten Befehle für die Navigation sind:
 - `pwd`: Gibt das aktuelle Verzeichnis aus (Auch \enquote{Working Directory} genannt).
 - `cd pfad`: Wechselt in das Verzeichnis `pfad`.
-- `ls`: Liste den Inhalt des aktuellen Verzeichnisses auf.
+- `ls`: Listet den Inhalt des aktuellen Verzeichnisses auf.
 Diese Befehle genügen zum Lösen der Aufgaben, je nach Betriebssystem sind aber noch sehr viele weitere verfügbar.
 
-Durch die Installation von Julia ist wird der Befehl `julia` verfügbar.
-Soll ein Skript `mein-script.jl` ausgeführt werden, ist das durch eine Eingabe von `julia mein-script.jl` in der Commandline möglich.
+Nach der Installation von Julia ist der Befehl `julia` verfügbar.
+Soll ein Skript `mein-script.jl` ausgeführt werden, ist das durch Eingabe von `julia mein-script.jl` in der Commandline möglich.
 `mein-script.jl` ist dabei der Pfad zu der auszuführenden Datei.
-Bei dieser Angabe handelt es sich um einen sogenannte relativen Pfad, relativ bezogen auf das aktuelle Verzeichnis.
+Bei dieser Angabe handelt es sich um einen sogenannten relativen Pfad, relativ bezogen auf das aktuelle Verzeichnis.
 Befindet sich die Datei in einem Unterordner `scripts` würde der Befehl
 - unter Windows: `julia scripts\mein-script.jl` und
 - unter macOS und Linux `julia scripts/mein-script.jl`
@@ -67,14 +69,14 @@ Im folgenden Beispiel wird eine Datei `meinedatei.txt` mit einem absoluten und m
 
 ```julia; eval=false
 file = open("/Users/someuser/meinedatei.txt") # Absoluter Pfad unter Linux
-file = open("C:\\Benuter\\meinedatei.txt") # Absoluter Pfad unter Window
+file = open("C:\\Benuter\\meinedatei.txt") # Absoluter Pfad unter Windows
 file = open("meinedatei.txt") # Relativer Pfad
 ```
 
-Die absoluten Pfad funktioniert nur dann, wenn auf jedem Gerät auf dem der Befehl ausgeführt wird auch der Ordner mit dem exakt gleichen Pfad vorhanden ist.
+Die absoluten Pfade funktioniert nur dann, wenn auf jedem Gerät auf dem der Befehl ausgeführt wird auch der Ordner mit dem exakt gleichen Pfad vorhanden ist.
 Liegt `meinedatei.txt` allerdings immer im Verzeichnis in dem das Skript gestartet wird, kann die Datei beim relativen Pfad unabhängig vom Gerät gefunden werden.
 Im Windows Pfad wird als Trennzeichen `\\` verwendet, obwohl der Windows Pfad eigentlich nur einen einzelnen `\` enthält.
-Das ist erforderlich da `\` einen sogenannten \enquote{special character} einleitet. 
+Das ist erforderlich da `\` einen sogenannten \enquote{Special Character} einleitet. 
 Nähere Informationen zu diesem Thema werden im Abschnitt Strings gegeben.
 
 ## Juno Spezifika
@@ -95,7 +97,7 @@ x = 10
 y = 12
 ```
 
-Wird z.B. im oberen Beispiel die `Strg+Enter` bzw. `Shift+Enter` in der Zeile `return 10` gedrückt, werden auch die Zeile davor und danach ausgewertet.
+Wird z.B. im oberen Skript `Strg+Enter` bzw. `Shift+Enter` in der Zeile `return 10` gedrückt, werden auch die Zeile davor und danach ausgewertet.
 Im Gegensatz dazu wird beim Senden der Zeile `x = 10` nur diese Zeile ausgeführt.
 
 Auf der Website von [Juno](https://junolab.org/)[^2] sind weitere Funktionen in einer interaktiven Grafik erklärt.
@@ -113,7 +115,7 @@ Wie schon im Abschnitt zur Interaktion beschrieben, gibt es einen eigenen REPL-M
 Dieser Modus kann durch Eingabe von `?` direkt nach `julia>` aktiviert werden. 
 Die Prompt sollte sich dann in `help?>` ändern. 
 Jetzt kann jede beliebige Funktionen (z.B. `abs` für den Absolutwert einer Zahl) eingegeben werden.
-Durch bestätigen mit Enter erscheint die folgende Ausgabe:
+Durch Bestätigen mit Enter erscheint die folgende Ausgabe:
 
 ```julia; term=true; eval=false
 help?> abs
@@ -147,7 +149,7 @@ Falls Probleme oder Unklarheiten bei der Verwendung von Julia auftreten, gibt es
 - [Discourse](https://discourse.julialang.org/)[^4]
 - [Github](https://github.com/)[^5]
 
-Github ist die zentrale Plattform auf der Julia Pakete (und auch Julia selbst) verwaltet werden. Findet man eine Fehler kann man dort eine Nachricht schreiben und direkt mit Entwicklerinnen Kontakt aufnehmen.
+Github ist die zentrale Plattform auf der Julia Pakete (und auch Julia selbst) verwaltet werden. Findet man eine Fehler kann man dort eine Nachricht schreiben und direkt mit EntwicklerInnen Kontakt aufnehmen.
 
 [^3]: <https://stackoverflow.com/questions/tagged/julia>
 [^4]: <https://discourse.julialang.org/>
@@ -155,13 +157,13 @@ Github ist die zentrale Plattform auf der Julia Pakete (und auch Julia selbst) v
 
 ### Paketmanager
 
-Julia zeichnet sich durch eine sehr aktive Community aus, die Basiskomponenten der Sprache laufen um neue Funktionen erweitert.
+Julia zeichnet sich durch eine sehr aktive Community aus, die Basiskomponenten der Sprache laufend um neue Funktionen erweitert.
 Solche Erweiterungen werden durch Pakete zu Julia hinzugefügt.
 
 Der Paketmanager kann aus der REPL durch Eingabe von `]` direkt nach `julia>` aktiviert werden.
 Die Prompt ändert sich dann in `(v1.2) pkg>`.
 Der Paketmanager ist ein sehr mächtiges Tool dessen Funktionsumfang unter [Standard Library/Pkg](https://docs.julialang.org/en/v1/stdlib/Pkg/) dokumentiert ist.
-Im Zuge der LVA beschränken wir uns auf installieren, aktualisieren und entfernen von Paketen.
+Im Zuge der LVA beschränken wir uns auf das Installieren, Aktualisieren und Entfernen von Paketen.
 
 Ein Paket z.B. `Example.jl` kann durch `add` installiert werden:
 ```julia;term=true; eval=false
@@ -176,7 +178,7 @@ Ein Paket z.B. `Example.jl` kann durch `add` installiert werden:
   [7876af07] + Example v0.5.3
 ```
 
-Gibt es neue Versionen von Pakete können diese gesammelt mit `update` aktualisiert werden:
+Gibt es neue Versionen von Paketen können diese gesammelt mit `update` aktualisiert werden:
 ```julia;term=true; eval=false
 (v1.2) pkg> update
   Updating registry at `~/.julia/registries/General`
