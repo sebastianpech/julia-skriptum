@@ -9,7 +9,7 @@ Grob können diese Fehler in *Syntax Errors*, *Logical Errors* und *Runtime Erro
 Ein *Syntax Error* tritt in den meisten Fällen bereits vor der eigentlichen Ausführung des Programms auf und wird durch einen falsch geschriebenen Befehl verursacht.
 Dies betrifft hauptsächlich Keywords der Programmiersprache (`if`, `else`, `function`, ...) und ungültige Variablennamen.
 
-```julia
+```julia;term=true
 42number = "meaning of life"
 ```
 
@@ -20,9 +20,9 @@ Nach Auftreten des Fehlers wird das Programm unterbrochen. Die Fehlermeldung wir
 
 Bei *Logical Errors* handelt es sich um Fehler in der Programmlogik (z.B. eine falsche Formel oder falsche Annahme).
 
-In der folgenden Funktion ist ein logischer Fehler. Eigentlich sollte die Funktion $x^n$ berechnen, gibt aber $x^{n+1}$.
+In der folgenden Funktion ist ein logischer Fehler. Eigentlich sollte die Funktion $x^n$ berechnen, gibt aber $x^{n+1}$ zurück.
 
-```julia
+```julia; results="hidden"
 function pow(x::Number,n::Int)
     x_pow = x
     for i in 1:n
@@ -30,8 +30,9 @@ function pow(x::Number,n::Int)
     end
     return x_pow
 end
-
-pow(3,2)
+```
+```julia; term=true
+pow(3,2)  # Sollte 9 ergeben
 ```
 
 Das Problem mit logischen Fehler ist, dass das Programm ohne Fehlermeldung läuft, dass Ergebnis aber falsch ist.
