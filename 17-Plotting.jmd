@@ -7,23 +7,23 @@ options:
 
 # Plotting
 
-Die grafische Darstellung von Daten ist viele Wissenschaften ein immens wichtiger Punkt.
-Julia bietet eine Reihe von Paketen zum \enquote{Plotten}. 
-Das Plots.jl Paket vereint diese in einer Sprache zum beschreiben von Grafiken.
+Die grafische Darstellung von Daten ist in vielen Wissenschaften ein immens wichtiger Punkt.
+Julia bietet eine Reihe von Paketen zum \enquote{Plotten} von Daten. 
+Das Paket `Plots.jl` vereint diese in einer Sprache zum beschreiben von Grafiken.
 Geladen wird das Paket wie alle anderen mittels
 
 ```julia
 using Plots
 ```
 
-Plots.jl bieten eine sehr großen Funktionsumfang, wodurch es bei jedem Neustart von Julia durchaus länger dauern kann, bis der erste Plot sichtbar wird.
+`Plots.jl` bieten einen sehr großen Funktionsumfang, wodurch es bei jedem Neustart von Julia durchaus länger dauern kann, bis der erste Plot sichtbar wird.
 
 In Plots.jl werden meistens Datenvektoren dargestellt.
-Das Paket biete Implementierungen für einige Elementstypen wie
+Das Paket bietet Implementierungen für einige Elementstypen wie
 
-- Alle Zahlentypen in Julia
-- `Date` und `DateTime`
-- Zahlen aus Measurements.jl
+- alle Zahlentypen in Julia,
+- `Date` und `DateTime`, sowie
+- Zahlen aus `Measurements.jl`
 
 und ist sehr leicht erweiterbar.
 
@@ -45,25 +45,21 @@ plt = plot(x,y)
 plt
 ```
 
-Um mehrere Daten, übereinander, in einem Plot darzustellen gibt es die Möglichkeit dies direkt mit einem Aufruf von `plot`
+Um mehrere Daten, übereinander, in einem Plot darzustellen gibt es die Möglichkeit dies direkt mit einem Aufruf von `plot` oder durch nachträgliches Hinzufügen mit `plot!` zu machen
 
 ```julia
 y2 = cos.(x)
 plot(x,[y y2]) # plot([x x2],[y y2]) für verschiedene x-Werte
 ```
 
-oder durch nachträgliches hinzufügen mit `plot!`
-
 ```julia
 plot!(plt,x,y2)
 ```
 
-zu machen.
-
-Plots.jl bietet sogenannte *Magic Arguments*. Damit ist es möglich die Darstellung der Daten zu verändern, wobei von der Bedeutung des Konfigurationswertes, auf die zugehörige Einstellung geschlossen wird.
+`Plots.jl` bietet sogenannte *Magic Arguments*. Damit ist es möglich die Darstellung der Daten zu verändern, wobei von der Bedeutung des Konfigurationswertes, auf die zugehörige Einstellung geschlossen wird.
 
 Beispielsweise:
-- `:red` deutet Auf einen Farbwahl hin
+- `:red` deutet auf eine Farbwahl hin
 - `(0,10)` deutet bei Achskonfigurationen auf den Minimal- und den Maximalwert der Achse hin
 - `:log` deutet bei Achskonfigurationen auf die Wahl einer logarithmischen Skalierung hin
 
@@ -82,18 +78,18 @@ Dabei haben die Argumente den folgenden Effekt:
 
 - `line=([:green :red], :solid, 4)`: Stelle `y` grün, `y2` rot, beide als durchgezogene Linie mit der Stärke 4 dar.
 - `label=["sin(x)" "cos(x)"]`: Bezeichne `y` in der Legende mit sin(x) und `y2` mit cos(x).
-- `xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"]))`: Setzte den Text unter der x-Achse auf x und schreibe an die Stellen von 0, π und 2π anstelle der Werte die entsprechenden Texte.
+- `xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"]))`: Setzte den Text unter der x-Achse auf x und schreibe an die Stellen von `0`, `π` und `2π` anstelle der Werte die entsprechenden Texte.
 - `yaxis=("y(x)")`: Setze den Text neben der y-Achse auf y(x)
 - `title="Sinus und Cosinus"`: Setze den Plottitel auf Sinus und Cosinus
 
 Für eine gute Datenvisualisierung reichen Linienplots nicht aus.
-Plots.jl hat eine große Anzahl an verschiedenen Visualisierungsarten, in weiterer Folge werden Scatterplots, Balkendiagramme und Histogramme besprochen.
-Generell können alle gezeigten Option bei den anderen Diagrammarten ebenfalls verwendet und unterschiedliche Plots kombiniert werden. 
+`Plots.jl` hat eine große Anzahl an verschiedenen Visualisierungsarten, in weiterer Folge werden Scatterplots, Balkendiagramme und Histogramme besprochen.
+Generell können alle gezeigten Optionen bei den anderen Diagrammarten ebenfalls verwendet und unterschiedliche Plots kombiniert werden. 
 
 ## Scatterplot
 
-Scatterplot ermöglichen die Ausgabe von einzelnen Punkten, bei denen es nicht sinnvoll ist sie mit einer Linie zu verbinden.
-Um Scatterplots zu formatieren muss `line` durch `marker` ersetzt werden.
+Scatterplots ermöglichen die Ausgabe von einzelnen Punkten, bei denen es nicht sinnvoll ist sie mit einer Linie zu verbinden.
+Um Scatterplots zu formatieren, muss `line` durch `marker` ersetzt werden.
 
 ```julia
 x = rand(30)
@@ -104,8 +100,8 @@ scatter(x,y,marker=(:circle,3,:orange))
 ## Barchart
 
 Balkendiagramme werden meist verwendet um Häufigkeiten darzustellen. 
-Plots.jl biete dafür die `bar`-Funktion.
-Um Balkendiagramme zu formatieren kann `line` und `fill` verwendet werden.
+`Plots.jl` bietet dafür die `bar`-Funktion.
+Um Balkendiagramme zu formatieren, kann `line` und `fill` verwendet werden.
 
 ```julia
 x = 0:0.5:2π
@@ -117,7 +113,7 @@ Histogramme sind im Grunde Balkendiagramme, allerdings werden sie ausschließlic
 Ein großer Vorteil der `histogram`-Funktion ist, dass die Verteilung nicht ermittelt werden muss.
 
 Für die folgenden Werte soll ein Histogramm erstellt werden:
-```julia
+```julia;results="hidden"
 label = [1,1,2,3,1,4,4,1,1,7]
 ```
 Soll die `bar`-Funktion verwendet werden, müsste zuerst die Häufigkeit jeder Zahl in `label` gezählt werden.
@@ -141,7 +137,7 @@ scatter!(plt,rand(40)*6,1 .- rand(40)*2,marker=(:x))
 
 Bisher konnten die Plots nur in einem extra Fenster angezeigt werden.
 In den meisten Fällen benötigt man diese in einem Grafikformat für ein anders Dokument.
-Plots.jl biete dafür die Funktion `savefig` in zwei Varianten:
+`Plots.jl` bietet dafür die Funktion `savefig` in zwei Varianten:
 
 ```julia; eval=false
 savefig("mein_plot_1.png")
