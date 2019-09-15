@@ -33,7 +33,7 @@ else
 end
 ```
 
-Da `x < 0` ausgewertet `j x < 0` ergibt, wird der `if`-Zweig übersprungen und der `else`-Zweig ausgeführt.
+Da `x < 0` ausgewertet `false` ergibt, wird der `if`-Zweig übersprungen und der `else`-Zweig ausgeführt.
 
 Die dritte Form ist im Grunde eine vereinfachte Schreibweise für Kombinationen von Form eins und Form zwei.
 Der folgende Code 
@@ -66,12 +66,12 @@ end
 
 ## Schleifen
 
-Computer sind besonders gut geeignet um repetitive Aufgaben zu lösen.
+Computer sind besonders gut geeignet, um repetitive Aufgaben zu lösen.
 Solche Aufgaben werden durch Schleifen definiert.
-Julia biete zwei Arten von Schleifen: `for` und `while`-Schleife.
+Julia bietet zwei Arten von Schleifen: `for` und `while`-Schleife.
 
 Die `while`-Schleife hat eine gewisse Ähnlichkeit zur `if`-Bedingung.
-Eine Aufgabe in einer solchen Schleife wir solange ausgeführt, solange eine *Bedingung* erfüllt ist.
+Eine Aufgabe in einer solchen Schleife wird immer wieder ausgeführt, solange eine *Bedingung* erfüllt ist.
 
 Im folgenden Beispiel wird jede Zahl von 0 bis 10 ausgegeben (`global i` kann für das Erste ignoriert werden)
 
@@ -95,7 +95,7 @@ Der Code wird wird folgendermaßen durchschritten:
 6. Ende
 
 Dieser Ablauf wird Schleife genannt, weil (5) wieder zurück zu (2) springt.
-Bei diesem Code ist Vorsicht geboten: Vergisst man die Zeile `i += 1`, wird die Bedingung `i <= 10` nie erfüllt.
+Bei diesem Code ist Vorsicht geboten: Vergisst man die Zeile `i += 1`, ergibt die Bedingung `i <= 10` nie `false`.
 Das bedeutet die Schleife läuft endlos (Endlosschleife). 
 In der REPL oder in Juno kann eine Endlosschleife durch die Tastenkombination `Ctrl-C` abgebrochen werden.
 
@@ -133,10 +133,10 @@ function sammle_vokale(text)
     for buchstabe in text
         if buchstabe == '!'
             println(vokale_sammlung)
-            break
+            break  # Beende die Schleife
         end
         if !(buchstabe in ('a','e','i','o','u'))
-            continue
+            continue  # Zurück zum Beginn der Schleife
         end
         vokale_sammlung *= buchstabe
     end
@@ -155,7 +155,7 @@ Optimierung ist ein sehr komplexes Thema, es gibt in Julia aber ein paar grundle
 
 Um eine Auskunft über die Laufzeit eines Codes zu erhalten (Benchmark-Test) biete Julia das `@time`-Macro.
 
-Die folgende Funktion berechnet `n`-mal die inverse einer Matrix `A` und ist nur als Beispielfunktion für die Verwendung von `@time` gedacht.
+Die folgende Funktion berechnet `n`-mal die Inverse einer Matrix `A` und ist nur als Beispielfunktion für die Verwendung von `@time` gedacht.
 
 ```julia
 function time_dummy(n::Int)
@@ -187,7 +187,7 @@ Eine mögliche Fehlerquelle dafür ist im folgendem Beispiel zu sehen[^1].
 
 [^1]: <http://www.johnmyleswhite.com/notebook/2013/12/06/writing-type-stable-code-in-julia/>
 
-```julia
+```julia;results="hidden"
 function summe_sin_A(n::Int)
     ∑ = 0
     for i in 1:n
@@ -205,7 +205,8 @@ function summe_sin_B(n::Int)
 end
 ```
 
-Der einzige Unterschied der Funktionen A und B befindet sich in der ersten Zeile bei der Definition von `\sum`. Im Fall von A wird mit `Int` im Fall von B mit `Float64` initialisiert.
+Der einzige Unterschied der Funktionen A und B befindet sich in der ersten Zeile bei der Definition von `Σ` (`\sum`+`TAB`-Taste).
+Im Fall von A wird mit `Int` im Fall von B mit `Float64` initialisiert.
 
 Um die Funktionen zu Benchmarken werden beide in Schleifen ausgeführt.
 
@@ -226,7 +227,7 @@ end
 Die Laufzeit der beiden Fälle ergibt sich zu:
 
 ```julia;term=true
-benchmark_summe_A(); benchmark_summe_B(); # Erster Aufruf zum kompilieren
+benchmark_summe_A(); benchmark_summe_B(); # Erster Aufruf zum Kompilieren
 @time benchmark_summe_A()
 @time benchmark_summe_B()
 ```
@@ -236,7 +237,7 @@ Der große Unterschied zwischen den beiden Funktionen resultiert aus dem Rückga
 typeof(sin(3))
 ```
 
-`sin` gibt `Float64` zurück. Das bedeutet bei Fall A muss `\sum` von `Int` in `Float64` konvertiert werden, was immens viel Zeit benötigt.
+`sin` gibt `Float64` zurück. Das bedeutet bei Fall A muss `Σ` von `Int` in `Float64` konvertiert werden, was immens viel Zeit benötigt.
 
 Ein weiterer häufig gemachter Fehler tritt bei Funktionen auf, die für gleiche Datentypen der Argumente verschiedene Datentypen der Ergebnisse zurückgeben.
 Beispielsweise gibt die folgende Definition der Rampen-Funktion inkonsistente Datentypen zurück:
@@ -300,7 +301,7 @@ x = 100
 test_global()
 ```
 
-`test_global` gibt jetzt den neuen Wert von `x` aus. In diesem Fall hat sich nicht nur der Wert, sonder auch der Typ von `String` zu `Int` geändert.
+`test_global` gibt jetzt den neuen Wert von `x` aus. In diesem Fall hat sich nicht nur der Wert, sondern auch der Typ von `String` zu `Int` geändert.
 
 In manchen Fällen ist es sinnvoll globale Variablen zu verwenden, dann sollten diese mit dem Keyword `const` als Konstanten definiert werden (Konstanten werden üblicherweise in Blockbuchstaben geschrieben).
 
@@ -312,7 +313,8 @@ end
 Kraft(8.0)
 ```
 
-Eine Konstante darf sich nicht ändern, damit ist der Code wieder Typenstabil.
+Eine Konstante darf sich nicht ändern; beim Versuch eine Konstante zu ändern, gibt Julia einen Error zurück.
+Damit ist der Code wieder typenstabil.
 
 ```julia
 GRAV_BESCHL = "Neuer Wert"
@@ -390,7 +392,7 @@ end
 Die Zahl `π` kann über eine so genannte Monte-Carlo-Simulation angenähert werden.
 Dabei werden zufällig Punkte in einem Quadrat mit bekannter Seitenlänge platziert. 
 Durch Einschreiben eines Kreise in das Quadrat und ermitteln der Anzahl an Punkten die im Kreis gelandet sind, kann die Fläche des Kreises relativ zur Fläche des Quadrates ermittelt werden.
-`π` wird dann einfach über die Kreisflächenformel 
+`π` wird dann einfach über die Kreisflächenformel berechnet.
 
 Schreibe eine Funktion die `π` mittels Monte-Carlo-Simulation approximiert.
 Das einziges Argument der Funktion ist die Anzahl an zufällig ermittelten Punkte.
@@ -418,8 +420,8 @@ Beispiele (mit steigender Anzahl von Punkten steigt auch die Genauigkeit):
 
 ### Numerisch Integrieren
 
-Schreibe eine Funktion die das bestimmte Integral einer beliebigen 1d Funktion definiert durch x- und y-Werte berechnet.
-Verwendet dazu die [Trapezregel](https://de.wikipedia.org/wiki/Trapezregel)[^2].
+Schreibe eine Funktion die das bestimmte Integral einer beliebigen 1D-Funktion definiert durch x- und y-Werte berechnet.
+Verwende dazu die [Trapezregel](https://de.wikipedia.org/wiki/Trapezregel)[^2].
 
 [^2]: <https://de.wikipedia.org/wiki/Trapezregel> 
 
@@ -487,14 +489,14 @@ P_est_2(1_000_000_000)
 Die exakten Ergebnisse sind:
 ```julia;term=true
 1/6^3 # Fall 1
-1/6+5/6*1/6+5/6*5/6*1/6 # Fall 
+1/6+5/6*1/6+5/6*5/6*1/6 # Fall 2
 ```
 
 ### Split
 
 Im Abschnitt zu Strings wurde die Funktion `split` vorgestellt mit der Strings durch trennen bei einem Zeichen, in ein String-Array umgewandelt werden können.
 Bei dieser Aufgabe soll die Funktion nachprogrammiert werden, natürlich ohne die Verwendung von `split`.
-Das Trennzeichen muss vom Typ `char` sein und im Gegensatz zur `split` Funktion darf das resultierende Array keine leeren Strings `""` enthalten.
+Das Trennzeichen muss vom Typ `char` sein und im Gegensatz zur `split` Funktion darf das resultierende Array keine leeren Strings `""` enthalten, wenn ein Trennzeichen am Ende des Strings steht.
 Achtung auch die Sonderfälle
 - kein Trennzeichen
 - Trennzeichen am Anfang
@@ -533,10 +535,10 @@ Eines dieser Verfahren wird [babylonisches Wurzelziehen](https://de.wikipedia.or
 
 Zur Berechnung der Quadratwurzel ``x`` von ``a`` wird zuerst eine Zahl ``x_0`` als Kandidat gewählt (z.B. ``x_0 = \frac{a}{2}``).
 Anstelle von ``x=\sqrt{a}`` wird dann die Gleichung mit dem Kandidaten ``x_0 \cdot x_0 \stackrel{!}{=} a`` gelöst.
-Wurde zufällt ``x_0 = x`` gewählt ist der Algorithmus beendet.
+Wurde zufällig ``x_0 = x`` gewählt ist der Algorithmus beendet.
 Wahrscheinlicher ist jedoch, dass ``x_0 \cdot x_0 \neq a``.
 Je nach der Wahl von ``x_0`` ist ``x_0^2`` jetzt größer oder kleiner als ``a``, was auch bedeutet, dass ``x_0`` jetzt entsprechend größer oder kleiner als ``x`` ist.
-Ändern wie die Gleichung für ``a`` zu ``x_0 \cdot b = a`` können wir durch Umformen eine zweite Zahl ``b`` ermitteln, für die gilt
+Ändern wir die Gleichung für ``a`` zu ``x_0 \cdot b = a`` können wir durch Umformen eine zweite Zahl ``b`` ermitteln, für die gilt
 
 ```math
 \begin{cases}
@@ -576,7 +578,7 @@ bsqrt(103.12)
 ```
 
 ### Dictionaries zusammenfügen
-Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als return value zurückgibt.
+Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als Return Value zurückgibt.
 Sind Keys in beiden `Dicts` vorhanden sollen die Werte aus dem ersten mit den Werten aus dem zweiten `Dict` überschrieben werden.
 
 ```julia; results="hidden"; echo=false
@@ -590,7 +592,7 @@ end
 ```
 
 ```julia;term=true
-d1 = Dict("Hans"=>85.3,"Michael"=>74.9)
-d2 = Dict("Lisa"=>56.1,"Anna"=>68.1)
+d1 = Dict("Knopparp"=>71.99,"Söderhamn"=>314.1)
+d2 = Dict("Landskrona"=>494.1,"Ektorp"=359.1)
 dict_merge(d1, d2)
 ```
