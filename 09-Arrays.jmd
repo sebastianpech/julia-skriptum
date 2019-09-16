@@ -370,6 +370,8 @@ function connect_three(a,b,c)
     return append!(append!(a,b),c)
 end
 ```
+
+Beispiele:
 ```julia;term=true
 a = [1, 1, 2];
 b = [3, 5];
@@ -384,6 +386,8 @@ function interior(a)
     return a[2:end-1]
 end
 ```
+
+Beispiele:
 ```julia;term=true
 nums = [0,1,2,3,4];
 res1 = interior(nums)
@@ -397,6 +401,8 @@ function is_sort(a)
     return a == sort(a)
 end
 ```
+
+Beispiele:
 ```julia;term=true
 unsorted_nums = [3,2,5,1];
 sorted_nums = sort(unsorted_nums);
@@ -413,6 +419,8 @@ function is_anagram(s1, s2)
     return sort(collect(lowercase(s1))) == sort(collect(lowercase(s2)))
 end
 ```
+
+Beispiele:
 ```julia;term=true; results="hidden"; echo=false
 is_anagram("spam","eggs")
 is_anagram("Stein","niest")
@@ -426,6 +434,8 @@ function dict_index(d, n)
     return d[sort(collect(keys(d)))[n]]
 end
 ```
+
+Beispiele:
 ```julia;term=true
 d = Dict("a"=>1,"b"=>2, "c"=>3, "d"=>4)
 dict_index(d, 2)
@@ -439,6 +449,8 @@ function tuple_append(t1, t2)
     return Tuple(append!(collect(t1),collect(t2)))
 end
 ```
+
+Beispiele:
 ```julia;term=true
 t1 = ('a','b')
 t2 = ('c','d','e')
