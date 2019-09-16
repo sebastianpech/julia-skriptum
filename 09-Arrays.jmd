@@ -210,6 +210,24 @@ rand(2,2)
 rand(3,2,4)
 ```
 
+Die Funktion `zero` kann nicht nur auf Zahlen, sondern auch auf Arrays mit Zahlen angewendet werden.
+In diesem Zusammenhang sind auch die Funktionen `one`, `ones` und `zeros` interessant.
+```julia;term=true
+a = [1 2; 3 4]
+zero(a)
+one(a)
+zeros(2,3)
+ones(3,2)
+```
+
+`similar` erzeugt ein Array vom gleichen Datentyp wie das übergebene Argument.
+```julia;term=true
+a = [1 2; 3 4];
+b = ["a" "b"; "c" "d"];
+similar(a)
+similar(b)
+```
+
 ### Broadcasting
 Viele Operationen in Julia können elementweise auf Arrays angewendet werden.
 Diese Vorgehensweise wird auch *Broadcasting* genannt.

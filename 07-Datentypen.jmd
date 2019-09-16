@@ -222,6 +222,16 @@ log10(100)  # log10 ist der Logarithmus mit Basis 10
 abs(-19.0)
 ```
 
+Eine weitere interessante Funktion ist `zero`.
+Sie nimmt eine Zahl als Argument und gibt `0` im gleichen Datentyp zurück.
+Besonders im Zusammenhang mit Typenstabilität (siehe Abschnitt Kontrollstruktur) kann die Funktion hilfreich sein.
+```julia;term=true
+zero(19)
+zero(19.0)
+zero(38//2)
+zero(19.0+3im)
+```
+
 ## Booleans
 Eine Wert vom Typ `Bool` kann entweder `true` oder `false` annehmen.
 Diesen Datentypen kann man sich wie eine Zahl vorstellen, die entweder `0` (im Falle von `false`) oder `1` (im Falle von `true`) ist.
