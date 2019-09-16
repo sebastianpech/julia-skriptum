@@ -170,6 +170,18 @@ A = d^2*π/4#OhneAbständeliestsichCodeschwer
 A = (d^2 * π) / 4  # Abstände und Klammern verbessern die Lesbarkeit
 ```
 
+Manchmal ist es notwendig, zu einer Variable eine Zahl zu Addieren und das Ergebnis in der gleichen Variable zu speichern.
+Für solche Fälle gibt es die Operatoren `+=`, `-=`, `*=`, `/=` und `^=`.
+```
+a = 1.0
+a = a + 1
+a += 1  # wie a = a + 1
+a -= 1  # wie a = a - 1
+a *= 2  # wie a = a * 2
+a /= 2  # wie a = a / 2
+a ^= 2  # wie a = a^2
+```
+
 Die Funktionen `string()` und `parse()` konvertieren Zahlen in Strings und umgekehrt:
 ```julia; term=true
 string(19.0)
