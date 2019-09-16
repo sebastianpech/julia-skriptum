@@ -59,7 +59,7 @@ A\c
 
 ## Vektorfunktionen
 
-Das lineare Algebra Paket beinhaltet auch Funktionen zur Berechnung des Skalarprodukts `dot` oder `·`, des Kreuzprodukts `cross` oder `×` und der Länge `norm` von Vektoren.
+Das lineare Algebra Paket beinhaltet auch Funktionen zur Berechnung des Skalarprodukts `dot` oder `·` (`\cdot`+`TAB`-Taste), des Kreuzprodukts `cross` oder `×` (`\times`+`TAB`-Taste) und der Länge `norm` von Vektoren.
 
 ```julia
 [1,2,3] ⋅ [4,5,6]
