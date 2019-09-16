@@ -1,6 +1,8 @@
 ---
 options:
-      out_width : 70 %
+      out_width : 50 %
+      fig_height : 2.2
+      fig_width : 4.3
       fig_env : center
       fig_pos : ""
 ---
