@@ -50,8 +50,10 @@ Gerade bei Funktionen mit vielen (optionalen) Argumenten sind Keyword Arguments 
 
 ## Neue Funktionen erstellen
 Vor allem für Operationen die oft wiederholt werden, ist es sinnvoll eigene Funktionen zu definieren; und zwar aus folgenden Gründen:
-  - 
-
+  - Das Debugging kann schrittweise in den einzelnen Funktionen erfolgen.
+  - Änderungen im Code müssen nur in den einzelnen Funktionen umgesetzt werden.
+  - Durch das Zusammenfassen von Operationen in Funktionen wird der Code besonders performant.
+  - Sinnvoll konzipierte Funktionen für kleine Aufgaben sind vielseitig einsetzbar und können meist in mehreren Programmen verwendet werden.
 
 Die Definition einer eigenen Funktion beginnt mit dem Keyword `function` am Zeilenanfang, gefolgt vom Funktionsnamen und den Argumenten in runden Klammern.
 Danach folgen beliebig viele Zeilen Code und ein abschließendes `end`.
