@@ -2,8 +2,8 @@
 
 Um Julia auszuführen, gibt es verschieden Möglichkeiten:
 - Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in der Commandline.
-- Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]` in der Commandline.
-- In einem Editor der Julia unterstützt (z.B. Juno)
+- Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]` in der Commandline (Die eckigen Klammern kennzeichnen optionale Argumente)
+- In einem Editor der Julia unterstützt (z.B. Atom mit Juno)
 - Als sogenanntes Notebook mit Jupyter.
 
 Jupyter Notebooks eignen sich um Berechnungen zu Dokumentieren und z.B. um Grafiken und Formeln zu erweitern, sprengen aber den Rahmen der LVA.
@@ -20,8 +20,7 @@ Die Funktionalität, wie es auch im Namen REPL steckt, besteht darin:
 3. **P**rint: Das Ergebnis auszugeben
 4. **L**oop: Zurück zu 1. und auf den nächsten Befehl warten
 
-Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in Juno geöffnet werden.
-Ausführen der Funktion `exit()` oder drücken von `Strg-D` schließt die REPL.
+Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in Juno geöffnet werden (Ausführen der Funktion `exit()` oder drücken von `Strg-D` schließt die REPL wieder).
 
 Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt
 ![REPL Fenster direkt nach dem Start](../data/img/repl-01.png)
@@ -37,12 +36,15 @@ Die REPL kennt noch drei weitere Modi, die durch Eingabe eines speziellen Zeiche
 
 Der \enquote{Julian mode} ist, wenn der Cursor direkt hinter der Prompt steht, immer durch drücken der Backspace-Taste erreichbar. 
 
+Die REPL biete eine sogenannte Autovervollständigung für Julia Befehle.
+Wird nur ein Teil eines Befehls eingegeben, kann dieser durch Drücken von `TAB` vervollständigt werden. 
+Das ist sehr praktisch, da man sich als BenutzerIn nicht den exakten Wortlaut jedes Befehls merken muss.
+
 ## Ausführung als Skript
 
 Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`) kann über die Commandline ausgeführt werden.
 Je nach Betriebsystem ist diese über einen anderen Weg erreichbar:
 - Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch die Tastenkombination `windows+r` (Run) und Eingabe von \enquote{cmd}, im erschienenen Fenster, gefolgt von `Enter` erreichbar.
-- Windows: Die Commandline verbirgt sich hinter dem Programm cmd.exe. Dieses ist am einfachsten durch Drücken der Windows-Taste und Eingabe von `cmd`, gefolgt von `Enter` erreichbar.
 - macOS: In macOS wird die Commandline Terminal genannt. Über die Spotlight-Suche (`cmd+space`) und Eingabe von \enquote{Terminal} gelangt man zu der richtigen App.
 - Linux: Linux User sollten wissen wie sie zur Commandline gelangen.
 
@@ -59,7 +61,7 @@ Soll ein Skript `mein-script.jl` ausgeführt werden, ist das durch Eingabe von `
 Bei dieser Angabe handelt es sich um einen sogenannten relativen Pfad, relativ bezogen auf das aktuelle Verzeichnis.
 Befindet sich die Datei in einem Unterordner `scripts` würde der Befehl
 - unter Windows: `julia scripts\mein-script.jl` und
-- unter macOS und Linux `julia scripts/mein-script.jl`
+- unter macOS und Linux: `julia scripts/mein-script.jl`
 lauten.
 Das Gegenstück zu relativen Pfaden sind absolute Pfade.
 Ein absoluter Pfad bezieht sich immer auf das Laufwerk z.B. `C:\` oder `/`.
@@ -191,7 +193,7 @@ Gibt es neue Versionen von Paketen können diese gesammelt mit `update` aktualis
  [no changes]
 ```
 
-Soll ein Paket entfernt werden kann der Befehl `rm` verwendet werden:
+Zum Entfernen eines Pakets kann der Befehl `rm` verwendet werden:
 ```julia;term=true; eval=false
 (v1.2) pkg> rm Example
   Updating `~/.julia/environments/v1.2/Project.toml`
@@ -201,6 +203,9 @@ Soll ein Paket entfernt werden kann der Befehl `rm` verwendet werden:
 ```
 
 ## Aufgaben
+
+In der LVA werden ein paar ausgewählte Pakete zur Erweiterung von Julia verwendet.
+Die erste Aufgabe ist die Installation dieser Pakete auf dem eigenen Computer.
 
 ### Installation der für die LVA benötigten Pakete
 
@@ -215,7 +220,7 @@ Die folgenden Pakete sollen mit dem Paketmanager installiert werden.
 - `Debugger.jl`
 - `RDatasets.jl`
 
-Die Aufgabe kann durch Kontrolle eines leeren Codeblocks kontrolliert werden:
+Die Aufgabe kann durch Kontrolle eines leeren Codeblocks überprüft werden:
 
 ```julia; eval=false
 @Aufgabe "3.5.1" begin

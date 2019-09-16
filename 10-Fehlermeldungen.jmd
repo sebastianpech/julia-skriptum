@@ -1,6 +1,6 @@
 # Exceptions
 
-Ein Programm zu schreiben ist eine komplexe Aufgabe, bei der es häufig dazu kommt, dass es nicht das macht was es tun soll und mit einem Fehler abbricht.
+Ein Programm zu schreiben ist eine komplexe Aufgabe, bei der es häufig dazu kommt, dass das Programm nicht das macht was es tun soll und mit einem Fehler abbricht.
 
 Grob können diese Fehler in *Syntax Errors*, *Logical Errors* und *Runtime Errors* eingeteilt werden.
 

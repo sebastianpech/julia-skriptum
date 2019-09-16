@@ -26,8 +26,8 @@ Dafür ist es notwendig, zum einen die Dateien bzw. Dateinamen zu finden und zum
 ## Das Dateisystem
 
 Julia bietet ein einheitliches Interface um auf das Dateisystem des Computers zuzugreifen.
-Wird ein Juliaprozess ausgeführt läuft er in dem Verzeichnis in dem er gestartet wurde, dem sogenannten "working directory".
-Anzeigen lässt sich dieses mit der Funktion `pwd` für "print working direcory".
+Wird ein Juliaprozess ausgeführt läuft er in dem Verzeichnis in dem er gestartet wurde, dem sogenannten \enquote{working directory}.
+Anzeigen lässt sich dieses mit der Funktion `pwd` für \enquote{print working direcory}.
 
 ```julia; term=true
 pwd()
@@ -175,17 +175,17 @@ Fernglas,-2
 Fernglas,-1
 ```
 
-Im Kontrollprogramm ist für das erstellen von Testdatensätzen die Funktion 
+Im Kontrollprogramm ist für das Erstellen von Testdatensätzen die Funktion 
 
 ```julia; term=true
-JuliaSkriptumKontrolle.setup("15.3")
+JuliaSkriptumKontrolle.setup("14.3")
 ```
 
 definiert.
-Nach dem Aufruf wird im aktuellen Verzeichnis ein neuer Ordner `15-3` erstellt.
+Nach dem Aufruf wird im aktuellen Verzeichnis ein neuer Ordner `14-3` erstellt.
 
 ```julia; term=true
-readdir("15-3")
+readdir("14-3")
 ```
 
 In dem Ordner befinden sich die Bestandslisten für alle Lager.
@@ -193,7 +193,7 @@ Die Lager sind immer nach dem Schema `Lager[id].csv` benannt.
 Der Code soll in allen Prepper-Camps verwendet werden können, d.h. die Anzahl an Dateien kann sich immer ändern und da alle Camps verschieden Betriebssysteme verwenden muss immer `joinpath` beim verketten von Pfaden verwendet werden:
 
 ```julia
-joinpath("15-3","Lager1.csv")
+joinpath("14-3","Lager1.csv")
 ```
 
 Wie im Abschnitt Interaktion erwähnt, sind die Trennzeichen bei Pfaden je nach Betriebssystem verschieden.
@@ -208,7 +208,7 @@ Die Funktion soll ein `Dict` mit der Zuordnung `Lager id => Bestand` zurückgebe
 
 ```julia; results="hidden"; echo=false;
 function read_lagers()
-    path = "15-3"
+    path = "14-3"
     files = readdir(path)
     Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
          dfl = p.second
@@ -239,7 +239,7 @@ Als Basis soll die Funktion aus der ersten Aufgabe `read_lagers` herangezogen we
 Für die Kontrolle muss die Funktion dann in den Kontrollblock kopiert werden:
 
 ```julia; eval=false
-@Aufgabe "15.3.2" begin
+@Aufgabe "14.3.2" begin
     # using ...
     function read_lagers()
         # code ...

@@ -54,7 +54,7 @@ Nähere Details dazu sind in der Dokumentation unter [Standard Library/Statistic
 
 Oft ist es erforderlich Annahmen zu Wahrscheinlichkeitsverteilungen gewisser Daten zu treffen.
 In `Distributions.jl` sind dafür die notwendigen Funktionen für eine Reihe von verschiedenen Verteilungen definiert.
-Zusätzlich enthält das Paket Funktionen zum "Fitting" und "Sampling" von Daten und kann wie folgt geladen werden:
+Zusätzlich enthält das Paket Funktionen zum \enquote{Fitting} und \enquote{Sampling} von Daten und kann wie folgt geladen werden:
 
 ```julia
 using Distributions
@@ -66,7 +66,7 @@ Um die Daten in den folgenden Beispielen zu visualisieren wird ebenfalls `Plots.
 using Plots
 ```
 
-Beim "Sampling" geht es darum Zufallszahlen aus einer gewissen Verteilung zu ziehen.
+Beim \enquote{Sampling} geht es darum Zufallszahlen aus einer gewissen Verteilung zu ziehen.
 Ein Zufallszahlengenerator, mit einer zugrundeliegenden Normalverteilung (Mittelwert 2.5 und Standardabweichung 0.5), kann folgendermaßen erzeugt werden:
 
 ```julia
@@ -84,7 +84,7 @@ Weitere Verteilungen sind in der [Dokumentation](https://juliastats.github.io/Di
 
 [^2]: <https://juliastats.github.io/Distributions.jl/stable/>
 
-Neben dem "Sampling" von Daten ist auch das "Fitting", also ermitteln der Parameter für Verteilungsfunktionen, möglich.
+Neben dem \enquote{Sampling} von Daten ist auch das \enquote{Fitting}, also ermitteln der Parameter für Verteilungsfunktionen, möglich.
 Dafür wird die Funktion `fit` verwendet.
 In einem ersten Schritt werden für die Spalte `SepalLength` aus den Daten in `iris` die Parameter für eine Normalverteilung ermittelt:
 ```julia
@@ -92,7 +92,7 @@ d = fit(Normal, iris.SepalLength)
 ```
 
 Der Vergleich mit den zuvor ermittelten Werten zeigt eine ungefähre Übereinstimmung.
-Um die Qualität des "Fittings" zu beurteilen, werden ein normalisiertes Histogramm der Daten und die Dichtefunktion der ermittelten Verteilung dargestellt.
+Um die Qualität des \enquote{Fittings} zu beurteilen, werden ein normalisiertes Histogramm der Daten und die Dichtefunktion der ermittelten Verteilung dargestellt.
 ```julia
 plt = histogram(iris.SepalLength,normed=true)
 x = 3:0.1:9

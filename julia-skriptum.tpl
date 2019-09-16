@@ -39,7 +39,7 @@ automark
 		% Author and supervisor
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
-				\emph{Autor}\\
+				\emph{Autoren}\\
 				\par
 				\begingroup
 				\leftskip1em

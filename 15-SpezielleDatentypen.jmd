@@ -67,8 +67,8 @@ Zusätzlich funktionieren auch die Angabe von Datumsbereichen wie gewohnt:
 collect(Date(2019,1,1):Dates.Day(2):Date(2019,1,10))
 ```
 
-Jeder Zeitspanne und jedes Datum werden durch eine zugeordnete Einheit (Tag, Monat, Jahr) und eine Integer festgelegt.
-In manchen Fällen ist es notwendig, diese Integer zu extrahieren.
+Jeder Zeitspanne und jedes Datum werden durch eine zugeordnete Einheit (Tag, Monat, Jahr) und eine `Int`-Zahl festgelegt.
+In manchen Fällen ist es notwendig, diese `Int`-Zahl zu extrahieren.
 Für Zeitspannen gibt es dafür die Funktion `Dates.value`:
 
 ```julia; term=true

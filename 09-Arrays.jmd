@@ -79,7 +79,7 @@ Ein Array innerhalb eines Arrays ist dabei ein Element.
 ```julia; term=true
 print(primes)
 length(primes)
-print(Stahl)
+print(stahl)
 length(stahl)
 length(stahl[3])
 ```
@@ -199,10 +199,10 @@ m[3,:]  # Dritte Zeile, alle Spalten
 ```
 
 Die Funktion `rand` erzeugt Zufallszahlen in unterschiedlicher Art.
-Ohne Argumente wirt eine einzelne Zufahlszahl zwischen 0 und 1 zurückgegeben.
+Ohne Argumente wird eine einzelne Zufahlszahl zwischen 0 und 1 zurückgegeben.
 Es können allerdings auch mehrere Int-Zahlen als Argumente übergeben werden, um ein Array mit Zufallszahlen zu erzeugen.
 Dabei gibt die erste Zahl die Anzahl der Elemente in erster Dimension, die zweite Zahl die Anzahl der Elemente in zweiter Dimension, usw. an.
-`rand(3, 2, 4)` erzeugt also ein dreidimensionales `3×2×4`-Array voller Zufallszahlen zwischen 0 und 1.
+`rand(3, 2, 4)` erzeugt also ein `3×2×4`-Array dritter Ordnung, voller Zufallszahlen zwischen 0 und 1.
 ```julia; term=true
 rand()
 rand(2)
@@ -279,7 +279,7 @@ Julia hat verschiedene Arten von Sammlungen implementiert.
 Viele dieser Sammlungen können mithilfe von `collect` in Arrays umgewandelt werden.
 
 ## Tuple
-Der Datentyp `Tuple` ist sehr ähnlich zum eindimensionalen Array.
+Der Datentyp `Tuple` ist sehr ähnlich zum Array erster Ordnung.
 Der wichtigste Unterschied ist, dass `Tuple` nicht veränderbar sind.
 Am einfachsten wird ein Tuple durch die Eingabe von mehreren durch Kommas getrennte Werte erzeugt.
 Übersichtlicher ist es aber, die Werte mit runden Klammern zu umgeben:
@@ -324,7 +324,7 @@ Ein `Dict` (Abkürzung für *Dictionary*) ist ebenfalls sehr ähnlich zum eindim
 Während sich beim Array die Indizes auf Int-Zahlen beschränken, können die Indizes eines *Dictionaries* nahezu jeder Datentyp sein.
 Die Indizes eines Dictionaries heißen *Keys* und die Werte werden *Values* genannt.
 Jeder Wert ist dabei einem Key zugewiesen.
-it einem Dictionary kann zum Beispiel ein Wörterbuch erstellt werden, in dem jeder Key ein deutsches Wort ist dem das passende spanische Wort zugeordnet ist.
+Mit einem Dictionary kann zum Beispiel ein Wörterbuch erstellt werden, in dem jeder Key ein deutsches Wort ist dem das passende spanische Wort zugeordnet ist.
 Mit `Dict()` wird ein Dictionary erstellt:
 ```julia; term=true
 de2sp = Dict("eins" => "uno", "zwei" => "dos", "drei" => "tres")

@@ -24,8 +24,8 @@ a = [10,35,4,65,9];
 maximum(a)
 findmax(a)
 ```
-Der erste Aufruf von `println` schreibt zwar das Übergebene Argument in der REPL, die Ausgabe von `p` in der REPL zeigt allerdings keinen Wert an.
-Das liegt daran, dass `println` keinen Return Value an die Variable `p` übergibt (genau genommen gibt die Funktion einen Wert vom Typ `Nothing` zurück).
+Der erste Aufruf von `println` schreibt zwar das übergebene Argument in der REPL, die Ausgabe von `p` in der REPL zeigt allerdings keinen Wert an.
+Das liegt daran, dass `println` keinen Return Value an die Variable `p` übergibt (genau genommen gibt die Funktion den Wert `nothing` zurück).
 In der nächsten Zeile wird der Array `a` erstellt.
 Auf Arrays wird später noch genauer eingegangen.
 Während `maximum` nur den Maximalwert von `a` zurückgibt, ermittelt `findmax` zusätzlich die Stelle des Maximalwertes.
@@ -65,8 +65,8 @@ Bei jedem Aufruf der Funktion werden die Zeilen zwischen `function` und `end` au
 Der Return Value einer Funktion kann aber auch mit dem Keyword `return` festgelegt werden.
 ```julia;results="hidden"
 function my_square(x)
-	println("Quadrat von $(x) wird berechnet...")  # Diese Zeile wird angezeigt
-	return x^2  # Diese Zeile wird ausgeführt und als Return Value ausgegeben
+    println("Quadrat von $(x) wird berechnet...")  # Diese Zeile wird angezeigt
+    return x^2  # Diese Zeile wird ausgeführt und als Return Value ausgegeben
 end
 ```
 ```julia; term=true
@@ -80,7 +80,7 @@ Generell ist es in Julia nicht notwendig den Block innerhalb der Funktionsdefini
 Funktionen ohne Argumente können durch leere Klammern erstellt werden:
 ```julia;results="hidden"
 function hello_world()
-	println("Hello World")
+    println("Hello World")
 end
 ```
 

@@ -11,7 +11,7 @@ options:
 
 Die grafische Darstellung von Daten ist in vielen Wissenschaften ein immens wichtiger Punkt.
 Julia bietet eine Reihe von Paketen zum \enquote{Plotten} von Daten. 
-`Plots.jl` vereint diese in einer Sprache zum beschreiben von Grafiken.
+`Plots.jl` vereint diese in einer Sprache zum Beschreiben von Grafiken.
 Geladen wird das Paket wie alle anderen mittels
 
 ```julia
@@ -47,7 +47,7 @@ plt = plot(x,y)
 plt
 ```
 
-Um mehrere Daten, übereinander, in einem Plot darzustellen gibt es die Möglichkeit dies direkt mit einem Aufruf von `plot` oder durch nachträgliches Hinzufügen mit `plot!` zu machen
+Um mehrere Daten, übereinander, in einem Plot darzustellen, gibt es die Möglichkeit dies direkt mit einem Aufruf von `plot` oder durch nachträgliches Hinzufügen mit `plot!` zu machen
 
 ```julia
 y2 = cos.(x)

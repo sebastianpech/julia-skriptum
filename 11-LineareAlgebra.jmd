@@ -14,9 +14,11 @@ Details zu dem Paket sind unter [Standard Library/Linear Algebra](https://docs.j
 Eine übliche Problemstellung der linearen Algebra ist das Lösen von Gleichungssystemen wie dem folgenden:
 
 ```math
-   x - y = 22\;\text{und}\;2x + 3y = 11
+   x - y = 22
 ```
-
+```math
+2x + 3y = 11
+```
 Um das System zu lösen müssen zuerst die Koeffizientenmatrix und der Vektor auf der rechten Seite definiert werden.
 
 ```{julia;results="hidden"}
@@ -51,7 +53,7 @@ Die Kontrolle kann einfach durch Ausmultiplizieren gemacht erfolgen.
 A*b
 ```
 
-Da dieser Ablauf sehr häufig vorkommt und sich abhängig von ``\mathbf{A}`` gut optimieren lässt, biete Julia mit dem `\` Operator eine Kurzschreibweise, bei der das Invertieren entfällt.
+Da dieser Ablauf sehr häufig vorkommt und sich abhängig von ``\mathbf{A}`` gut optimieren lässt, biete Julia mit dem `\`-Operator eine Kurzschreibweise, bei der das extra Invertieren entfällt.
 
 ```{julia}
 A\c

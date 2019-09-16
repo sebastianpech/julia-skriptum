@@ -73,18 +73,14 @@ Es gibt mehrere Möglichkeiten Strings zusammenzusetzen.
 Eine davon ist die Verwendung des `*`-Operators.
 ```julia; term=true
 name = "Raphael"
-"Der Name"*name*" hat "*length(name)*" Buchstaben."
+"Der Name"*name*" hat "*string(length(name))*" Buchstaben."
 ```
-Eine weitere Möglichkeit bietet die Funktion `string()`:
-```julia; term=true
-string("Der Name",name," hat ",length(name)," Buchstaben.")
-```
-Diese Varianten werden allerdings schnell unübersichtlich.
-In diesem Fall bietet sich die String Interpolation als übersichtlichere Möglichkeit an.
-Jeder Ausdruck in runden Klammern nach dem Symbol `$` wird ausgewertet und das Ergebnis in den String eingegliedert.
+Der `*`-Operator ist für `String` und `Int` nicht definiert, daher muss `length(name)` erst durch die Funktion `string()` in einen `String` konvertiert werden.
+In dieser Form wird der Code schnell unübersichtlich, weshalb Julia die sogenannte \enquote{String-Onterpolation} bietet.
+Jeder Ausdruck in runden Klammern oder jeder Variablenname nach dem Symbol `$` wird ausgewertet und das Ergebnis in den String eingegliedert.
 Diese Ausdrücke können nicht nur Werte und Variablen, sondern auch Funktionen und Operatoren enthalten.
 ```julia; term=true
-"Der Name $(name) hat $(length(name)) Buchstaben."
+"Der Name $name hat $(length(name)) Buchstaben."
 ```
 
 Der `^`-Operator wiederholt einen String beliebig oft:
@@ -95,18 +91,18 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 Die Funktionen `uppercase` und `lowercase` wandeln alle Buchstaben eines Strings in Groß- oder Kleinbuchstaben um.
 Beim Vergleichen von Strings unabhängig von Groß- und Kleinschreibung können diese Funktionen hilfreich sein.
 ```julia;term=true
-lowercase("In diesem Satz stehen auch Grossbuchstaben.")
-uppercase("gross- und kleinschreibung wird hier klein geschrieben.")
+lowercase("In diesem Satz stehen auch Großbuchstaben.")
+uppercase("groß- und kleinschreibung wird hier klein geschrieben.")
 "Julia" == "julia"
 lowercase("Julia") == lowercase("julia")
 uppercase("Julia") == uppercase("julia")
 ```
 
 ### Special Characters und Escaping
-In den meisten Programmiersprachen gibt es spezielle Zeichen für Tabulator-Abstände oder Zeilenumbrüche.
+In den meisten Programmiersprachen gibt es spezielle Zeichen für Tabulatorabstände oder Zeilenumbrüche.
 Diese Zeichen werden mit einem Backslash (`\`) eingeleitet.
 ```julia;term=true
-'\t'  # Tabulator-Abstand
+'\t'  # Tabulatorabstand
 '\n'  # Zeilenumbruch
 print("tabs\tabs")
 print("Erste Zeile\nZweite Zeile")
@@ -158,9 +154,9 @@ Potenzen werden mit `^` eingegeben:
 ```
 
 Die Reihenfolge der Operationen folgt dabei den üblichen mathematischen Regeln:
-1. Klammern,
-2. Potenzen,
-3. Multiplikation und Division und
+1. Klammern vor
+2. Potenzen vor
+3. Multiplikation und Division vor
 4. Addition und Subtraktion.
 Gleichrangige Operationen führt Julia immer der Reihe nach von links nach rechts aus.
 Klammern bieten die Möglichkeit, den Code zu strukturieren und besser lesbar zu machen, auch wenn diese nicht immer notwendig sind:
@@ -223,7 +219,7 @@ round(0.00345123; sigdigits=4)
 Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
 Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` ab der ersten Ziffer ungleich 0 zählt.
 
-Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^2] (*floor division*) und der Modulus-Operator, `%`.
+Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^2] (*floor division*) und der Modulo-Operator, `%`.
 ```julia; term=true
 7÷3
 7%3
@@ -245,7 +241,7 @@ log10(100)  # log10 ist der Logarithmus mit Basis 10
 abs(-19.0)
 ```
 `sin(π/6)` sollte exakt `0.5` ergeben.
-Da der Datentyp von `π/2` `Float64` ist, ist keine exakte Darstellung der eigentlich irrationalen Zahl möglich.
+Da der Datentyp von `π/6`, `Float64` ist, ist keine exakte Darstellung der eigentlich irrationalen Zahl möglich.
 Bei Float-Zahlen wird nur eine begrenze Anzahl von Dezimalstellen gespeichert, wodurch hier ein vernachlässigbarer Fehler entsteht.
 
 Eine weitere interessante Funktion ist `zero`.
@@ -292,7 +288,7 @@ s > "banana" || length(s) == 6  # Mindestens eine Bedingung muss true ergeben
 ```
 Bei `&&` müssen beide Ausdrücke vor und nach dem Operator `true` ergeben, damit der gesamte Ausdruck `true` ist.
 Damit der Ausdruck mit `||` erfüllt ist und `true` ergibt, muss lediglich einer der beiden Ausdrücke erfüllt sein.
-`!` kehrt den darauffolgenden logischen Operator um.
+`!` kehrt den darauffolgenden logischen Wert um.
 
 Wie bei den arithmetischen Operationen wird auch bei logischen Operatoren eine definierte Reihenfolge eingehalten.
 Zuerst werden alle vergleichenden Operatoren ausgewertet (`==`, `!=`, `≠`, `>`, `<`, `>=`, `<=`, `≥`, `≤`), danach die Operatoren `&&` und `||`.

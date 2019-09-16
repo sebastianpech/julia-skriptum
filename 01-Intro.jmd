@@ -67,13 +67,11 @@ Das Programm wird in Form eines eigenständigen Julia Pakets verwendet und muss 
 add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#JuliaSkriptum
 ```
 installiert werden (Näheres dazu im Abschnitt Interaktion).
-
-Nach der Installation kann das Paket einfach mit 
+Das Laden des Paketes erfolgt nach der Installation mit
 
 ```julia; results="none" 
 using JuliaSkriptumKontrolle
 ```
-geladen werden.
 
 Bei den Aufgaben geht es meistens darum, kurze in sich abgeschlossene Codes oder Funktionen zu schreiben.
 Eine einzelne Funktion kann z.B. wie folgt kontrolliert werden:
@@ -123,7 +121,7 @@ Da Aufgabe `10.3.4` in einem der vorherigen Beispiele falsch gelöst wurde, steh
 
 Die Abgabe der Aufgaben erfolgt in TUWEL.
 Es sollen alle Aufgaben gesammelt in einer Julia Datei (Endung `.jl`) abgegeben werden.
-Dabei müssen die kontrollierten Aufgaben nacheinander in der Datei (z.B. `meine_loesungen.jl`) angegeben werden:
+Dabei müssen die kontrollierten Aufgaben nacheinander in einer Datei (z.B. `loesung_aufgaben.jl`) angegeben werden:
 
 ```julia; eval=false
 @Aufgabe "1.2.3" function meine_funktion(x,y)
@@ -147,4 +145,4 @@ end
 JuliaSkriptumKontrolle.status()
 ```
 
-Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt, wird wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
+Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt (Näheres dazu im Abschnitt Interaktion), wird wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
