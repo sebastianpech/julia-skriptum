@@ -418,6 +418,9 @@ Beispiele (mit steigender Anzahl von Punkten steigt auch die Genauigkeit):
 π_mc(1_000_000_000)
 ```
 
+In Julia kann zur besseren Lesbarkeit ein `_` in Zahlen eingefügt werden.
+Im vorherigen Beispiel dient `_` als Tausendertrennzeichen, hat aber keinen Einfluss auf die Zahl selbst (`100 == 1_00`).
+
 ### Numerisch Integrieren
 
 Schreibe eine Funktion die das bestimmte Integral einer beliebigen 1D-Funktion definiert durch x- und y-Werte berechnet.
