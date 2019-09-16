@@ -1,4 +1,4 @@
-# Arrays, Tuple, Set, Dict
+# Arrays, Range, Tuple, Set, Dict
 Dieses Kapitel beinhaltet einige wichtige Typen in Julia, die mehrere Werte aufnehmen können.
 ## Arrays
 Wie ein *String* ist ein *Array* eine geordnete Abfolge von Werten.
@@ -210,6 +210,16 @@ rand(2,2)
 rand(3,2,4)
 ```
 
+Mit `rand` können aber nicht nur Zufallszahlen zwischen `0` und `1` erzeugt werden.
+Die zufällige Auswahl eines Elements aus einem `Array` ist ebenso möglich.
+Nachdem an erster Stelle der Argumente das Array stehen muss, können wieder beliebig viele `Int`-Zahlen als Dimensionen übergeben werden.
+```julia;term=true
+a = ["Holz","Stahl","Ziegel","Beton"];
+rand(a)
+rand(a,3)
+rand(a,2,3)
+```
+
 Die Funktion `zero` kann nicht nur auf Zahlen, sondern auch auf Arrays mit Zahlen angewendet werden.
 In diesem Zusammenhang sind auch die Funktionen `one`, `ones` und `zeros` interessant.
 ```julia;term=true
@@ -239,6 +249,34 @@ a .+ 4
 b = ["Tom" "Jerry"; "Michael" "John"];
 length.(b)
 ```
+
+## Range
+Eine `Range` ist eine Abfolge von `Int`-Zahlen.
+Durch Angabe der ersten und letzten Zahl der Sequenz, getrennt durch einen Doppelpunkt, kann eine `Range` erstellt werden.
+Dabei ist die Schrittweite standardmäßig mit `1` definiert.
+Durch Angabe einer dritten `Int`-Zahl, kann auch die Schrittweite festgelegt werden.
+Die Schrittweite kann für eine absteigende `Range` auch negativ sein, dann muss allerdings der größere Wert an erster Stelle stehen.
+```julia;term=true
+1:10
+0:2:10
+10:-2:0  # Negative Schrittweiten erzeugen absteigende Ranges
+```
+
+`rand` kann auch auf eine `Range` angewendet werden.
+```julia;term=true
+rand(1:10)
+sort(rand(1:45,6))  # Die Lotto-Zahlen nächster Woche?
+```
+
+Eine `Range` kann vor allem für Schleifen hilfreich sein.
+Mithilfe der Funktion `collect` können damit auch schnell Arrays erzeugt werden.
+```julia;term=true
+collect(1:5)
+collect(6:-2:0)
+```
+
+Julia hat verschiedene Arten von Sammlungen implementiert.
+Viele dieser Sammlungen können mithilfe von `collect` in Arrays umgewandelt werden.
 
 ## Tuple
 Der Datentyp `Tuple` ist sehr ähnlich zum eindimensionalen Array.
@@ -273,6 +311,12 @@ print(t[3])
 print(t[4:6])
 print(t[5:end])
 t[4] = 23
+```
+
+Manchmal ist es notwendig, ein `Tuple` in ein `Array` umzuwandeln.
+Mittels `collect` kann ein `Tuple` einfach in ein `Array` umgewandelt werden:
+```julia;term=true
+collect(("spam", "foo", "bar"))
 ```
 
 ## Dictionaries
@@ -310,6 +354,11 @@ Die Funktionen `keys` und `values` geben Sammlungen mit den Keys oder Values ein
 ```julia; term=true
 keys(de2sp)
 values(de2sp)
+```
+
+`collect` bietet auch hier die Möglichkeit, diese Sammlungen in `Arrays` umzuwandeln:
+```julia;term=true
+collect(keys(de2sp))
 ```
 
 ## Aufgaben
