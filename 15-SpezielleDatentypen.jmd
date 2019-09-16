@@ -115,7 +115,7 @@ A_rechteck(2.1,3.1)
 A_rechteck(2,3)
 ```
 
-Mit dem Paket Unitful.jl ist es möglich Zahlen mit einer Einheit zu versehen:
+Mit `Unitful.jl` ist es möglich Zahlen mit einer Einheit zu versehen:
 ```julia; term=true
 using Unitful
 1u"m"
@@ -130,7 +130,7 @@ fläche = A_rechteck(2u"m",11.1u"cm")
 uconvert(u"mm^2",fläche)
 ```
 
-Mit Measurements.jl können Fehler bzw. Abweichungen einer Zahl einfach durch das Symbol `±` (`\pm`+`TAB`-Taste) berücksichtigt werden:
+Mit `Measurements.jl` können Fehler bzw. Abweichungen einer Zahl einfach durch das Symbol `±` (`\pm`+`TAB`-Taste) berücksichtigt werden:
 ```julia;term=true
 using Measurements
 a = 1.1±0.1
@@ -142,7 +142,7 @@ sin(a)
 Das Paket geht dabei von normalverteilten Variablen aus; der Wert nach `±` ist die Standardabweichung.
 Die Variable `a` im obigen Beispiel bezeichnet daher eine normalverteilte Variable mit Mittelwert `1.1` und Standardabweichung `0.1`
 
-Bei der Verwendung von `A_rechteck` kann mit Measurements.jl der Fehler bei der Berechnung der Fläche, unter Berücksichtigung des Fehlers der Seiten ermittelt werden:
+Bei der Verwendung von `A_rechteck` kann mit `Measurements.jl` der Fehler bei der Berechnung der Fläche, unter Berücksichtigung des Fehlers der Seiten ermittelt werden:
 ```julia; term=true
 A_rechteck(2±0.1,3±0.5)
 ```

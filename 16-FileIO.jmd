@@ -137,7 +137,7 @@ Weitere Optionen sind in der Dokumentation unter [Standard Library/Delimited Fil
 
 Das `DelimitedFiles`-Paket stößt bei inhomogenen Daten, oder auch bei fehlenden Daten schnell an seine Grenzen.
 Um die Daten von oben nutzbar zu machen, müssten noch die Kommas durch Punkte und die daraus resultierenden String in Zahlen umgewandelt werden.
-Das Paket `CSV.jl` in Kombination mit `DataFrames.jl` bietet für diesen Fall schon alle nötigen Optionen zum Einlesen:
+`CSV.jl` in Kombination mit `DataFrames.jl` bietet für diesen Fall schon alle nötigen Optionen zum Einlesen:
 
 ```julia; term=true
 using CSV, DataFrames
@@ -151,7 +151,7 @@ messwerte.temp, messwerte.Status
 ```
 
 Ein `DataFrame` ist ein Datentyp der besonders für die Verarbeitung von tabellarischen Daten geeignet ist.
-Nähere Details zu [DataFrames](https://juliadata.github.io/DataFrames.jl/stable/)[^1] und [CSV.jl](https://juliadata.github.io/CSV.jl/stable/)[^2] können der jeweiligen Dokumentation entnommen werden.
+Nähere Details zu [DataFrames](https://juliadata.github.io/DataFrames.jl/stable/)[^1] und [`CSV.jl`](https://juliadata.github.io/CSV.jl/stable/)[^2] können der jeweiligen Dokumentation entnommen werden.
 
 [^1]: <https://juliadata.github.io/DataFrames.jl/stable/>
 [^2]: <https://juliadata.github.io/CSV.jl/stable/>

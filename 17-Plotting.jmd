@@ -9,7 +9,7 @@ options:
 
 Die grafische Darstellung von Daten ist in vielen Wissenschaften ein immens wichtiger Punkt.
 Julia bietet eine Reihe von Paketen zum \enquote{Plotten} von Daten. 
-Das Paket `Plots.jl` vereint diese in einer Sprache zum beschreiben von Grafiken.
+`Plots.jl` vereint diese in einer Sprache zum beschreiben von Grafiken.
 Geladen wird das Paket wie alle anderen mittels
 
 ```julia
@@ -18,7 +18,7 @@ using Plots
 
 `Plots.jl` bieten einen sehr großen Funktionsumfang, wodurch es bei jedem Neustart von Julia durchaus länger dauern kann, bis der erste Plot sichtbar wird.
 
-In Plots.jl werden meistens Datenvektoren dargestellt.
+In `Plots.jl` werden meistens Datenvektoren dargestellt.
 Das Paket bietet Implementierungen für einige Elementstypen wie
 
 - alle Zahlentypen in Julia,

@@ -60,7 +60,7 @@ bug_show_pow(3.5,6)
 Offensichtlich wird in der Schleife `x`, 6-mal multipliziert, allerdings startet `x_pow` nicht mit 1 sondern mit `x` was gesamt $x^{n+1}$ ergibt.
 
 Diese Methode des Debuggings funktioniert bei einfachen Fällen hat aber den Nachteil, dass der Code verändert werden muss.
-Julia bietet in Kombination mit [Debugger.jl](https://github.com/JuliaDebug/Debugger.jl)[^1] und Juno einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
+Julia bietet in Kombination mit [`Debugger.jl`](https://github.com/JuliaDebug/Debugger.jl)[^1] und Juno einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
 
 [^1]: <https://github.com/JuliaDebug/Debugger.jl>
 
