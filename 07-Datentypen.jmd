@@ -95,8 +95,8 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 Die Funktionen `uppercase` und `lowercase` wandeln alle Buchstaben eines Strings in Groß- oder Kleinbuchstaben um.
 Beim Vergleichen von Strings unabhängig von Groß- und Kleinschreibung können diese Funktionen hilfreich sein.
 ```julia;term=true
-lowercase("In diesem Satz stehen auch Großbuchstaben.")
-uppercase("groß- und kleinschreibung wird hier klein geschrieben.")
+lowercase("In diesem Satz stehen auch Grossbuchstaben.")
+uppercase("gross- und kleinschreibung wird hier klein geschrieben.")
 "Julia" == "julia"
 lowercase("Julia") == lowercase("julia")
 uppercase("Julia") == uppercase("julia")
@@ -172,7 +172,7 @@ A = (d^2 * π) / 4  # Abstände und Klammern verbessern die Lesbarkeit
 
 Manchmal ist es notwendig, zu einer Variable eine Zahl zu Addieren und das Ergebnis in der gleichen Variable zu speichern.
 Für solche Fälle gibt es die Operatoren `+=`, `-=`, `*=`, `/=` und `^=`.
-```
+```julia;term=true
 a = 1.0
 a = a + 1
 a += 1  # wie a = a + 1
