@@ -92,6 +92,17 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 "stop"^5
 ```
 
+Die Funktionen `uppercase` und `lowercase` wandeln alle Buchstaben eines Strings in Groß- oder Kleinbuchstaben um.
+Beim Vergleichen von Strings unabhängig von Groß- und Kleinschreibung können diese Funktionen hilfreich sein.
+```julia;term=true
+lowercase("In diesem Satz stehen auch Großbuchstaben.")
+uppercase("groß- und kleinschreibung wird hier klein geschrieben.")
+"Julia" == "julia"
+lowercase("Julia") == lowercase("julia")
+uppercase("Julia") == uppercase("julia")
+```
+
+### Special Characters und Escaping
 In den meisten Programmiersprachen gibt es spezielle Zeichen für Tabulator-Abstände oder Zeilenumbrüche.
 Diese Zeichen werden mit einem Backslash (`\`) eingeleitet.
 ```julia;term=true
