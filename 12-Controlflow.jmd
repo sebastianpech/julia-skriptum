@@ -348,6 +348,16 @@ Es soll ein **Skript** zur Berechnung von Flächeninhalt und Umfang eines Kreise
 Die Ausgabewerte sollen auf zwei Stellen gerundet werden.
 Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird, wird eine falsche Eingabe gemacht, muss \enquote{Falsche Eingabe} ausgegeben werden.
 
+Um eine Eingabe von der Tastatur einzulesen kann die folgende Funktion verwendet werden:
+
+```julia; eval=false
+function wert_einlesen(text::AbstractString)
+    print(text)
+    print(": ")
+    return readline()
+end
+```
+
 Die Ausgabe nach Ausführung des Skripts mit `julia kreis.jl` muss exakt mit dem folgenden Text übereinstimmen.
 
 ```bash
