@@ -65,7 +65,7 @@ forward_this = [
     string_replace("├","|"),
     string_replace("┼","+"),
     string_replace("┤","|"),
-    string_replace("┌","|"),
+    string_replace("┌","-"),
     string_replace("┬","-"),
     string_replace("┐","-"),
     string_replace("└","-"),
