@@ -187,6 +187,17 @@ Damit kann zum Beispiel leicht überprüft werden, ob eine Zahl durch eine ander
 
 [^2]: `÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.
 
+Julia hat standardmäßig mathematische Funktionen wie `sin`, `cos`, `log`, `abs` und viele mehr inkludiert.
+```julia;term=true
+sin(π/6)  # Die Argumente von sin, cos und tan müssen in rad angegeben werden
+cos(π/6)
+tan(π/6)
+log(100)  # log ist standardmäßig der natürliche Logarithmus
+log(10,100)  # Mit zwei Argumenten ist das erste die Basis
+log10(100)  # log10 ist der Logarithmus mit Basis 10
+abs(-19.0)
+```
+
 ## Booleans
 Eine Wert vom Typ `Bool` kann entweder `true` oder `false` annehmen.
 Diesen Datentypen kann man sich wie eine Zahl vorstellen, die entweder `0` (im Falle von `false`) oder `1` (im Falle von `true`) ist.
