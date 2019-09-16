@@ -245,7 +245,8 @@ log10(100)  # log10 ist der Logarithmus mit Basis 10
 abs(-19.0)
 ```
 `sin(π/6)` sollte exakt `0.5` ergeben.
-Aufgrund der Rechengenauigkeit von Julia ergibt sich allerdings eine zu vernachlässigende Abweichung von 5.55e-17.
+Da der Datentyp von `π/2` `Float64` ist, ist keine exakte Darstellung der eigentlich irrationalen Zahl möglich.
+Bei Float-Zahlen wird nur eine begrenze Anzahl von Dezimalstellen gespeichert, wodurch hier ein vernachlässigbarer Fehler entsteht.
 
 Eine weitere interessante Funktion ist `zero`.
 Sie nimmt eine Zahl als Argument und gibt `0` im gleichen Datentyp zurück.
