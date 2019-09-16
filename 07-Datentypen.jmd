@@ -244,6 +244,8 @@ log(10,100)  # Mit zwei Argumenten ist das erste die Basis
 log10(100)  # log10 ist der Logarithmus mit Basis 10
 abs(-19.0)
 ```
+`sin(π/6)` sollte exakt `0.5` ergeben.
+Aufgrund der Rechengenauigkeit von Julia ergibt sich allerdings eine zu vernachlässigende Abweichung von 5.55e-17.
 
 Eine weitere interessante Funktion ist `zero`.
 Sie nimmt eine Zahl als Argument und gibt `0` im gleichen Datentyp zurück.
