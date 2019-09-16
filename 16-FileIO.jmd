@@ -159,7 +159,7 @@ Nähere Details zu [DataFrames](https://juliadata.github.io/DataFrames.jl/stable
 ## Aufgaben
 
 Die Aufgaben für dieses Beispiel basieren alle auf dem selben Datensatz.
-In den Beispielen geht es darum, als Manager eines [Prepper-Camps](https://de.wikipedia.org/wiki/Prepper)[^3], das aus mehreren Lagern besteht, den Überblick über den Lagerbestand zu behalten.
+In den Beispielen geht es darum, als ManagerIn eines [Prepper-Camps](https://de.wikipedia.org/wiki/Prepper)[^3], das aus mehreren Lagern besteht, den Überblick über den Lagerbestand zu behalten.
 Für jedes Lager wird eine Liste mit Ein- und Ausgängen geführt:
 
 ```
