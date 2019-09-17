@@ -112,11 +112,11 @@ Nach Ausführung dieses Code-Blocks wird in der Hilfe zu `my_square` das Docstri
 Mehr Informationen zu Funktionen gibt es in der Dokumentation unter [Manual/Functions](https://docs.julialang.org/en/v1/manual/functions/).
 
 ## Scope
-Die *Scope* einer Variable ist ein Bereich in dem diese Variable sichtbar ist.
-In Julia gibt es die *Global Scope* und die *Local Scope*.
-Die Definition einer Funktion erzeugt eine solche Local Scope.
-Auf eine globale Variable kann auch in einer Local Scope zugegriffen werden.
-Umgekehrt ist es nicht möglich in der Global Scope auf eine lokale Variable zuzugreifen:
+Der *Scope* einer Variable ist ein Bereich in dem diese Variable sichtbar ist.
+In Julia gibt es den *Global Scope* und den *Local Scope*.
+Die Definition einer Funktion erzeugt einen solchen Local Scope.
+Auf eine globale Variable kann auch in einem Local Scope zugegriffen werden.
+Umgekehrt ist es nicht möglich im Global Scope auf eine lokale Variable zuzugreifen:
 ```julia;results="hidden"
 function f(x)
     a = x^2
@@ -124,12 +124,12 @@ end
 ```
 ```julia;term=true
 a = 1;  # Globale Variable a erzeugen
-f(3)  # In der Local Scope von f wird die lokale Variable a erzeugt
+f(3)  # Im Local Scope von f wird die lokale Variable a erzeugt
 a  # Der Aufruf von f verändert die globale Variable a nicht
 ```
-Selbst wenn in der Funktion `a` ein Wert zugewiesen wird, bleibt der Wert von a unverändert, da die Zuweisung in der ersten Zeile (`a = 1`) in der Global Scope geschieht und die zweite Zuweisung (`a = x^2`) in der Local Scope der Funktion ausgeführt wird.
+Selbst wenn in der Funktion `a` ein Wert zugewiesen wird, bleibt der Wert von a unverändert, da die Zuweisung in der ersten Zeile (`a = 1`) im Global Scope geschieht und die zweite Zuweisung (`a = x^2`) im Local Scope der Funktion ausgeführt wird.
 Die beiden Variablen heißen zwar gleich, beeinflussen sich aber gegenseitig nicht.
-Nachdem die Funktion ausgeführt wurde, werden alle Variablen der Local Scope dieser Funktion gelöscht und können nicht mehr aufgerufen werden.
+Nachdem die Funktion ausgeführt wurde, werden alle Variablen des Local Scope dieser Funktion gelöscht und können nicht mehr aufgerufen werden.
 Nur noch der Return Value bleibt im Speicher (sofern dieser einer Variable zugewiesen wird).
 ```julia; results="hidden"
 function g(x)
