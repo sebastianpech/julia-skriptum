@@ -23,10 +23,10 @@ typeof(primes)
 typeof(baustoffe)
 typeof(stahl)
 ```
-Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind und an zweiter Stelle, welche Dimension das Array hat.
+Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind und an zweiter Stelle, welche Ordnung das Array hat.
 Ein *leeres Array* hat keine Elemente und kann zum Beispiel mit leeren, eckigen Klammern (`[]`) erzeugt werden.
 Das so erzeugte leere Array ist dabei vom Typ `Array{Any,1}`.
-Ein leeres Array mit Werten eines bestimmten Typs, wie zum Beispiel `Float64`, kann mittels `Array{Float64,1}()` oder `Float64[]` erzeugt werden; mit der Schreibweise `Float64[]` können allerdings nur eindimensionale Arrays erzeugt werden.
+Ein leeres Array mit Werten eines bestimmten Typs, wie zum Beispiel `Float64`, kann mittels `Array{Float64,1}()` oder `Float64[]` erzeugt werden; mit der Schreibweise `Float64[]` können allerdings nur Arrays erster Ordnung erzeugt werden.
 ```julia; term=true
 []
 Array{Float64,1}()
@@ -176,10 +176,10 @@ sort!(s1)
 s2 = join(s1,' ')
 ```
 
-### Mehrdimensionale Arrays
-In vielen numerischen Aufgaben sind zwei- oder mehrdimensionale Arrays hilfreich.
-In Julia wird ein zweidimensionales Array auch als *Matrix* bezeichnet.
-Die Eingabe erfolgt wie bei eindimensionalen Arrays in eckigen Klammern, allerdings werden die Elemente zeilenweise mit Leerzeichen zwischen den Elementen einer Zeile und Semikola zwischen den Zeilen eingegeben.
+### Arrays höherer Ordnung
+In vielen numerischen Aufgaben sind Arrays zweiter oder höherer Ordnung hilfreich.
+In Julia wird ein Array zweiter Ordnung auch als *Matrix* bezeichnet.
+Die Eingabe erfolgt wie bei Arrays erster Ordnung in eckigen Klammern, allerdings werden die Elemente zeilenweise mit Leerzeichen zwischen den Elementen einer Zeile und Semikola zwischen den Zeilen eingegeben.
 Alternativ kann auch ein Zeilenumbruch anstatt der Semikola eingefügt werden.
 ```julia; results="hidden"
 a = [1 2; 3 4]
@@ -201,7 +201,7 @@ m[3,:]  # Dritte Zeile, alle Spalten
 Die Funktion `rand` erzeugt Zufallszahlen in unterschiedlicher Art.
 Ohne Argumente wird eine einzelne Zufahlszahl zwischen 0 und 1 zurückgegeben.
 Es können allerdings auch mehrere Int-Zahlen als Argumente übergeben werden, um ein Array mit Zufallszahlen zu erzeugen.
-Dabei gibt die erste Zahl die Anzahl der Elemente in erster Dimension, die zweite Zahl die Anzahl der Elemente in zweiter Dimension, usw. an.
+Dabei gibt die erste Zahl die Anzahl der Elemente in erster Ordnung, die zweite Zahl die Anzahl der Elemente in zweiter Ordnung, usw. an.
 `rand(3, 2, 4)` erzeugt also ein `3×2×4`-Array dritter Ordnung, voller Zufallszahlen zwischen 0 und 1.
 ```julia; term=true
 rand()
@@ -212,7 +212,7 @@ rand(3,2,4)
 
 Mit `rand` können aber nicht nur Zufallszahlen zwischen `0` und `1` erzeugt werden.
 Die zufällige Auswahl eines Elements aus einem `Array` ist ebenso möglich.
-Nachdem an erster Stelle der Argumente das Array stehen muss, können wieder beliebig viele `Int`-Zahlen als Dimensionen übergeben werden.
+Nachdem an erster Stelle der Argumente das Array stehen muss, können wieder beliebig viele `Int`-Zahlen als Anzahl der Elemente je Ordnung übergeben werden.
 ```julia;term=true
 a = ["Holz","Stahl","Ziegel","Beton"];
 rand(a)
@@ -320,7 +320,7 @@ collect(("spam", "foo", "bar"))
 ```
 
 ## Dictionaries
-Ein `Dict` (Abkürzung für *Dictionary*) ist ebenfalls sehr ähnlich zum eindimensionalen Array.
+Ein `Dict` (Abkürzung für *Dictionary*) ist ebenfalls sehr ähnlich zum Array erster Ordnung.
 Während sich beim Array die Indizes auf Int-Zahlen beschränken, können die Indizes eines *Dictionaries* nahezu jeder Datentyp sein.
 Die Indizes eines Dictionaries heißen *Keys* und die Werte werden *Values* genannt.
 Jeder Wert ist dabei einem Key zugewiesen.
