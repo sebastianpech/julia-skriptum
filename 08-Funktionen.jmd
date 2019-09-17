@@ -227,6 +227,21 @@ kreis_umfang(2.57)
 
 ### Kreiseigenschaften printen
 Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Radius, Fläche und Umfange dieses Kreises auf zwei Nachkommastellen gerundet printed.
+Es können gleich die Funktionen der vorherigen beiden Aufgaben verwendet werden.
+Dafür muss die Funktionsdefinition allerdings ebenfalls in den Block des Kontrollprogrammes kopiert werden:
+```julia;eval=false
+@Aufgabe "7.4.5" begin
+    function kreis_flaeche(r)
+        # Berechnung Kreisflaeche
+    end
+    function kreis_umfang(r)
+        # Berechnung Kreisumfang
+    end
+    function kreis(r)
+        # Code zum Lösen der Aufgabe
+    end
+end
+```
 ```julia;echo=false;results="hidden"
 function kreis(r)
     println("r = $(round(r,digits=2))")
@@ -234,6 +249,7 @@ function kreis(r)
     println("U = $(round(kreis_umfang(r),digits=2))")
 end
 ```
+Die Ausgabe muss genau gleich wie im Beispiel unten formatiert sein, damit das Kontrollprogramm das Beispiel als korrekt gelöst auswertet.
 
 Beispiele:
 ```julia;term=true
