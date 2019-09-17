@@ -26,7 +26,7 @@ findmax(a)
 ```
 Der erste Aufruf von `println` schreibt zwar das übergebene Argument in der REPL, die Ausgabe von `p` in der REPL zeigt allerdings keinen Wert an.
 Das liegt daran, dass `println` keinen Return Value an die Variable `p` übergibt (genau genommen gibt die Funktion den Wert `nothing` zurück).
-In der nächsten Zeile wird der Array `a` erstellt.
+In der nächsten Zeile wird das Array `a` erstellt.
 Auf Arrays wird später noch genauer eingegangen.
 Während `maximum` nur den Maximalwert von `a` zurückgibt, ermittelt `findmax` zusätzlich die Stelle des Maximalwertes.
 
