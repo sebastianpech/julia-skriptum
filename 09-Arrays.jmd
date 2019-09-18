@@ -1,4 +1,4 @@
-# Arrays, Range, Tuple, Set, Dict
+# Arrays, Range, Tuple, Dict
 Dieses Kapitel beinhaltet einige wichtige Typen in Julia, die mehrere Werte aufnehmen können.
 ## Arrays
 Wie ein *String* ist ein *Array* eine geordnete Abfolge von Werten.
