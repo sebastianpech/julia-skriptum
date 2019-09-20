@@ -92,6 +92,8 @@ end
 #### Stage 3
 # Compile Main document
 
+commitid() = read(`git rev-parse --verify master --short`,String)[1:end-1]
+
 @info "Creating main tex-Document"
 cd("build")
 tmppath = tempname()
@@ -100,6 +102,7 @@ style = Weave.stylesheet(MIME("text/latex"),Highlights.Themes.DefaultTheme)
 latex_template = Mustache.template_from_file(joinpath(@__DIR__,"julia-skriptum.tpl"))
 print(io,render(latex_template,
                 juliaversion="\\newcommand{\\juliaversion}{$VERSION}",
+                commitid="\\newcommand{\\commitid}{$(commitid())}",
                 files=join(["\\input{$(splitext(f)[1]).tex}" for f in files],"\n"),
                 stylesheet=Weave.stylesheet(MIME("text/latex"),Highlights.Themes.DefaultTheme)))
 close(io)

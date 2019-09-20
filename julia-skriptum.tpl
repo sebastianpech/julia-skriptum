@@ -4,6 +4,7 @@ titlepage,
 twoside]{scrartcl}
 
 {{{:juliaversion}}}
+{{{:commitid}}}
 
 \usepackage{fontspec}
 \setmonofont[Path = ../font/,Scale=MatchLowercase,Mapping=tex-text]{DejaVuSansMono}
@@ -47,7 +48,7 @@ automark
 				\@author
 				\par
 				\endgroup
-				\emph{Version vom}
+				\emph{Datum}
 				\par
 				\begingroup
 				\leftskip1em
@@ -61,6 +62,14 @@ automark
 				\leftskip1em
 				\rightskip\leftskip
 				\juliaversion
+				\par
+				\endgroup
+				\emph{Version}
+				\par
+				\begingroup
+				\leftskip1em
+				\rightskip\leftskip
+				\commitid
 				\par
 				\endgroup
 			\end{flushleft}
