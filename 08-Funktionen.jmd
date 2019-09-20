@@ -1,3 +1,10 @@
+```julia; echo=false; results="hidden"
+using JuliaSkriptumKontrolle
+temporary_directory = mktempdir()
+current_workding_directory = pwd()
+cd(temporary_directory)
+```
+
 # Funktionen
 In den vorhergehenden Kapiteln wurden schon einige Funktionen verwendet (z.B. `abs`, `typeof` oder `length`).
 Eine Funktion wird durch ihren Namen, gefolgt von runden Klammern aufgerufen.
@@ -254,4 +261,9 @@ Die Ausgabe muss genau gleich wie im Beispiel unten formatiert sein, damit das K
 Beispiele:
 ```julia;term=true
 kreis(3)
+```
+
+<!-- Wechsel zurück ins richtige WD -->
+```julia; echo=false
+cd(current_workding_directory)
 ```
