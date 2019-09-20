@@ -58,6 +58,7 @@ string_replace(uni,rep) = uni=>rep
 
 forward_this = [
     cmd_single_arg("enquote"),
+    cmd_single_arg("footnote"),
     cmd_single_arg("LaTeX"),
     # For dataframe rendering
     string_replace("│","|"),

@@ -4,9 +4,7 @@ In diesem Abschnitt werden einige Begriffe wie z.B. *Terminal* oder *REPL* verwe
 
 ## Julia
 Julia ist für Windows, macOS und Linux kostenlos auf der Webseite [julialang.org](https://julialang.org) verfügbar.
-Unter [Downloads](https://julialang.org/downloads/)[^1] befinden sich die für die Installation notwendigen Dateien.
-
-[^1]: <https://julialang.org/downloads/>
+Unter [Downloads](https://julialang.org/downloads/)\footnote{<https://julialang.org/downloads/>} befinden sich die für die Installation notwendigen Dateien.
 
 ### Windows
 Julia ist für Windows 7 und alle spätere Versionen in 32 bit und 64 bit verfügbar.
@@ -17,7 +15,7 @@ Im entpackten Ordner befindet sich die Datei `julia`.
 Diese kann entweder durch Doppelklick oder über die Commandline durch Eingabe des Befehls `julia` ausgeführt werden.
 Sollte bei Aufruf in der Commandline ein Fehler \enquote{`Der Befehl "julia" ist entweder falsch geschrieben oder konnte nicht gefunden werden`} auftreten, wurde der Installationspfad wahrscheinlich bei der Installation nicht zur Systemvariable `PATH` hinzugefügt.
 Windows kann die Datei `julia` dann nicht finden.
-Unter diesem [Link](https://www.java.com/de/download/help/path.xml)[^2] befindet sich eine kurze Erklärung zur Einrichtung der Systemvariable `PATH`.
+Unter diesem [Link](https://www.java.com/de/download/help/path.xml)\footnote{[https://www.java.com/de/download/help/path.xml](https://www.java.com/de/download/help/path.xml)} befindet sich eine kurze Erklärung zur Einrichtung der Systemvariable `PATH`.
 Der Punkt \enquote{Geben Sie ... den Wert der Umgebungvariable PATH an.} in dieser Erklärung ist dabei folgendermaßen zu verstehen:
 Unter Path sind alle Pfade gespeichert, die bei der Eingabe eines Befehls in der Commandline, nach übereinstimmenden Befehlen durchsucht werden.
 Die Pfade sind dabei durch Semikola `;` voneinander getrennt.
@@ -30,11 +28,9 @@ Pfad01;Pfad02;Pfad03
 Pfad01;Pfad02;Pfad03;Julia-Pfad
 ```
 
-[^2]: [https://www.java.com/de/download/help/path.xml](https://www.java.com/de/download/help/path.xml)
-
 ### macOS
 Julia ist für macOS 10.8 und spätere Versionen verfügbar.
-Für Mac-User befindet sich auf [julialang.org](https://julialang.org) unter [Downloads](https://julialang.org/downloads)[^1] eine `.dmg`-Datei zum Download.
+Für Mac-User befindet sich auf [julialang.org](https://julialang.org) unter [Downloads](https://julialang.org/downloads)\footnote{<https://julialang.org/downloads/>} eine `.dmg`-Datei zum Download.
 Dieses Disk Image muss geöffnet und die darin enthaltene Datei `julia-<version>.app` in den gewünschten Dateipfad (vozugsweise Programme) kopiert werden.
 Julia kann dann direkt über diese Datei oder Eingabe des Befehls `julia` im Terminal ausgeführt werden.
 
@@ -56,10 +52,8 @@ Danach kann Julia durch Eingabe von `julia` im Terminal gestartet werden.
 Generell reicht es aus, Julia zu installieren und über die Command Line zu benutzen.
 Entwicklungsumgebungen wie zum Beispiel *Juno* bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
 Dazu muss zuerst der erweiterbare Texteditor *Atom* installiert werden.
-Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [atom.io](https://atom.io)[^3] erhältlich.
+Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [atom.io](https://atom.io)\footnote{<https://atom.io>} erhältlich.
 
-[^3]: <https://atom.io>
-                                                                         
 Nach der Installation von Atom muss *Juno* in Atom installiert werden.
 Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (`Strg`+`,` oder `Cmd`+`,` bzw. über die Menüleiste) und dort das Installations-Panel auszuwählen.
 Durch Installation des Pakets `uber-juno` (am einfachsten über die Suchleiste) kann Juno in Atom verwendet werden.

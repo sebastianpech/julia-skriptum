@@ -17,10 +17,8 @@ using Statistics
 ```
 
 Um die folgenden Beispiele anschaulich zu machen, werden Testdaten benötigt.
-Diese werden aus der Iris-Datenbank[^1] entnommen.
+Diese werden aus der Iris-Datenbank\footnote{<https://en.wikipedia.org/wiki/Iris_flower_data_set>} entnommen.
 Die Datenbank enthält Abmessungen und Spezies von 150 Iris Blumen und ist in `RDatasets.jl` enthalten.
-
-[^1]: <https://en.wikipedia.org/wiki/Iris_flower_data_set>
 
 ```julia; results="hidden"
 using RDatasets
@@ -80,9 +78,7 @@ data = rand(d,1000)
 histogram(data)
 ```
 
-Weitere Verteilungen sind in der [Dokumentation](https://juliastats.github.io/Distributions.jl/stable/)[^2] gelistet.
-
-[^2]: <https://juliastats.github.io/Distributions.jl/stable/>
+Weitere Verteilungen sind in der [Dokumentation](https://juliastats.github.io/Distributions.jl/stable/)\footnote{<https://juliastats.github.io/Distributions.jl/stable/>} gelistet.
 
 Neben dem \enquote{Sampling} von Daten ist auch das \enquote{Fitting}, also ermitteln der Parameter für Verteilungsfunktionen, möglich.
 Dafür wird die Funktion `fit` verwendet.

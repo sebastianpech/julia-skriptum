@@ -42,10 +42,8 @@ Da MATLAB in anderen LVAs verwendet wird und wir nicht wollen, dass Programmiera
 Julia ist ebenfalls frei verfügbar und hat eine zu MATLAB sehr ähnliche Syntax.
 Das und das stringente Sprachdesign sind für uns Grund genug Julia in dieser LVA zu verwenden.
 
-Die syntaktischen Unterschiede von MATLAB, Python und Julia sind in diesem [Cheatsheet](https://cheatsheets.quantecon.org/)[^1] grob zusammengefasst.
+Die syntaktischen Unterschiede von MATLAB, Python und Julia sind in diesem [Cheatsheet](https://cheatsheets.quantecon.org/)\footnote{<https://cheatsheets.quantecon.org>} grob zusammengefasst.
 Sollte es notwendig sein ein Programm nicht in Julia zu schreiben, empfehlen wir, es als erste Hilfe zur Hand zu nehmen.
-
-[^1]: <https://cheatsheets.quantecon.org>
 
 ## Lehrunterlagen
 
@@ -53,9 +51,7 @@ Die Unterlagen wurden an einigen Stellen um nützliche Verweise auf weiterführe
 Grundsätzlich werden zwei Arten von Links unterschieden:
 Auf Einträge in der Julia Dokumentation unter <https://docs.julialang.org> wird im Text immer durch Angabe der Abschnittsnamen verwiesen.
 Links die nicht auf die Dokumentation verweisen, werden immer mit einer zusätzlichen Fußnote angeben.
-Beispielsweise sind weiter Informationen zu Strings in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) oder auf der Website [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^2] zu finden
-
-[^2]: [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)
+Beispielsweise sind weiter Informationen zu Strings in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) oder auf der Website [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} zu finden
 
 Damit können die Links sowohl in der pdf-Version als auch in der Printversion geöffnet werden.
 

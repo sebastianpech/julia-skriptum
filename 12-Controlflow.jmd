@@ -183,9 +183,7 @@ Dieser Vorgang ist sehr wichtig um eine performante Ausführung zu ermöglichen 
 #### Typenstabilität
 
 Stabilität bedeutet hier, dass sich der Datentyp einer Variable mit der Laufzeit nicht ändert.
-Eine mögliche Fehlerquelle dafür ist im folgendem Beispiel zu sehen[^1].
-
-[^1]: <http://www.johnmyleswhite.com/notebook/2013/12/06/writing-type-stable-code-in-julia/>
+Eine mögliche Fehlerquelle dafür ist im folgendem Beispiel zu sehen\footnote{<http://www.johnmyleswhite.com/notebook/2013/12/06/writing-type-stable-code-in-julia/>}.
 
 ```julia;results="hidden"
 function summe_sin_A(n::Int)
@@ -434,9 +432,7 @@ Im vorherigen Beispiel dient `_` als Tausendertrennzeichen, hat aber keinen Einf
 ### Numerisch Integrieren
 
 Schreibe eine Funktion die das bestimmte Integral einer beliebigen 1D-Funktion definiert durch x- und y-Werte berechnet.
-Verwende dazu die [Trapezregel](https://de.wikipedia.org/wiki/Trapezregel)[^2].
-
-[^2]: <https://de.wikipedia.org/wiki/Trapezregel> 
+Verwende dazu die [Trapezregel](https://de.wikipedia.org/wiki/Trapezregel)\footnote{<https://de.wikipedia.org/wiki/Trapezregel> }.
 
 ```julia; results="hidden"; echo=false
 function ∫(x,y)
@@ -549,7 +545,7 @@ my_split(".Das.ist.ein..String.",'.')
 Nicht immer war Wurzelziehen so komfortabel wie heute.
 Mit der Unterstützung eines Computers oder Taschenrechners gelingt das ganz einfach mit der Funktion `sqrt`.
 In der Literatur findet man allerdings einige Verfahren mit welchen \enquote{händisches} Wurzelziehen möglich ist.
-Eines dieser Verfahren wird [babylonisches Wurzelziehen](https://de.wikipedia.org/wiki/Heron-Verfahren)[^3] genannt.
+Eines dieser Verfahren wird [babylonisches Wurzelziehen](https://de.wikipedia.org/wiki/Heron-Verfahren)\footnote{<https://de.wikipedia.org/wiki/Heron-Verfahren>} genannt.
 
 Zur Berechnung der Quadratwurzel ``x`` von ``a`` wird zuerst eine Zahl ``x_0`` als Kandidat gewählt (z.B. ``x_0 = \frac{a}{2}``).
 Anstelle von ``x=\sqrt{a}`` wird dann die Gleichung mit dem Kandidaten ``x_0 \cdot x_0 \stackrel{!}{=} a`` gelöst.
@@ -575,8 +571,6 @@ x_{n+1} = \frac{x_n + \frac{a}{x_n}}{2}.
 
 Für eine ausreichend hohe Zahl von ``n`` kann damit die Quadratwurzel von ``a`` ermittelt werden.
 Es soll eine Funktion definiert werden, die mit dem beschriebene Verfahren die Quadratwurzel einer beliebigen Zahl mit einem absoluten Fehler von ``10^{-5}`` berechnet. Ein solches Abbruchkriterium wir auch Konvergenzkriterium genannt.
-
-[^3]: <https://de.wikipedia.org/wiki/Heron-Verfahren>
 
 ```julia; results="hidden"; echo=false
 function bsqrt(a)

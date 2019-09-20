@@ -122,9 +122,8 @@ print("""Dieser Satz enthält "Anführungszeichen".""")
 Strings können auch mit drei Anführungszeichen geschrieben werden.
 In diesem Fall müssen Anführungszeichen innerhalb des Strings nicht maskiert werden.
 
-Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)[^1] und in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) erläutert.
+Weitere interessante Funktionen sind im Online-Buch [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} und in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) erläutert.
 
-[^1]: [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)
 ## Zahlen
 In Julia sind verschiedene Datentypen für Zahlen definiert.
 Im Beispiel oben ist der ganzzahlige Wert `2` vom Typ `Int64` und `42.0` vom Typ `Float64`.
@@ -219,7 +218,7 @@ round(0.00345123; sigdigits=4)
 Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
 Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` ab der ersten Ziffer ungleich 0 zählt.
 
-Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^2] (*floor division*) und der Modulo-Operator, `%`.
+Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`\footnote{`÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.} (*floor division*) und der Modulo-Operator, `%`.
 ```julia; term=true
 7÷3
 7%3
@@ -227,8 +226,6 @@ Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`[^2] (*fl
 `÷` führt eine Division durch und rundet das Ergebnis auf die nächste ganze Zahl ab.
 Der Modulus-Operator gibt den Rest einer Division aus.
 Damit kann zum Beispiel leicht überprüft werden, ob eine Zahl durch eine andere Zahl teilbar ist.
-
-[^2]: `÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.
 
 Julia hat standardmäßig mathematische Funktionen wie `sin`, `cos`, `log`, `abs` und viele mehr inkludiert.
 ```julia;term=true

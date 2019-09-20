@@ -151,15 +151,12 @@ messwerte.temp, messwerte.Status
 ```
 
 Ein `DataFrame` ist ein Datentyp der besonders für die Verarbeitung von tabellarischen Daten geeignet ist.
-Nähere Details zu [DataFrames](https://juliadata.github.io/DataFrames.jl/stable/)[^1] und [`CSV.jl`](https://juliadata.github.io/CSV.jl/stable/)[^2] können der jeweiligen Dokumentation entnommen werden.
-
-[^1]: <https://juliadata.github.io/DataFrames.jl/stable/>
-[^2]: <https://juliadata.github.io/CSV.jl/stable/>
+Nähere Details zu [DataFrames](https://juliadata.github.io/DataFrames.jl/stable/)\footnote{<https://juliadata.github.io/DataFrames.jl/stable/>} und [`CSV.jl`](https://juliadata.github.io/CSV.jl/stable/)\footnote{<https://juliadata.github.io/CSV.jl/stable/>} können der jeweiligen Dokumentation entnommen werden.
 
 ## Aufgaben
 
 Die Aufgaben für dieses Beispiel basieren alle auf dem selben Datensatz.
-In den Beispielen geht es darum, als ManagerIn eines [Prepper-Camps](https://de.wikipedia.org/wiki/Prepper)[^3], das aus mehreren Lagern besteht, den Überblick über den Lagerbestand zu behalten.
+In den Beispielen geht es darum, als ManagerIn eines [Prepper-Camps](https://de.wikipedia.org/wiki/Prepper)\footnote{<https://de.wikipedia.org/wiki/Prepper>}, das aus mehreren Lagern besteht, den Überblick über den Lagerbestand zu behalten.
 Für jedes Lager wird eine Liste mit Ein- und Ausgängen geführt:
 
 ```
@@ -198,8 +195,6 @@ joinpath("14-3","Lager1.csv")
 
 Wie im Abschnitt Interaktion erwähnt, sind die Trennzeichen bei Pfaden je nach Betriebssystem verschieden.
 Da das zu einigen Problemen führen kann, gibt es die Funktion `joinpath` die das richtige Trennzeichen wählt.
-
-[^3]: <https://de.wikipedia.org/wiki/Prepper>
 
 ### Bestandsermittlung Lager
 
