@@ -36,8 +36,8 @@ pwd()
 Die Funktion `readdir` gibt alle Dateien und Ordner eines Verzeichnisses aus.
 
 ```julia; term=true
-readdir() # Standardmäßig wird das working directory verwendet
-readdir("Ordner01") # Optional kann ein Pfad angegeben werden
+print(readdir()) # Standardmäßig wird das working directory verwendet
+print(readdir("Ordner01")) # Optional kann ein Pfad angegeben werden
 ```
 
 Die Ausgabe von `readdir` besteht allerdings nur aus den Datei- oder Ordnernamen als `String`, es ist also nicht möglich zu erkennen, ob es sich um einen Ordner oder eine Datei handelt.
@@ -65,7 +65,7 @@ Beim Umgang mit Dateien gibt es die folgenden Modi:
 
 ```julia; term=true
 f = open("Datei04.txt","w")
-readdir()
+print(readdir())
 ```
 `open` öffnet einen sogenannten Stream zu der Datei. Um nun Text in die neue Datei zu schreiben, muss dieser Text zuerst in den Stream geschrieben werden. Das ist mit dem `write` Befehl möglich. 
 
@@ -182,7 +182,7 @@ definiert.
 Nach dem Aufruf wird im aktuellen Verzeichnis ein neuer Ordner `14-3` erstellt.
 
 ```julia; term=true
-readdir("14-3")
+print(readdir("14-3"))
 ```
 
 In dem Ordner befinden sich die Bestandslisten für alle Lager.
@@ -221,8 +221,8 @@ Beispiele:
 ```julia; term=true
 bestand = read_lagers();
 typeof(bestand)
-bestand[1]
-bestand[3]
+print(bestand[1])
+print(bestand[3])
 ```
 
 ### Bestand suchen
@@ -261,8 +261,8 @@ end
 
 Beispiele:
 ```julia; term=true
-lager_mit("Taschenlampe",4)
-lager_mit("Reis",30)
+print(lager_mit("Taschenlampe",4))
+print(lager_mit("Reis",30))
 ```
 
 ### Gesamtbestand
@@ -288,7 +288,7 @@ end
 
 Beispiele:
 ```julia; term=true
-gesamt_bestand()
+print(gesamt_bestand())
 ```
 
 <!-- Wechsel zurück ins richtige WD -->

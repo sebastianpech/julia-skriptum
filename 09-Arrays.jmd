@@ -265,14 +265,14 @@ Die Schrittweite kann für eine absteigende `Range` auch negativ sein, dann muss
 `rand` kann auch auf eine `Range` angewendet werden.
 ```julia;term=true
 rand(1:10)
-sort(rand(1:45,6))  # Die Lotto-Zahlen nächster Woche?
+print(sort(rand(1:45,6)))  # Die Lotto-Zahlen nächster Woche?
 ```
 
 Eine `Range` kann vor allem für Schleifen hilfreich sein.
 Mithilfe der Funktion `collect` können damit auch schnell Arrays erzeugt werden.
 ```julia;term=true
-collect(1:5)
-collect(6:-2:0)
+print(collect(1:5))
+print(collect(6:-2:0))
 ```
 
 Julia hat verschiedene Arten von Sammlungen implementiert.
@@ -316,7 +316,7 @@ t[4] = 23
 Manchmal ist es notwendig, ein `Tuple` in ein `Array` umzuwandeln.
 Mittels `collect` kann ein `Tuple` einfach in ein `Array` umgewandelt werden:
 ```julia;term=true
-collect(("spam", "foo", "bar"))
+print(collect(("spam", "foo", "bar")))
 ```
 
 ## Dictionaries
@@ -352,13 +352,13 @@ print(de2sp)
 Auf diese Weise können vorhandene Werte neu definiert werden.
 Die Funktionen `keys` und `values` geben Sammlungen mit den Keys oder Values eines Dictionaries zurück.
 ```julia; term=true
-keys(de2sp)
-values(de2sp)
+print(keys(de2sp))
+print(values(de2sp))
 ```
 
 `collect` bietet auch hier die Möglichkeit, diese Sammlungen in `Arrays` umzuwandeln:
 ```julia;term=true
-collect(keys(de2sp))
+print(collect(keys(de2sp)))
 ```
 
 ## Aufgaben
@@ -376,7 +376,7 @@ Beispiele:
 a = [1, 1, 2];
 b = [3, 5];
 c = [8, 13];
-connect_three(a,b,c)
+print(connect_three(a,b,c))
 ```
 
 ### Innere Werte eines Arrays

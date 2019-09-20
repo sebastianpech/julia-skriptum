@@ -63,15 +63,9 @@ A\c
 
 Das lineare Algebra Paket beinhaltet auch Funktionen zur Berechnung des Skalarprodukts `dot` oder `·` (`\cdot`+`TAB`-Taste), des Kreuzprodukts `cross` oder `×` (`\times`+`TAB`-Taste) und der Länge `norm` von Vektoren.
 
-```julia
+```julia; term=true
 [1,2,3] ⋅ [4,5,6]
-```
-
-```julia
 [1,2,3] × [4,5,6]
-```
-
-```julia
 norm([1,2,3])
 ```
 

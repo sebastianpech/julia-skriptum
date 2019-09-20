@@ -64,7 +64,7 @@ Date(2019,1,31) + Dates.Month(1)
 Zusätzlich funktionieren auch die Angabe von Datumsbereichen wie gewohnt:
 
 ```julia; term=true
-collect(Date(2019,1,1):Dates.Day(2):Date(2019,1,10))
+print(collect(Date(2019,1,1):Dates.Day(2):Date(2019,1,10)))
 ```
 
 Jeder Zeitspanne und jedes Datum werden durch eine zugeordnete Einheit (Tag, Monat, Jahr) und eine `Int`-Zahl festgelegt.
