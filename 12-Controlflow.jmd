@@ -468,8 +468,8 @@ x = collect(0:0.0001:2π);
 Die Monte-Carlo-Simulation kann auch dazu verwendet werden, um Wahrscheinlichkeiten zu approximieren.
 Schreibe zwei Funktionen, welche die Wahrscheinlichkeit abschätzen, dass
 
-1. mit einem idealen Würfel (``1--6``) 3`×` hintereinander 4 gewürfelt wird und
-2. mit einem idealen Würfel (``1--6``) bei 3 Würfen mindestens ein 4er gewürfelt wird.
+1. mit einem idealen Würfel (1--6) 3`×` hintereinander 4 gewürfelt wird und
+2. mit einem idealen Würfel (1--6) bei 3 Würfen mindestens ein 4er gewürfelt wird.
 
 Die Idee hinter der Simulation ist die Würfe mit einem Zufallszahlengenerator `rand(1:6)` zu simulieren und anschließen die positiven Ergebnisse in Relation zu den gesamten Würfen zu setzten.
 
