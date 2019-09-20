@@ -109,10 +109,10 @@ cmd = `$latex_cmd -shell-escape -interaction=batchmode -halt-on-error $tmppath`
 
 try
     @info "Running latex command"
-    @info "First run"
-    out = read(cmd,String)
-    @info "Second run"
-    out = read(cmd,String)
+    for r in ["First", "Second", "Third"]
+        @info "$r run"
+        out = read(cmd,String)
+    end
     mv(basename(tmppath)*".pdf",joinpath(@__DIR__,"build","julia-skriptum.pdf"),force=true)
 catch e
     failed_path = "failed_"*basename(tmppath)*".tex"
