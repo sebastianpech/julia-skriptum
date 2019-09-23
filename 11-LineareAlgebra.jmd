@@ -1,7 +1,7 @@
 # Lineare Algebra
 
 Neben der Unterstützung von multi-dimensionalen Arrays (Vektoren, Matrizen, Tensoren) bietet Julia auch eine Implementierung von nützlichen Funktionen der linearen Algebra.
-Das lineare Algebra Paket ist standardmäßig in Julia enthalten und kann wie alle anderen Pakete mit `using` geladen werden.
+Das Lineare-Algebra-Paket ist standardmäßig in Julia enthalten und kann wie alle anderen Pakete mit `using` geladen werden.
 
 ```{julia}
 using LinearAlgebra
@@ -19,7 +19,7 @@ Eine übliche Problemstellung der linearen Algebra ist das Lösen von Gleichungs
 ```math
 2x + 3y = 11
 ```
-Um das System zu lösen müssen zuerst die Koeffizientenmatrix und der Vektor auf der rechten Seite definiert werden.
+Um das System zu lösen, müssen zuerst die Koeffizientenmatrix und der Vektor auf der rechten Seite definiert werden.
 
 ```{julia;results="hidden"}
 A = [1 -1
@@ -27,7 +27,7 @@ A = [1 -1
 c = [22, 11]
 ```
 
-Um Informationen über die Lösbarkeit des System zu erhalten wird die Determinante mit `det` ermittelt.
+Um Informationen über die Lösbarkeit des System zu erhalten, wird die Determinante mit `det` ermittelt.
 
 
 ```{julia}
@@ -47,13 +47,13 @@ Der Lösungsvektor ``\mathbf{b}`` ergibt sich dann zu:
 b = A_inv*c
 ```
 
-Die Kontrolle kann einfach durch Ausmultiplizieren gemacht erfolgen.
+Die Kontrolle kann einfach durch Ausmultiplizieren erfolgen.
 
 ```{julia}
 A*b
 ```
 
-Da dieser Ablauf sehr häufig vorkommt und sich abhängig von ``\mathbf{A}`` gut optimieren lässt, biete Julia mit dem `\`-Operator eine Kurzschreibweise, bei der das extra Invertieren entfällt.
+Da dieser Ablauf sehr häufig vorkommt und sich abhängig von ``\mathbf{A}`` gut optimieren lässt, bietet Julia mit dem `\`-Operator eine Kurzschreibweise, bei der das zusätzliche Invertieren entfällt.
 
 ```{julia}
 A\c
@@ -61,7 +61,7 @@ A\c
 
 ## Vektorfunktionen
 
-Das lineare Algebra Paket beinhaltet auch Funktionen zur Berechnung des Skalarprodukts `dot` oder `·` (`\cdot`+`TAB`-Taste), des Kreuzprodukts `cross` oder `×` (`\times`+`TAB`-Taste) und der Länge `norm` von Vektoren.
+Das Lineare-Algebra-Paket beinhaltet auch Funktionen zur Berechnung des Skalarprodukts `dot` oder `·` (`\cdot`+`TAB`-Taste), des Kreuzprodukts `cross` oder `×` (`\times`+`TAB`-Taste) und der Länge `norm` von Vektoren.
 
 ```julia; term=true
 [1,2,3] ⋅ [4,5,6]
@@ -73,7 +73,7 @@ norm([1,2,3])
 
 ### Lösbarkeit von linearen Gleichungssystemen
 
-Es soll eine Funktion definiert werden, die `true` zurück gibt falls ein lineares Gleichungssystem lösbar ist (nicht zwingend eindeutig) und `false` zurück gibt falls das System nicht lösbar ist.
+Es soll eine Funktion definiert werden, die `true` zurückgibt, falls ein lineares Gleichungssystem lösbar ist (nicht zwingend eindeutig), und `false` zurückgibt, falls das System nicht lösbar ist.
 
 ```julia; echo=false; results="hidden"
 function lösbar(A,b)
@@ -120,7 +120,7 @@ end
 ### Eigenwerte und Eigenvektoren
 
 Mit den Funktion `eigvals` und `eigvecs` können Eigenwerte bzw. Eigenvektoren berechnet werden.
-Es soll eine Funktion geschrieben werden die aus Eigenwerten und Eigenvektoren, in dem Format wie sie von den beiden Funktionen für eine Matrix ausgegeben werden, wieder die Matrix rekonstruieren.
+Es soll eine Funktion geschrieben werden, die aus Eigenwerten und Eigenvektoren, in dem Format wie sie von den beiden Funktionen für eine Matrix ausgegeben werden, wieder die Matrix rekonstruieren.
 
 ```julia; echo=false; results="hidden"
 function rekonstruiere(λ,ϕ)

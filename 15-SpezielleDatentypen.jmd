@@ -19,7 +19,7 @@ DateTime(2019,2,1)
 DateTime(2019,2,1,12,30,59,1)
 ```
 
-Wird eine Stelle bei der Definition vernachlässigt wird stattdessen der kleinst mögliche Wert verwendet:
+Wird eine Stelle bei der Definition vernachlässigt, verwendet Julia stattdessen den kleinst-möglichen Wert:
 
 ```julia
 Date(2019)
@@ -39,7 +39,7 @@ datetime2 = DateTime(2019,6,12,13,1)
 datetime2-datetime1
 ```
 
-Die beiden gezeigten Subtraktionen ergeben die Zeitspanne zwischen den beiden Zeitpunkten, jeweils in der kleinst möglichen Auflösung.
+Die beiden gezeigten Subtraktionen ergeben die Zeitspanne zwischen den beiden Zeitpunkten, jeweils in der kleinst-möglichen Auflösung.
 Solche Zeitspannen (auch in anderer Auflösung z.B. Jahr oder Monat) sind auch im `Dates`-Paket enthalten.
 
 ```julia; term=true
@@ -67,7 +67,7 @@ Zusätzlich funktionieren auch die Angabe von Datumsbereichen wie gewohnt:
 print(collect(Date(2019,1,1):Dates.Day(2):Date(2019,1,10)))
 ```
 
-Jeder Zeitspanne und jedes Datum werden durch eine zugeordnete Einheit (Tag, Monat, Jahr) und eine `Int`-Zahl festgelegt.
+Jede Zeitspanne und jedes Datum werden durch eine zugeordnete Einheit (Tag, Monat, Jahr) und eine `Int`-Zahl festgelegt.
 In manchen Fällen ist es notwendig, diese `Int`-Zahl zu extrahieren.
 Für Zeitspannen gibt es dafür die Funktion `Dates.value`:
 
@@ -78,7 +78,7 @@ d1 == d2
 Dates.value(d1) == Dates.value(d2)
 ```
 
-Für Datums und Zeitangabe die Funktionen:
+Für Datums und Zeitangaben gibt es die Funktionen:
 ```julia; term=true
 dt = DateTime(2019,6,12,13,1)
 Dates.year(dt)
@@ -92,13 +92,13 @@ Dates.millisecond(dt)
 
 ## Spezielle Zahlentypen
 
-Aufgrund einiger Basisregeln nach denen in Julia programmiert wird, eignet sich die Sprache besonders dafür erweitert zu werden.
-In der Julia Paketdatenbank befindet sich eine Vielzahl von praktischen Paketen, welche die Standardfunktionalität erweitern.
+Aufgrund einiger Basisregeln, nach denen in Julia programmiert wird, eignet sich die Sprache besonders dafür, erweitert zu werden.
+In der Julia-Paketdatenbank befindet sich eine Vielzahl von praktischen Paketen, welche die Standardfunktionalität erweitern.
 Zwei davon sind:
 - `Unitful.jl`\footnote{<http://painterqubits.github.io/Unitful.jl/stable/>}, das physikalische Einheiten definiert und
 - `Measurements.jl`\footnote{<https://juliaphysics.github.io/Measurements.jl/stable/>}, das Berechnungen mit Fehlertoleranzen erlaubt.
 
-Beide Paket definieren eine neue Art Zahlen anzugeben, basieren aber weiterhin auf den Rechenregeln die in Julia definiert sind.
+Beide Paket definieren eine neue Art, Zahlen anzugeben, welche aber weiterhin auf den Rechenregeln die in Julia definiert sind basiert.
 Als Beispiel wird eine Funktion definiert die den Flächeninhalt eines Rechtecks berechnet:
 
 ```julia
@@ -112,7 +112,7 @@ A_rechteck(2.1,3.1)
 A_rechteck(2,3)
 ```
 
-Mit `Unitful.jl` ist es möglich Zahlen mit einer Einheit zu versehen:
+Mit `Unitful.jl` ist es möglich, Zahlen mit einer Einheit zu versehen:
 ```julia; term=true
 using Unitful
 1u"m"
@@ -139,7 +139,7 @@ sin(a)
 Das Paket geht dabei von normalverteilten Variablen aus; der Wert nach `±` ist die Standardabweichung.
 Die Variable `a` im obigen Beispiel bezeichnet daher eine normalverteilte Variable mit Mittelwert `1.1` und Standardabweichung `0.1`
 
-Bei der Verwendung von `A_rechteck` kann mit `Measurements.jl` der Fehler bei der Berechnung der Fläche, unter Berücksichtigung des Fehlers der Seiten ermittelt werden:
+Bei der Verwendung von `A_rechteck` kann mit `Measurements.jl` der Fehler bei der Berechnung der Fläche, unter Berücksichtigung des Fehlers der Seiten, ermittelt werden:
 ```julia; term=true
 A_rechteck(2±0.1,3±0.5)
 ```
@@ -149,5 +149,5 @@ A_rechteck(2±0.1,3±0.5)
 ### Ein Zeiträtsel
 
 Jemand verwechselt Tages- und Monatszahl und erscheint daher sechs Wochen zu früh zu einem Termin. 
-An welchem Tag ist der Termin eigentlich?\footnote{<https://www.spektrum.de/raetsel/melusines-geburtstag/1660200>}.
-Schreibe eine Funktion die den entsprechenden Tag zurückgibt. Verwende für die Lösung die arithmetischen Funktionen für Daten.
+An welchem Tag ist der Termin eigentlich?\footnote{<https://www.spektrum.de/raetsel/melusines-geburtstag/1660200>}
+Schreibe eine Funktion, die den entsprechenden Tag zurückgibt. Verwende für die Lösung die arithmetischen Funktionen für Daten.

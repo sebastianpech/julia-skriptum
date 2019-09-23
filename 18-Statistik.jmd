@@ -18,7 +18,7 @@ using Statistics
 
 Um die folgenden Beispiele anschaulich zu machen, werden Testdaten benötigt.
 Diese werden aus der Iris-Datenbank\footnote{<https://en.wikipedia.org/wiki/Iris_flower_data_set>} entnommen.
-Die Datenbank enthält Abmessungen und Spezies von 150 Iris Blumen und ist in `RDatasets.jl` enthalten.
+Die Datenbank enthält Abmessungen und Spezies von 150 Iris-Blumen und ist in `RDatasets.jl` enthalten.
 
 ```julia; results="hidden"
 using RDatasets
@@ -47,10 +47,10 @@ median(iris.SepalLength)
 var(iris.SepalLength)
 ```
 
-Neben diesen Funktionen gibt es noch weitere: zur Berechnung der Kovarianz (`cov()`), des Pearson-Korrelationskoeffizient (`cor()`) und der Quantile (`quantile()`).
+Neben diesen Funktionen gibt es noch weitere zur Berechnung der Kovarianz (`cov()`), des Pearson-Korrelations\-koeffizient (`cor()`) und der Quantile (`quantile()`).
 Nähere Details dazu sind in der Dokumentation unter [Standard Library/Statistics](https://docs.julialang.org/en/v1/stdlib/Statistics) zu finden.
 
-Oft ist es erforderlich Annahmen zu Wahrscheinlichkeitsverteilungen gewisser Daten zu treffen.
+Oft ist es erforderlich, Annahmen zu Wahrscheinlichkeitsverteilungen gewisser Daten zu treffen.
 In `Distributions.jl` sind dafür die notwendigen Funktionen für eine Reihe von verschiedenen Verteilungen definiert.
 Zusätzlich enthält das Paket Funktionen zum \enquote{Fitting} und \enquote{Sampling} von Daten und kann wie folgt geladen werden:
 
@@ -58,13 +58,13 @@ Zusätzlich enthält das Paket Funktionen zum \enquote{Fitting} und \enquote{Sam
 using Distributions
 ```
 
-Um die Daten in den folgenden Beispielen zu visualisieren wird ebenfalls `Plots.jl` geladen:
+Um die Daten in den folgenden Beispielen zu visualisieren, wird ebenfalls `Plots.jl` geladen:
 
 ```julia
 using Plots
 ```
 
-Beim \enquote{Sampling} geht es darum Zufallszahlen aus einer gewissen Verteilung zu ziehen.
+Beim \enquote{Sampling} geht es darum, Zufallszahlen aus einer gewissen Verteilung zu ziehen.
 Ein Zufallszahlengenerator, mit einer zugrundeliegenden Normalverteilung (Mittelwert 2.5 und Standardabweichung 0.5), kann folgendermaßen erzeugt werden:
 
 ```julia
@@ -80,7 +80,7 @@ histogram(data)
 
 Weitere Verteilungen sind in der [Dokumentation](https://juliastats.github.io/Distributions.jl/stable/)\footnote{<https://juliastats.github.io/Distributions.jl/stable/>} gelistet.
 
-Neben dem \enquote{Sampling} von Daten ist auch das \enquote{Fitting}, also ermitteln der Parameter für Verteilungsfunktionen, möglich.
+Neben dem \enquote{Sampling} von Daten ist auch das \enquote{Fitting}, also Ermitteln der Parameter für Verteilungsfunktionen, möglich.
 Dafür wird die Funktion `fit` verwendet.
 In einem ersten Schritt werden für die Spalte `SepalLength` aus den Daten in `iris` die Parameter für eine Normalverteilung ermittelt:
 ```julia

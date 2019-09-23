@@ -1,28 +1,28 @@
 # Einführung und Vorwort
 
 Diese Lehrunterlagen dienen der Unterstützung bei der Lehrveranstaltung (LVA) Programmieren im Bauingenieurwesen. 
-Alle Inhalte die in der LVA besprochen werden, sind chronologisch geordnet in diesem Dokument gelistet und durch nützliche Informationen und Beispiele ergänzt. 
-Einige Abschnitte schließen mit einer Aufgabensammlung, welche zum Erlangen einer positiven Benotung der LVA gelöst und in den TUWEL Kurs hochgeladen werden müssen.
+Alle Inhalte, die in der LVA besprochen werden, sind chronologisch geordnet in diesem Dokument gelistet und durch nützliche Informationen und Beispiele ergänzt. 
+Einige Abschnitte schließen mit einer Aufgabensammlung, welche zum Erlangen einer positiven Benotung der LVA gelöst und in den TUWEL-Kurs hochgeladen werden muss.
 
-Ziel der LVA ist es, einen ersten aber umfassenden Einblick in die Welt der Programmiersprachen zu geben.
-Inhalte die über die allgemeinen Programmiergrundlagen hinausgehen, sind dabei thematisch auf das Bauingenieurwesen Studium zugeschnitten.
+Ziel der LVA ist es, einen ersten, aber umfassenden Einblick in die Welt der Programmiersprachen zu geben.
+Inhalte, die über die allgemeinen Programmiergrundlagen hinausgehen, sind dabei thematisch auf das Bauingenieurwesen Studium zugeschnitten.
 
 ## Ziele
 
 Wir haben selbst erlebt, dass in einigen Master LVAs und besonders bei der Diplomarbeit Programmierkenntnisse gefordert werden.
-Nach dem Besuch der LVA sollten daher Aufgaben wie Versuchsauswertungen, Adaption von bestehenden Programmen oder erstellen eigener Programme unter Anleitung gelöst werden können.
+Nach dem Besuch der LVA sollten daher Aufgaben wie Versuchsauswertungen, Adaption von bestehenden Programmen oder Erstellen eigener Programme unter Anleitung gelöst werden können.
 
-Die nötigen Inhalte um selbständig Programme zu Konzeptionieren und Programmieren werden in der LVA nicht abgedeckt. 
+Die nötigen Inhalte, um selbständig Programme zu konzeptionieren und programmieren, werden in der LVA nicht abgedeckt. 
 Dieses Thema ist komplex und erfordert bereits etwas Erfahrung. 
-Für Interessierte sind aber in einigen Abschnitten Verweise auf weiterführende Informationen angegeben.
+Für Interessierte sind daher in einigen Abschnitten Verweise auf weiterführende Informationen angegeben.
 
 ## Programmiersprache
 
 Die Welt der Programmiersprachen ist vielfältig und umfangreich. 
-Es gibt eine Vielzahl von Anwendungsgebieten für die spezifische Sprachen entwickelt wurden.
-Da viele Aufgaben von Bauingenieuren naturwissenschaftlich und mathematisch fundiert sind, liegt es nahe in dieser LVA eine der sogenannten wissenschaftlichen Sprachen zu verwenden.
+Es gibt eine Vielzahl von Anwendungsgebieten, für die spezifische Sprachen entwickelt wurden.
+Da viele Aufgaben von Bauingenieuren naturwissenschaftlich und mathematisch fundiert sind, liegt es nahe, in dieser LVA eine der sogenannten wissenschaftlichen Sprachen zu verwenden.
 
-Der Begriff bezeichnet Programmiersprachen die standardmäßig mathematische Objekte wie Vektoren und Matrizen unterstützen oder z.B. über Statistik-Bibliotheken verfügen.
+Der Begriff bezeichnet Programmiersprachen, die standardmäßig mathematische Objekte wie Vektoren und Matrizen unterstützen oder z.B. über Statistik-Bibliotheken verfügen.
 Einige Vertreter dieser Klasse sind MATLAB, R, Python mit SciPy und Julia.
 
 Jede dieser Sprachen hat ihre Vor- und Nachteile.
@@ -32,33 +32,33 @@ Python ist von dieser Gruppe die allgemeinste Sprache und ist eine der beliebtes
 Julia ist eine der jüngeren Programmiersprachen, zeichnet sich aber durch ein sehr gutes Sprachdesign und hohe Performance aus.
 
 In den Anfängen dieser LVA wurde MATLAB gelehrt, was hauptsächlich der starken Verbreitung an Universitäten geschuldet war.
-Ein Nachteil von MATLAB ist: Eine nicht universitäre Lizenz ist sehr teuer.
+Ein Nachteil von MATLAB ist: Eine nicht-universitäre Lizenz ist sehr teuer.
 Unser Ziel ist es, dass alle Studierenden, auch nach ihrem Studium, Zugang zu der Software haben und ihren Arbeitsalltag mit Programmierkenntnissen vereinfachen können.
 
 Python und R sind frei verfügbar und weit verbreitet.
-Ein Nachteil im Zusammenhang mit der LVA ist aber, dass sich die Programmiersprachen relativ stark vom MATLAB unterscheiden.
-Da MATLAB in anderen LVAs verwendet wird und wir nicht wollen, dass Programmieranfänger im Laufe des Studiums mit zwei sehr verschiedenen Sprachen konfrontiert werden sind Python und R keine Optionen für uns.
+Ein Nachteil im Zusammenhang mit der LVA ist aber, dass sich diese Programmiersprachen relativ stark vom MATLAB unterscheiden.
+Da MATLAB in anderen LVAs verwendet wird und wir nicht wollen, dass Programmieranfänger im Laufe des Studiums mit zwei sehr unterschiedlichen Sprachen konfrontiert werden, sind Python und R keine Optionen für uns.
 
 Julia ist ebenfalls frei verfügbar und hat eine zu MATLAB sehr ähnliche Syntax.
-Das und das stringente Sprachdesign sind für uns Grund genug Julia in dieser LVA zu verwenden.
+Dies und das stringente Sprachdesign sind für uns Grund genug, Julia in dieser LVA zu verwenden.
 
 Die syntaktischen Unterschiede von MATLAB, Python und Julia sind in diesem [Cheatsheet](https://cheatsheets.quantecon.org/)\footnote{<https://cheatsheets.quantecon.org>} grob zusammengefasst.
-Sollte es notwendig sein ein Programm nicht in Julia zu schreiben, empfehlen wir, es als erste Hilfe zur Hand zu nehmen.
+Sollte es notwendig sein, ein Programm nicht in Julia zu schreiben, empfehlen wir, das Cheatsheet als erste Hilfe zur Hand zu nehmen.
 
 ## Lehrunterlagen
 
 Die Unterlagen wurden an einigen Stellen um nützliche Verweise auf weiterführende Informationen oder Quellen erweitert.
 Grundsätzlich werden zwei Arten von Links unterschieden:
-Auf Einträge in der Julia Dokumentation unter <https://docs.julialang.org> wird im Text immer durch Angabe der Abschnittsnamen verwiesen.
-Links die nicht auf die Dokumentation verweisen, werden immer mit einer zusätzlichen Fußnote angeben.
-Beispielsweise sind weiter Informationen zu Strings in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) oder auf der Website [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} zu finden
+Auf Einträge in der Julia-Dokumentation unter <https://docs.julialang.org> wird im Text immer durch Angabe der Abschnittsnamen verwiesen.
+Links, die nicht auf die Dokumentation verweisen, werden immer mit einer zusätzlichen Fußnote angeben.
+Beispielsweise sind weitere Informationen zu Strings in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) oder auf der Website [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} zu finden
 
 Damit können die Links sowohl in der pdf-Version als auch in der Printversion geöffnet werden.
 
 ## Kontrollprogramm
 
 Zusätzlich zu den Unterlagen gibt es ein Kontrollprogramm, mit dem die Aufgaben zu den einzelnen Abschnitten kontrolliert werden können.
-Das Programm wird in Form eines eigenständigen Julia Pakets verwendet und muss mit dem Paketmanager durch Eingabe von 
+Das Programm wird in Form eines eigenständigen Julia-Pakets verwendet und muss mit dem Paketmanager durch Eingabe von 
 ```
 add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#JuliaSkriptum
 ```
@@ -69,7 +69,7 @@ Das Laden des Paketes erfolgt nach der Installation mit
 using JuliaSkriptumKontrolle
 ```
 
-Bei den Aufgaben geht es meistens darum, kurze in sich abgeschlossene Codes oder Funktionen zu schreiben.
+Bei den Aufgaben geht es meistens darum, kurze, in sich abgeschlossene Codes oder Funktionen zu schreiben.
 Eine einzelne Funktion kann z.B. wie folgt kontrolliert werden:
 
 ```julia; eval=false
@@ -81,7 +81,7 @@ end
 Dabei startet die Angabe `@Aufgabe "1.2.3"` die Kontrollmechanismen für die Aufgabe mit der Nummer 1.2.3.
 Die Nummer entspricht immer der Überschriftennummerierung der entsprechenden Aufgabe.
 
-Wird bei einer Aufgabe gefordert mehrere Funktionen oder zusätzliche externe Pakete zu verwenden, kann die allgemeine Version des vorherigen Codes verwendet werden:
+Wird bei einer Aufgabe gefordert, mehrere Funktionen oder zusätzliche externe Pakete zu verwenden, kann die allgemeine Version des vorherigen Codes verwendet werden:
 
 ```julia; eval=false
 @Aufgabe "2.1.3" begin
@@ -116,7 +116,7 @@ Die Ausgabe enthält auch die Anzahl an erreichten und möglichen Punkten.
 Da Aufgabe `10.3.4` in einem der vorherigen Beispiele falsch gelöst wurde, steht anstelle von `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`, `j JuliaSkriptumKontrolle.get_state_string(Val(:failed))`.
 
 Die Abgabe der Aufgaben erfolgt in TUWEL.
-Es sollen alle Aufgaben gesammelt in einer Julia Datei (Endung `.jl`) abgegeben werden.
+Es sollen alle Aufgaben gesammelt in einer Julia-Datei (Endung `.jl`) abgegeben werden.
 Dabei müssen die kontrollierten Aufgaben nacheinander in einer Datei (z.B. `loesung_aufgaben.jl`) angegeben werden:
 
 ```julia; eval=false
@@ -141,4 +141,4 @@ end
 JuliaSkriptumKontrolle.status()
 ```
 
-Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt (Näheres dazu im Abschnitt Interaktion), wird wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
+Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt (Näheres dazu im Abschnitt Interaktion), wird, wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.

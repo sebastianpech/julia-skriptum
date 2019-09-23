@@ -12,7 +12,7 @@ options:
 Die grafische Darstellung von Daten ist in vielen Wissenschaften ein immens wichtiger Punkt.
 Julia bietet eine Reihe von Paketen zum \enquote{Plotten} von Daten. 
 `Plots.jl` vereint diese in einer Sprache zum Beschreiben von Grafiken.
-Geladen wird das Paket wie alle anderen mittels
+Geladen wird das Paket mittels
 
 ```julia
 using Plots
@@ -24,7 +24,7 @@ In `Plots.jl` werden meistens Datenvektoren dargestellt.
 Das Paket bietet Implementierungen für einige Elementstypen wie
 
 - alle Zahlentypen in Julia,
-- `Date` und `DateTime`, sowie
+- `Date` und `DateTime` sowie
 - Zahlen aus `Measurements.jl`
 
 und ist sehr leicht erweiterbar.
@@ -47,7 +47,7 @@ plt = plot(x,y)
 plt
 ```
 
-Um mehrere Daten, übereinander, in einem Plot darzustellen, gibt es die Möglichkeit dies direkt mit einem Aufruf von `plot` oder durch nachträgliches Hinzufügen mit `plot!` zu machen
+Um mehrere Daten übereinander in einem Plot darzustellen, gibt es die Möglichkeit, dies direkt mit einem Aufruf von `plot` oder durch nachträgliches Hinzufügen mit `plot!` zu machen
 
 ```julia
 y2 = cos.(x)
@@ -58,7 +58,7 @@ plot(x,[y y2]) # plot([x x2],[y y2]) für verschiedene x-Werte
 plot!(plt,x,y2)
 ```
 
-`Plots.jl` bietet sogenannte *Magic Arguments*. Damit ist es möglich die Darstellung der Daten zu verändern, wobei von der Bedeutung des Konfigurationswertes, auf die zugehörige Einstellung geschlossen wird.
+`Plots.jl` bietet sogenannte *Magic Arguments*. Damit ist es möglich, die Darstellung der Daten zu verändern, wobei von der Bedeutung des Konfigurationswerts auf die zugehörige Einstellung geschlossen wird.
 
 Beispielsweise:
 - `:red` deutet auf eine Farbwahl hin
@@ -80,9 +80,9 @@ Dabei haben die Argumente den folgenden Effekt:
 
 - `line=([:green :red], :solid, 4)`: Stelle `y` grün, `y2` rot, beide als durchgezogene Linie mit der Stärke 4 dar.
 - `label=["sin(x)" "cos(x)"]`: Bezeichne `y` in der Legende mit sin(x) und `y2` mit cos(x).
-- `xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"]))`: Setzte den Text unter der x-Achse auf x und schreibe an die Stellen von `0`, `π` und `2π` anstelle der Werte die entsprechenden Texte.
+- `xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"]))`: Setze den Text unter der x-Achse auf x und schreibe an die Stellen von `0`, `π` und `2π` anstelle der Werte die entsprechenden Texte.
 - `yaxis=("y(x)")`: Setze den Text neben der y-Achse auf y(x)
-- `title="Sinus und Cosinus"`: Setze den Plottitel auf Sinus und Cosinus
+- `title="Sinus und Cosinus"`: Setze den Plottitel auf \enquote{Sinus und Cosinus}
 
 Für eine gute Datenvisualisierung reichen Linienplots nicht aus.
 `Plots.jl` hat eine große Anzahl an verschiedenen Visualisierungsarten, in weiterer Folge werden Scatterplots, Balkendiagramme und Histogramme besprochen.
@@ -90,7 +90,7 @@ Generell können alle gezeigten Optionen bei den anderen Diagrammarten ebenfalls
 
 ## Scatterplot
 
-Scatterplots ermöglichen die Ausgabe von einzelnen Punkten, bei denen es nicht sinnvoll ist sie mit einer Linie zu verbinden.
+Scatterplots ermöglichen die Ausgabe von einzelnen Punkten, bei denen es nicht sinnvoll, ist sie mit einer Linie zu verbinden.
 Um Scatterplots zu formatieren, muss `line` durch `marker` ersetzt werden.
 
 ```julia
@@ -101,7 +101,7 @@ scatter(x,y,marker=(:circle,3,:orange))
 
 ## Barchart
 
-Balkendiagramme werden meist verwendet um Häufigkeiten darzustellen. 
+Balkendiagramme werden meist verwendet, um Häufigkeiten darzustellen. 
 `Plots.jl` bietet dafür die `bar`-Funktion.
 Um Balkendiagramme zu formatieren, kann `line` und `fill` verwendet werden.
 
@@ -126,7 +126,7 @@ histogram(label)
 
 ## Kombination verschiedener Visualisierungsarten
 
-Die einfachste Methode Plots zu kombinieren ist durch Verwendung der mit `!` gekennzeichneten Pendants der Plotfunktion, `plot!`, `scatter!`, `bar!`, `histogram!`.
+Die einfachste Methode verschiedene Plots zu kombinieren ist durch Verwendung der mit `!` gekennzeichneten Pendants der Plotfunktion, `plot!`, `scatter!`, `bar!`, `histogram!`.
 
 ```julia
 x = 0:0.1:2π
@@ -137,8 +137,8 @@ scatter!(plt,rand(40)*6,1 .- rand(40)*2,marker=(:x))
 
 ## Speichern von Plots
 
-Bisher konnten die Plots nur in einem extra Fenster angezeigt werden.
-In den meisten Fällen benötigt man diese in einem Grafikformat für ein anders Dokument.
+Bisher konnten die Plots nur in einem eigenen Fenster angezeigt werden.
+In den meisten Fällen benötigt man diese in einem Grafikformat für ein anderes Dokument.
 `Plots.jl` bietet dafür die Funktion `savefig` in zwei Varianten:
 
 ```julia; eval=false

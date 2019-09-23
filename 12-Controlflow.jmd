@@ -1,6 +1,6 @@
 # Kontrollstruktur
 
-Der Code in den bisher behandelten Beispiele setzte sich aus einer sich nicht verzweigenden Verkettung von Befehlen zusammen.
+Der Code in den bisher behandelten Beispiele setzte sich aus einer sich nicht-verzweigenden Verkettung von Befehlen zusammen.
 Für sehr rudimentäre Programme mag das ausreichen, in den meisten Fällen werden aber Verzweigungen in Form von `if`-Bedingungen und Schleifen benötigt.
 
 ## Verzweigungen
@@ -15,14 +15,14 @@ if x < 0
 end
 ```
 
-In diesem Beispiel ist die *Bedingung* `x > 0`. Wie bereits im Abschnitt zu den Datentypen gezeigt, ergibt die Auswertung dieses Ausdrucks einen Wert vom Typ `Bool`:
+In diesem Beispiel ist die *Bedingung* `x < 0`. Wie bereits im Abschnitt zu den Datentypen gezeigt, ergibt die Auswertung dieses Ausdrucks einen Wert vom Typ `Bool`:
 
 ```julia; term=true
 x < 0
 typeof(x < 0)
 ```
 
-Die zweite Form ist die Kombination aus `if` und `else`. `else` bezeichnet den Zweig der ausgeführt wird, falls die Bedingung nicht erfüllt ist.
+Die zweite Form ist die Kombination aus `if` und `else`. `else` bezeichnet den Zweig, der ausgeführt wird, falls die Bedingung nicht erfüllt ist.
 
 ```julia;
 x = 1
@@ -86,9 +86,9 @@ end
 zähle_bis(10)
 ```
 
-Der Code wird wird folgendermaßen durchschritten:
+Der Code wird folgendermaßen durchschritten:
 1. Initialisiere `i` mit `1`
-2. Falls die Bedingung `i <= 10` erfüllt ist gehe zu (3), ansonsten gehe zu (6)
+2. Falls die Bedingung `i <= 10` erfüllt ist, gehe zu (3), ansonsten gehe zu (6)
 3. Ausgabe von `"Bin bei Zahl $i"`
 4. Erhöhe `i` um `1`
 5. Gehe zurück zu (2)
@@ -96,8 +96,8 @@ Der Code wird wird folgendermaßen durchschritten:
 
 Dieser Ablauf wird Schleife genannt, weil (5) wieder zurück zu (2) springt.
 Bei diesem Code ist Vorsicht geboten: Vergisst man die Zeile `i += 1`, ergibt die Bedingung `i <= 10` nie `false`.
-Das bedeutet die Schleife läuft endlos (Endlosschleife). 
-In der REPL oder in Juno kann eine Endlosschleife durch die Tastenkombination `Ctrl-C` abgebrochen werden.
+Das bedeutet, die Schleife läuft endlos (Endlosschleife). 
+In der REPL oder in Juno kann eine Endlosschleife durch die Tastenkombination `Ctrl+C` abgebrochen werden.
 
 Beim obigen Beispiel handelt es sich um eine Zählschleife.
 Dieses Konstrukt ist so häufig, dass es einen eigenen Schleifentyp dafür gibt: Die `for`-Schleife.
@@ -144,16 +144,16 @@ end
 sammle_vokale("Finde die Vokale in diesem Satz. Gehe aber nicht weiter als bis zum !. Das sollst du nicht mehr ansehen")
 ```
 
-`break` wird oft auch in Kombination mit `while`-Schleifen verwendet die endlos laufen. 
-Wenn Beispielsweise in der Schleife auf eine Dateneingabe gewartet wird, oder die Abbruchbedingung sehr komplex ist.
+`break` wird oft auch in Kombination mit `while`-Schleifen verwendet, die endlos laufen. 
+Wenn beispielsweise in der Schleife auf eine Dateneingabe gewartet wird oder die Abbruchbedingung sehr komplex ist.
 In diesem Fall kann eine Endlosschleife absichtlich durch Verwenden der Bedingung `true` konstruiert werden.
 
 ### Performance Optimierung Julia
 
 Bei den folgenden Aufgaben ist es wichtig, möglichst effizienten Code zu schreiben.
-Optimierung ist ein sehr komplexes Thema, es gibt in Julia aber ein paar grundlegende Punkte die eine Effizienzsteigerung bringen.
+Optimierung ist ein sehr komplexes Thema, es gibt in Julia aber ein paar grundlegende Punkte, die eine Effizienzsteigerung bringen.
 
-Um eine Auskunft über die Laufzeit eines Codes zu erhalten (Benchmark-Test) biete Julia das `@time`-Macro.
+Um eine Auskunft über die Laufzeit eines Codes zu erhalten (Benchmark-Test), biete Julia das `@time`-Macro.
 
 Die folgende Funktion berechnet `n`-mal die Inverse einer Matrix `A` und ist nur als Beispielfunktion für die Verwendung von `@time` gedacht.
 
@@ -176,9 +176,9 @@ end
 
 Das `@time`-Macro gibt die erforderliche Zeit und Angaben über das Speichermanagement aus.
 Der erste Aufruf der neu geschriebenen Funktion `time_dummy` braucht wesentlich länger als die nächsten beiden.
-Das liegt daran, dass Julia beim ersten Aufruf die Funktion für die angegeben Argumente kompiliert.
+Das liegt daran, dass Julia beim ersten Aufruf die Funktion für die angegebenen Argumente kompiliert.
 
-Dieser Vorgang ist sehr wichtig um eine performante Ausführung zu ermöglichen und wird stark durch die so genannte *Typenstabilität* beeinflusst.
+Dieser Vorgang ist sehr wichtig, um eine performante Ausführung zu ermöglichen, und wird stark durch die sogenannte *Typenstabilität* beeinflusst.
 
 #### Typenstabilität
 
@@ -206,7 +206,7 @@ end
 Der einzige Unterschied der Funktionen A und B befindet sich in der ersten Zeile bei der Definition von `Σ` (`\sum`+`TAB`-Taste).
 Im Fall von A wird mit `Int` im Fall von B mit `Float64` initialisiert.
 
-Um die Funktionen zu Benchmarken werden beide in Schleifen ausgeführt.
+Um die Funktionen zu benchmarken, werden beide in Schleifen ausgeführt.
 
 ```julia; results="hidden"
 function benchmark_summe_A()
@@ -257,7 +257,7 @@ ramp(3)
 ramp(-3)
 ```
 
-Eine Möglichkeit wäre die Funktion für die Typen `Float64` und `Int` zu spezialisieren oder besser die `zero` Funktion zu verwenden:
+Eine Möglichkeit wäre, die Funktion für die Typen `Float64` und `Int` zu spezialisieren oder besser die `zero`-Funktion zu verwenden:
 
 ```julia; results="hidden"
 function ramp(x)
@@ -290,9 +290,9 @@ end
 test_global()
 ```
 
-`x` ist innerhalb der Funktion `test_global` verwendbar obwohl die Variable außerhalb definiert wurde.
-Der Nachteil von globalen Variablen ist, das Julia die Funktionen die die Variablen verwenden wieder nicht exakt für den Typ
-der globalen Variable spezialisieren kann, da die Variable veränderbar ist:
+`x` ist innerhalb der Funktion `test_global` verwendbar, obwohl die Variable außerhalb definiert wurde.
+Der Nachteil von globalen Variablen, aus Sicht der Optimierung, ist, dass sie von mehreren Stellen aus verändert werden können.
+Das führt dazu, dass Julia die Funktionen, die die Variablen verwenden, wieder nicht exakt für den Typ der globalen Variable spezialisieren kann, da sich dieser Ändern kann:
 
 ```julia
 x = 100
@@ -301,7 +301,7 @@ test_global()
 
 `test_global` gibt jetzt den neuen Wert von `x` aus. In diesem Fall hat sich nicht nur der Wert, sondern auch der Typ von `String` zu `Int` geändert.
 
-In manchen Fällen ist es sinnvoll globale Variablen zu verwenden, dann sollten diese mit dem Keyword `const` als Konstanten definiert werden (Konstanten werden üblicherweise in Blockbuchstaben geschrieben).
+In manchen Fällen ist es sinnvoll, globale Variablen zu verwenden, dann sollten diese mit dem Keyword `const` als Konstanten definiert werden (Konstanten werden üblicherweise in Blockbuchstaben geschrieben).
 
 ```julia
 const GRAV_BESCHL = 9.81 # m/s²
@@ -322,7 +322,7 @@ GRAV_BESCHL = "Neuer Wert"
 
 ### Gerade oder Ungerade
 
-Schreibe ein Funktion die \enquote{Gerade} oder \enquote{Ungerade} für eine Zahl mit `println` ausgibt.
+Schreibe ein Funktion, die \enquote{Gerade} oder \enquote{Ungerade} für eine Zahl mit `println` ausgibt.
 
 ```julia; results="hidden"; echo=false 
 function gerade_ungerade(x::Int)
@@ -342,11 +342,12 @@ gerade_ungerade(218)
 
 ### Skript Flächeninhalt
 
-Es soll ein **Skript** zur Berechnung von Flächeninhalt und Umfang eines Kreises erstellt werden das BenutzerInnen erlaubt mehrmals Eingaben zu machen.
+Es soll ein **Skript** zur Berechnung von Flächeninhalt und Umfang eines Kreises erstellt werden, das BenutzerInnen erlaubt, mehrmals Eingaben zu machen.
 Die Ausgabewerte sollen auf zwei Stellen gerundet werden.
-Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird, wird eine falsche Eingabe gemacht, muss \enquote{Falsche Eingabe} ausgegeben werden.
+Das Skript soll erst abgebrochen werde,, wenn eine leere Eingabe gemacht wird. 
+Wird eine falsche Eingabe gemacht, muss \enquote{Falsche Eingabe} ausgegeben werden.
 
-Um eine Eingabe von der Tastatur einzulesen kann die folgende Funktion verwendet werden:
+Um eine Eingabe von der Tastatur einzulesen, kann die folgende Funktion verwendet werden:
 
 ```julia; eval=false
 function wert_einlesen(text::AbstractString)
@@ -399,12 +400,12 @@ end
 
 Die Zahl `π` kann über eine so genannte Monte-Carlo-Simulation angenähert werden.
 Dabei werden zufällig Punkte in einem Quadrat mit bekannter Seitenlänge platziert. 
-Durch Einschreiben eines Kreise in das Quadrat und ermitteln der Anzahl an Punkten die im Kreis gelandet sind, kann die Fläche des Kreises relativ zur Fläche des Quadrates ermittelt werden.
+Durch Einschreiben eines Kreise in das Quadrat und Ermitteln der Anzahl an Punkten, die im Kreis gelandet sind, kann die Fläche des Kreises relativ zur Fläche des Quadrates ermittelt werden.
 `π` wird dann einfach über die Kreisflächenformel berechnet.
 
-Schreibe eine Funktion die `π` mittels Monte-Carlo-Simulation approximiert.
+Schreibe eine Funktion, die `π` mittels Monte-Carlo-Simulation approximiert.
 Das einziges Argument der Funktion ist die Anzahl an zufällig ermittelten Punkte.
-Um den Rechenaufwand zu reduzieren soll nur ein Vierteilkreis in einem Quadrat berücksichtigt werden.
+Um den Rechenaufwand zu reduzieren, soll nur ein Vierteilkreis in einem Quadrat berücksichtigt werden.
 Die ermittelte relative Fläche muss dann natürlich noch mit dem Faktor 4 vergrößert werden.
 
 ```julia; results="hidden"; echo=false
@@ -431,7 +432,7 @@ Im vorherigen Beispiel dient `_` als Tausendertrennzeichen, hat aber keinen Einf
 
 ### Numerisch Integrieren
 
-Schreibe eine Funktion die das bestimmte Integral einer beliebigen 1D-Funktion definiert durch x- und y-Werte berechnet.
+Schreibe eine Funktion, die das bestimmte Integral einer beliebigen 1D-Funktion, definiert durch x- und y-Werte, berechnet.
 Verwende dazu die [Trapezregel](https://de.wikipedia.org/wiki/Trapezregel)\footnote{<https://de.wikipedia.org/wiki/Trapezregel> }.
 
 ```julia; results="hidden"; echo=false
@@ -471,7 +472,7 @@ Schreibe zwei Funktionen, welche die Wahrscheinlichkeit abschätzen, dass
 1. mit einem idealen Würfel (1--6) 3`×` hintereinander 4 gewürfelt wird und
 2. mit einem idealen Würfel (1--6) bei 3 Würfen mindestens ein 4er gewürfelt wird.
 
-Die Idee hinter der Simulation ist die Würfe mit einem Zufallszahlengenerator `rand(1:6)` zu simulieren und anschließen die positiven Ergebnisse in Relation zu den gesamten Würfen zu setzten.
+Die Idee hinter der Simulation ist, die Würfe mit einem Zufallszahlengenerator `rand(1:6)` zu simulieren und anschließend die positiven Ergebnisse in Relation zu den gesamten Würfen zu setzten.
 
 Wie schon bei der Berechnung von `π` soll das einzige Argument bei den Funktionen die Anzahl an zufälligen Würfen sein.
 Die Nummern für die Kontrolle sind `11.3.5.1` und `11.3.5.2`.
@@ -508,10 +509,10 @@ Die exakten Ergebnisse sind:
 
 ### Split
 
-Im Abschnitt zu Strings wurde die Funktion `split` vorgestellt, mit der Strings durch trennen bei einem Zeichen, in ein String-Array umgewandelt werden können.
+Im Abschnitt zu Strings wurde die Funktion `split` vorgestellt, mit der Strings durch Trennen bei einem Zeichen, in ein String-Array umgewandelt werden können.
 Bei dieser Aufgabe soll die Funktion nachprogrammiert werden, natürlich ohne die Verwendung von `split`.
 Das Trennzeichen muss vom Typ `char` sein und im Gegensatz zur `split` Funktion darf das resultierende Array keine leeren Strings `""` enthalten.
-Achtung auch die Sonderfälle
+Achtung, auch die Sonderfälle
 - kein Trennzeichen
 - Trennzeichen am Anfang
 - Trennzeichen am Ende und
@@ -544,12 +545,12 @@ my_split(".Das.ist.ein..String.",'.')
 
 Nicht immer war Wurzelziehen so komfortabel wie heute.
 Mit der Unterstützung eines Computers oder Taschenrechners gelingt das ganz einfach mit der Funktion `sqrt`.
-In der Literatur findet man allerdings einige Verfahren mit welchen \enquote{händisches} Wurzelziehen möglich ist.
+In der Literatur findet man allerdings einige Verfahren, mit welchen \enquote{händisches} Wurzelziehen möglich ist.
 Eines dieser Verfahren wird [babylonisches Wurzelziehen](https://de.wikipedia.org/wiki/Heron-Verfahren)\footnote{<https://de.wikipedia.org/wiki/Heron-Verfahren>} genannt.
 
 Zur Berechnung der Quadratwurzel ``x`` von ``a`` wird zuerst eine Zahl ``x_0`` als Kandidat gewählt (z.B. ``x_0 = \frac{a}{2}``).
 Anstelle von ``x=\sqrt{a}`` wird dann die Gleichung mit dem Kandidaten ``x_0 \cdot x_0 \stackrel{!}{=} a`` gelöst.
-Wurde zufällig ``x_0 = x`` gewählt ist der Algorithmus beendet.
+Wurde zufällig ``x_0 = x`` gewählt, ist der Algorithmus beendet.
 Wahrscheinlicher ist jedoch, dass ``x_0 \cdot x_0 \neq a``.
 Je nach der Wahl von ``x_0`` ist ``x_0^2`` jetzt größer oder kleiner als ``a``, was auch bedeutet, dass ``x_0`` jetzt entsprechend größer oder kleiner als ``x`` ist.
 Ändern wir die Gleichung für ``a`` zu ``x_0 \cdot b = a`` können wir durch Umformen eine zweite Zahl ``b`` ermitteln, für die gilt
@@ -570,7 +571,7 @@ x_{n+1} = \frac{x_n + \frac{a}{x_n}}{2}.
 ```
 
 Für eine ausreichend hohe Zahl von ``n`` kann damit die Quadratwurzel von ``a`` ermittelt werden.
-Es soll eine Funktion definiert werden, die mit dem beschriebene Verfahren die Quadratwurzel einer beliebigen Zahl mit einem absoluten Fehler von ``10^{-5}`` berechnet. Ein solches Abbruchkriterium wir auch Konvergenzkriterium genannt.
+Es soll eine Funktion definiert werden, die mit dem beschriebenen Verfahren die Quadratwurzel einer beliebigen Zahl mit einem absoluten Fehler von ``10^{-5}`` berechnet. Ein solches Abbruchkriterium wird auch Konvergenzkriterium genannt.
 
 ```julia; results="hidden"; echo=false
 function bsqrt(a)
@@ -589,8 +590,8 @@ bsqrt(103.12)
 ```
 
 ### Dictionaries zusammenfügen
-Schreibe eine Funktion `dict_merge` die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als Return Value zurückgibt.
-Sind Keys in beiden `Dicts` vorhanden sollen die Werte aus dem ersten mit den Werten aus dem zweiten `Dict` überschrieben werden.
+Schreibe eine Funktion `dict_merge`, die zwei Dicts vom gleichen Typ als Argumente nimmt, diese beiden Dictionaries zusammenführt (merged) und als Return Value zurückgibt.
+Sind Keys in beiden `Dicts` vorhanden, sollen die Werte aus dem ersten mit den Werten aus dem zweiten `Dict` überschrieben werden.
 
 ```julia; results="hidden"; echo=false
 function dict_merge(d1, d2)

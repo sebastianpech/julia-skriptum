@@ -1,6 +1,6 @@
 # Exceptions
 
-Ein Programm zu schreiben ist eine komplexe Aufgabe, bei der es häufig dazu kommt, dass das Programm nicht das macht was es tun soll und mit einem Fehler abbricht.
+Ein Programm zu schreiben, ist eine komplexe Aufgabe, bei der es häufig dazu kommt, dass das Programm nicht das macht, was es geplanterweise tun soll und mit einem Fehler abbricht.
 
 Grob können diese Fehler in *Syntax Errors*, *Logical Errors* und *Runtime Errors* eingeteilt werden.
 
@@ -14,7 +14,7 @@ Dies betrifft hauptsächlich Keywords der Programmiersprache (`if`, `else`, `fun
 ```
 
 Nach Auftreten des Fehlers wird das Programm unterbrochen. Die Fehlermeldung wird mit `Error:` eingeleitet und enthält den Hinweis `syntax`.
-Üblicherweise gibt Julia Hinweise darauf was das Problem verursacht hat, es lohnt sich also immer Fehlermeldungen zu lesen.
+Üblicherweise gibt Julia Hinweise darauf, was das Problem verursacht hat, es lohnt sich also immer, Fehlermeldungen zu lesen.
 
 ## Logical Errors
 
@@ -39,8 +39,8 @@ Das Problem mit logischen Fehler ist, dass das Programm ohne Fehlermeldung läuf
 
 ## Runtime Errors
 
-*Runtime Errors* sind Fehler die während der Laufzeit des Programms auftreten.
-In Julia gibt es eine Vielzahl von solchen Fehlern die immer dann ausgelöst werden, wenn etwas Unvorhergesehenes passiert.
+*Runtime Errors* sind Fehler, die während der Laufzeit des Programms auftreten.
+In Julia gibt es eine Vielzahl solcher Fehlern, die immer dann ausgelöst werden, wenn etwas Unvorhergesehenes passiert.
 In weiterer Folge werden nur die häufigsten behandelt, eine vollständige Liste befindet sich in der Dokumentation unter [Manual/Control Flow/Exception Handling](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1).
 
 `BoundsError`
@@ -68,7 +68,7 @@ Um in diesem Fall von der `Float64`-Zahl `12.1` zur `Int`-Zahl `12` zu gelangen,
 
 `MethodError`
 
-Es existiert keine Methode die den angegebenen Argumenten entspricht
+Es existiert keine Methode, die den angegebenen Argumenten entspricht
 ```julia
 abs("Ein String")
 ```
@@ -82,10 +82,10 @@ nicht_definiert
 
 ### Stacktrace
 
-Der sogenannte *Stacktrace* gibt Auskunft darüber welche Funktionsaufrufe zu dem Fehler geführt haben.
+Der sogenannte *Stacktrace* gibt Auskunft darüber, welche Funktionsaufrufe zu dem Fehler geführt haben.
 Er wird immer am Ende der Fehlermeldung ausgegeben.
 
-Im folgenden Beispiel wird nach mehreren verschachtelten Aufrufen, auf einen Index außerhalb eines Arrays zugegriffen.
+Im folgenden Beispiel wird nach mehreren verschachtelten Aufrufen auf einen Index außerhalb eines Arrays zugegriffen.
 
 ```julia; results="hidden"
 function level03(x)
@@ -125,6 +125,6 @@ level01([1,2,3])
 ```
 
 Bei `[1]` wird der auslösende Funktionsaufruf angezeigt, der Zugriff auf einen Arrayindex. Jede weitere Zeile entspricht dem nächsthöheren Aufruf. 
-Wird der *Stacktrace* von `[4]` nach `[2]` gelesen, ist erkennbar, dass `level01`, `level02` aufruft und `level02`, `level03`.
+Wird der *Stacktrace* von `[4]` nach `[2]` gelesen, ist erkennbar, dass `level01` `level02` aufruft und `level02` `level03`.
 
-Der *Stacktrace* ist sehr hilfreich, wenn es darum geht zu Reproduzieren warum und wo ein Fehler aufgetreten ist.
+Der *Stacktrace* ist sehr hilfreich, wenn es darum geht zu reproduzieren, warum und wo ein Fehler aufgetreten ist.
