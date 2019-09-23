@@ -51,7 +51,7 @@ Neben diesen Funktionen gibt es noch weitere zur Berechnung der Kovarianz (`cov(
 Nähere Details dazu sind in der Dokumentation unter [Standard Library/Statistics](https://docs.julialang.org/en/v1/stdlib/Statistics) zu finden.
 
 Oft ist es erforderlich, Annahmen zu Wahrscheinlichkeitsverteilungen gewisser Daten zu treffen.
-In `Distributions.jl` sind dafür die notwendigen Funktionen für eine Reihe von verschiedenen Verteilungen definiert.
+`Distributions.jl` definiert dafür die notwendigen Funktionen für eine Reihe von verschiedenen Verteilungen.
 Zusätzlich enthält das Paket Funktionen zum \enquote{Fitting} und \enquote{Sampling} von Daten und kann wie folgt geladen werden:
 
 ```julia
