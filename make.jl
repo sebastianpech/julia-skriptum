@@ -54,6 +54,8 @@ end
 # Replace escaped commands that should actually be forwarded and special unicode characters.
 
 cmd_single_arg(cmd) = Regex("{\\\\textbackslash}(?<cmd>$cmd)\\\\{(?<attrib>.*?)\\\\}") => s"\\\g<cmd>{\g<attrib>}"
+r"\\(?<type>begin|end){(?<env>.*?)}",raw"\end{myenv}"
+rename_env(cmd,newname) = r"\\(?<type>begin|end){(?<env>.*?)}" => SubstitutionString("\\\\\\g<type>{$newname}")
 string_replace(uni,rep) = uni=>rep
 
 forward_this = [
@@ -118,14 +120,13 @@ try
     end
     mv(basename(tmppath)*".pdf",joinpath(@__DIR__,"build","julia-skriptum.pdf"),force=true)
 catch e
-    failed_path = "failed_"*basename(tmppath)*".tex"
-    mv(tmppath,failed_path,force=true)
-    cmd = `$latex_cmd -shell-escape -interaction=nonstopmode $(failed_path)`
+    cmd = `$latex_cmd -shell-escape -interaction=nonstopmode build/julia-skriptum.tex`
     @warn "Error converting document to pdf. Try running latex manually" cmd
 finally
     @info "Cleaning temporary files"
+    tex_path = joinpath(@__DIR__,"build","julia-skriptum.tex")
     foreach(x->(@warn x),filter(x->occursin("warning",lowercase(x)),readlines(basename(tmppath)*".log")))
-    rm(tmppath)
+    mv(tmppath,tex_path,force=true)
     rm.(readdir(Glob.GlobMatch("$(basename(tmppath)).*")))
 end
 
