@@ -1,5 +1,5 @@
 # Datentypen
-Ein grundlegender Baustein von Programmen sind Werte (*values*), wie zum Beispiel Zahlen oder Buchstaben.
+Ein grundlegender Baustein von Programmen sind Werte (*values*), wie z.B. Zahlen oder Buchstaben.
 Jeder Wert gehört zu einem bestimmten Datentypen.
 Dieser Datentyp kann mit der Funktion `typeof()` abgefragt werden:
 ```julia; term=true
@@ -41,7 +41,7 @@ Der Ausdruck in den eckigen Klammern heißt dabei *Index* und muss ein Integer s
 Die Indexierung in Julia startet bei 1, die Variable `third` beinhaltet also das dritte Zeichen des Strings.
 Für den Zugriff auf das letzte Zeichen kann der Index `end` verwendet werden.
 
-Neben einzelnen Zeichen besteht auch die Möglichkeit auf einen Teil des Strings zuzugreifen.
+Neben einzelnen Zeichen besteht auch die Möglichkeit, auf einen Teil des Strings zuzugreifen.
 Dies erfolgt durch Eingabe des ersten und letzten Index des Teils, getrennt durch einen Doppelpunkt, `:`.
 ```julia; term=true
 fruit[3:end]
@@ -66,17 +66,17 @@ s_2 = replace(s,'a'=>'u')  # Ersetze im String s 'a' durch 'u'
 s  # Der String s bleibt unverändert
 ```
 Das erste Argument der Funktion ist der zu verändernde String.
-Das zweite Argument setzt sich zusammen aus dem String oder Character der ersetzt werden soll, einem Pfeil bestehend aus `=` und `>`, sowie dem String oder Character der eingefügt werden soll.
+Das zweite Argument setzt sich zusammen aus dem String oder Character, der ersetzt werden soll, einem Pfeil bestehend aus `=` und `>` sowie dem String oder Character der, eingefügt werden soll.
 Die ursprüngliche Variable `s` bleibt dabei unverändert.
 
-Es gibt mehrere Möglichkeiten Strings zusammenzusetzen.
+Es gibt mehrere Möglichkeiten, Strings zusammenzusetzen.
 Eine davon ist die Verwendung des `*`-Operators.
 ```julia; term=true
 name = "Raphael"
 "Der Name"*name*" hat "*string(length(name))*" Buchstaben."
 ```
 Der `*`-Operator ist für `String` und `Int` nicht definiert, daher muss `length(name)` erst durch die Funktion `string()` in einen `String` konvertiert werden.
-In dieser Form wird der Code schnell unübersichtlich, weshalb Julia die sogenannte \enquote{String-Onterpolation} bietet.
+In dieser Form wird der Code schnell unübersichtlich, weshalb Julia die sogenannte \enquote{String-Interpolation} bietet.
 Jeder Ausdruck in runden Klammern oder jeder Variablenname nach dem Symbol `$` wird ausgewertet und das Ergebnis in den String eingegliedert.
 Diese Ausdrücke können nicht nur Werte und Variablen, sondern auch Funktionen und Operatoren enthalten.
 ```julia; term=true
@@ -91,8 +91,8 @@ Der `^`-Operator wiederholt einen String beliebig oft:
 Die Funktionen `uppercase` und `lowercase` wandeln alle Buchstaben eines Strings in Groß- oder Kleinbuchstaben um.
 Beim Vergleichen von Strings unabhängig von Groß- und Kleinschreibung können diese Funktionen hilfreich sein.
 ```julia;term=true
-lowercase("In diesem Satz stehen auch Großbuchstaben.")
-uppercase("groß- und kleinschreibung wird hier klein geschrieben.")
+lowercase("In diesem Satz stehen auch Grossbuchstaben.")
+uppercase("gross- und kleinschreibung wird hier klein geschrieben.")
 "Julia" == "julia"
 lowercase("Julia") == lowercase("julia")
 uppercase("Julia") == uppercase("julia")
@@ -110,7 +110,7 @@ print("Erste Zeile\nZweite Zeile")
 
 Dementsprechend ist auch der Backslash ein speziell zu verwendendes Zeichen in Julia, das mit einem vorangehenden Backslash maskiert werden muss.
 Dieses Maskieren nennt man auch *Escaping*.
-Neben dem Backslash gibt es noch weitere spezielle Zeichen die maskiert werden müssen.
+Neben dem Backslash gibt es noch weitere spezielle Zeichen, die maskiert werden müssen.
 Beispielsweise würde Julia hinter einem `$`-Zeichen einen auszuwertenden Ausdruck und bei jedem Anführungszeichen den Anfang oder das Ende eines Strings erwarten.
 ```julia;term=true
 print("tabs\\tabs")
@@ -135,9 +135,9 @@ typeof(23//4)
 ```
 Für Zahlen vom Typ `Int` und `Float` gibt es verschiedene Typen, die sich nach ihrer Anzahl an Bits im Speicher unterscheiden.
 Die Zahl am Ende des Typs gibt genau diesen Wert an.
-Neben den Typen `Int64` und `Float64` gibt es daher noch `Int8`, `Int16`, `Int32` und `Int128`, sowie `Float16` und `Float32`.
+Neben den Typen `Int64` und `Float64` gibt es daher noch `Int8`, `Int16`, `Int32` und `Int128` sowie `Float16` und `Float32`.
 Diese Zahlentypen benötigen zwar weniger Speicher (ausgenommen `Int128`), es ist aber zu beachten, dass diese Integer-Typen nur für Zahlen bis zu einer gewissen Größe funktionieren und die beiden Float-Typen weniger Kommastellen bereitstellen als `Float64`.
-Eine Übersicht dazu bieten die Tabellen unter [Manual/Integers and Floating-Point Numbers](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/integers-and-floating-point-numbers.html) in der Julia Dokumentation. 
+Eine Übersicht dazu bieten die Tabellen unter [Manual/Integers and Floating-Point Numbers](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/integers-and-floating-point-numbers.html) in der Julia-Dokumentation. 
 
 Mithilfe der Operatoren `+`, `-`, `*` und `/` können Zahlen addiert, subtrahiert, multipliziert und dividiert werden:
 ```julia; term=true
@@ -165,7 +165,7 @@ A = d^2*π/4#OhneAbständeliestsichCodeschwer
 A = (d^2 * π) / 4  # Abstände und Klammern verbessern die Lesbarkeit
 ```
 
-Manchmal ist es notwendig, zu einer Variable eine Zahl zu Addieren und das Ergebnis in der gleichen Variable zu speichern.
+Manchmal ist es notwendig, zu einer Variable eine Zahl zu addieren und das Ergebnis in der gleichen Variable zu speichern.
 Für solche Fälle gibt es die Operatoren `+=`, `-=`, `*=`, `/=` und `^=`.
 ```julia;term=true
 a = 1.0
@@ -185,8 +185,8 @@ parse(Float64,"1.2345")
 ```
 
 Wird `parse()` mit einem ungültigen String aufgerufen (z.B. `parse(Int,"foo")`) verursacht das einen Fehler.
-Es gibt die Möglichkeit anstelle von `parse()`, `tryparse()` zu verwenden. 
-Die Funktion verursacht keinen Fehler sondern gibt für einen nicht umwandelbaren String `nothing` zurück.
+Es gibt die Möglichkeit, anstelle von `parse()`, `tryparse()` zu verwenden. 
+Die Funktion verursacht keinen Fehler, sondern gibt für einen nicht umwandelbaren String `nothing` zurück.
 
 `float()` und `Int()` wandeln beliebige Zahlen in Float-Zahlen bzw. in ganzzahlige Werte um.
 Bei Verwendung von `Int()` muss gewährleistet sein, dass die übergebene Zahl tatsächlich ganzzahlig ist, sonst meldet Julia einen `InexactError`.
@@ -207,8 +207,8 @@ round(1.47)
 floor(1.47)
 ceil(1.47)
 ```
-Während erstere Funktion zur nächstliegenden ganzen Zahl rundet, ermöglichen die anderen beiden Funktionen ab- und aufrunden von Zahlen.
-Die Anzahl der zu rundenden Stellen kann über die zusätzlichen Argumente `digits` und `sigdigits` festgelegt werden.
+Während erstere Funktion zur nächstliegenden ganzen Zahl rundet, ermöglichen die anderen beiden Funktionen Ab- und Aufrunden von Zahlen.
+Die Anzahl der zu rundenden Stellen kann bei jeder dieser drei Funktionen über die zusätzlichen Argumente `digits` und `sigdigits` festgelegt werden.
 ```julia; term=true
 round(345.123; digits=2)
 round(345.123; sigdigits=2)
@@ -225,7 +225,7 @@ Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`\footnote
 ```
 `÷` führt eine Division durch und rundet das Ergebnis auf die nächste ganze Zahl ab.
 Der Modulus-Operator gibt den Rest einer Division aus.
-Damit kann zum Beispiel leicht überprüft werden, ob eine Zahl durch eine andere Zahl teilbar ist.
+Damit kann z.B. leicht überprüft werden, ob eine Zahl durch eine andere Zahl teilbar ist.
 
 Julia hat standardmäßig mathematische Funktionen wie `sin`, `cos`, `log`, `abs` und viele mehr inkludiert.
 ```julia;term=true
@@ -254,7 +254,7 @@ zero(19.0+3im)
 ## Booleans
 Eine Wert vom Typ `Bool` kann entweder `true` oder `false` annehmen.
 Diesen Datentypen kann man sich wie eine Zahl vorstellen, die entweder `0` (im Falle von `false`) oder `1` (im Falle von `true`) ist.
-Verschiedene Operationen in Julia geben eine Zahl vom Typ `Bool` zurück, wie zum Beispiel das Vergleichen zweier Zahlen:
+Verschiedene Operationen in Julia geben eine Zahl vom Typ `Bool` zurück, wie z.B. das Vergleichen zweier Zahlen:
 ```julia; term=true
 x = 13; y = 17.0;
 x == y  # Ist x gleich y?
@@ -276,7 +276,7 @@ Mit den Operatoren `>` und `<` können auch zwei Wörter auf ihre alphabetische 
 ```
 Dabei ist zu beachten, dass Großbuchstaben immer vor Kleinbuchstaben eingeordnet werden.
 
-Alle Ausdrücke die eine Zahl vom Typ `Bool` zurückgeben können mit den logischen Operatoren `&&` (*and*), `||` (*or*) und `!` (*not*) kombiniert werden.
+Alle Ausdrücke, die eine Zahl vom Typ `Bool` zurückgeben, können mit den logischen Operatoren `&&` (*and*), `||` (*or*) und `!` (*not*) kombiniert werden.
 ```julia; term=true
 s = "melon";
 s > "banana" && length(s) == 6  # Beide Bedingungen müssen true ergeben
