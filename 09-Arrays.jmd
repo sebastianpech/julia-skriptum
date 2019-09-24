@@ -1,8 +1,9 @@
 # Arrays, Range, Tuple, Dict
 Dieses Kapitel beinhaltet einige wichtige Typen in Julia, die mehrere Werte aufnehmen können.
+Derartige Datentypen werden *Sammlungen* (englisch *collections*) genannt.
 ## Arrays
 Wie ein *String* ist ein *Array* eine geordnete Abfolge von Werten.
-Während ein String aus Werte vom Typ *Char* besteht, können Arrays Werte aller möglichen Typen enthalten.
+Während ein String aus Werten vom Typ *Char* besteht, können Arrays Werte aller möglichen Typen enthalten.
 Die Werte innerhalb eines Arrays heißen *Elemente*.
 
 Arrays können auf verschiedenste Weisen erzeugt werden.
@@ -23,7 +24,7 @@ typeof(primes)
 typeof(baustoffe)
 typeof(stahl)
 ```
-Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind und an zweiter Stelle, welche Ordnung das Array hat.
+Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind, und an zweiter Stelle, welche Ordnung das Array hat.
 Ein *leeres Array* hat keine Elemente und kann z.B. mit leeren, eckigen Klammern (`[]`) erzeugt werden.
 Das so erzeugte leere Array ist dabei vom Typ `Array{Any,1}`.
 Ein leeres Array mit Werten eines bestimmten Typs, wie z.B. `Float64`, kann mittels `Array{Float64,1}()` oder `Float64[]` erzeugt werden; mit der Schreibweise `Float64[]` können allerdings nur Arrays erster Ordnung erzeugt werden.
@@ -119,10 +120,10 @@ print("c1 = $(c1)")
 print("c2 = $(c2)")
 ```
 
-Generell hat sich in Julia etabliert, dass Funktionen, die direkt ihr Argument verändern mit `!` enden.
+Generell hat sich in Julia etabliert, dass Funktionen, die direkt ihr Argument verändern, mit `!` enden.
 
 ### Elemente löschen
-Es gibt verschiedene Möglichkeiten einzelne Elemente aus einem Array zu löschen.
+Es gibt verschiedene Möglichkeiten, einzelne Elemente aus einem Array zu löschen.
 `pop!` entfernt das letzte Element aus dem Array und gibt dieses Element zurück:
 ```julia; term=true
 chars = ['a', 'b', 'c'];
@@ -222,12 +223,13 @@ rand(a,2,3)
 
 Die Funktion `zero` kann nicht nur auf Zahlen, sondern auch auf Arrays mit Zahlen angewendet werden.
 In diesem Zusammenhang sind auch die Funktionen `one`, `ones` und `zeros` interessant.
+Achtung: Bei `one` muss das Argument eine quadratische Matrix sein.
 ```julia;term=true
 a = [1 2; 3 4]
-zero(a)
-one(a)
-zeros(2,3)
-ones(3,2)
+zero(a)  # Erzeugt ein Array voller Nullen, gleich groß wie das Argument
+one(a)  # Erzeugt eine Einheitsmatrix gleich groß wie das Argument
+zeros(2,3)  # Erzeugt ein 2x3-Array voller Nullen
+ones(3,2)  # Erzeugt ein 3x2-Array voller Einsen
 ```
 
 `similar` erzeugt ein Array vom gleichen Datentyp wie das übergebene Argument.
@@ -254,7 +256,7 @@ length.(b)
 Eine `Range` ist eine Abfolge von `Int`-Zahlen.
 Durch Angabe der ersten und letzten Zahl der Sequenz, getrennt durch einen Doppelpunkt, kann eine `Range` erstellt werden.
 Dabei ist die Schrittweite standardmäßig mit `1` definiert.
-Durch Angabe einer dritten `Int`-Zahl, kann auch die Schrittweite festgelegt werden.
+Durch Angabe einer dritten `Int`-Zahl kann auch die Schrittweite festgelegt werden.
 Die Schrittweite kann für eine absteigende `Range` auch negativ sein, dann muss allerdings der größere Wert an erster Stelle stehen.
 ```julia;term=true
 1:10
@@ -269,7 +271,7 @@ print(sort(rand(1:45,6)))  # Die Lotto-Zahlen nächster Woche?
 ```
 
 Eine `Range` kann vor allem für Schleifen hilfreich sein.
-Mithilfe der Funktion `collect` können damit auch schnell Arrays erzeugt werden.
+Mithilfe der Funktion `collect` können damit aber auch schnell Arrays erzeugt werden.
 ```julia;term=true
 print(collect(1:5))
 print(collect(6:-2:0))
@@ -304,7 +306,7 @@ t2 = tuple()
 ```
 
 Wie bei Arrays kann mittels eckiger Klammern auf einzelne oder mehrere Elemente eines Tuples zugegriffen werden.
-Da ein Tuple allerdings nicht veränderbar ist, gibt Julia bei Neudefinition eines Wertes einen *MethodError* zurück.
+Da ein Tuple allerdings nicht veränderbar ist, gibt Julia beim Versuch der Neudefinition eines Wertes einen *MethodError* zurück.
 ```julia;term=true
 t = (2, 3, 5, 7, 11, 13, 17, 19)
 print(t[3])
@@ -313,7 +315,7 @@ print(t[5:end])
 t[4] = 23
 ```
 
-Manchmal ist es notwendig, ein `Tuple` in ein `Array` umzuwandeln.
+Manchmal ist es notwendig, ein `Tuple` in ein `Array` umzuwandeln, z.B. um Werte ändern zu können.
 Mittels `collect` kann ein `Tuple` einfach in ein `Array` umgewandelt werden:
 ```julia;term=true
 print(collect(("spam", "foo", "bar")))
@@ -324,7 +326,7 @@ Ein `Dict` (Abkürzung für *Dictionary*) ist ebenfalls sehr ähnlich zum Array 
 Während sich beim Array die Indizes auf Int-Zahlen beschränken, können die Indizes eines *Dictionaries* nahezu jeder Datentyp sein.
 Die Indizes eines Dictionaries heißen *Keys* und die Werte werden *Values* genannt.
 Jeder Wert ist dabei einem Key zugewiesen.
-Mit einem Dictionary kann z.B. ein Wörterbuch erstellt werden, in dem jeder Key ein deutsches Wort ist dem das passende spanische Wort zugeordnet ist.
+Mit einem Dictionary kann z.B. ein Wörterbuch erstellt werden, in dem jeder Key ein deutsches Wort ist, dem das passende spanische Wort zugeordnet ist.
 Mit `Dict()` wird ein Dictionary erstellt:
 ```julia; term=true
 de2sp = Dict("eins" => "uno", "zwei" => "dos", "drei" => "tres")
@@ -356,6 +358,8 @@ print(keys(de2sp))
 print(values(de2sp))
 ```
 
+Diese Sammlungen haben die Typen `Base.KeySet` und `Base.ValueIterator`, auf die wir hier nicht genauer eingehen.
+Es sei jedoch festgehalten, dass diese Sammlungen andere Eigenschaften als Arrays haben und daher manche Operationen damit nicht möglich sind.
 `collect` bietet auch hier die Möglichkeit, diese Sammlungen in `Arrays` umzuwandeln:
 ```julia;term=true
 print(collect(keys(de2sp)))
@@ -363,7 +367,7 @@ print(collect(keys(de2sp)))
 
 ## Aufgaben
 ### Drei Arrays zusammenhängen
-Schreibe eine Funktion `connect_three` die drei Arrays als Argumente nimmt und diese Arrays zu einem Array zusammenfügt.
+Schreibe eine Funktion `connect_three`, die drei Arrays als Argumente nimmt und diese Arrays zu einem Array zusammenfügt.
 Die Funktion muss nur für Arrays mit gleichem Datentypen funktionieren (z.B. dreimal Array{String,1} oder dreimal Array{Any,1}).
 ```julia; results="hidden"; echo=false
 function connect_three(a,b,c)
@@ -380,7 +384,7 @@ print(connect_three(a,b,c))
 ```
 
 ### Innere Werte eines Arrays
-Schreibe eine Funktion `interior` die ein Array als Argument nimmt und ein neues Array zurückgibt, das alle Werte bis auf den ersten und  den letzten enthält.
+Schreibe eine Funktion `interior`, die ein Array als Argument nimmt und ein neues Array zurückgibt, das alle Werte bis auf den ersten und  den letzten enthält.
 ```julia; results="hidden"; echo=false
 function interior(a)
     return a[2:end-1]
@@ -395,7 +399,7 @@ res2 = interior(res1)
 ```
 
 ### Ist das Array sortiert?
-Schreibe eine Funktion `is_sort` die ein Array als Argument nimmt, überprüft ob dieses Array sortiert ist und dementsprechend `true` oder `false` zurückgibt.
+Schreibe eine Funktion `is_sort`, die ein Array als Argument nimmt, überprüft, ob dieses Array sortiert ist, und dementsprechend `true` oder `false` zurückgibt.
 ```julia; results="hidden"; echo=false
 function is_sort(a)
     return a == sort(a)
@@ -412,7 +416,7 @@ is_sort(sorted_nums)
 
 ### Anagram-Test
 Zwei Wörter sind Anagramme, wenn die Buchstaben eines Wortes durch Umordnen das zweite Wort ergeben.
-Schreibe eine Funktion `is_anagram` die zwei Strings als Argumente nimmt, überprüft ob diese Strings Anagramme sind und dementsprechend `true` oder `false` zurückgibt.
+Schreibe eine Funktion `is_anagram`, die zwei Strings als Argumente nimmt, überprüft, ob diese Strings Anagramme sind, und dementsprechend `true` oder `false` zurückgibt.
 Groß- und Kleinschreibung soll dabei nicht berücksichtigt werden (`Stein` ist gleichwertig zu `stein`).
 ```julia;results="hidden";echo=false
 function is_anagram(s1, s2)
@@ -428,7 +432,7 @@ is_anagram("Stein","niest")
 
 ### N-tes Element eines Dict ausgeben
 Da Dictionaries nicht geordnet sind, bietet Julia keine Möglichkeit auf das `n`-te Element eines Dictionaries zuzugreifen.
-Schreibe eine Funktion `dict_index(d,n)` die ein Dict `d` und eine Int-Zahl `n` als Argumente nimmt, das Dictionary nach den Keys sortiert und den `n`-ten Value in dieser Reihenfolge zurückgibt.
+Schreibe eine Funktion `dict_index(d,n)`, die ein Dict `d` und eine Int-Zahl `n` als Argumente nimmt, das Dictionary nach den Keys sortiert und den `n`-ten Value in dieser Reihenfolge zurückgibt.
 ```julia; results="hidden"; echo=false
 function dict_index(d, n)
     return d[sort(collect(keys(d)))[n]]
@@ -443,7 +447,7 @@ dict_index(d, 2)
 
 ### Tuples zusammenfügen
 Da Tuple nicht veränderlich sind, funktioniert das Zusammenfügen zweier Tuple standardmäßig nicht.
-Schreibe eine Funktion `tuple_append` die zwei Tuples als Argumente nimmt, das zweite an das erste anhängt und das zusammengefügte Tuple als Return Value zurückgibt.
+Schreibe eine Funktion `tuple_append`, die zwei Tuples als Argumente nimmt, das zweite an das erste anhängt und das zusammengefügte Tuple als Return Value zurückgibt.
 ```julia; results="hidden"; echo=false
 function tuple_append(t1, t2)
     return Tuple(append!(collect(t1),collect(t2)))
