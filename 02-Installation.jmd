@@ -50,7 +50,7 @@ Danach kann Julia durch Eingabe von `julia` im Terminal gestartet werden.
 
 ## Juno
 Generell reicht es aus, Julia zu installieren und über die Command Line zu benutzen.
-Entwicklungsumgebungen, wie zum Beispiel *Juno*, bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
+Entwicklungsumgebungen, wie z.B. *Juno*, bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
 Dazu muss zuerst der erweiterbare Texteditor *Atom* installiert werden.
 Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [atom.io](https://atom.io)\footnote{<https://atom.io>} erhältlich.
 

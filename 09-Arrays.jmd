@@ -24,9 +24,9 @@ typeof(baustoffe)
 typeof(stahl)
 ```
 Innerhalb der geschwungenen Klammer steht dabei zuerst, von welchem Typ die Werte des Arrays sind und an zweiter Stelle, welche Ordnung das Array hat.
-Ein *leeres Array* hat keine Elemente und kann zum Beispiel mit leeren, eckigen Klammern (`[]`) erzeugt werden.
+Ein *leeres Array* hat keine Elemente und kann z.B. mit leeren, eckigen Klammern (`[]`) erzeugt werden.
 Das so erzeugte leere Array ist dabei vom Typ `Array{Any,1}`.
-Ein leeres Array mit Werten eines bestimmten Typs, wie zum Beispiel `Float64`, kann mittels `Array{Float64,1}()` oder `Float64[]` erzeugt werden; mit der Schreibweise `Float64[]` können allerdings nur Arrays erster Ordnung erzeugt werden.
+Ein leeres Array mit Werten eines bestimmten Typs, wie z.B. `Float64`, kann mittels `Array{Float64,1}()` oder `Float64[]` erzeugt werden; mit der Schreibweise `Float64[]` können allerdings nur Arrays erster Ordnung erzeugt werden.
 ```julia; term=true
 []
 Array{Float64,1}()
@@ -324,7 +324,7 @@ Ein `Dict` (Abkürzung für *Dictionary*) ist ebenfalls sehr ähnlich zum Array 
 Während sich beim Array die Indizes auf Int-Zahlen beschränken, können die Indizes eines *Dictionaries* nahezu jeder Datentyp sein.
 Die Indizes eines Dictionaries heißen *Keys* und die Werte werden *Values* genannt.
 Jeder Wert ist dabei einem Key zugewiesen.
-Mit einem Dictionary kann zum Beispiel ein Wörterbuch erstellt werden, in dem jeder Key ein deutsches Wort ist dem das passende spanische Wort zugeordnet ist.
+Mit einem Dictionary kann z.B. ein Wörterbuch erstellt werden, in dem jeder Key ein deutsches Wort ist dem das passende spanische Wort zugeordnet ist.
 Mit `Dict()` wird ein Dictionary erstellt:
 ```julia; term=true
 de2sp = Dict("eins" => "uno", "zwei" => "dos", "drei" => "tres")
