@@ -23,22 +23,27 @@ end
     end
 end
 
-@Aufgabe "8.4.1" function connect_three(a,b,c)
+@Aufgabe "8.5.1" function connect_three(a,b,c)
     return append!(append!(a,b),c)
 end
-@Aufgabe "8.4.2" function interior(a)
+
+@Aufgabe "8.5.2" function interior(a)
     return a[2:end-1]
 end
-@Aufgabe "8.4.3" function issort(a)
+
+@Aufgabe "8.5.3" function issort(a)
     return a == sort(a)
 end
-@Aufgabe "8.4.4" function isanagram(s1, s2)
+
+@Aufgabe "8.5.4" function isanagram(s1, s2)
     return sort(collect(lowercase(s1))) == sort(collect(lowercase(s2)))
 end
-@Aufgabe "8.4.5" function dict_index(d, n)
+
+@Aufgabe "8.5.5" function dict_index(d, n)
     return d[sort(collect(keys(d)))[n]]
 end
-@Aufgabe "8.4.6" function tuple_append(t1, t2)
+
+@Aufgabe "8.5.6" function tuple_append(t1, t2)
     return Tuple(append!(collect(t1),collect(t2)))
 end
 
@@ -165,7 +170,7 @@ end
     return d
 end
 
-@Aufgabe "13.3.1" begin
+@Aufgabe "12.3.1" begin
     function ggt(a::Int,b::Int)
         b == 0 && return a
         a == 0 && return b
@@ -178,7 +183,7 @@ end
     end
 end
 
-@Aufgabe "14.3.1" begin
+@Aufgabe "13.3.1" begin
     using Dates
     isdate(x,y) = Dates.value(Day(x)) == Dates.value(Month(y)) && Dates.value(Day(y)) == Dates.value(Month(x))
 
@@ -192,11 +197,11 @@ end
 end
 
 # Schreibe eine Funktion die den Lagerbestand für jedes Lager in ein Dict{Int,Dict{String,Int}} ausgibt
-@Aufgabe "15.3.1" begin
+@Aufgabe "14.3.1" begin
     using CSV
     using DataFrames
     function read_lagers()
-        path = "15-3"
+        path = "14-3"
         files = readdir(path)
         Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
             dfl = p.second
@@ -211,11 +216,11 @@ end
 end
 
 # Schreibe eine Funktion die alle Lager ids ausgibt, die mindestes n von a haben
-@Aufgabe "15.3.2" begin
+@Aufgabe "14.3.2" begin
     using CSV
     using DataFrames
     function read_lagers()
-        path = "15-3"
+        path = "14-3"
         files = readdir(path)
         Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
             dfl = p.second
@@ -241,11 +246,11 @@ end
 end
 
 # Schreibe eine Funktion die den gesamtbestand Berechnet
-@Aufgabe "15.3.3" begin
+@Aufgabe "14.3.3" begin
     using CSV
     using DataFrames
     function read_lagers()
-        path = "15-3"
+        path = "14-3"
         files = readdir(path)
         Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
             dfl = p.second
