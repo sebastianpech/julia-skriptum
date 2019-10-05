@@ -1,0 +1,6 @@
+[submodule "lexer"]
+	path = lexer
+	url = git@github.com:sisl/pygments-julia.git
+[submodule "style"]
+	path = style
+	url = git@github.com:sisl/pygments-style-algforopt.git

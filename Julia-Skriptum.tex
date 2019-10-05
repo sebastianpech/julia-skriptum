@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage{luatex85}
+\usepackage{fontspec}
+\usepackage{amsmath,bm,amssymb}
+\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
+\usepackage{pgf}
+\usepackage[usefamily={jl,julia,juliacon}]{pythontex}
+
+\makeatletter
+\def\outputdir{\pytx@outputdir}
+\makeatother
+
+\newcommand{\expandjlconc}[1]{\expandafter\reallyexpandjlconc\expandafter{#1}}
+\newcommand{\reallyexpandjlconc}[1]{\juliaconc{include("#1")}}
+\newcounter{jlconcodeblckcounter}
+\newenvironment{jlconcodeblck}%
+{\expandafter\edef\csname snippetfile\endcsname{snippet-\thejlconcodeblckcounter.jl}%
+ \expandafter\edef\csname osnippetfile\endcsname{\outputdir/snippet-\thejlconcodeblckcounter.jl}%
+  \VerbatimEnvironment
+  \begin{VerbatimOut}{\osnippetfile}}%
+ {\end{VerbatimOut}%
+ \expandjlconc{\osnippetfile}
+ \inputpygments{julia}{\osnippetfile}
+\stepcounter{jlconcodeblckcounter}}
+
+\title{Test}
+\author{Tester}
+\date{2019}
+
+\begin{document}
+\maketitle
+
+\include{01-Intro.tex}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
