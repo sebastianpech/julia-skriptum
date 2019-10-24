@@ -92,7 +92,11 @@ automark
 {{{ :stylesheet }}}
 
 \lstset{
-literate={-}{-}1
+literate={-}{-}1,
+frame=l,
+framerule=3pt,
+rulecolor=\color{black!20},
+xleftmargin=7pt
 }
 
 \makeatletter
