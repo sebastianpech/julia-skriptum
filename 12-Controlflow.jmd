@@ -350,9 +350,17 @@ Wird eine falsche Eingabe gemacht, muss \enquote{Falsche Eingabe} ausgegeben wer
 Um eine Eingabe von der Tastatur einzulesen, kann die folgende Funktion verwendet werden:
 
 ```julia; eval=false
+"""
+    wert_einlesen(text)
+
+Lies eine Texteingabe vom Benutzer ein, gib als Aufforderung `text` aus und gib den eingegebenen Wert
+als String zurück.
+"""
 function wert_einlesen(text::AbstractString)
+    # Aufforderung ausgeben
     print(text)
     print(": ")
+    # Eine Zeile von der Benutzereingabe einlesen
     return readline()
 end
 ```
