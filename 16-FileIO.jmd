@@ -201,6 +201,19 @@ Da das zu einigen Problemen führen kann, gibt es die Funktion `joinpath`, die d
 
 Es wird eine Funktion benötigt, die den Bestand jedes Gegenstands pro Lager ermittelt (Summe der Ein- und Ausgänge).
 Die Funktion soll ein `Dict` mit der Zuordnung `Lager id => Bestand` zurückgeben, wobei `Bestand` wieder ein `Dict` mit der Zuordnung `Artikel => Anzahl` ist.
+Ein `Dict` muss nicht notwendigerweise von Anfang an mit Werten befüllt sein:
+```julia
+a = Dict{String,Int}()
+```
+Dieser Aufruf erzeugt ein leeres `Dict`, bei dem die Keys vom Typ `String` und die Values vom Typ `Int` sein müssen.
+Werte können dann wie bei jedem anderen `Dict` hinzugefügt werden:
+```julia; term=true
+a["Taschenlampe"] = 10
+a["Taschenlampe"] += -5
+a["Kein Int"] = 1.2
+a[11] = 3
+a
+```
 
 ```julia; results="hidden"; echo=false;
 function read_lagers()
