@@ -194,7 +194,7 @@ Ebenso kann auf Teile der Matrix zugegriffen werden.
 Ein Doppelpunkt `:` ohne Indizes bezeichnet dabei die gesamte Zeile oder Spalte.
 ```julia; term=true
 m = rand(3,6)
-m[2,3]  # Zweite Spalte, dritte Zeile
+m[2,3]  # Zweite Zeile, dritte Spalte
 m[1:2,6]  # Erste und zweite Zeile, sechste Spalte
 m[3,:]  # Dritte Zeile, alle Spalten
 ```

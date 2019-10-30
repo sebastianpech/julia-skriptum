@@ -68,7 +68,10 @@ Beim Umgang mit Dateien gibt es die folgenden Modi:
 f = open("Datei04.txt","w")
 print(readdir())
 ```
-`open` öffnet einen sogenannten Stream zu der Datei. Um nun Text in die neue Datei zu schreiben, muss dieser Text zuerst in den Stream geschrieben werden. Das ist mit dem `write`-Befehl möglich. 
+Die Ausgabe von `readdir` zeigt, dass bereits durch den Aufruf von `open`, eine neue Datei `Datei04.txt` erzeugt wurde.
+Der Befehl `open` öffnet einen sogenannten Stream zu der Datei. 
+Um nun Text in die neue Datei zu schreiben, muss dieser Text zuerst in den Stream geschrieben werden. 
+Das ist mit dem `write`-Befehl möglich. 
 
 ```julia; term=true
 write(f,"Erste Zeile\n")
