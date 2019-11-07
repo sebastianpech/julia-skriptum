@@ -27,13 +27,6 @@ Pfad01;Pfad02;Pfad03
 # "Neue" Systemvariable PATH
 Pfad01;Pfad02;Pfad03;Julia-Pfad
 ```
-
-### macOS
-Julia ist für macOS 10.8 und spätere Versionen verfügbar.
-Für Mac-User befindet sich auf [julialang.org](https://julialang.org) unter [Downloads](https://julialang.org/downloads)\footnote{<https://julialang.org/downloads/>} eine `.dmg`-Datei zum Download.
-Dieses Disk Image muss geöffnet und die darin enthaltene Datei `julia-<version>.app` in den gewünschten Dateipfad (vozugsweise Programme) kopiert werden.
-Julia kann dann direkt über diese Datei oder Eingabe des Befehls `julia` im Terminal ausgeführt werden.
-
 ### Linux
 Zur Installation von Julia auf einem Linux-Betriebssystem müssen zuerst die \enquote{Generic Binaries} für die richtige Prozessor-Architektur heruntergeladen werden.
 Die Datei im `.tar.gz`-Format muss danach in einen beliebigen Ordner auf dem Computer entpackt werden.
@@ -47,6 +40,17 @@ Folgender Befehl erstellt den Symbolic Link in diesem Ordner:
 sudo ln -s <Pfad zum entpackten Ordner>/bin/julia /usr/local/bin/julia
 ```
 Danach kann Julia durch Eingabe von `julia` im Terminal gestartet werden.
+
+### macOS
+Julia ist für macOS 10.8 und spätere Versionen verfügbar.
+Für Mac-User befindet sich auf [julialang.org](https://julialang.org) unter [Downloads](https://julialang.org/downloads)\footnote{<https://julialang.org/downloads/>} eine `.dmg`-Datei zum Download.
+Dieses Disk Image muss geöffnet und die darin enthaltene Datei `Julia-<version>.app` in den gewünschten Dateipfad (vozugsweise Programme) kopiert werden.
+Julia kann dann direkt über diese Datei ausgeführt werden.
+Um Julia im Terminal auszuführen, muss die Ausführbare Datei vom System gefunden werden können.
+Dafür kann analog zu der Anleitung für Linux vorgegangen werden. Der Befehl zum Erstellen des Symbolic Link muss auf die Binary in `Julia-<verison>.app` verweisen:
+```
+sudo ln -s /Applications/Julia-<version>.app/Contents/Resources/julia/bin/julia /usr/local/bin/julia
+```
 
 ## Juno
 Generell reicht es aus, Julia zu installieren und über die Command Line zu benutzen.
