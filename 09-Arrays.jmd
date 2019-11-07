@@ -252,6 +252,17 @@ b = ["Tom" "Jerry"; "Michael" "John"];
 length.(b)
 ```
 
+Durch Anwenden von Vergleichsoperatoren oder Funktionen die einen Wert vom Typ `Bool` zurückggeben, mittels *Broadcasting* auf alle Element eines Arrays, wird ein Bit-Array (Besteht nur aus `0` und `1`, für `false` und `true`) erzeugt.
+Mittels eines solchen Arrays ist der Zugriff auf Teile eines anderen Arrays möglich. 
+Dabei werden nur die Teile des Arrays ausgewählt, bei deren Position im Bit-Array der Wert `1` steht.
+
+```julia; term=true
+primes .>= 10
+primes[primes .>= 10]
+occursin.("o",b) # String beinhaltet ein o
+b[occursin.("o",b)]
+```
+
 ## Range
 Eine `Range` ist eine Abfolge von `Int`-Zahlen.
 Durch Angabe der ersten und letzten Zahl der Sequenz, getrennt durch einen Doppelpunkt, kann eine `Range` erstellt werden.
@@ -279,6 +290,13 @@ print(collect(6:-2:0))
 
 Julia hat verschiedene Arten von Sammlungen implementiert.
 Viele dieser Sammlungen können mithilfe von `collect` in Arrays umgewandelt werden.
+
+`Range`s können auch dazu verwendet werden um auf Teile eines Arrays zuzugreifen.
+
+```julia; term=true
+primes[1:2:end]
+primes[end:-1:1]
+```
 
 ## Tuple
 Der Datentyp `Tuple` ist sehr ähnlich zum Array erster Ordnung.
