@@ -1,4 +1,4 @@
-# Kontrollstruktur
+# Kontrollstrukturen
 
 Der Code in den bisher behandelten Beispiele setzte sich aus einer sich nicht-verzweigenden Verkettung von Befehlen zusammen.
 Für sehr rudimentäre Programme mag das ausreichen, in den meisten Fällen werden aber Verzweigungen in Form von `if`-Bedingungen und Schleifen benötigt.
