@@ -124,7 +124,43 @@ force == 117.72u"N"
 Der neue Zahlentyp lässt sich jetzt auch mit der Funktion `A_rechteck` verwenden:
 ```julia; term=true
 fläche = A_rechteck(2u"m",11.1u"cm")
-uconvert(u"mm^2",fläche)
+u"mm^2"(fläche) # Ausgabe in mm²
+```
+
+Im Bauingenieurwesen werden oft Normen zum Führen von Nachweisen verwendet.
+Einige dieser Nachweise basieren nicht ausschließlich auf analytisch hergeleiteten Formeln, sondern beinhaltet auch empirisch ermittelte Komponenten.
+Solche Formeln sind meistens nicht einheitenrein und man findet Angaben dazu, in welcher Einheit Werte eingesetzt werden müssen und welcher Einheit das Ergebnis entspricht.
+
+Mit der folgenden Funktion kann der Verschiebungsmodul von in Achsrichtung beanspruchten Holzschrauben berechnet werden.
+Der Gewindeaußendurchmesser `d` und die Einbindetiefe `l_ef` sind in `mm` anzugeben, das Ergebnis entspricht `N/mm`.
+```julia
+function K_ser(d,l_ef)
+    # Einheiten von Eingangswerten entfernen
+    # und dabei in mm konvertieren.
+    d_mm = ustrip(u"mm",d)
+    l_ef_mm = ustrip(u"mm",l_ef)
+    # Verschiebungsmodul berechnen und die Einheit N/mm zuweisen.
+    (780*d_mm^0.2*l_ef_mm^0.4)u"N/mm"
+end
+```
+
+```julia; term=true
+K_ser(10u"mm", 200u"mm")
+K_ser(10u"mm", 20u"cm")
+u"kN/cm"(K_ser(10u"mm", 20u"cm"))
+```
+
+In diesem Beispiel wurden zum Umwandeln von Einheiten zwei Varianten verwendet: `u"kN/cm"(...)` und `(...)u"N/mm"`.
+Mit `u"kN/cm"(...)` wird eine Einheit umgewandelt. Das bedeutet, dass der Wert in der Klammer mit der Zieleinheit kompatibel sein muss.
+Mit `(...)u"N/mm"` wird eine Einheit hinzugefügt. Die Operation entspricht im Grunde dem Produkt mit 1 der Einheit `u"N/mm"`. 
+Damit muss der Wert in der Klammer nicht mit der Zieleinheit kompatibel sein.
+
+```julia; term=true
+l = 10u"m^2"
+u"m"(10) # Fehler, da 10 Einheitenlos und damit inkompatibel zu m ist.
+u"rad"(10)
+u"mm^2"(l)
+(l)u"mm^2"
 ```
 
 Mit `Measurements.jl` können Fehler bzw. Abweichungen einer Zahl einfach durch das Symbol `±` (`\pm`+`TAB`-Taste) berücksichtigt werden:
