@@ -416,6 +416,7 @@ Beispiele:
 nums = [0,1,2,3,4];
 res1 = interior(nums)
 res2 = interior(res1)
+res3 = interior(res2)
 ```
 
 ### Ist das Array sortiert?
