@@ -402,7 +402,9 @@ print(connect_three(a,b,c))
 ```
 
 ### Innere Werte eines Arrays
-Schreibe eine Funktion `interior`, die ein Array als Argument nimmt und ein neues Array zurückgibt, das alle Werte bis auf den ersten und  den letzten enthält.
+Schreibe eine Funktion `interior`, die ein Array als Argument nimmt und ein neues Array zurückgibt, das alle Werte bis auf den ersten und den letzten enthält.
+Falls das Array weniger als drei Elemente hat, soll ein leeres Arary zurückgegeben werden.
+Hinweis: Eine sehr einfache Lösung ohne if-Abfragen kann mittels Zugriff auf einen Bereich des Arrays formuliert werden.
 ```julia; results="hidden"; echo=false
 function interior(a)
     return a[2:end-1]
