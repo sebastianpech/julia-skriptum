@@ -443,7 +443,7 @@ end
 ```
 
 Beispiele:
-```julia;term=true; results="hidden"; echo=false
+```julia;term=true;
 is_anagram("spam","eggs")
 is_anagram("Stein","niest")
 ```
