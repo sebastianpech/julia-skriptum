@@ -322,7 +322,7 @@ GRAV_BESCHL = "Neuer Wert"
 
 ### Gerade oder Ungerade
 
-Schreibe ein Funktion, die \enquote{Gerade} oder \enquote{Ungerade} für eine Zahl mit `println` ausgibt.
+Schreibe eine Funktion, die \enquote{Gerade} oder \enquote{Ungerade} für eine Zahl mit `println` ausgibt.
 
 ```julia; results="hidden"; echo=false 
 function gerade_ungerade(x::Int)
@@ -344,7 +344,7 @@ gerade_ungerade(218)
 
 Es soll ein **Skript** zur Berechnung von Flächeninhalt und Umfang eines Kreises erstellt werden, das BenutzerInnen erlaubt, mehrmals Eingaben zu machen.
 Die Ausgabewerte sollen auf zwei Stellen gerundet werden.
-Das Skript soll erst abgebrochen werde,, wenn eine leere Eingabe gemacht wird. 
+Das Skript soll erst abgebrochen werden, wenn eine leere Eingabe gemacht wird. 
 Wird eine falsche Eingabe gemacht, muss \enquote{Falsche Eingabe} ausgegeben werden.
 
 Um eine Eingabe von der Tastatur einzulesen, kann die folgende Funktion verwendet werden:
