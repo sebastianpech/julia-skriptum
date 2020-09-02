@@ -52,15 +52,14 @@ Dafür kann analog zu der Anleitung für Linux vorgegangen werden. Der Befehl zu
 sudo ln -s /Applications/Julia-<version>.app/Contents/Resources/julia/bin/julia /usr/local/bin/julia
 ```
 
-## Juno
+## Visual Studio Code
 Generell reicht es aus, Julia zu installieren und über die Command Line zu benutzen.
-Entwicklungsumgebungen, wie z.B. *Juno*, bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
-Dazu muss zuerst der erweiterbare Texteditor *Atom* installiert werden.
-Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [atom.io](https://atom.io)\footnote{<https://atom.io>} erhältlich.
+Entwicklungsumgebungen, wie z.B. *Visual Studio Code (VS Code)*, bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
+Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [code.visualstudio.com](https://code.visualstudio.com)\footnote{<https://code.visualstudio.com} erhältlich.
 
-Nach der Installation von Atom muss *Juno* in Atom installiert werden.
-Dazu ist es erforderlich, Atom zu öffnen und in die Einstellungen zu wechseln (`Strg`+`,` oder `Cmd`+`,` bzw. über die Menüleiste) und dort das Installations-Panel auszuwählen.
-Durch Installation des Pakets `uber-juno` (am einfachsten über die Suchleiste) kann Juno in Atom verwendet werden.
-Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter Packages > Julia > Settings im Feld \enquote{Julia Path} der tatsächliche Dateipfad angegeben werden.
+Nach der Installation muss in VS Code die *Julia*-Erweiterung installiert werden.
+Dazu ist es erforderlich, VS Code zu öffnen und in die Erweiterungs-Ansicht zu wechseln (`Strg`+`Shift`+`X` oder `Cmd`+`Shift`+`X` bzw. über die Menüleiste *View*>*Extensions*).
+Durch Installation der Erweiterung `Julia` (am einfachsten über die Suchleiste) kann Julia in VS Code verwendet werden.
+Falls für Julia nicht der Standard-Installationspfad ausgewählt wurde, muss unter *Extension Settings* (Zahnrad bei der installierten Erweiterung) im Feld \enquote{Julia: Executable Path} der tatsächliche Dateipfad angegeben werden.
 
-Wenn die Installation funktioniert hat, kann unter Packages > Juno > Open Console die REPL geöffnet und durch Drücken der Taste `Enter` eine Julia-Session gestartet werden.
+Wenn die Installation funktioniert hat, kann über den VS Code-Befehl `Julia: Start REPL` die REPL geöffnet und eine Julia-Session gestartet werden.
