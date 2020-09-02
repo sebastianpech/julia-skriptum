@@ -60,7 +60,7 @@ bug_show_pow(3.5,6)
 Offensichtlich wird in der Schleife `x`, 6``×`` multipliziert, allerdings startet `x_pow` nicht mit 1, sondern mit `x`, weshalb gesamt $x^{n+1}$ ergibt.
 
 Diese Methode des Debuggings funktioniert bei einfachen Fällen, hat aber den Nachteil, dass der Code verändert werden muss.
-Julia bietet in Kombination mit [`Debugger.jl`](https://github.com/JuliaDebug/Debugger.jl)\footnote{<https://github.com/JuliaDebug/Debugger.jl>} und Juno einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
+Julia bietet in Kombination mit [`Debugger.jl`](https://github.com/JuliaDebug/Debugger.jl)\footnote{<https://github.com/JuliaDebug/Debugger.jl>} und VS Code einen Debugger im klassischen Sinn, der eine wesentlich präzisere und effizientere Fehlersuche erlaubt.
 
 ## Das Debugger-Paket
 
@@ -68,34 +68,28 @@ Mit einem klassischen Debugger ist es möglich, die Ausführung des Quellcodes z
 Dabei gibt es die Möglichkeit, sogenannte *Breakpoints* zu setzen, an welchen der Code unterbrochen werden soll.
 
 Um die Funktion `bug_pow` mit dem Debugger zu analysieren, muss der Debugger-Modus über einen Klick auf den Debugknopf gestartet werden.
+Über die Seitenleiste mit den Zeilennummern kann nun durch einen Klick ein Breakpoint gesetzt werden. Dadurch wird die Ausführung in der 5. Zeile angehalten.
+Durch Klicken auf *Start Debugging* (Grüner Play-Pfeil im Debugger-Modus) startet der Debugger die Ausführung und stoppt beim ersten Breakpoint.
 
-![Debugknopf in Juno](../data/img/debugger-01.png)
+![Debugging starten in VS Code](../data/img/debugger-01.png)
 
-Über die Seitenleiste mit den Zeilennummern kann nun durch einen Klick ein Breakpoint gesetzt werden. Dadurch wird die Ausführung in der 4. Zeile angehalten.
+Auf der linken Seite des Fensters werden nun die bis zum Breakpoint abgespeicherten Variablen aufgelistet.
+Mit einem Blick darauf kann man erkennen, dass im ersten Schleifendurchgang `i == 1`, die Variable `x_pow` bereits einen Wert ungleich 1 hat. 
 
-![Erster Breakpoint](../data/img/debugger-02.png)
+![Debugging in VS Code](../data/img/debugger-02.png)
 
-Mit dem Befehl `Juno.@run` startet der Debugger die Ausführung und stoppt beim ersten Breakpoint.
-Um direkt in der ersten Zeile der Funktion zu stoppen, kann der Befehl `Juno.@enter` verwendet werden.
+Sobald das Debugging gestartet wurde, erscheint im oberen Bereich des Fensters eine Werkzeugleiste zur Steuerung der weiteren Vorgehensweise.
 
-```julia; term=true; eval=false
-Juno.@run bug_pow(3.5,6)
-```
+![Werkzeugleiste zur Steuerung des Debuggers](../data/img/debugger-03.png)
 
-![Erster Halt](../data/img/debugger-03.png)
+Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzen der Ausführung (von links nach rechts in der Werkzeugleiste):
 
-Mit einem Blick in den Workspace kann man erkennen, dass im ersten Schleifendurchgang `i == 1`, die Variable `x_pow` bereits einen Wert ungleich 1 hat. 
-Von dem Breakpoint aus gibt es die folgenden Möglichkeiten zum Fortsetzten der Ausführung:
-
-- *Continue*: Funktioniert wie der Befehl `Juno.@run` und lässt den Code bis zum nächsten Breakpoint laufen.
-- *Finish Function*: Läuft bis zum Ende der aktuellen Funktion oder bis zum nächsten Breakpoint.
-- *Next line*: Springt zur nächsten Zeile.
-- *Step to Selected Line*: Springt zur im Editor ausgewählten Zeile oder bis zum nächsten Breakpoint.
-- *Next Expression*: Springt zum nächsten Ausdruck (z.B. `2*3+1` stoppt bei `2*3`, der nächste Ausdruck ist dann `6+1`)
-- *Step into Function*: Funktioniert wie der Befehl `Juno.@enter` und springt in die erste Zeile der aktuellen Funktion.
-- *Stop Debugging*: Beendet das Debugging.
-
-Nähere Informationen zum Debugger gibt es in diesem [Blogeintrag](https://julialang.org/blog/2019/03/debuggers)\footnote{<https://julialang.org/blog/2019/03/debuggers>}. 
+- *Continue*: Lässt den Code bis zum nächsten Breakpoint weiterlaufen.
+- *Step over*: Führt die aktuelle Zeile aus und wechselt zur nächsten.
+- *Step into*: Springt in die erste Zeile der aktuellen Funktion.
+- *Step out*: Springt aus der Funktion zurück in die nächst höhere Ebene. Funktioniert wie Continue wenn der Debugger in der obersten Ebene ist.
+- *Restart*: Startet den Debugger neu.
+- *Stop*: Beendet den Debugger.
 
 ## Aufgaben
 

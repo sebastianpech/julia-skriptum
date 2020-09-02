@@ -18,7 +18,7 @@ Die Funktionalität, wie es auch im Namen REPL steckt, besteht darin:
 3. **P**rint: Das Ergebnis auszugeben
 4. **L**oop: Zurück zu 1. und auf den nächsten Befehl zu warten
 
-Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in VS Code geöffnet werden (Ausführen der Funktion `exit()` oder Drücken von `Strg-D` schließt die REPL wieder).
+Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in VS Code geöffnet werden (Ausführen der Funktion `exit()` oder Drücken von `Ctrl-D` schließt die REPL wieder).
 
 Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt.
 ![REPL-Fenster direkt nach dem Start](../data/img/repl-01.png)
@@ -82,7 +82,7 @@ Nähere Informationen zu diesem Thema werden im Abschnitt Strings gegeben.
 ## VS Code Spezifika
 
 VS Code enthält eine integrierte REPL, die über den Befehl `Julia: Start REPL` geöffnet werden kann.
-Die Eingabe eines Befehls wird mit der Tastenkombination `Strg`+`Shift`+`P` bzw. `Cmd`+`Shift`+`P` am Mac gestartet.
+Die Eingabe eines Befehls wird mit der Tastenkombination `Ctrl`+`Shift`+`P` bzw. `Cmd`+`Shift`+`P` am Mac gestartet.
 Diese REPL erscheint danach unter dem Editor-Fenster und unterstützt den vollen Funktionsumfang der Julia REPL.
 
 Neben der REPL sind Befehle auch direkt aus der Datei, die gerade editiert wird, heraus ausführbar.

@@ -97,7 +97,7 @@ Der Code wird folgendermaßen durchschritten:
 Dieser Ablauf wird Schleife genannt, weil (5) wieder zurück zu (2) springt.
 Bei diesem Code ist Vorsicht geboten: Vergisst man die Zeile `i += 1`, ergibt die Bedingung `i <= 10` nie `false`.
 Das bedeutet, die Schleife läuft endlos (Endlosschleife). 
-In der REPL oder in Juno kann eine Endlosschleife durch die Tastenkombination `Ctrl+C` abgebrochen werden.
+In der REPL oder in VS Code kann eine Endlosschleife durch die Tastenkombination `Ctrl+C` abgebrochen werden.
 
 Beim obigen Beispiel handelt es sich um eine Zählschleife.
 Dieses Konstrukt ist so häufig, dass es einen eigenen Schleifentyp dafür gibt: Die `for`-Schleife.
