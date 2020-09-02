@@ -3,7 +3,7 @@
 Um Julia auszuführen, gibt es verschieden Möglichkeiten:
 - Interaktiv in Form der REPL (Read-eval-print loop) über das Programm-Icon oder Eingabe von `julia` in der Commandline.
 - Als Skript durch Eingabe von `julia script.jl [arg1, arg2 ...]` in der Commandline (Die eckigen Klammern kennzeichnen optionale Argumente),
-- In einem Editor, der Julia unterstützt (z.B. Atom mit Juno),
+- In einem Editor, der Julia unterstützt (z.B. VS Code mit der entsprechenden Erweiterung),
 - Als sogenanntes Notebook mit Jupyter.
 
 Jupyter-Notebooks eignen sich, um Berechnungen zu dokumentieren und z.B. um Grafiken und Formeln zu erweitern; dies sprengt aber den Rahmen der LVA.
@@ -18,7 +18,7 @@ Die Funktionalität, wie es auch im Namen REPL steckt, besteht darin:
 3. **P**rint: Das Ergebnis auszugeben
 4. **L**oop: Zurück zu 1. und auf den nächsten Befehl zu warten
 
-Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in Juno geöffnet werden (Ausführen der Funktion `exit()` oder Drücken von `Strg-D` schließt die REPL wieder).
+Die REPL kann durch Starten von Julia über das Programm-Icon, den Befehl `julia` oder direkt in VS Code geöffnet werden (Ausführen der Funktion `exit()` oder Drücken von `Strg-D` schließt die REPL wieder).
 
 Je nach Betriebssystem öffnet sich dann ein Fenster das dem in der folgenden Abbildung ähnelt.
 ![REPL-Fenster direkt nach dem Start](../data/img/repl-01.png)
@@ -79,13 +79,14 @@ Im Windows-Pfad wird als Trennzeichen `\\` verwendet, obwohl der Windows-Pfad ei
 Das ist erforderlich, da `\` einen sogenannten \enquote{Special Character} einleitet. 
 Nähere Informationen zu diesem Thema werden im Abschnitt Strings gegeben.
 
-## Juno Spezifika
+## VS Code Spezifika
 
-Juno enthält eine integrierte REPL, die über Packages > Juno > Show Console geöffnet werden kann.
-Diese REPL unterstützt den vollen Funktionsumfang der Julia REPL.
+VS Code enthält eine integrierte REPL, die über den Befehl `Julia: Start REPL` geöffnet werden kann.
+Die Eingabe eines Befehls wird mit der Tastenkombination `Strg`+`Shift`+`P` bzw. `Cmd`+`Shift`+`P` am Mac gestartet.
+Diese REPL erscheint danach unter dem Editor-Fenster und unterstützt den vollen Funktionsumfang der Julia REPL.
 
 Neben der REPL sind Befehle auch direkt aus der Datei, die gerade editiert wird, heraus ausführbar.
-Durch Drücken von `Strg+Enter` unter Windows und Linux bzw. `Shift+Enter` unter macOS kann die aktuelle Zeile an die REPL geschickt werden.
+Durch Drücken von `Alt+Enter` kann der aktuelle Code-Block an die REPL geschickt werden.
 Damit können schnell auch größere Codeblöcke ausgeführt werden, da die Funktion automatisch syntaktisch sinnvolle Zeilen aus der Umgebung gruppiert.
 
 ```julia; eval=false
@@ -97,10 +98,10 @@ x = 10
 y = 12
 ```
 
-Wird z.B. im oberen Skript `Strg+Enter` bzw. `Shift+Enter` in der Zeile `return 10` gedrückt, werden auch die Zeile davor und danach ausgewertet.
+Wird z.B. im oberen Skript `Alt+Enter` in der Zeile `return 10` gedrückt, werden auch die Zeile davor und danach ausgewertet.
 Im Gegensatz dazu wird beim Senden der Zeile `x = 10` nur diese Zeile ausgeführt.
 
-Auf der Website von [Juno](https://junolab.org/)\footnote{<https://junolab.org>} sind weitere Funktionen in einer interaktiven Grafik erklärt.
+Auf der Website der [Julia-Erweiterung für VS Code](https://www.julia-vscode.org/)\footnote{https://www.julia-vscode.org/} sind weitere Funktionen in einer interaktiven Grafik erklärt.
 
 ## Spezielle REPL-Modes
 
@@ -177,7 +178,6 @@ Gibt es neue Versionen von Paketen, können diese gesammelt mit `update` aktuali
 (v1.2) pkg> update
   Updating registry at `~/.julia/registries/General`
   Updating git-repo `https://github.com/JuliaRegistries/General.git`
-  Updating git-repo `https://github.com/JunoLab/Atom.jl.git`
  Resolving package versions...
   Updating `~/.julia/environments/v1.2/Project.toml`
  [no changes]
