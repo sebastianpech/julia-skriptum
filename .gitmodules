@@ -1,0 +1,4 @@
+[submodule "JuliaSkriptumKontrolle.jl"]
+	path = dev/JuliaSkriptumKontrolle.jl
+	url = https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl.git
+	branch = WS2020
