@@ -19,3 +19,4 @@
 - [2150ec3](https://github.com/sebastianpech/julia-skriptum/commit/2150ec309f1f80c16d29865f3c1540c6707250e7) [[PDF]](https://github.com/sebastianpech/julia-skriptum/raw/builds/2150ec3-julia-skriptum.pdf)
 - [2d74bf2](https://github.com/sebastianpech/julia-skriptum/commit/2d74bf2abfa670772b74f737414acb7ab3579bb5) [[PDF]](https://github.com/sebastianpech/julia-skriptum/raw/builds/2d74bf2-julia-skriptum.pdf)
 - [a0ec479](https://github.com/sebastianpech/julia-skriptum/commit/a0ec47968b741e5a6f6600edf290a84d93e7913e) [[PDF]](https://github.com/sebastianpech/julia-skriptum/raw/builds/a0ec479-julia-skriptum.pdf)
+- [e972c0b](https://github.com/sebastianpech/julia-skriptum/commit/e972c0be0bae673a02dad228ec53d100f405b906) [[PDF]](https://github.com/sebastianpech/julia-skriptum/raw/builds/e972c0b-julia-skriptum.pdf)
