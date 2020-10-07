@@ -1,5 +1,5 @@
 ---
-options:
+weave_options:
       out_width : 50 %
       fig_height : 2.2
       fig_width : 4.3
@@ -71,7 +71,7 @@ Der Plot mit Sinus und Cosinus kann damit optisch vervollständigt werden:
 plot(x,[y,y2],
      line=([:green :red], :solid, 4),
      label=["sin(x)" "cos(x)"],
-     xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"])),
+     xaxis=("x",([0,π,2π],["0","π","2π"])),
      yaxis=("y(x)"),
      title="Sinus und Cosinus")
 ```
@@ -80,7 +80,7 @@ Dabei haben die Argumente den folgenden Effekt:
 
 - `line=([:green :red], :solid, 4)`: Stelle `y` grün, `y2` rot, beide als durchgezogene Linie mit der Stärke 4 dar.
 - `label=["sin(x)" "cos(x)"]`: Bezeichne `y` in der Legende mit sin(x) und `y2` mit cos(x).
-- `xaxis=("x",([0,π,2π],["0","\\pi","2\\pi"]))`: Setze den Text unter der x-Achse auf x und schreibe an die Stellen von `0`, `π` und `2π` anstelle der Werte die entsprechenden Texte.
+- `xaxis=("x",([0,π,2π],["0","π","2π"]))`: Setze den Text unter der x-Achse auf x und schreibe an die Stellen von `0`, `π` und `2π` anstelle der Werte die entsprechenden Texte.
 - `yaxis=("y(x)")`: Setze den Text neben der y-Achse auf y(x)
 - `title="Sinus und Cosinus"`: Setze den Plottitel auf \enquote{Sinus und Cosinus}
 
