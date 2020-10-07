@@ -40,7 +40,7 @@ Das Problem mit logischen Fehler ist, dass das Programm ohne Fehlermeldung läuf
 ## Runtime Errors
 
 *Runtime Errors* sind Fehler, die während der Laufzeit des Programms auftreten.
-In Julia gibt es eine Vielzahl solcher Fehlern, die immer dann ausgelöst werden, wenn etwas Unvorhergesehenes passiert.
+In Julia gibt es eine Vielzahl solcher Fehler, die immer dann ausgelöst werden, wenn etwas Unvorhergesehenes passiert.
 In weiterer Folge werden nur die häufigsten behandelt, eine vollständige Liste befindet sich in der Dokumentation unter [Manual/Control Flow/Exception Handling](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1).
 
 `BoundsError`
