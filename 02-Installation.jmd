@@ -55,7 +55,7 @@ sudo ln -s /Applications/Julia-<version>.app/Contents/Resources/julia/bin/julia 
 ## Visual Studio Code
 Generell reicht es aus, Julia zu installieren und über die Command Line zu benutzen.
 Entwicklungsumgebungen, wie z.B. *Visual Studio Code (VS Code)*, bieten allerdings viele Features, die (nicht nur) den Einstieg ins Programmieren erleichtern.
-Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [code.visualstudio.com](https://code.visualstudio.com)\footnote{<https://code.visualstudio.com} erhältlich.
+Die Installationsdateien für Windows, macOS und Linux sind kostenlos auf der Website [code.visualstudio.com](https://code.visualstudio.com)\footnote{<https://code.visualstudio.com>} erhältlich.
 
 Nach der Installation muss in VS Code die *Julia*-Erweiterung installiert werden.
 Dazu ist es erforderlich, VS Code zu öffnen und in die Erweiterungs-Ansicht zu wechseln (`Ctrl`+`Shift`+`X` oder `Cmd`+`Shift`+`X` bzw. über die Menüleiste *View*>*Extensions*).
