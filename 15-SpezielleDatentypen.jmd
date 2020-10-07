@@ -1,5 +1,5 @@
 # Spezielle Datentypen
-## Datum und Uhrzeiten
+## Datum und Uhrzeit
 
 Das korrekte Behandeln von Datumsangabe und Uhrzeiten ist grundsätzlich nicht die größte Herausforderung, allerdings gibt es einige Parameter zu beachten, wenn mit Daten und Zeitangaben gerechnet wird.
 Julia bietet für diesen Zweck das `Dates`-Paket, das in der *Standard Library* enthalten ist und mit

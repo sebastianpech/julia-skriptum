@@ -148,7 +148,7 @@ sammle_vokale("Finde die Vokale in diesem Satz. Gehe aber nicht weiter als bis z
 Wenn beispielsweise in der Schleife auf eine Dateneingabe gewartet wird oder die Abbruchbedingung sehr komplex ist.
 In diesem Fall kann eine Endlosschleife absichtlich durch Verwenden der Bedingung `true` konstruiert werden.
 
-### Performance Optimierung Julia
+### Grundregeln für effizienten Code
 
 Bei den folgenden Aufgaben ist es wichtig, möglichst effizienten Code zu schreiben.
 Optimierung ist ein sehr komplexes Thema, es gibt in Julia aber ein paar grundlegende Punkte, die eine Effizienzsteigerung bringen.

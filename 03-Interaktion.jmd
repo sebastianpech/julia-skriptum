@@ -38,7 +38,7 @@ Die REPL biete eine sogenannte Autovervollständigung für Julia-Befehle.
 Wird nur ein Teil eines Befehls eingegeben, kann dieser durch Drücken von `TAB` vervollständigt werden. 
 Das ist sehr praktisch, da man sich als BenutzerIn nicht den exakten Wortlaut jedes Befehls merken muss.
 
-## Ausführung als Skript
+## Als Skript ausführen
 
 Eine Julia-Datei oder ein Julia-Skript (Endung `.jl`) kann über die Commandline ausgeführt werden.
 Je nach Betriebsystem ist diese über einen anderen Weg erreichbar:
