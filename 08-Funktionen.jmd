@@ -175,7 +175,7 @@ Abhängig von den eingegebenen Argumenten sucht Julia die passende Methode aus, 
 Mehr Informationen zu Methoden und Multiple Dispatch gibt es in der Dokumentation unter [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
 ## Aufgaben
 ### Dreimal printen
-Schreibe eine Funktion `print_three`, die ein beliebiges Argument dreimal in einer Zeile printed und dabei einen Abstand zwischen den Argumenten einfügt.
+Schreibe eine Funktion `print_three`, die ein beliebiges Argument dreimal in einer Zeile printed und dabei ein Leerzeichen zwischen den Argumenten einfügt.
 
 ```julia;echo=false;results="hidden"
 function print_three(a)
@@ -233,7 +233,7 @@ kreis_umfang(2.57)
 ```
 
 ### Kreiseigenschaften printen
-Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Radius, Fläche und Umfange dieses Kreises auf zwei Nachkommastellen gerundet printed.
+Schreibe eine Funktion `kreis(r)`, die den Radius eines Kreises als Argument benötigt und Radius, Fläche und Umfang dieses Kreises auf zwei Nachkommastellen gerundet printed.
 Es können gleich die Funktionen der vorherigen beiden Aufgaben verwendet werden.
 Dafür muss die Funktionsdefinition allerdings ebenfalls in den Block des Kontrollprogrammes kopiert werden:
 ```julia;eval=false
@@ -256,11 +256,14 @@ function kreis(r)
     println("U = $(round(kreis_umfang(r),digits=2))")
 end
 ```
-Die Ausgabe muss genau gleich wie im Beispiel unten formatiert sein, damit das Kontrollprogramm das Beispiel als korrekt gelöst auswertet.
 
-Beispiele:
+Die Ausgabe muss genau gleich wie im Beispiel unten formatiert sein, damit das Kontrollprogramm das Beispiel als korrekt gelöst auswertet .
+
+
+Beispiel (jede Zeile endet mit einem Zeilenumbruch):
 ```julia;term=true
 kreis(3)
+kreis(4)
 ```
 
 <!-- Wechsel zurück ins richtige WD -->
