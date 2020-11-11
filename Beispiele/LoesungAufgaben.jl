@@ -13,6 +13,7 @@ end
 
 @Aufgabe "7.4.3" kreis_flaeche(r) = r^2*π
 @Aufgabe "7.4.4" kreis_umfang(r) = 2*r*π
+
 @Aufgabe "7.4.5" begin
     kreis_flaeche(r) = r^2*π
     kreis_umfang(r) = 2*r*π
@@ -199,38 +200,45 @@ end
 # Schreibe eine Funktion die den Lagerbestand für jedes Lager in ein Dict{Int,Dict{String,Int}} ausgibt
 @Aufgabe "14.3.1" begin
     using CSV
-    using DataFrames
     function read_lagers()
         path = "14-3"
         files = readdir(path)
-        Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
-            dfl = p.second
+        output = Dict{Int,Dict{String, Int}}()
+        for f in files
             bestand = Dict{String,Int}()
-            for row in eachrow(dfl)
-                (row.Artikel in keys(bestand)) || (bestand[row.Artikel] = 0)
+            data = CSV.File(joinpath(path,f))
+            for row in data
+                if !(row.Artikel in keys(bestand)) 
+                    bestand[row.Artikel] = 0
+                end
                 bestand[row.Artikel] += row.Bestand
             end
-            return parse(Int,p.first[6:end-4])=>bestand
-        end)
+            output[parse(Int,f[6:end-4])] = bestand
+        end
+        return output
     end
 end
+
 
 # Schreibe eine Funktion die alle Lager ids ausgibt, die mindestes n von a haben
 @Aufgabe "14.3.2" begin
     using CSV
-    using DataFrames
     function read_lagers()
         path = "14-3"
         files = readdir(path)
-        Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
-            dfl = p.second
+        output = Dict{Int,Dict{String, Int}}()
+        for f in files
             bestand = Dict{String,Int}()
-            for row in eachrow(dfl)
-                (row.Artikel in keys(bestand)) || (bestand[row.Artikel] = 0)
+            data = CSV.File(joinpath(path,f))
+            for row in data
+                if !(row.Artikel in keys(bestand)) 
+                    bestand[row.Artikel] = 0
+                end
                 bestand[row.Artikel] += row.Bestand
             end
-            return parse(Int,p.first[6:end-4])=>bestand
-        end)
+            output[parse(Int,f[6:end-4])] = bestand
+        end
+        return output
     end
     function lager_mit(artikel,anzahl)
         lagers = read_lagers()
@@ -248,19 +256,22 @@ end
 # Schreibe eine Funktion die den gesamtbestand Berechnet
 @Aufgabe "14.3.3" begin
     using CSV
-    using DataFrames
     function read_lagers()
         path = "14-3"
         files = readdir(path)
-        Dict(map([f=>DataFrame(CSV.File(joinpath(path,f))) for f in files]) do p
-            dfl = p.second
+        output = Dict{Int,Dict{String, Int}}()
+        for f in files
             bestand = Dict{String,Int}()
-            for row in eachrow(dfl)
-                (row.Artikel in keys(bestand)) || (bestand[row.Artikel] = 0)
+            data = CSV.File(joinpath(path,f))
+            for row in data
+                if !(row.Artikel in keys(bestand)) 
+                    bestand[row.Artikel] = 0
+                end
                 bestand[row.Artikel] += row.Bestand
             end
-            return parse(Int,p.first[6:end-4])=>bestand
-        end)
+            output[parse(Int,f[6:end-4])] = bestand
+        end
+        return output
     end
     function gesamt_bestand()
         lagers = read_lagers()
