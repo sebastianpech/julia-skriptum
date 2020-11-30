@@ -120,7 +120,9 @@ end
 ### Eigenwerte und Eigenvektoren
 
 Mit den Funktion `eigvals` und `eigvecs` können Eigenwerte bzw. Eigenvektoren berechnet werden.
-Es soll eine Funktion geschrieben werden, die aus Eigenwerten und Eigenvektoren, in dem Format wie sie von den beiden Funktionen für eine Matrix ausgegeben werden, wieder die Matrix rekonstruieren.
+Es soll eine Funktion geschrieben werden, die aus Eigenwerten und Eigenvektoren, in dem Format wie sie von den beiden Funktionen für eine Matrix ausgegeben werden, wieder die Matrix rekonstruiert.
+Die Funktion soll für eine beliebige Anzahl von Eigenwerten (auch komplexe Eigenwerte) funktionieren.
+Tipps für die Lösung der Aufgabe sind in der Dokumentation unter [Standard Library/Linear Algebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) zu finden.
 
 ```julia; echo=false; results="hidden"
 function rekonstruiere(λ,ϕ)
