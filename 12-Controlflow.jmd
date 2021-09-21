@@ -382,10 +382,10 @@ U = 7.54
 Radius eingeben:
 ```
 
-Für die Kontrolle mit dem Kontrollprogramm muss die allgemeine Form der Eingabe verwendet werden. 
+Für die Kontrolle mit dem Kontrollprogramm muss die allgemeine Form der Eingabe verwendet werden.
 Zusätzlich muss die Schleife für die wiederholte Ausführung über eine Funktion gestartet werden.
 Die Funktion muss wie im folgenden Beispiel am Ende des Kontrollblocks stehen.
-Wichtig für die Kontrolle ist, dass alle Ausgaben exakt mit dem Beispiel oben übereinstimmen.
+Wichtig für die Kontrolle ist, dass alle Ausgaben exakt mit dem Beispiel oben übereinstimmen (Achtung: Nach der Ausgabe befindet sich eine Leerzeile).
 
 ```julia; eval=false
 @Aufgabe "11.3.2" begin
