@@ -482,7 +482,7 @@ Schreibe zwei Funktionen, welche die Wahrscheinlichkeit abschätzen, dass
 
 Die Idee hinter der Simulation ist, die Würfe mit einem Zufallszahlengenerator `rand(1:6)` zu simulieren und anschließend die positiven Ergebnisse in Relation zu den gesamten Würfen zu setzten.
 
-Wie schon bei der Berechnung von `π` soll das einzige Argument bei den Funktionen die Anzahl an zufälligen Würfen sein.
+Wie schon bei der Berechnung von `π` soll das einzige Argument bei den Funktionen die Anzahl an durchzuführenden Simulationen sein (eine Berechnung entspricht dreimal würfeln).
 Die Nummern für die Kontrolle sind `11.3.5.1` und `11.3.5.2`.
 
 ```julia; results="hidden"; echo=false
