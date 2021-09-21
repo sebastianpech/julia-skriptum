@@ -200,7 +200,7 @@ m[3,:]  # Dritte Zeile, alle Spalten
 ```
 
 Die Funktion `rand` erzeugt Zufallszahlen in unterschiedlicher Art.
-Ohne Argumente wird eine einzelne Zufahlszahl zwischen 0 und 1 zurückgegeben.
+Ohne Argumente wird eine einzelne Zufahlszahl, gleichmäßig, aus dem Interval $[0,1)$ generiert.
 Es können allerdings auch mehrere Int-Zahlen als Argumente übergeben werden, um ein Array mit Zufallszahlen zu erzeugen.
 Dabei gibt die erste Zahl die Anzahl der Elemente in erster Ordnung, die zweite Zahl die Anzahl der Elemente in zweiter Ordnung, usw. an.
 `rand(3, 2, 4)` erzeugt also ein `3×2×4`-Array dritter Ordnung, voller Zufallszahlen zwischen 0 und 1.
