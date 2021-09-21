@@ -60,7 +60,7 @@ Damit können die Links sowohl in der pdf-Version als auch in der Printversion g
 Zusätzlich zu den Unterlagen gibt es ein Kontrollprogramm, mit dem die Aufgaben zu den einzelnen Abschnitten kontrolliert werden können.
 Das Programm wird in Form eines eigenständigen Julia-Pakets verwendet und muss mit dem Paketmanager durch Eingabe von 
 ```
-add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#WS2020
+add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#WS2021
 ```
 installiert werden (Näheres dazu im Abschnitt Interaktion).
 Das Laden des Paketes erfolgt nach der Installation mit
