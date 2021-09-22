@@ -1,7 +1,5 @@
 # Kommentare
-In umfangreichen Programmen sammeln sich schnell hunderte Zeilen an Code an.
-Je länger ein Programm ist, desto schwieriger ist es, dessen Aufgabe aus den Codezeilen herauszulesen.
-Deshalb ist es sinnvoll, ein Programm mit Notizen zu ergänzen, die den Sinn und Zweck hinter Teilen des Codes erklären.
+Es ist sinnvoll, ein Programm mit Notizen zu ergänzen, die den Sinn und Zweck hinter Teilen des Codes erklären.
 Diese Notizen heißen *Kommentare*, beginnen mit einem `#`-Symbol und enden im Normalfall mit dem Zeilenende:
 ```julia; results="hidden"
 # Berechne die Fläche eines Kreises aus dessen Durchmesser
