@@ -121,6 +121,16 @@ for buchstabe in ["A", "B", "C", "D"]
 end
 ```
 
+Häufig kommt es vor, dass in einer `for`-Schleife Wert und Index eines Elements benötigt werden.
+Dafür gibt es die praktische Funktion `enumerate`, die auf ein iterierbares Objekt angewendet, den Index und den Wert jeder Position zurück gibt.
+In der `for`-Schleife können die beiden Rückgabewerte durch Angabe von zwei Variablennamen in runden Klammern zugewiesen werden:
+
+```julia
+for (index,buchstabe) in enumerate(["A", "B", "C", "D"])
+    println("Buchstabe $buchstabe steht an der Stelle $index")
+end
+```
+
 ### break und continue
 
 Eine Schleifeniteration kann jederzeit durch den Aufruf von `break` abgebrochen und den Aufruf von `continue` übersprungen werden.
@@ -147,6 +157,7 @@ sammle_vokale("Finde die Vokale in diesem Satz. Gehe aber nicht weiter als bis z
 `break` wird oft auch in Kombination mit `while`-Schleifen verwendet, die endlos laufen. 
 Wenn beispielsweise in der Schleife auf eine Dateneingabe gewartet wird oder die Abbruchbedingung sehr komplex ist.
 In diesem Fall kann eine Endlosschleife absichtlich durch Verwenden der Bedingung `true` konstruiert werden.
+
 
 ### Grundregeln für effizienten Code
 
