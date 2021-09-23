@@ -289,13 +289,15 @@ x <= y  # Ist x kleiner oder gleich y?
 x ≤ y  # \le TAB (wie <=)
 ```
 
-Mit den Operatoren `>` und `<` können auch zwei Wörter auf ihre alphabetische Reihenfolge überprüft werden:
+Mit den oben gezeigten Operatoren können auch zwei Strings auf ihre lexikographische Reihenfolge überprüft werden:
 ```julia; term=true
-"apple" < "banana"
+"apple" ≤ "banana"
 "apple" > "banana"
 "apple" > "Banana"
 ```
 Dabei ist zu beachten, dass Großbuchstaben immer vor Kleinbuchstaben eingeordnet werden.
+Betrachtet man nur Buchstaben des Alphabets, entspricht die lexikographische Ordnung der alphabetischen (`"a" < "b"`).
+Werden erweiterte Zeichen des Unicodestandards verwendet, erfolgt der Vergleich anhand einer vordefinierten Tabelle.
 
 Alle Ausdrücke, die eine Zahl vom Typ `Bool` zurückgeben, können mit den logischen Operatoren `&&` (*and*), `||` (*or*) und `!` (*not*) kombiniert werden.
 ```julia; term=true
