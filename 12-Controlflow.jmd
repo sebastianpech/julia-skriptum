@@ -121,6 +121,16 @@ for buchstabe in ["A", "B", "C", "D"]
 end
 ```
 
+Häufig kommt es vor, dass in einer `for`-Schleife Wert und Index eines Elements benötigt werden.
+Dafür gibt es die praktische Funktion `enumerate`, die auf ein iterierbares Objekt angewendet, den Index und den Wert jeder Position zurück gibt.
+In der `for`-Schleife können die beiden Rückgabewerte durch Angabe von zwei Variablennamen in runden Klammern zugewiesen werden:
+
+```julia
+for (index,buchstabe) in enumerate(["A", "B", "C", "D"])
+    println("Buchstabe $buchstabe steht an der Stelle $index")
+end
+```
+
 ### break und continue
 
 Eine Schleifeniteration kann jederzeit durch den Aufruf von `break` abgebrochen und den Aufruf von `continue` übersprungen werden.
@@ -147,6 +157,7 @@ sammle_vokale("Finde die Vokale in diesem Satz. Gehe aber nicht weiter als bis z
 `break` wird oft auch in Kombination mit `while`-Schleifen verwendet, die endlos laufen. 
 Wenn beispielsweise in der Schleife auf eine Dateneingabe gewartet wird oder die Abbruchbedingung sehr komplex ist.
 In diesem Fall kann eine Endlosschleife absichtlich durch Verwenden der Bedingung `true` konstruiert werden.
+
 
 ### Grundregeln für effizienten Code
 
@@ -382,10 +393,10 @@ U = 7.54
 Radius eingeben:
 ```
 
-Für die Kontrolle mit dem Kontrollprogramm muss die allgemeine Form der Eingabe verwendet werden. 
+Für die Kontrolle mit dem Kontrollprogramm muss die allgemeine Form der Eingabe verwendet werden.
 Zusätzlich muss die Schleife für die wiederholte Ausführung über eine Funktion gestartet werden.
 Die Funktion muss wie im folgenden Beispiel am Ende des Kontrollblocks stehen.
-Wichtig für die Kontrolle ist, dass alle Ausgaben exakt mit dem Beispiel oben übereinstimmen.
+Wichtig für die Kontrolle ist, dass alle Ausgaben exakt mit dem Beispiel oben übereinstimmen (Achtung: Nach der Ausgabe befindet sich eine Leerzeile).
 
 ```julia; eval=false
 @Aufgabe "11.3.2" begin
@@ -482,7 +493,7 @@ Schreibe zwei Funktionen, welche die Wahrscheinlichkeit abschätzen, dass
 
 Die Idee hinter der Simulation ist, die Würfe mit einem Zufallszahlengenerator `rand(1:6)` zu simulieren und anschließend die positiven Ergebnisse in Relation zu den gesamten Würfen zu setzten.
 
-Wie schon bei der Berechnung von `π` soll das einzige Argument bei den Funktionen die Anzahl an zufälligen Würfen sein.
+Wie schon bei der Berechnung von `π` soll das einzige Argument bei den Funktionen die Anzahl an durchzuführenden Simulationen sein (eine Berechnung entspricht dreimal würfeln).
 Die Nummern für die Kontrolle sind `11.3.5.1` und `11.3.5.2`.
 
 ```julia; results="hidden"; echo=false

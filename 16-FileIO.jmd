@@ -190,7 +190,7 @@ print(readdir("14-3"))
 ```
 
 In dem Ordner befinden sich die Bestandslisten für alle Lager.
-Die Lager sind immer nach dem Schema `Lager[id].csv` benannt.
+Die Lager sind immer nach dem Schema `Lager[id].csv` benannt (Achtung: nicht jede `id` muss vergeben sein).
 Der Code soll in allen Prepper-Camps verwendet werden können, d.h. die Anzahl an Dateien kann sich immer ändern und da alle Camps verschiedene Betriebssysteme verwenden, muss immer `joinpath` beim Verketten von Pfaden verwendet werden:
 
 ```julia
@@ -199,6 +199,7 @@ joinpath("14-3","Lager1.csv")
 
 Wie im Abschnitt Interaktion erwähnt, sind die Trennzeichen bei Pfaden je nach Betriebssystem verschieden.
 Da das zu einigen Problemen führen kann, gibt es die Funktion `joinpath`, die das richtige Trennzeichen wählt.
+
 
 ### Bestandsermittlung Lager
 

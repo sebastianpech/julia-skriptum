@@ -27,6 +27,9 @@ Pfad01;Pfad02;Pfad03
 # "Neue" Systemvariable PATH
 Pfad01;Pfad02;Pfad03;Julia-Pfad
 ```
+
+Für Windows 7 ist es zusätzlich notwendig einen Fix von Microsoft zu installieren.
+Der Link zum *TLS easy fix* befindet sich in der Julia Installationsanleitung beim Unterpunkt [Windows 7 / Windows Server 2012 Installation Notes](https://julialang.org/downloads/platform/\#windows\_7\_windows\_server\_2012\_installation\_notes)\footnote{[https://julialang.org/downloads/platform/\#windows\_7\_windows\_server\_2012\_installation\_notes](https://julialang.org/downloads/platform/\#windows\_7\_windows\_server\_2012\_installation\_notes)}.
 ### Linux
 Zur Installation von Julia auf einem Linux-Betriebssystem müssen zuerst die \enquote{Generic Binaries} für die richtige Prozessor-Architektur heruntergeladen werden.
 Die Datei im `.tar.gz`-Format muss danach in einen beliebigen Ordner auf dem Computer entpackt werden.

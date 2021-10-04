@@ -60,7 +60,7 @@ Damit können die Links sowohl in der pdf-Version als auch in der Printversion g
 Zusätzlich zu den Unterlagen gibt es ein Kontrollprogramm, mit dem die Aufgaben zu den einzelnen Abschnitten kontrolliert werden können.
 Das Programm wird in Form eines eigenständigen Julia-Pakets verwendet und muss mit dem Paketmanager durch Eingabe von 
 ```
-add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#WS2020
+add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#WS2021
 ```
 installiert werden (Näheres dazu im Abschnitt Interaktion).
 Das Laden des Paketes erfolgt nach der Installation mit
@@ -142,3 +142,43 @@ JuliaSkriptumKontrolle.status()
 ```
 
 Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt (Näheres dazu im Abschnitt Interaktion), wird, wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
+
+## Hilfe beim Lösen der Aufgaben
+
+In den letzten Jahren haben wir häufig bei der Betreuung erlebt, dass es möglich ist, durch gezieltes Fragenstellen unsererseits, Studierende dabei anzuleiten, ihre eigenen Fragen besser zur formulieren bzw. sogar selbst zu beantworten.
+Aus den vielen Gesprächen ist eine Liste an Fragen entstanden, die beim Lösen der Aufgaben helfen, indem Wissens- und Verständnislücken aufgedeckt werden.
+
+- **Angabe**
+    - Kann ich mit meinen eigenen Worten beschreiben was das Programm machen soll?
+    - Was sind die Eingabeparameter?
+    - Was sind die Ausgabeparameter?
+    - Gibt es Hinweise in der Angabe die mir die Lösung vereinfachen können?
+    - Welche Annahmen kann ich mit absoluter Sicherheit aus der Angabe ziehen?
+    - Gibt es eventuell Spezialfälle dich ich beachten sollte?
+    - Gibt es etwas in der Angabe, das ich nicht verstehe?
+    - Welche spezifischen Fragen zur Angabe kann ich stellen, die mir dabei helfen die Aufgabe zu lösen?
+    - Kann ich die Problemstellung in der Angabe in Teilprobleme zerlegen, die ich leichter lösen kann?
+- **Fehlermeldungen**
+    - Erhalte ich eine Fehlermeldung?
+    - Verstehe ich was mit der Fehlermeldung gemeint ist?
+    - In welcher Zeile meines Programms tritt der Fehler auf?
+    - Bei welchen Zeilen meines Programms kann ich ausschließen, dass ein Fehler auftritt.
+    - Welche Zeilen meines Programms könnten zu dem Fehler führen?
+    - Habe ich etwas falsch geschrieben oder ist der Fehler in der Logik meines Programs?
+- **Beispiele**
+    - Funktioniert mein Programm für die angegebenen Beispiel?
+    - Wenn nein, warum funktioniert es nicht?
+    - Wenn ja, gibt es Spezialfälle bei den Eingabedaten, die ich beachten sollte und auf die ich bis jetzt vergessen habe?
+    - Kann ich alle möglichen Variationen von Eingabedaten mit eigenen Worten beschreiben?
+    - Weiß ich von welchem Datentyp die Eingabe- und Ausgabeparameter sind?
+- **Eigenes Wissen**
+    - Wenn ich nicht an einen Programmiersprache gebunden wäre, welche Funktionen würde ich benötigen, damit mein Programm funktioniert?
+    - Kann ich den Programmablauf in Worten beschreiben?
+    - Verstehe ich jede Zeile in meinem Code?
+    - Verstehe ich jede Zeile in meinem Code wirklich?
+    - Bei welchen Teilen meines Codes bin ich mir sicher, dass sie stimmen?
+    - Zu welchen spezifischen Teilen meines Programms kann ich jemandem der sich gut auskennt eine Frage stellen?
+    - Was hat mir bei meinen anderen Aufgaben dabei geholfen eine Lösung zu finden?
+    - Welche Fehler hatte ich bei anderen Aufgaben, die ich dann entdeckt habe?
+    - Wenn ich die Kapitel die im Skriptum vor der Aufgabe kommen durchgehe, welche Werkzeuge wurden dort vorgestellt, die mir bei der Lösung der Aufgabe helfen?
+    - Wenn ich die Kapitel die im Skriptum nach der Aufgabe kommen überfliege, welche Werkzeuge wurden dort vorgestellt, die ich damit nicht bei der Lösung der Aufgabe brauchen werde?

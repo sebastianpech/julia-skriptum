@@ -177,6 +177,27 @@ a /= 2  # wie a = a / 2
 a ^= 2  # wie a = a^2
 ```
 
+Zahlen vom Typ `Float` sind für menschliche Anwender etwas eigenartig in der Verwendung, da sie wie Dezimalzahlen aussehen, es aber nicht sind.
+Wir sind es gewohnt Zahlen zur Basis 10 auszudrücken.
+Das bedeutet, dass ein Dezimalbruch (z.B. $0{,}1$) exakt dargestellt werden kann.
+Verallgemeinert gesagt, lässt sich der Nenner eines Bruchs durch die Primfaktoren von 10 (2 und 5) ausdrücken, ist die Zahl exakt als Dezimalzahl abbildbar.
+Ähnliches gilt für binäre Zahlen mit den Primfaktoren von 2 (2).
+Diese Diskrepanz führt zu dem folgenden unerwarteten Ergebnis
+
+```julia;term=true
+0.1+0.2
+```
+
+Weder `0.1` noch `0.2` haben eine exakte Darstellung als binäre Gleitkommazahlen.
+Bei der Addition wird dann der Rest der beim Überführen ins Binärsystem bleibt nicht berücksichtig und führt zu einer Abweichung vom Ergebnis, wenn die Addition im Dezimalsystem durchgeführt worden wäre.
+Exakt lässt sich diese Operation mit dem Typ `Rational` oder einem zusätzlichen Paket wie z.B. `Decimals.jl` durchführen.
+Diese, vereinfacht gesehen, Rundungsfehler, führen auch dazu, dass weder das Kommutativ noch das Distributivgesetz für `Float`-Zahlen Gültigkeit haben und bedingen, dass ekaxte Vergleiche mit `==` selten die erwünschte Aussage haben:
+
+```julia;term=true
+0.1+0.2 == 0.3
+0.1+0.2 ≈ 0.3 # mit \approx
+```
+
 Die Funktionen `string()` und `parse()` konvertieren Zahlen in Strings und umgekehrt:
 ```julia; term=true
 string(19.0)
@@ -268,13 +289,15 @@ x <= y  # Ist x kleiner oder gleich y?
 x ≤ y  # \le TAB (wie <=)
 ```
 
-Mit den Operatoren `>` und `<` können auch zwei Wörter auf ihre alphabetische Reihenfolge überprüft werden:
+Mit den oben gezeigten Operatoren können auch zwei Strings auf ihre lexikographische Reihenfolge überprüft werden:
 ```julia; term=true
-"apple" < "banana"
+"apple" ≤ "banana"
 "apple" > "banana"
 "apple" > "Banana"
 ```
 Dabei ist zu beachten, dass Großbuchstaben immer vor Kleinbuchstaben eingeordnet werden.
+Betrachtet man nur Buchstaben des Alphabets, entspricht die lexikographische Ordnung der alphabetischen (`"a" < "b"`).
+Werden erweiterte Zeichen des Unicodestandards verwendet, erfolgt der Vergleich anhand einer vordefinierten Tabelle.
 
 Alle Ausdrücke, die eine Zahl vom Typ `Bool` zurückgeben, können mit den logischen Operatoren `&&` (*and*), `||` (*or*) und `!` (*not*) kombiniert werden.
 ```julia; term=true
