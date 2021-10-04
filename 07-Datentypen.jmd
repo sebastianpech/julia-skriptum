@@ -188,7 +188,7 @@ Diese Diskrepanz führt zu dem folgenden unerwarteten Ergebnis
 0.1+0.2
 ```
 
-Weder `0.1` noch `0.2` haben eine exakte Darstellung als binäre Gleichkommazahlen.
+Weder `0.1` noch `0.2` haben eine exakte Darstellung als binäre Gleitkommazahlen.
 Bei der Addition wird dann der Rest der beim Überführen ins Binärsystem bleibt nicht berücksichtig und führt zu einer Abweichung vom Ergebnis, wenn die Addition im Dezimalsystem durchgeführt worden wäre.
 Exakt lässt sich diese Operation mit dem Typ `Rational` oder einem zusätzlichen Paket wie z.B. `Decimals.jl` durchführen.
 Diese, vereinfacht gesehen, Rundungsfehler, führen auch dazu, dass weder das Kommutativ noch das Distributivgesetz für `Float`-Zahlen Gültigkeit haben und bedingen, dass ekaxte Vergleiche mit `==` selten die erwünschte Aussage haben:
