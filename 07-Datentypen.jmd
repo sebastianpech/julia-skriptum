@@ -239,13 +239,13 @@ round(0.00345123; sigdigits=4)
 Das Keyword `digits` definiert dabei die Anzahl der Nachkommastellen, `sigdigits` legt die Anzahl der signifikanten Stellen fest.
 Einfacher gesagt: `digits` beginnt ab dem Komma zu zählen, während `sigdigits` ab der ersten Ziffer ungleich 0 zählt.
 
-Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`\footnote{`÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.} (*floor division*) und der Modulo-Operator, `%`.
+Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`\footnote{`÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.} (*floor division*) und der Modulo-Operator `%`.
 ```julia; term=true
 7÷3
 7%3
 ```
 `÷` führt eine Division durch und rundet das Ergebnis auf die nächste ganze Zahl ab.
-Der Modulus-Operator gibt den Rest einer Division aus.
+Der Modulo-Operator gibt den Rest einer Division aus.
 Damit kann z.B. leicht überprüft werden, ob eine Zahl durch eine andere Zahl teilbar ist.
 
 Julia hat standardmäßig mathematische Funktionen wie `sin`, `cos`, `log`, `abs` und viele mehr inkludiert.
