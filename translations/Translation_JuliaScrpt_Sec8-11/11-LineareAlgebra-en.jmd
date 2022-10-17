@@ -1,0 +1,153 @@
+# Linear Algebra
+
+Besides supporting multi-dimensional arrays (vectors, matrices, tensors), Julia also provides implementations of many useful linear algebra functions.
+The linear algebra package is included in Julia and can be loaded with `using` like all other packages.
+
+```{julia}
+using LinearAlgebra
+```
+
+Details about the package are available in [Standard Library/Linear Algebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) in der Dokumentation zu finden.
+
+## Linear systems of equations
+
+A usual problem in linear algebra is solving systems of equations, such as:
+
+```math
+   x - y = 22
+```
+```math
+2x + 3y = 11
+```
+In order to solve the system of equations, the coefficient matrix and the vector on the right-hand side have to be defined first.
+
+```{julia;results="hidden"}
+A = [1 -1
+     2  3]
+c = [22, 11]
+```
+
+Then, the determinant is calculated by `det`, to obtain information about the solvability of the system.
+
+```{julia}
+det(A)
+```
+
+Obviously, the system of equations has a unique solution. 
+In the next step ``mathbf{A}`` must be inverted.
+
+```{julia}
+A_inv = inv(A)
+```
+
+The solution vector ``mathbf{b}`` is then given by:
+
+```{julia}
+b = A_inv*c
+```
+
+The check can be done simply by multiplying the values.
+
+```{julia}
+A*b
+```
+
+Since this procedure is often used and can be easily optimized depending on ``\mathbf{A}``, Julia offers a simplified notation with the `\` operator, where the additional inversion is omitted.
+
+```{julia}
+A\c
+```
+
+## Vector functions
+
+The linear algebra package also includes functions for calculating the scalar product `dot` or `⋅` (`\cdot`+`TAB` key), the cross product `cross` or `×` (`\times`+`TAB` key) and the length `norm` of vectors.
+
+```julia; term=true
+[1,2,3] ⋅ [4,5,6]
+[1,2,3] × [4,5,6]
+norm([1,2,3])
+```
+
+## Assignments
+
+### Solvability of a system of linear equations
+
+Write a function that returns `true` when a system of linear equations has a solution (not necessarily unique), and `false` when not.
+
+```julia; echo=false; results="hidden"
+function lösbar(A,b)
+    rank(A) == rank(hcat(A,b))
+end
+```
+
+Examples:
+```julia; term=true
+lösbar([1 -1
+        2  3],[22, 11])
+lösbar([1 -1
+        2  3
+        9 -1],[22, 11, 3])
+lösbar([1 3
+        2  8
+        3 11],[9, -3, 6])
+lösbar([1 1
+        2 2],[2, 3])
+```
+
+### Solve the system of equation 
+
+Rearrange the following equations into matrix representation and solve them. 
+
+```math
+   x - y + z = 22
+```
+```math
+   2x + 3y = 11
+```
+```math
+   10x-y/2+5z=0
+```
+
+To check the assignment, the common form of the check function has to be used.
+```julia; eval=false
+@Aufgabe "10.3.2" begin
+    # insert code.
+    # the solution vector has to be calculated in the last line.
+end
+```
+
+### Eigenvalues and eigenvectors
+
+The functions `eigvals` and `eigvecs` calculate eigenvalues and eigenvectors, respectively.
+Write a function that reconstructs the matrix from eigenvalues and eigenvectors. 
+The reconstructed matrix has the same format from which the eigenvalues and eigenvectors were obtained.
+The function should work for any number of eigenvalues (including complex eigenvalues).
+Some hints, to solve this assignment, can be found in the documentation in [Standard Library/Linear Algebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/).
+
+```julia; echo=false; results="hidden"
+function rekonstruiere(λ,ϕ)
+    ϕ*Diagonal(λ)*inv(ϕ)
+end
+```
+
+Examples:
+```julia; term=true
+A = [1 -1 1; 2  3 0; 10 -0.5 5]; λ = eigvals(A); ϕ = eigvecs(A);
+rekonstruiere(λ,ϕ)
+```
+### Angle between vectors
+
+Code a function that calculates the angle (in radians) between two vectors of arbitrary dimension.
+
+```julia; echo=false; results="hidden"
+function winkel(v1,v2)
+    acos(v1⋅v2/(norm(v1)*norm(v2)))
+end
+```
+
+Examples:
+```julia; term=true
+winkel([1,5],[3,7])
+winkel([2,3,-1],[8,-1,2])
+winkel([1,0,0],[1,0,0])
+```

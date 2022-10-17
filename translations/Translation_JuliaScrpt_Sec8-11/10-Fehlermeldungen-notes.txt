@@ -1,0 +1,2 @@
+Bei `[1]` wird der auslösende Funktionsaufruf angezeigt, der Zugriff auf einen Arrayindex. Jede weitere Zeile entspricht dem nächsthöheren Aufruf. 
+The call which caused the error is show at `[1]`; in this case the access to an array index. Next lines corresponds to the next higher calls. 

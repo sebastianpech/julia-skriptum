@@ -1,0 +1,183 @@
+# Preface
+
+These teaching documents are intended to support the course Programming in Civil Engineering.
+All contents discussed in the course are listed chronologically in this document and supplemented by useful information and examples. 
+Some sections are concluded with a collection of tasks, which must be solved and uploaded to the TUWEL course in order to obtain a positive grade for the course.
+
+The aim of the course is to give a first but comprehensive insight into the world of programming languages.
+Contents that go beyond the general programming basics are thematically tailored to civil engineering studies.
+
+## Goals
+
+We have experienced ourselves that programming skills are required in some master courses and especially in the diploma thesis.
+After accomplishing the course, students should be able to solve tasks such as evaluating experiments, adapting existing programs or creating their own programs under supervision.
+
+The necessary content to conceptualize and code programs independently is not covered in the course.
+This topic is complex and already requires some experience.
+For the ones who are interested in the topic are, therefore, given further references in some sections.   
+
+## Programming language
+
+The world of programming languages is diverse and extensive. 
+There are a variety of application areas for which specific languages have been developed.
+Since many problems of civil engineers are based on science and mathematics, it is obvious to use one of the so-called scientific languages in this course.
+
+The term refers to programming languages that usually support mathematical objects such as vectors and matrices or have statistics libraries.
+Some representatives of this class of programming languages are MATLAB, R, Python with SciPy and Julia.
+
+Each of these languages has its advantages and disadvantages.
+MATLAB is especially widely used at universities and offers a user-friendly interface.
+R is tailored to perform statistical analyses in particular.
+Python is the most general language of this group and is one of the most popular programming languages around.
+Julia is one of the younger programming languages, but is characterized by a very good language design and high performance.
+
+In the early days of this course, MATLAB was taught, mainly due to the widespread distribution across universities.
+One disadvantage of MATLAB is: a non-university license is very expensive.
+Our goal is that all students, even after their studies, have access to the software and can simplify their daily work with programming skills.
+
+Python and R are freely available and widely used.
+However, one drawback with respect to this course is that these programming languages are relatively different from MATLAB.
+Since MATLAB is used in other courses and we do not want to confront the novice programmers with two very different languages during their studies, Python and R are not options for us.
+
+Julia is also freely available and has a syntax very similar to MATLAB.
+This and the compelling language design give us enough reasons to use Julia in this course.
+
+The syntactical differences of MATLAB, Python and Julia are roughly summarized in this [cheatsheet](https://cheatsheets.quantecon.org/)\footnote{<https://cheatsheets.quantecon.org>}.
+If it is necessary to write a program in Julia, we recommend to use the cheatsheet as a first aid.
+
+## Teaching documents
+
+The documents were extended for useful links in order to provide further information or sources.
+Entries in the Julia documentation at <https://docs.julialang.org> are always referred to in the text by specifying the section names.
+Links that do not refer to the documentation are always indicated with an additional footnote.
+For example, more information about strings can be found in the documentation at [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) or on the [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} website.
+
+This allows the links to be opened in both the pdf version and the print version.
+
+## Assignment checker
+
+In addition to the teaching documents, there is a assignment checker that can be used to check the assignments for the individual sections.
+The program is used in the form of a stand-alone Julia package and must be installed with the package manager by entering 
+```
+add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#WS2021
+```
+For more details, see the Interaction section.
+Loading the package is done after installation with
+
+```julia; results="none" 
+using JuliaSkriptumKontrolle
+```
+
+The assignments are mostly about writing short, independent codes or functions.
+For example, a single function can be checked as follows:
+
+```julia; eval=false
+@Aufgabe "1.2.3" function meine_funktion(x,y)
+    # Insert the code here
+end
+```
+
+Thereby the input `@Aufgabe "1.2.3"` starts the checking process for the assignment number 1.2.3.
+The number always corresponds to the heading numbering of the corresponding assignment.
+
+If an assignment requires to use multiple functions or additional external packages, the common version of the previous code can be used:
+
+```julia; eval=false
+@Aufgabe "2.1.3" begin
+    using EinExtraPaket # Load a package
+
+    function meine_funktion(x)
+        # Insert the code here
+    end
+
+    # Insert the other code here
+end
+```
+
+If a special input is required, it is noted with the respective assignment.
+
+If an assignment is not solved correctly, an error message is displayed.
+In the following assignment, a function for calculating the angle between two vectors should be written.
+
+```julia
+@Aufgabe "10.3.4" function winkel(v1,v2)
+    v1-v2 # Obviously wrong
+end
+```
+
+The current status of all tasks (Not solved yet, Wrong, Correct) can be displayed with the following function:
+
+```julia
+JuliaSkriptumKontrolle.status()
+```
+
+The output also contains the number of achieved and possible points.
+Since assignment `10.3.4` was solved incorrectly, the `j JuliaSkriptumKontrolle.get_state_string(Val(:failed))` is written at the assignment number instead of `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`.
+
+The assignments are submitted in the TUWEL.
+All assignments should be submited in a Julia file (extension `.jl`).
+The checked assignments have to be given one after the other in one file (e.g. `loesung_aufgaben.jl`):
+
+```julia; eval=false
+@Aufgabe "1.2.3" function meine_funktion(x,y)
+    # Insert the code here
+end
+
+@Aufgabe "2.1.3" begin
+    using EinExtraPaket # Ein Paket laden
+
+    function meine_funktion(x)
+        # Insert the code here
+    end
+
+    # Insert the other code here
+end
+
+@Aufgabe "10.3.4" function winkel(v1,v2)
+    v1-v2 # Obviously wrong
+end
+
+JuliaSkriptumKontrolle.status()
+```
+
+If the above file is executed with `julia meine_loesungen.jl` (more on this in the Interaction section), and if all the tasks were solved correctly, no error is shown.
+
+## Help with solving the tasks
+
+In the last few years, we have frequently experienced that it is possible to guide students to pose better questions or even to answer them themselves by asking specific questions.
+Based on many conversations, a list of questions came out that help in solving the assignments by revealing gaps in knowledge and understanding.
+
+- **Assignment description**
+    - Can I describe in my own words what the program should do?
+    - What are the input parameters?
+    - What are the output parameters?
+    - Is there a hint that can simplify the solution for me?
+    - What assumptions can I make with absolute certainty from the assignment description?
+    - Is there anything special I should consider?
+    - Is in the description anything that I do not understand?
+    - What questions about the assignment description can I ask that will help me solve the problem?
+    - Can I break down the problem into easier subproblems which can be solved more easily?
+- **Error messages**
+    - Do I get an error message?
+    - Do I understand what is meant by the error message?
+    - In which line of my program does the error occur?
+    - In which lines of my program can I exclude that an error occurs?
+    - Which lines of my program could lead to the error?
+    - Did I write something wrong or does the problem stem from the logic of the program?
+- **Examples**
+    - Does my program work for the given example?
+    - If not, why does it not work?
+    - If yes, are there any special cases in the input data that I should consider and that I have forgotten about so far?
+    - Can I describe all possible variations of the input data in my own words?
+    - Do I know what data type the input and output parameters are of?
+- **Own knowledge**
+    - If I were not tied to a programming language, what functions would I need to make my program work?
+    - Can I describe the program flow in words?
+    - Do I understand every line in my code?
+    - Do I really understand every line in my code?
+    - What parts of my code am I sure are correct?
+    - What specific parts of my program can I ask a question about to someone who knows it well?
+    - What helped me to find a solution in my other assignments?
+    - What mistakes did I have in other assignments that I then discovered?
+    - If I go through the previous chapters in the script, what tools were introduced there which helped me solve the assignment?
+    - If I skim the chapters that come after the assignment in the script, which tools were presented there that I will not need to solve the assignment?

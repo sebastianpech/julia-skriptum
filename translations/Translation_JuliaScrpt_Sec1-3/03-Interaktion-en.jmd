@@ -1,0 +1,219 @@
+# Interaction
+
+There are different ways to execute Julia codes:
+- interactively in form of the REPL (Read-eval-print loop) over the program icon or input of `julia` in the Commandline;
+- as script by entering `julia script.jl [arg1, arg2 ...]` in the command line (the square brackets indicate optional arguments);
+- In an editor that supports Julia (e.g. VS Code with the appropriate extension);
+- as a so-called notebook with Jupyter.
+
+Jupyter notebooks are suitable to document calculations and e.g. to extend them with graphics and formulas; but this is beyond the scope of this course.
+For further reference, see the [`IJulia.jl`](https://github.com/JuliaLang/IJulia.jl)\footnote{<https://github.com/JuliaLang/IJulia.jl>} which activates Julia for Jupyter notebooks.
+
+## The REPL
+
+The REPL provides the basic method of accessing Julia.
+The functionality, as it is in the name REPL, consists of:
+1. **R**ead: To read in a command
+2. **E**val: Evaluate the read command
+3. **P**rint: Output the result
+4. **L**oop: Return to 1. and wait for the next command
+
+The REPL can be opened by starting Julia via the program icon, the command `julia` or directly in VS Code (executing the function `exit()` or pressing `Ctrl-D` closes the REPL again).
+
+Depending on the operating system, a window similar to the one shown in the following figure will open.
+![REPL window right after start](../data/img/repl-01.png)
+
+After the start, the cursor is located next to the text `julia>`, which is called prompt.
+The REPL is now in \enquote{Julian mode}.
+That means, Julia commands can be inserted and evaluated now.
+
+The REPL knows three more modes, which can be started by entering a special character directly after the prompt:
+1. \enquote{Help mode} (`help?>`) by `?`: Erlaubt die Anzeige der Hilfe für bestimmte Ausdrücke.
+2. Paketmanager (`(v1.2) pkg>`) by `]`: Startet den Paketmanager, mit dem zusätzliche Pakete installiert werden können.
+3. \enquote{Shell mode} (`shell>`) by `;`: allows to execute commands in the operating system.
+
+The \enquote{Julian mode} can be resumed again by pressing the backspace. 
+
+The REPL offers a so-called Autocompletion for Julia commands.
+If only a part of a command is entered, it can be completed by pressing `TAB`. 
+This is very convenient, because the user does not have to remember the exact wording of each command.
+
+## Executing a script
+
+A Julia file or a Julia script (extension `.jl`) can be executed via the command line.
+Depending on the operating system, this can be done in different ways:
+- Windows: The command line is accessed through the program cmd.exe. The easiest way to reach it is by pressing the `windows+r` (Run) and entering \enquote{cmd} in the appeared window.
+- macOS: In macOS the command line is called Terminal. Using the Spotlight search (`cmd+space`) and typing \enquote{Terminal} will take you to the correct app.
+- Linux: Linux users should know how to get to the command line.
+
+The Command line looks like the Julia-REPL and works in similar principle.
+The most important commands for navigation are:
+- `pwd`: outputs the current directory (also called \enquote{Working Directory}).
+- `cd path`: switches to the directory `path`.
+- `ls`: lists the contents of the current directory.
+These commands are sufficient to solve the assignments; however, more of them are available depending on the operating system.
+
+The `julia` command is available, after the installation of Julia.
+In order to execute a script `my-script.jl`, enter the `julia my-script.jl` in the command line.
+The call `my-script.jl` specifies the path to the executed file.
+This is called a relative path, which is relative to the current directory.
+If the file is located in a subfolder `scripts`, the command will be
+- in Windows: `julia scripts\my-script.jl` und
+- in macOS and Linux: `julia scripts/my-script.jl`
+The opposite to relative paths are absolute paths.
+An absolute path always refers to the drive e.g. `C:\` oder `/`.
+
+In general, we recommend to work with relative paths, because then the script can be executed on any device without adjusting the paths.
+In the following example, a file `meinedatei.txt` is opened with an absolute path and with a relative path.
+
+```julia; eval=false
+file = open("/Users/someuser/meinedatei.txt") # absolute path in Linux
+file = open("C:\\Benuter\\meinedatei.txt") # absolute path in Windows
+file = open("meinedatei.txt") # relative path
+```
+
+The absolute paths only works if the folder with the same path is present on each device where the command is executed.
+However, if `meinedatei.txt` is always in the directory where the script is started, the file can be found with the relative path regardless of the device.
+In the Windows path, `\` is used as a separator, although the Windows path actually contains only a single `\`.
+This is necessary because `\` introduces a so-called \enquote{Special Character}. 
+More information on this topic is given in the section Strings.
+
+## VS Code Specifications
+
+VS Code contains a built-in REPL that can be opened with the command `Julia: Start REPL`.
+A command entry is carried out with the key combination `Ctrl`+`Shift`+`P` or `Cmd`+`Shift`+`P` on the Mac.
+This REPL then appears below the editor window and supports the full functionality of the Julia REPL.
+
+Besides the REPL, commands can be also executed directly from the file which is currently edited.
+By pressing 'Alt+Enter', the current block of the code is evaluated by the REPL.
+This allows larger blocks of code to be executed quickly, since the function automatically groups syntactically meaningful lines from the environment.
+
+```julia; eval=false
+function meine_funktion()
+    return 10
+end
+
+x = 10
+y = 12
+```
+
+In the script above, if `Alt+Enter` is pressed in the line `return 10`, the line above and below it are also executed.
+In contrary, if `Alt+Enter` is pressed in the line `x = 10`, only this line is executed.
+
+More functions are explained in interactive way on the website of the [Julia extension for VS Code](https://www.julia-vscode.org/)\footnote{https://www.julia-vscode.org/}.
+
+## Special REPL modes
+
+### Help
+
+Julia source code is self-documented. This means that the description and help for functions is written directly into the code. 
+During programming, a guideline must be followed so that the help for a function can also be called by the user (see Docstrings in the Functions section).
+
+As already described in the section Interaction, there is a separate REPL mode that displays help for functions.
+This mode can be activated by typing `?` directly after prompt `julia>`. 
+Then, the prompt should change to `help?>`. 
+Now, any function (e.g. `abs` for the absolute value of a number) can be entered.
+By confirming with Enter the following output appears:
+
+```julia; term=true; eval=false
+help?> abs
+search: abs abs2 abspath AbstractSet abstract type AbstractChar AbstractDict AbstractFloat AbstractArray AbstractRange AbstractString AbstractVector
+
+  abs(x)
+
+  The absolute value of x.
+
+  When abs is applied to signed integers, overflow may occur, resulting in the return of a negative value. This overflow occurs only when abs is applied to
+  the minimum representable value of a signed integer. That is, when x == typemin(typeof(x)), abs(x) == x < 0, not -x as might be expected.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> abs(-3)
+  3
+
+  julia> abs(1 + im)
+  1.4142135623730951
+
+  julia> abs(typemin(Int64))
+  -9223372036854775808
+```
+
+The help for the functions is also available at [docs.julialang.org](https://docs.julialang.org). Here, the documentation is extended with useful tips and explanations.
+
+If a problem arise when using Julia, there are various platforms on which one can find the solution:
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/julia)\footnote{<https://stackoverflow.com/questions/tagged/julia>}
+- [Discourse](https://discourse.julialang.org/)\footnote{<https://discourse.julialang.org>}
+- [Github](https://github.com/)\footnote{<https://github.com>}
+
+Github is the central platform where Julia packages (and Julia itself) are managed. If you find a bug, you can write a message there and contact developers directly.
+
+### Package manager
+
+The Julia community continuously extends basic components of the language with new features.
+Such extensions are added to Julia through packages.
+
+The package manager can be activated from the REPL by typing `]` directly after `julia>` prompt.
+Then, the prompt changes to `(v1.2) pkg>`.
+The package manager is a very powerful tool which functionality is documented on [Standard Library/Pkg](https://docs.julialang.org/en/v1/stdlib/Pkg/).
+In this course, we will focus on installing, updating, and removing packages.
+
+A package, e.g. `Example.jl`, can be installed by `add`:
+```julia;term=true; eval=false
+(v1.2) pkg> add Example
+  Updating registry at `~/.julia/registries/General`
+  Updating git-repo `https://github.com/JuliaRegistries/General.git`
+ Resolving package versions...
+ Installed Example ─ v0.5.3
+  Updating `~/.julia/environments/v1.2/Project.toml`
+  [7876af07] + Example v0.5.3
+  Updating `~/.julia/environments/v1.2/Manifest.toml`
+  [7876af07] + Example v0.5.3
+```
+
+If there are new versions of the packages, they can be updated via `update` command:
+```julia;term=true; eval=false
+(v1.2) pkg> update
+  Updating registry at `~/.julia/registries/General`
+  Updating git-repo `https://github.com/JuliaRegistries/General.git`
+ Resolving package versions...
+  Updating `~/.julia/environments/v1.2/Project.toml`
+ [no changes]
+  Updating `~/.julia/environments/v1.2/Manifest.toml`
+ [no changes]
+```
+
+To remove a package, the `rm` command can be used:
+```julia;term=true; eval=false
+(v1.2) pkg> rm Example
+  Updating `~/.julia/environments/v1.2/Project.toml`
+  [7876af07] - Example v0.5.3
+  Updating `~/.julia/environments/v1.2/Manifest.toml`
+  [7876af07] - Example v0.5.3
+```
+
+## Assignments
+
+In the course, a few selected packages will be used to extend Julia.
+The first assignment is to install these packages on your own computer.
+
+### Installation of the packages required for the course
+
+The following packages are to be installed with the package manager.
+
+- `CSV.jl`
+- `DataFrames.jl`
+- `Plots.jl`
+- `Unitful.jl`
+- `Measurements.jl`
+- `Debugger.jl`
+- `RDatasets.jl`
+- `Distributions.jl`
+
+The assignemnt can be verified by checking an empty code block:
+
+```julia; eval=false
+@Aufgabe "3.5.1" begin
+end
+```

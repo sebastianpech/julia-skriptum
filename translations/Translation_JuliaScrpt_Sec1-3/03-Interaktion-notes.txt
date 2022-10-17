@@ -1,0 +1,11 @@
+Im Aufruf von Julia gibt `mein-script.jl` dabei der Pfad zu der auszuführenden Datei an.
+The `my-script.jl` specifies the path to the executed file.
+------------------------------------------------------------------------------
+
+Bei dieser Angabe handelt es sich um einen sogenannten relativen Pfad, relativ bezogen auf das aktuelle Verzeichnis.
+This is called a relative path, which is relative to the current directory.
+------------------------------------------------------------------------------
+
+Die Eingabe eines Befehls wird mit der Tastenkombination `Ctrl`+`Shift`+`P` bzw. `Cmd`+`Shift`+`P` am Mac gestartet.
+A command entry is carried out with the key combination `Ctrl`+`Shift`+`P` or `Cmd`+`Shift`+`P` on the Mac.
+------------------------------------------------------------------------------

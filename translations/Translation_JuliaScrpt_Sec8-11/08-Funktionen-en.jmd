@@ -1,0 +1,274 @@
+```julia; echo=false; results="hidden"
+using JuliaSkriptumKontrolle
+temporary_directory = mktempdir()
+current_workding_directory = pwd()
+cd(temporary_directory)
+```
+
+# Functions
+In the previous chapters some functions have already been used, e.g. `abs`, `typeof` or `length`.
+A function is called by its name followed by round brackets.
+Inside these round brackets are the *arguments* of the function.
+In other words, a function can be described as a box that is filled with input values (the arguments).
+Then, the code inside the box is executed and the result (*Return Value*) is returned at the end.
+The return value can simply be assigned to a variable:
+```julia; term=true
+l = length("spam")
+```
+It is noteworthy, that some functions do not need any arguments. Some other functions require multiple input values.
+```julia; term=true
+pwd()
+length("banana")
+round(3.1415,digits=3)
+```
+`pwd` stands for *print working directory* and shows the current working path.
+
+Similarly, there are functions that do not return any *Return Value* as well as functions that return multiple results.
+```julia; term=true
+p = println("This line is displayed, but println does not assign any value to p.")
+p
+a = [10,35,4,65,9];
+maximum(a)
+findmax(a)
+```
+The first call of `println` writes the argument to the REPL, but the output of `p` in the REPL shows no value.
+This is because `println` does not pass a return value to the variable `p` (strictly speaking, the function returns `nothing`).
+The next line creates the array `a`.
+Arrays will be discussed in more detail later.
+While `maximum` only returns the maximum value of `a`, `findmax` additionally determines the location of the maximum value.
+
+Some functions can deliver so-called *keyword arguments*.
+For example, `round` is such a function.
+With the *keyword* `digits` followed by `=` and an `Int` number, the number of decimal places can be specified.
+```julia; term=true
+s1 = "foo"; s2 = "bar";
+string(s1, s2)
+round(20/9)
+length(pwd())
+```
+
+Some functions can deliver so-called *keyword arguments*.
+For example, `round` is such a function.
+With the *keyword* `digits` followed by `=` and an `Int` number, the number of decimal places can be specified.
+```julia; term=true
+round(2.3345323,digits=2)
+```
+Especially, the keyword arguments are very useful for functions with many (optional) arguments. This is because they can be transfered to the function in any order.
+
+## Defining new functions
+It is useful to define functions for tasks that are often repeated in particular. The reasons are the following:
+  - step by step debugging can be done in the individual functions,
+  - implementation of changes in the code have to be done in the individual functions only,
+  - combining operations in functions makes the code efficient,
+  - well designed functions for small tasks are versatile and can be used in other programs.
+
+The definition of an own function starts with the keyword `function` at the beginning of the line, which is followed by the function name and the arguments in round brackets.
+Then, there is the actual code and a closing `end`.
+Function can be named in similar way as variables.
+Upper and lower case letters are allowed, almost all Unicode characters may be used.
+But the name must not start with a number, or correspond to a keyword used by Julia.
+Moreover, a name should not be used for a function and a variable at the same time.
+Each time the function is called, the lines between `function` and `end` are executed and the result of the last line is returned as Return Value.
+However, the return value of a function can also be specified with the keyword `return`.
+```julia;results="hidden"
+function my_square(x)
+    println("Square of $(x) is calculated...")  # This line is displayed
+    return x^2  # This line is executed and output as Return Value
+end
+```
+```julia; term=true
+my_square(3)
+my_square(8)
+```
+
+The function `my_square` first writes a string into the REPL, and then returns the square of the given argument.
+In general, it is not necessary in Julia to indent the block of code within the function, but this makes the code much user friendly.
+
+Functions without arguments can be created using empty brackets:
+```julia;results="hidden"
+function hello_world()
+    println("Hello World")
+end
+```
+
+The following abbreviation is suitable for the definition of short functions in particular:
+```julia;results="hidden"
+my_square(x) = x^2
+```
+
+A new function can only be used after it has been created.
+Since Julia executes a script line by line, from the beginning until the end, it is therefore useful to write the function definitions at the beginning of the script.
+
+In the help section, there is described that Julia is self-documenting.
+This documentation is done by so-called docstrings right after the function definition.
+A docstring is delimited by three quotes and can look like this:
+```julia;eval=false
+"""
+    my_square(x)
+
+Write "Square of x is calculated..." in the REPL and return the square of x.
+"""
+function my_square(x)
+    println("Square of $(x) is calculated...")
+    return x^2
+end
+```
+
+After executing this code block, the docstring is displayed in the help for `my_square`.
+
+More information about functions can be found in the documentation under [Manual/Functions].(https://docs.julialang.org/en/v1/manual/functions/).
+
+## Scope
+The *Scope* of a variable is a scope in which this variable is visible.
+In Julia there is the *Global Scope* and the *Local Scope*.
+The definition of a function creates such a local scope.
+A global variable can also be accessed in a Local Scope.
+The other way around, it is not possible to access a local variable in the Global Scope:
+```julia;results="hidden"
+function f(x)
+    a = x^2
+end
+```
+```julia;term=true
+a = 1;  # Create global variable a
+f(3)  # A local variable a is created in the local scope of f
+a  # Recalling f does not change the global variable a
+```
+Even if a value is assigned in the function `a`, the value of a remains unchanged, because the assignment in the first line (`a = 1`) happens in the Global Scope and the second assignment (`a = x^2`) is executed in the Local Scope of the function.
+The two variables are named the same but do not affect each other.
+After the function has been executed, all variables of the Local Scope of this function are deleted and can no longer be called.
+Only the return value remains in memory (if it is assigned to a variable).
+```julia; results="hidden"
+function g(x)
+    v = "lost forever"  # create local variable v
+    x*2  # Return Value
+end
+```
+```julia;term=true
+a = g(3)
+v
+```
+
+More information about scopes can be found in the documentation at [Manual/Scope of Variables](https://docs.julialang.org/en/v1/manual/variables-and-scoping/).
+## Methods
+An essential feature of functions in Julia is *Multiple Dispatch*.
+A function can perform different operations depending on the data type of the arguments and how many arguments are given.
+```julia;term=true
+my_mult(x::Number) = x*2  # First method of my_mult
+my_mult(x::String) = x^2  # Second method of my_mult
+my_mult(x::String,y::Int64) = x^y  # Third method of my_mult
+my_mult(1.45)
+my_mult("spam")
+my_mult("foo",4)
+```
+The function `my_mult` now has 3 *methods*.
+The first method is defined for an argument of type `number`.
+This is assigned to the argument through `::` which is followed by the datatype.
+In Julia, data types are structured hierarchicaly.
+Each type can have a parent *supertype* and/or several child *subtypes*.
+A method for a given datatype can also be applied to its subtypes.
+Thus, a function defined for `Number` can also be applied to all possible integer and float types, as well as complex and rational numbers, since they are subtypes of `Number` (or subtypes of subtypes of subtypes ... of `Number`).
+The second method is applied if a `String` is inserted into the function; the third function is applied only if an `Int64` number is argument in additional to a `String`. 
+
+Depending on the given arguments, Julia picks the appropriate method.
+If no method is defined for the type and number of arguments, Julia returns a *MethodError*.
+
+More information about methods and Multiple Dispatch can be found in the documentation at [Manual/Methods](https://docs.julialang.org/en/v1/manual/methods/).
+
+## Assignments
+### Print three times
+Write a function `print_three` that prints any argument three times in one line, inserting a space between the arguments.
+
+```julia;echo=false;results="hidden"
+function print_three(a)
+    println(string(a," ",a," ",a))
+end
+```
+
+Examples:
+```julia;term=true
+print_three("spam")
+print_three(19)
+```
+
+### Concatenate two functions
+Write a function `verkette(f,g,x)` which concatenates two functions `f` and `g` and evaluates for `x` (`f(g(x))`).
+The evaluated function is to be returned as Return Value.
+
+```julia;echo=false;results="hidden"
+function verkette(f, g, x)
+    return f(g(x))
+end
+```
+
+Examples:
+```julia;term=true
+f(x) = x+2
+g(x) = x^2
+verkette(f,g,3)
+verkette(length,g,"spam")
+``` 
+
+### Calculate the area of a circle
+Write a function `kreis_flaeche(r)` that takes the radius of a circle as an argument, and then returns the area of that circle as a return value.
+```julia;echo=false;results="hidden"
+kreis_flaeche(r) = r^2*π
+```
+
+Examples:
+```julia;term=true
+kreis_flaeche(3)
+kreis_flaeche(2.57)
+```
+
+### Calculate the circumference
+Write a function `kreis_umfang(r)` which takes the radius of a circle as an argument and then returns the circumference of that circle as a return value.
+```julia;echo=false;results="hidden"
+kreis_umfang(r) = 2*r*π
+```
+
+Examples:
+```julia;term=true
+kreis_umfang(3)
+kreis_umfang(2.57)
+2 * kreis_flaeche(5)/kreis_umfang(5)
+```
+
+### Print properties of a circle
+Write a function `kreis(r)` that takes the radius of a circle as argument and returns radius, area and circumference of this circle rounded to two decimal places.
+The functions of the previous two tasks can be used immediately.
+For this, however, the function definition has to be copied into the block of the Assignment checker:
+```julia;eval=false
+@Aufgabe "7.4.5" begin
+    function kreis_flaeche(r)
+        # Calculate the area of a circle
+    end
+    function kreis_umfang(r)
+        # Calculate the circumference
+    end
+    function kreis(r)
+        # Code to solve the assignment
+    end
+end
+```
+```julia;echo=false;results="hidden"
+function kreis(r)
+    println("r = $(round(r,digits=2))")
+    println("A = $(round(kreis_flaeche(r),digits=2))")
+    println("U = $(round(kreis_umfang(r),digits=2))")
+end
+```
+ 
+The output has to be formatted exactly the same as in the example below, so that the Assignment checker evaluates the example as correctly solved.
+
+
+Example (each line ends with a line break):
+```julia;term=true
+kreis(3)
+kreis(4)
+```
+
+<!-- Switch back to the correct Working Directory -->
+```julia; echo=false
+cd(current_workding_directory)
+```

@@ -1,0 +1,184 @@
+# Einführung und Vorwort
+
+Diese Lehrunterlagen dienen der Unterstützung bei der Lehrveranstaltung (LVA) Programmieren im Bauingenieurwesen. 
+Alle Inhalte, die in der LVA besprochen werden, sind chronologisch geordnet in diesem Dokument gelistet und durch nützliche Informationen und Beispiele ergänzt. 
+Einige Abschnitte schließen mit einer Aufgabensammlung, welche zum Erlangen einer positiven Benotung der LVA gelöst und in den TUWEL-Kurs hochgeladen werden muss.
+
+Ziel der LVA ist es, einen ersten, aber umfassenden Einblick in die Welt der Programmiersprachen zu geben.
+Inhalte, die über die allgemeinen Programmiergrundlagen hinausgehen, sind dabei thematisch auf das Bauingenieurwesen Studium zugeschnitten.
+
+## Ziele
+
+Wir haben selbst erlebt, dass in einigen Master LVAs und besonders bei der Diplomarbeit Programmierkenntnisse gefordert werden.
+Nach dem Besuch der LVA sollten daher Aufgaben wie Versuchsauswertungen, Adaption von bestehenden Programmen oder Erstellen eigener Programme unter Anleitung gelöst werden können.
+
+Die nötigen Inhalte, um selbständig Programme zu konzeptionieren und programmieren, werden in der LVA nicht abgedeckt. 
+Dieses Thema ist komplex und erfordert bereits etwas Erfahrung. 
+Für Interessierte sind daher in einigen Abschnitten Verweise auf weiterführende Informationen angegeben.
+
+## Programmiersprache
+
+Die Welt der Programmiersprachen ist vielfältig und umfangreich. 
+Es gibt eine Vielzahl von Anwendungsgebieten, für die spezifische Sprachen entwickelt wurden.
+Da viele Aufgaben von Bauingenieuren naturwissenschaftlich und mathematisch fundiert sind, liegt es nahe, in dieser LVA eine der sogenannten wissenschaftlichen Sprachen zu verwenden.
+
+Der Begriff bezeichnet Programmiersprachen, die standardmäßig mathematische Objekte wie Vektoren und Matrizen unterstützen oder z.B. über Statistik-Bibliotheken verfügen.
+Einige Vertreter dieser Klasse sind MATLAB, R, Python mit SciPy und Julia.
+
+Jede dieser Sprachen hat ihre Vor- und Nachteile.
+MATLAB wird besonders häufig im universitären Bereich genutzt und bietet ein benutzerfreundliches Interface.
+R ist besonders auf statistische Auswertungen zugeschnitten.
+Python ist von dieser Gruppe die allgemeinste Sprache und ist eine der beliebtesten Programmiersprachen überhaupt.
+Julia ist eine der jüngeren Programmiersprachen, zeichnet sich aber durch ein sehr gutes Sprachdesign und hohe Performance aus.
+
+In den Anfängen dieser LVA wurde MATLAB gelehrt, was hauptsächlich der starken Verbreitung an Universitäten geschuldet war.
+Ein Nachteil von MATLAB ist: Eine nicht-universitäre Lizenz ist sehr teuer.
+Unser Ziel ist es, dass alle Studierenden, auch nach ihrem Studium, Zugang zu der Software haben und ihren Arbeitsalltag mit Programmierkenntnissen vereinfachen können.
+
+Python und R sind frei verfügbar und weit verbreitet.
+Ein Nachteil im Zusammenhang mit der LVA ist aber, dass sich diese Programmiersprachen relativ stark vom MATLAB unterscheiden.
+Da MATLAB in anderen LVAs verwendet wird und wir nicht wollen, dass Programmieranfänger im Laufe des Studiums mit zwei sehr unterschiedlichen Sprachen konfrontiert werden, sind Python und R keine Optionen für uns.
+
+Julia ist ebenfalls frei verfügbar und hat eine zu MATLAB sehr ähnliche Syntax.
+Dies und das stringente Sprachdesign sind für uns Grund genug, Julia in dieser LVA zu verwenden.
+
+Die syntaktischen Unterschiede von MATLAB, Python und Julia sind in diesem [Cheatsheet](https://cheatsheets.quantecon.org/)\footnote{<https://cheatsheets.quantecon.org>} grob zusammengefasst.
+Sollte es notwendig sein, ein Programm nicht in Julia zu schreiben, empfehlen wir, das Cheatsheet als erste Hilfe zur Hand zu nehmen.
+
+## Lehrunterlagen
+
+Die Unterlagen wurden an einigen Stellen um nützliche Verweise auf weiterführende Informationen oder Quellen erweitert.
+Grundsätzlich werden zwei Arten von Links unterschieden:
+Auf Einträge in der Julia-Dokumentation unter <https://docs.julialang.org> wird im Text immer durch Angabe der Abschnittsnamen verwiesen.
+Links, die nicht auf die Dokumentation verweisen, werden immer mit einer zusätzlichen Fußnote angeben.
+Beispielsweise sind weitere Informationen zu Strings in der Dokumentation unter [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/) oder auf der Website [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} zu finden
+
+Damit können die Links sowohl in der pdf-Version als auch in der Printversion geöffnet werden.
+
+## Kontrollprogramm
+
+Zusätzlich zu den Unterlagen gibt es ein Kontrollprogramm, mit dem die Aufgaben zu den einzelnen Abschnitten kontrolliert werden können.
+Das Programm wird in Form eines eigenständigen Julia-Pakets verwendet und muss mit dem Paketmanager durch Eingabe von 
+```
+add https://github.com/sebastianpech/JuliaSkriptumKontrolle.jl#WS2021
+```
+installiert werden (Näheres dazu im Abschnitt Interaktion).
+Das Laden des Paketes erfolgt nach der Installation mit
+
+```julia; results="none" 
+using JuliaSkriptumKontrolle
+```
+
+Bei den Aufgaben geht es meistens darum, kurze, in sich abgeschlossene Codes oder Funktionen zu schreiben.
+Eine einzelne Funktion kann z.B. wie folgt kontrolliert werden:
+
+```julia; eval=false
+@Aufgabe "1.2.3" function meine_funktion(x,y)
+    # Hier den Code einfügen
+end
+```
+
+Dabei startet die Angabe `@Aufgabe "1.2.3"` die Kontrollmechanismen für die Aufgabe mit der Nummer 1.2.3.
+Die Nummer entspricht immer der Überschriftennummerierung der entsprechenden Aufgabe.
+
+Wird bei einer Aufgabe gefordert, mehrere Funktionen oder zusätzliche externe Pakete zu verwenden, kann die allgemeine Version des vorherigen Codes verwendet werden:
+
+```julia; eval=false
+@Aufgabe "2.1.3" begin
+    using EinExtraPaket # Ein Paket laden
+
+    function meine_funktion(x)
+        # Hier den Code einfügen
+    end
+
+    # Hier den anderen Code einfügen
+end
+```
+
+Sind spezielle Angaben notwendig, ist das bei der jeweiligen Aufgabe vermerkt.
+
+Ist eine Aufgabe nicht vollständig korrekt gelöst, wird eine Fehlermeldung ausgegeben.
+Bei der folgenden Aufgabe soll eine Funktion definiert werden, die den Winkel zwischen zwei Vektoren beliebiger Dimension berechnet.
+
+```julia
+@Aufgabe "10.3.4" function winkel(v1,v2)
+    v1-v2 # Offensichtlich falsch
+end
+```
+
+Der aktuelle Status aller Aufgaben (Noch nicht behandelt,  Falsch,  Richtig) kann mit der folgenden Funktion angezeigt werden:
+
+```julia
+JuliaSkriptumKontrolle.status()
+```
+
+Die Ausgabe enthält auch die Anzahl an erreichten und möglichen Punkten.
+Da Aufgabe `10.3.4` in einem der vorherigen Beispiele falsch gelöst wurde, steht anstelle von `j JuliaSkriptumKontrolle.get_state_string(Val(:notdone))`, `j JuliaSkriptumKontrolle.get_state_string(Val(:failed))`.
+
+Die Abgabe der Aufgaben erfolgt in TUWEL.
+Es sollen alle Aufgaben gesammelt in einer Julia-Datei (Endung `.jl`) abgegeben werden.
+Dabei müssen die kontrollierten Aufgaben nacheinander in einer Datei (z.B. `loesung_aufgaben.jl`) angegeben werden:
+
+```julia; eval=false
+@Aufgabe "1.2.3" function meine_funktion(x,y)
+    # Hier den Code einfügen
+end
+
+@Aufgabe "2.1.3" begin
+    using EinExtraPaket # Ein Paket laden
+
+    function meine_funktion(x)
+        # Hier den Code einfügen
+    end
+
+    # Hier den anderen Code einfügen
+end
+
+@Aufgabe "10.3.4" function winkel(v1,v2)
+    v1-v2 # Offensichtlich falsch
+end
+
+JuliaSkriptumKontrolle.status()
+```
+
+Wird die obige Datei mit `julia meine_loesungen.jl` ausgeführt (Näheres dazu im Abschnitt Interaktion), wird, wenn alle Aufgaben richtig gelöst sind, kein Fehler ausgegeben.
+
+## Hilfe beim Lösen der Aufgaben
+
+In den letzten Jahren haben wir häufig bei der Betreuung erlebt, dass es möglich ist, durch gezieltes Fragenstellen unsererseits, Studierende dabei anzuleiten, ihre eigenen Fragen besser zur formulieren bzw. sogar selbst zu beantworten.
+Aus den vielen Gesprächen ist eine Liste an Fragen entstanden, die beim Lösen der Aufgaben helfen, indem Wissens- und Verständnislücken aufgedeckt werden.
+
+- **Angabe**
+    - Kann ich mit meinen eigenen Worten beschreiben was das Programm machen soll?
+    - Was sind die Eingabeparameter?
+    - Was sind die Ausgabeparameter?
+    - Gibt es Hinweise in der Angabe die mir die Lösung vereinfachen können?
+    - Welche Annahmen kann ich mit absoluter Sicherheit aus der Angabe ziehen?
+    - Gibt es eventuell Spezialfälle dich ich beachten sollte?
+    - Gibt es etwas in der Angabe, das ich nicht verstehe?
+    - Welche spezifischen Fragen zur Angabe kann ich stellen, die mir dabei helfen die Aufgabe zu lösen?
+    - Kann ich die Problemstellung in der Angabe in Teilprobleme zerlegen, die ich leichter lösen kann?
+- **Fehlermeldungen**
+    - Erhalte ich eine Fehlermeldung?
+    - Verstehe ich was mit der Fehlermeldung gemeint ist?
+    - In welcher Zeile meines Programms tritt der Fehler auf?
+    - Bei welchen Zeilen meines Programms kann ich ausschließen, dass ein Fehler auftritt.
+    - Welche Zeilen meines Programms könnten zu dem Fehler führen?
+    - Habe ich etwas falsch geschrieben oder ist der Fehler in der Logik meines Programs?
+- **Beispiele**
+    - Funktioniert mein Programm für die angegebenen Beispiel?
+    - Wenn nein, warum funktioniert es nicht?
+    - Wenn ja, gibt es Spezialfälle bei den Eingabedaten, die ich beachten sollte und auf die ich bis jetzt vergessen habe?
+    - Kann ich alle möglichen Variationen von Eingabedaten mit eigenen Worten beschreiben?
+    - Weiß ich von welchem Datentyp die Eingabe- und Ausgabeparameter sind?
+- **Eigenes Wissen**
+    - Wenn ich nicht an einen Programmiersprache gebunden wäre, welche Funktionen würde ich benötigen, damit mein Programm funktioniert?
+    - Kann ich den Programmablauf in Worten beschreiben?
+    - Verstehe ich jede Zeile in meinem Code?
+    - Verstehe ich jede Zeile in meinem Code wirklich?
+    - Bei welchen Teilen meines Codes bin ich mir sicher, dass sie stimmen?
+    - Zu welchen spezifischen Teilen meines Programms kann ich jemandem der sich gut auskennt eine Frage stellen?
+    - Was hat mir bei meinen anderen Aufgaben dabei geholfen eine Lösung zu finden?
+    - Welche Fehler hatte ich bei anderen Aufgaben, die ich dann entdeckt habe?
+    - Wenn ich die Kapitel die im Skriptum vor der Aufgabe kommen durchgehe, welche Werkzeuge wurden dort vorgestellt, die mir bei der Lösung der Aufgabe helfen?
+    - Wenn ich die Kapitel die im Skriptum nach der Aufgabe kommen überfliege, welche Werkzeuge wurden dort vorgestellt, die ich damit nicht bei der Lösung der Aufgabe brauchen werde?

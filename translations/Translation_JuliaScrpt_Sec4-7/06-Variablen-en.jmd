@@ -1,0 +1,41 @@
+# Variables
+
+Variables allow to assign a value to a string and to retrieve or change this value via this string.
+The *assignment* is done by means of `=`.
+This creates a new variable and assigns the entered value:
+```julia; term=true
+message = "This is a string"
+n = 19
+α = 17.32
+```
+The first line assigns a `string` to the variable `message`, the second line assigns an `integer` to the variable `n`, and the third line assigns a number of type `float` to `α`.
+Some relevant data types will be described in more detail later in the Data Types section.
+
+Once variables have been assigned, they can be used in the code:
+```julia; term=true
+a = 1; b = 2;
+summe = a + b
+```
+In the first expression of this example, the variables `a` and `b` are assigned integer values.
+The two semicolons (`;`) have different functions.
+The first semicolon separates the two assignments.
+This way both assignments can be done in one line.
+The second semicolon prevents the output of the last value in the REPL.
+Without this semicolon, the value '2' would be output in the REPL after entering the first expression. This notation is similar to Matlab.
+To keep the teaching material a little more compact, this notation is used in many examples.
+
+It is good practice to use self-explaining names for variables.
+In this way, the purpose of the variable can be more understandable without commenting.
+
+Variable names can be of any length and contain almost all Unicode characters, but must not begin with numbers.
+Upper case letters can be used in variable names, but mostly only lower case letters are used.
+Unicode characters, such as `α`, can be created in the Julia REPL by typing abbreviations similar to \LaTeX{} and pressing the `TAB` key (e.g. `\alpha TAB`).
+For variable names composed of several words, it is convenient to separate the words by an underscore, `_` (e.g. `sum_of_squares`).
+
+If an invalid name is used for a variable, a *Syntax Error* occurs:
+```{julia; term=true}
+42number = "meaning of life"
+```
+
+Additionally, a *Syntax Error* occurs if specified *keywords* (e.g. `for` or `end`) are set as name.
+The Julia documentation contains more information about variables and their names which can be found at [Manual/Variables](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/variables.html). 

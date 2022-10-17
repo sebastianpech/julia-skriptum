@@ -1,0 +1,31 @@
+# Comments
+It is useful to add notes to a program that explain the meaning and purpose behind parts of the code.
+These notes are called *comments*, start with a `#` symbol and normally end with the end of the line:
+```julia; results="hidden"
+# Calculate the area of a circle based on its diameter
+A = ( d^2 * π ) / 4
+```
+Since the comment only begins with the `#` symbol, it could also be placed at the end of the line:
+```julia; results="hidden"
+A = ( d^2 * π ) / 4  # Area of a circle
+```
+All characters beyond `#` until the end of the line are ignored and have no effect on the program execution.
+
+The most useful comments are those that explain non-obvious features of the program.
+For example, this comment is redundant and not useful:
+```julia; results="hidden"
+d = 10  # assign d the value of 10
+```
+On the other hand, the following comment gives non-obvious information, and therefore it is helpful:
+```julia; results="hidden"
+d = 10  # Diameter in millimeters
+```
+Well-chosen variable names makes the code also more understandable.
+
+For long notes, there is a posibility to write multiline comments in Julia.
+The multiline comments can be written between `#=` and `=#`:
+```julia; results="hidden"
+#= Because this comment is very long,
+a single line is not enough. Therefore, 
+it has to be defined as a multiline comment. =#
+```

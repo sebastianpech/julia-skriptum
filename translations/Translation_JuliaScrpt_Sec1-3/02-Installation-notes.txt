@@ -1,0 +1,3 @@
+r Abschnit ... Section
+
+Der Punkt „Geben Sie ... den Wert der Umgebungvariable PATH an.“ in dieser Erklärung ist dabei folgendermaßen zu verstehen: ... I checked the webpage and changed the list item accordingly. However, the explanation afterward might not be neccesary.

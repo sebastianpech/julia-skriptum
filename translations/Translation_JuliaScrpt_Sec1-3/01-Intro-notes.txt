@@ -1,0 +1,11 @@
+Dies und das stringente Sprachdesign sind für uns Grund genug, Julia in dieser LVA zu verwenden.
+This and the compelling language design give us enough reasons to use Julia in this course.
+-----------------------------------------------------------------------------------------------------------
+
+Sollte es notwendig sein, ein Programm not in Julia zu schreiben, empfehlen wir, das Cheatsheet als erste Hilfe zur Hand zu nehmen.
+If it is necessary to write a program not in Julia, we recommend to use the cheatsheet as a first aid. ???
+-----------------------------------------------------------------------------------------------------------
+
+Kontrollprogram ... Assignment checker
+Aufgabe ... assignment
+Angabe ... assignment description/specification
