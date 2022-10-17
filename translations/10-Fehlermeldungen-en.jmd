@@ -1,0 +1,130 @@
+# Exceptions
+
+Writing a program is a complex task, in which the program does not usually do what it is supposed to do and terminates with an error.
+
+These errors can be roughly divided into *Syntax Errors*, *Logical Errors*, and *Runtime Errors*.
+
+## Syntax Errors
+
+A *Syntax Error* occurs in most cases already before the actual execution of the program and it is caused by a incorrectly written command.
+This mainly concerns keywords of the programming language (`if`, `else`, `function`, ...) and invalid variable names.
+
+```julia;term=true
+42number = "meaning of life"
+```
+
+After occurrence of such an error, the program is interrupted. The error message is introduced with `Error:` and contains the hint `syntax`.
+Usually Julia gives hints about what caused the problem, so it is always worth reading error messages.
+
+## Logical Errors
+
+*Logical Errors* are errors in the program logic (e.g. a wrong formula or wrong assumption).
+
+In the following function, there is a logical error. The function should calculate $x^n$ but it returns $x^{n+1}$.
+
+```julia; results="hidden"
+function pow(x::Number,n::Int)
+    x_pow = x
+    for i in 1:n
+        x_pow *= x
+    end
+    return x_pow
+end
+```
+```julia; term=true
+pow(3,2)  # Should result in 9
+```
+
+The difficulty with logical errors is that the result is wrong, although the program gives no error message.
+
+## Runtime Errors
+
+*Runtime Errors* are errors that occur during the runtime of the program.
+In Julia there is a large number of such errors, which are always triggered when something unexpected happens.
+Below, the most common ones are discussed; a complete list can be found in the [Manual/Control Flow/Exception Handling](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1).
+
+`BoundsError`
+
+Accessing an undefined index in an array.
+```julia
+a = [1,2,3]
+a[4]
+```
+
+`DomainError`
+
+The argument is outside of the (mathematically) defined range of the function.
+```julia
+sqrt(-1)
+```
+
+`InexactError`
+
+An operation cannot be performed exactly.
+```julia
+convert(Int,12.1)
+```
+In this case, to get the number `12` (`integer`) from the number `12.1` (`Float64`), the `12.1` has to be rounded beforehand.
+
+`MethodError`
+
+There is no method that matches the specified arguments
+```julia
+abs("Ein String")
+```
+
+`UndefVarError`
+
+The variable is not defined.
+```julia
+nicht_definiert
+```
+
+### Stacktrace
+
+The *Stacktrace* reports which function calls led to the error.
+It is always displayed at the end of the error message.
+
+In the following example, an index outside an array is accessed after several nested calls.
+
+```julia; results="hidden"
+function level03(x)
+    # this is ok
+    x[1]
+    # this is not ok
+    x[length(x)+1]
+end
+level02(x) = level03(x)
+level01(x) = level02(x)
+
+level01([1,2,3])
+```
+
+The *stacktrace* for this call looks like this:
+
+```julia; hold=true; echo=false
+@noinline function level03(x)
+    # Zugriff ist ok
+    x[1]
+    # Zugriff ist nicht ok
+    x[length(x)+1]
+end
+@noinline level02(x) = level03(x)
+function level01(x)
+    try
+        level02(x)
+    catch err
+        println("Stacktrace: ")
+        foreach(enumerate(stacktrace(catch_backtrace())[1:4])) do (i,lin)
+            println(" [$i] $lin")
+        end
+    end
+    nothing
+end
+level01([1,2,3])
+```
+
+The call which caused the error is show at `[1]`; in this case the access to an array index. Next lines corresponds to the next higher calls. 
+If the *stacktrace* is read from `[4]` to `[2]`, it can be seen that `level01` calls `level02` and `level02` calls `level03`.
+
+The *stacktrace* is very helpful when it comes to reproducing why and where an error occurred.

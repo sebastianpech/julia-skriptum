@@ -1,0 +1,20 @@
+Wie bei Strings kann auch auf Teile eines Arrays zugegriffen werden:
+As with strings, parts of an array can also be accessed:
+--------------------------------------------------------------------
+
+Die Funktion `rand` erzeugt Zufallszahlen in unterschiedlicher Art.
+The function `rand` generates random numbers in different manner.
+--------------------------------------------------------------------
+
+Ohne Argumente wird eine einzelne Zufahlszahl, gleichmäßig, aus dem Interval $[0,1)$ generiert.
+A single random number is generated from the interval $[0,1)$, when no argument is used.
+--------------------------------------------------------------------
+
+In diesem Zusammenhang sind auch die Funktionen `one`, `ones` und `zeros` interessant.
+In this context, the functions `one`, `ones` and `zeros` are also interesting.
+--------------------------------------------------------------------
+
+Eine `Range` ist eine Abfolge von `Int`-Zahlen.
+A `range` is a sequence of `integer` numbers.
+--------------------------------------------------------------------
+

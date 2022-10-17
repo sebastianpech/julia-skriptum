@@ -1,0 +1,70 @@
+# Installation
+
+In this section some terms, such as *Terminal* or *REPL* are used, the explanation of these follows in the Interaction section.
+
+## Julia
+Julia is available for Windows, macOS and Linux free of charge at [julialang.org](https://julialang.org).
+Under [Downloads](https://julialang.org/downloads/)\footnote{<https://julialang.org/downloads/>} are the files necessary for the installation.
+
+### Windows
+Julia is available for Windows 7 and all later 32 bit and 64 bit versions.
+The following steps are required for the installation:
+1. Download the correct version (32 bit or 64 bit) of the installation file `julia.exe`.
+2. Execute the downloaded file to extract Julia.
+In the extracted folder you will find the file `julia`.
+This can be executed either by double-clicking or via the command line by entering the command `julia`.
+If an error \enquote{`The command "julia" is either misspelled or could not be found`} occurs when called in the command line, the installation path was probably not added to the system variable `PATH` during installation.
+Windows then cannot find the file `julia`.
+Under this [Link](https://www.java.com/de/download/help/path.xml)\footnote{[https://www.java.com/de/download/help/path.xml](https://www.java.com/de/download/help/path.xml)} is a short explanation of how to set up the system variable `PATH`.
+In this webpage, the list item \enquote{In the Edit ... specify the value of the PATH environment variable.} has to be understood as follows:
+Path stores all paths that are searched for matching commands when a command is entered in the command line.
+The paths are separated from each other by semicolons `;`.
+Therefore, under this point of the instructions, the path of the Julia installation is to be added at the end of the variable:
+```
+# "Old" Systemvariable PATH
+Path01;Path02;Path03
+
+# "New" Systemvariable PATH
+Path01;Path02;Path03;Julia-Path
+```
+
+For Windows 7 it is additionally necessary to install a fix from Microsoft.
+The link to the *TLS easy fix* can be found in the Julia installation guide at the bulletpoint [Windows 7 / Windows Server 2012 Installation Notes](https://julialang.org/downloads/platform/\#windows\_7\_windows\_server\_2012\_installation\_notes)\footnote{[https://julialang.org/downloads/platform/\#windows\_7\_windows\_server\_2012\_installation\_notes](https://julialang.org/downloads/platform/\#windows\_7\_windows\_server\_2012\_installation\_notes)}.
+
+### Linux
+To install Julia on the Linux operating system, the \enquote{Generic Binaries} has to be downloaded for the correct processor architecture.
+The file in `.tar.gz` format must then be unpacked into any folder on the computer.
+In this folder, under `bin/`, you will find the file `julia`.
+In order to run Julia in the terminal, the system has to be able to located this file.
+The easiest way is to create a \enquote{Symbolic Link} in one of the folders under the system variable `PATH`.
+Which folders are stored in `PATH` can be queried in the terminal using `echo $PATH`.
+Usualy it is `/usr/local/bin`.
+The following command creates the symbolic link in this folder:
+```
+sudo ln -s <Path to the uextracted folder>/bin/julia /usr/local/bin/julia
+```
+After that Julia can be started by typing `julia` in the terminal.
+
+### macOS
+Julia is available for versions macOS 10.8 and later.
+Mac-User can download a `.dmg` file at [julialang.org](https://julialang.org) under [Downloads](https://julialang.org/downloads)\footnote{<https://julialang.org/downloads/>}.
+This disk image has to be opened and the file `Julia-<version>.app` copied into the desired file path (preferably programs).
+Then, Julia can be executed directly from this file.
+In oroder to run Julia in the terminal, the executable file has to be found by the system.
+To do this, you can proceed similarly to the instructions for Linux.
+The command to create the symbolic link has to refer to the binary in `Julia-<verison>.app`:
+```
+sudo ln -s /Applications/Julia-<version>.app/Contents/Resources/julia/bin/julia /usr/local/bin/julia
+```
+
+## Visual Studio Code
+Generally speaking, it is sufficient to install Julia and use it via the Command Line.
+However, development environments, such as *Visual Studio Code (VS Code)*, offer many features that make (not only) the entry into programming easier.
+The installation files for Windows, macOS and Linux are available free of charge on the website [code.visualstudio.com](https://code.visualstudio.com)\footnote{<https://code.visualstudio.com>}.
+
+After the installation, the *Julia* extension must be installed in VS Code.
+For this it is necessary to open VS Code and switch to the extension view (`Ctrl`+`Shift`+`X`, or `Cmd`+`Shift`+`X`, or in the menu bar *View*>*Extensions*).
+After installing the extension `Julia` (easiest via the search bar), Julia can be used in VS Code.
+If the default installation path was not selected for Julia, the actual file path must be specified in *Extension Settings* (gear icon at the installed extension) in the field \enquote{Julia: Executable Path}.
+
+If the installation was succesful, the VS Code command `Julia: Start REPL` can be used to open the REPL and start a Julia session.

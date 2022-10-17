@@ -1,0 +1,44 @@
+Neben einzelnen Zeichen besteht auch die Möglichkeit, auf einen Teil des Strings zuzugreifen.
+Dies erfolgt durch Eingabe des ersten und letzten Index des Teils, getrennt durch einen Doppelpunkt, `:`.
+
+Besides calling single characters there is also the possibility to recall a sequence from the string.
+This is done by entering the first and last index of the sequence, separated by a colon, `:`.
+----------------------------------------------------------------------------------------------
+
+not sure what the Julia does here:
+
+Der `*`-Operator ist für `String` und `Int` nicht definiert, daher muss `length(name)` erst durch die Funktion `string()` in einen `String` konvertiert werden.
+In dieser Form wird der Code schnell unübersichtlich, weshalb Julia die sogenannte \enquote{String-Interpolation} bietet.
+Jeder Ausdruck in runden Klammern oder jeder Variablenname nach dem Symbol `$` wird ausgewertet und das Ergebnis in den String eingegliedert.
+
+The `*` operator is not defined for `string` and `int`, so first the `length(name)` has to be converted to a `string` by the `string()` function.
+In this form, the code quickly becomes confusing, which is why Julia provides the so-called `quote{string-interpolation}.
+Every expression in round brackets or every variable name after the symbol `$` is evaluated and the result is merged into the string.
+----------------------------------------------------------------------------------------------
+
+Beim Vergleichen von Strings unabhängig von Groß- und Kleinschreibung können diese Funktionen hilfreich sein.
+
+When comparing strings independent of upper and lower case, these functions can be helpful.
+----------------------------------------------------------------------------------------------
+
+Wir sind es gewohnt Zahlen zur Basis 10 auszudrücken.
+We are used to expressing numbers in decimal system.
+----------------------------------------------------------------------------------------------
+
+Das bedeutet, dass ein Dezimalbruch (z.B. $0{,}1$) exakt dargestellt werden kann. 
+Decimal point instead of decimal comma.
+----------------------------------------------------------------------------------------------
+
+Verallgemeinert gesagt, lässt sich der Nenner eines Bruchs durch die Primfaktoren von 10 (2 und 5) ausdrücken, ist die Zahl exakt als Dezimalzahl abbildbar.
+Generaly speaking, if the denominator of a fraction can be expressed by the prime factors of 10 (2 and 5), the number can be represented exactly as a decimal number.
+----------------------------------------------------------------------------------------------
+
+Bei der Addition wird dann der Rest der beim Überführen ins Binärsystem bleibt nicht berücksichtig und führt zu einer Abweichung vom Ergebnis, wenn die Addition im Dezimalsystem durchgeführt worden wäre.
+When adding, the residue that remains when converting to the binary system is not taken into account and leads to a deviation from the result if the addition had been performed in the decimal system.
+----------------------------------------------------------------------------------------------
+
+Zwei weitere interessante Operatoren sind die ganzzahlige Division `÷`\footnote{`÷` wird durch Eingabe von `\div` und Drücken der TAB-Taste erstellt.} (*floor division*) und der Modulo-Operator, `%`.
+Two other interesting operators are *floor division* `÷`\footnote{`÷` is done by typing `\div` and pressing the TAB key.} and the *modulo* operator, `%`.
+----------------------------------------------------------------------------------------------
+
+

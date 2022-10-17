@@ -1,0 +1,9 @@
+The word "übergeben" was translated as: pass to, hands over, deliver, transfer. Would be better to use "given" instead?
+
+For example: 
+Manchen Funktionen können sogenannte *Keyword Arguments* übergeben werden.
+Some functions can deliver so-called *keyword arguments*.
+----------------------------------------------------------------------------------------------
+
+- Durch das Zusammenfassen von Operationen in Funktionen wird der Code besonders performant.
+- combining operations in functions makes the code efficient.

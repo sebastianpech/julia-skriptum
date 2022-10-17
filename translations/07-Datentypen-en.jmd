@@ -1,0 +1,321 @@
+# Data types
+A basic building block of programs are *values*, such as numbers or letters.
+Each value belongs to a certain data type.
+This data type can be queried with the function `typeof()`:
+```julia; term=true
+typeof(2)
+typeof(42.0)
+typeof("hello world")
+typeof('c')
+typeof(true)
+```
+
+## Characters und Strings
+### Characters
+A `char` type value represents a single character and is surrounded by single quotation marks.
+Any available *Unicode* character can be used as a `char`:
+```julia; term=true
+'x'
+'α'
+typeof('x')
+```
+
+
+### Strings
+Strings are surrounded by double quotation marks.
+```julia; term=true
+"This is a string"
+
+typeof("19.0")
+```
+A `string` is a sequence of `char` values.
+Every single character can be called by means of square brackets:
+```julia; term=true
+fruit = "banana"
+third = fruit[3]
+last = fruit[end]
+secondlast = fruit[end-1]
+```
+After assigning a `string` to the variable `fruit` in the first line, the remaining code call this `string` and assign one character each to the new variable.
+The expression in the square brackets is called *index* and must be an integer.
+The indexing in Julia starts at 1, so the variable `third` contains the third character of the string.
+For calling the last character the index `end` can be used.
+
+Besides calling single characters there is also the possibility to recall a sequence from the string.
+This is done by entering the first and last index of the sequence, separated by a colon, `:`.
+```julia; term=true
+fruit[3:end]
+```
+
+The number of characters of a string can be queried with the function `length()`:
+```julia; term=true
+length("julia")
+```
+
+Parts of strings cannot be changed.
+Exchanging a character by recalling a specific index is therefore not possible.
+Julia shows a *Method Error* message.
+```julia; term=true
+s = "banana"
+s[3:end] = "nane"
+```
+However, `replace()` can be used to replace a string with a new string and store it in a new variable:
+```julia; term=true
+s_1 = replace(s,"nana"=>"nane")  # Replace "nana" with "nane" in string s
+s_2 = replace(s,'a'=>'u')  # Replace 'a' with 'u' in string s
+s  # The string variable s remains unchanged
+```
+The first argument of the function is the string variable to be modified.
+The second argument consists of the string or character to be replaced, an arrow consisting of `=` and `>` and the string or character to be inserted.
+The original variable `s` remains unchanged.
+
+There are several ways to compose strings.
+One of them is the use of the `*` operator.
+```julia; term=true
+name = "Raphael"
+"The name "*name*" has "*string(length(name))*" letters."
+```
+The `*` operator is not defined for `string` and `int`, so first the `length(name)` has to be converted to a `string` by the `string()` function.
+In this form, the code quickly becomes confusing, which is why Julia provides the so-called `quote{string-interpolation}.
+Every expression in round brackets or every variable name after the symbol `$` is evaluated and the result is merged into the string.
+These expressions can contain not only values and variables, but also functions and operators.
+```julia; term=true
+"The name $name has $(length(name)) letters."
+```
+
+The `^` operator repeats a string variable for a desired number of times:
+```julia; term=true
+"stop"^5
+```
+
+The functions `uppercase` and `lowercase` convert all letters of a string variable into upper or lower case.
+When comparing strings independent of upper and lower case, these functions can be helpful.
+```julia;term=true
+lowercase("This sENteNce contAiNs capiTal letters.")
+uppercase("upper and lower case is written here in small letters.")
+"Julia" == "julia"
+lowercase("Julia") == lowercase("julia")
+uppercase("Julia") == uppercase("julia")
+```
+
+### Special Characters and Escaping
+In most programming languages, there are special characters for tabulator spacing or line breaks.
+These characters are introduced by a backslash (`\`).
+```julia;term=true
+'\t'  # Tab spacing
+'\n'  # Line break
+print("tabs\tabs")
+print("First line\nSecond line")
+```
+
+Therefore, the backslash has to be masked by a preceding backslash.
+This masking is also called *escaping*.
+Except for the backslash, there are other special characters that must be masked.
+For example after a `$` character, Julia would expect an expression to be evaluated, or the beginning or end of a string after the quotation marks.
+```julia;term=true
+print("tabs\\tabs")
+print("Julia worht every \$.")
+print("This sentence contains \"quotation marks\".")
+print("""This sentence contains "quotation marks".""")
+```
+
+Strings can also be written with three quotation marks.
+In this case, quotation marks within the string do not need to be masked.
+
+Other interesting functions are explained in the online book [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08)\footnote{[https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap08](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html\#chap08)} and in the documentation in [Manual/Strings](https://docs.julialang.org/en/v1/manual/strings/).
+
+## Numbers
+In Julia, number are defined by different data types.
+In the example above, the integer `2` is type `Int64` and `42.0` is type `Float64`.
+These two are the most common data types used for numbers.
+However, Julia also offers the types `Complex` and `Rational` for complex and rational numbers.
+```julia; term=true
+typeof(1.3+4im)
+typeof(23//4)
+```
+For `Int` and `Float` numbers exist various data types which differ in their number of bits in memory.
+The number at the end of the type specifies exactly this value.
+Therefore, besides the types `Int64` and `Float64` there are also `Int8`, `Int16`, `Int32` and `Int128` as well as `Float16` and `Float32`.
+These number types require less memory (except `Int128`), but it should be noted that these integer types only work for numbers up to a certain size and the two float types provide fewer decimal places than `Float64`.
+For an overview see the tables in [Manual/Integers and Floating-Point Numbers](https://pkg.julialang.org/docs/julia/THl1k/1.1.1/manual/integers-and-floating-point-numbers.html) in the Julia documentation.
+
+With the help of the operators `+`, `-`, `*` and `/` numbers can be added, subtracted, multiplied and divided:
+```julia; term=true
+17 + 2
+23.0 - 4
+1.0 * 19.0
+38 / 2
+```
+While the data type of the result of an addition, subtraction and multiplication depends on the data type of the input values, the division of two integer values always results in a float number.
+Powers are entered with `^`:
+```julia; term=true
+2^3
+```
+
+The order of operations follows the usual mathematical rules:
+1. brackets,
+2. powers,
+3. multiplication and division,
+4. addition and subtraction.
+Equal-ranking operations are always performed by Julia in order from left to right.
+Parentheses offer the possibility to structure the code and make it more readable, even if they are not always necessary:
+```julia; term=true
+d = 5;
+A = d^2*π/4#Itishardtoreadthecodewithoutspacing
+A = (d^2 * π) / 4  # Spacing and brackets improve readability
+```
+
+Sometimes it is needed to add a number to a variable and store the result in the same variable.
+For such cases, there are the operators `+=`, `-=`, `*=`, `/=` and `^=`.
+```julia;term=true
+a = 1.0
+a = a + 1
+a += 1  # for a = a + 1
+a -= 1  # for a = a - 1
+a *= 2  # for a = a * 2
+a /= 2  # for a = a / 2
+a ^= 2  # for a = a^2
+```
+
+`Float` numbers can be strange to use for some users, because they look like decimal numbers, but they are not.
+We are used to expressing numbers in decimal system.
+This means that a decimal fraction (e.g. $0{,}1$) can be represented exactly.
+Generally speaking, if the denominator of a fraction can be expressed by the prime factors of 10 (2 and 5), the number can be represented exactly as a decimal number.
+Similarly, if the denominator of a binary number is expressed by the prime factors of 2 (2), the number can be represented exactly as a decimal number.
+This discrepancy leads to the following unexpected result
+
+```julia;term=true
+0.1+0.2
+```
+
+Neither `0.1` nor `0.2` have an exact representation as binary floating point numbers.
+When adding, the residue that remains when converting to the binary system is not taken into account and leads to a deviation from the result if the addition had been performed in the decimal system.
+Exactly this operation can be done with the type `Rational` or an additional package like `Decimals.jl`.
+From a simplified viewpoint, these rounding errors lead to the fact that neither the commutative nor the distributive law are valid for `Float` numbers. They also cause that comparisons with `==` rarely give the desired statement:
+
+```julia;term=true
+0.1+0.2 == 0.3
+0.1+0.2 ≈ 0.3 # mit \approx
+```
+
+The functions `string()` and `parse()` convert numbers to strings and the other way around:
+```julia; term=true
+string(19.0)
+parse(Int64,"17")
+parse(Float64,"1.2345")
+```
+
+Calling `parse()` with an invalid string (e.g. `parse(Int, "foo")`) will cause an error.
+There is a possibility to use `tryparse()` instead of `parse()`. 
+The function does not cause an error, but returns `nothing` for an inconvertible string.
+
+`float()` and `Int()` convert arbitrary numbers to float numbers and integer values, respectively.
+When using `Int()`, it has to be ensured that the given number is really an integer, otherwise Julia reports an `InexactError`.
+`trunc` converts a float number directly into an integer and ignores the decimal places.
+```julia; term=true
+float(3)
+float(4//3)
+Int(2.3)
+Int(2.0)
+Int(4//4)
+trunc(3.99999)
+trunc(-2.3)  # trunc does not round off!
+```
+
+The functions `round()`, `floor()` and `ceil()` are suitable for rounding numbers.
+```julia; term=true
+round(1.47)
+floor(1.47)
+ceil(1.47)
+```
+While the former function rounds to the nearest integer, the other two functions allow rounding down and up numbers.
+As for these three functions, the rounded number of digits can be specified via the additional arguments `digits` and `sigdigits`. 
+```julia; term=true
+round(345.123; digits=2)
+round(345.123; sigdigits=2)
+round(0.00345123; digits=4)
+round(0.00345123; sigdigits=4)
+```
+The keyword `digits` defines the number of decimal places, `sigdigits` defines the number of significant digits.
+Simply put, `digits` starts counting from the decimal point, while `sigdigits` counts from the first digit not equal to 0.
+
+Two other interesting operators are *floor division* `÷`\footnote{`÷` is done by typing `\div` and pressing the TAB key.} and the *modulo* operator, `%`.
+```julia; term=true
+7÷3
+7%3
+```
+`÷` performs a division and rounds the result to the nearest integer.
+The modulus operator outputs the remainder of a division.
+This can be used, for example, to easily check whether a number is divisible by another number.
+
+Julia, contains, by default, mathematical functions like `sin`, `cos`, `log`, `abs` and many more.
+```julia;term=true
+sin(π/6)  # The arguments of sin, cos and tan must be given in radians
+cos(π/6)
+tan(π/6)
+log(100)  # log is, by default, the natural logarithm
+log(10,100)  # with two arguments, the first is the base
+log10(100)  # log10 is the logarithm with base 10
+abs(-19.0)
+```
+`sin(π/6)` should result in exactly `0.5`.
+Since the data type of `π/6`, is `Float64`, no exact representation of the actually irrational number is possible.
+With float numbers, a limited number of decimal places are stored, which results in a negligible error here.
+
+Another interesting function is `zero`.
+It takes a number as an argument and returns `0` in the same data type.
+This function can be helpful in the context of type stability (see section Control structure).
+```julia;term=true
+zero(19)
+zero(19.0)
+zero(38//2)
+zero(19.0+3im)
+```
+
+## Booleans
+A value from `Bool` data type can be either `true` or `false`.
+This data type can be understood as a number that is either `0` (in the case of `false`) or `1` (in the case of `true`).
+Various operations in Julia return a number of type `Bool`, such as comparing two numbers:
+```julia; term=true
+x = 13; y = 17.0;
+x == y  # Is x equal y?
+x != y  # Is x not equal to y?
+x ≠ y  # \ne TAB (like !=)
+x > y  # Is x greater than y?
+x < y  # Is x less than y?
+x >= y  # Is x greater than or equal to y?
+x ≥ y  # \ge TAB (like >=)
+x <= y  # Ist x less than or equal to y?
+x ≤ y  # \le TAB (like <=)
+```
+
+The operators shown above can also be used to check two strings for their lexicographic order:
+```julia; term=true
+"apple" ≤ "banana"
+"apple" > "banana"
+"apple" > "Banana"
+```
+It should be noted that upper case letters are categorized before lower case letters.
+If letters of the alphabet are compared, the lexicographic order corresponds to the alphabetic order (`"a" < "b"`).
+If extended characters of the Unicode standard are used, the comparison is based on a predefined table.
+
+All expressions which return a number of type `Bool` can be combined with the logical operators `&&` (*and*), `||` (*or*) and `!` (*not*).
+```julia; term=true
+s = "melon";
+s > "banana" && length(s) == 6  # both conditions have to be true
+s > "banana" || length(s) == 6  # at least one condition has to return true 
+!(s > "banana" && length(s) == 6)  # both conditions have to return false
+```
+Both expressions before and after the operator `&&` have to result in `true` for the entire expression to be `true`.
+In order to obtain `true` for the expression with `||`, only one of the two expressions needs to be satisfied.
+`!` reverses the logical value that follows it.
+
+As well as for the arithmetic operations, a defined order is followed for logical operators.
+First, all comparative operators are evaluated (`==`, `!=`, `≠`, `>`, `<`, `>=`, `<=`, `≥`, `≤`), then the operators `&&` and `||`.
+Comparative operators can be chained to one another.
+The result of chaining comparisons is equal to the result of comparisons evaluated with `&&`:
+```julia; term=true
+a = 1; b = 1; c = 2;
+a == b < c > a
+a == b && b < c && c > a
+```

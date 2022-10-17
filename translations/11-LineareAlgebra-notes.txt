@@ -1,0 +1,8 @@
+Für die Kontrolle muss die allgemeine Form der Kontrollfunktion verwendet werden.
+To check the assignment, the common form of the check function has to be used.
+-------------------------------------------------------------------------------
+
+Es soll eine Funktion geschrieben werden, die aus Eigenwerten und Eigenvektoren, in dem Format wie sie von den beiden Funktionen für eine Matrix ausgegeben werden, wieder die Matrix rekonstruiert.
+
+Write a function that reconstructs the matrix from eigenvalues and eigenvectors. The reconstructed matrix has the same format from which the eigenvalues and eigenvectors were obtained.
+-------------------------------------------------------------------------------
