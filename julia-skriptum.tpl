@@ -117,7 +117,7 @@ xleftmargin=7pt
 
 \title{Programmieren im Bauingenieurwesen}
 \subtitle{Einführung und Grundlagen}
-\author{Sebastian Pech, Raphael Reismüller}
+\author{Sebastian Pech,\\Raphael Reismüller}
 \date{\today}
 
 \begin{document}
