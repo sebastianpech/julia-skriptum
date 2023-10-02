@@ -103,7 +103,7 @@ xleftmargin=7pt
 \renewcommand{\verbatim@font}{\ttfamily\footnotesize}
 \makeatother
 
-\hypersetup {   pdfauthor = {Sebastian Pech, Raphael Suda},
+\hypersetup {   pdfauthor = {Sebastian Pech, Raphael Reismüller},
   pdftitle={Programmieren im Bauingenieurwesen},
   colorlinks=TRUE,
   linkcolor=black,
@@ -117,7 +117,7 @@ xleftmargin=7pt
 
 \title{Programmieren im Bauingenieurwesen}
 \subtitle{Einführung und Grundlagen}
-\author{Sebastian Pech, Raphael Suda}
+\author{Sebastian Pech, Raphael Reismüller}
 \date{\today}
 
 \begin{document}

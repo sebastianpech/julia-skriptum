@@ -70,6 +70,11 @@ Dabei gibt es die Möglichkeit, sogenannte *Breakpoints* zu setzen, an welchen d
 Um die Funktion `bug_pow` mit dem Debugger zu analysieren, muss der Debugger-Modus über einen Klick auf den Debugknopf gestartet werden.
 Über die Seitenleiste mit den Zeilennummern kann nun durch einen Klick ein Breakpoint gesetzt werden. Dadurch wird die Ausführung in der 5. Zeile angehalten.
 Durch Klicken auf *Start Debugging* (Grüner Play-Pfeil im Debugger-Modus) startet der Debugger die Ausführung und stoppt beim ersten Breakpoint.
+Mit diesem Prozedere wird ein neuer Julia Prozess gestartet, in dem der Code mit dem Debugger ausgeführt wird.
+Alternativ, lässt sich der Debugger auch in der aktiven REPL mit den Macros `@run` und `@enter` starten.
+Beispielsweise, führt der Aufruf `@run bug_pow(3.5,6)` die Funktion `bug_pow` mit dem Debugger aus.
+Die Ausführung wird an gestetzten Breakpoints angehalten.
+Im Vergleich dazu, stoppt der Debugger die Funktion `bug_pow` bei dem Aufruf `@enter bug_pow(3.5,6)` in der ersten Zeile der Funktion.
 
 ![Debugging starten in VS Code](../data/img/debugger-01.png)
 

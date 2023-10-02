@@ -113,7 +113,7 @@ Für die Kontrolle muss die allgemeine Form der Kontrollfunktion verwendet werde
 ```julia; eval=false
 @Aufgabe "10.3.2" begin
     # Code einfügen.
-    # Hier, in der letzten Zeile, muss der Lösungsvektor berechnet werden
+    # Hier, in der letzten Zeile, muss der Lösungsvektor berechnet werden (nicht return verwenden)
 end
 ```
 
