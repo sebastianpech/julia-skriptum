@@ -2,6 +2,9 @@
 using Pkg:@pkg_str
 pkg"activate ."
 
+projectdir() = dirname(Base.active_project())
+projectdir(x...) = joinpath(projectdir(), x...)
+
 using Weave
 using Highlights
 using Mustache
@@ -11,7 +14,7 @@ using Glob
 Weave.WeaveMarkdown.Markdown._latexescape_chars['"'] = "\"{}"
 
 
-files = ["01-Intro.jmd",
+files = projectdir.(["01-Intro.jmd",
          "02-Installation.jmd",
          "03-Interaktion.jmd",
          "05-Kommentare.jmd",
@@ -26,7 +29,7 @@ files = ["01-Intro.jmd",
          "15-SpezielleDatentypen.jmd",
          "16-FileIO.jmd",
          "17-Plotting.jmd",
-         "18-Statistik.jmd"]
+         "18-Statistik.jmd"])
 
 # Check if a set of special files should be compiled
 if length(ARGS) != 0
@@ -45,9 +48,9 @@ end
 for f in files
     @info "Weaving file $f"
     weave(f,
-          out_path="build", # Output into build directory
+          out_path=projectdir("build"), # Output into build directory
           doctype = "md2tex",
-          template = "part.tpl",keep_unicode=true)
+          template = projectdir("part.tpl"),keep_unicode=true)
 end
 
 #### Stage 2
@@ -80,9 +83,9 @@ forward_this = [
 
 for f_jmd in files
     global forward_this
-    f_tex = splitext(f_jmd)[1]*".tex"
-    lines = readlines(joinpath("build",f_tex))
-    open(joinpath("build",f_tex),"w") do out
+    f_tex = splitext(basename(f_jmd))[1]*".tex"
+    lines = readlines(projectdir("build",f_tex))
+    open(projectdir("build",f_tex),"w") do out
         println.(Ref(out),map(lines) do l
             reduce(forward_this,init=l) do str,rep
                 replace(str,rep)
@@ -97,14 +100,14 @@ end
 commitid() = read(`git rev-parse --verify master --short`,String)[1:end-1]
 
 @info "Creating main tex-Document"
-cd("build")
+cd(projectdir("build"))
 tmppath = tempname()
 io = open(tmppath,"w")
-latex_template = Mustache.template_from_file(joinpath(@__DIR__,"julia-skriptum.tpl"))
+latex_template = Mustache.template_from_file(projectdir("julia-skriptum.tpl"))
 print(io,render(latex_template,
                 juliaversion="\\newcommand{\\juliaversion}{$VERSION}",
                 commitid="\\newcommand{\\commitid}{$(commitid())}",
-                files=join(["\\input{$(splitext(f)[1]).tex}" for f in files],"\n"),
+                files=join(["\\input{$(splitext(basename(f))[1]).tex}" for f in files],"\n"),
                 stylesheet=Weave.get_highlight_stylesheet(MIME("text/latex"),Highlights.Themes.DefaultTheme)))
 close(io)
 
@@ -117,16 +120,15 @@ try
         @info "$r run"
         out = read(cmd,String)
     end
-    mv(basename(tmppath)*".pdf",joinpath(@__DIR__,"build","julia-skriptum.pdf"),force=true)
+    mv(basename(tmppath)*".pdf",projectdir("build","julia-skriptum.pdf"),force=true)
 catch e
     cmd = `$latex_cmd -shell-escape -interaction=nonstopmode build/julia-skriptum.tex`
     @warn "Error converting document to pdf. Try running latex manually" cmd
 finally
     @info "Cleaning temporary files"
-    tex_path = joinpath(@__DIR__,"build","julia-skriptum.tex")
+    tex_path = projectdir("build","julia-skriptum.tex")
     foreach(x->(@warn x),filter(x->occursin("warning",lowercase(x)),readlines(basename(tmppath)*".log")))
     mv(tmppath,tex_path,force=true)
     rm.(readdir(Glob.GlobMatch("$(basename(tmppath)).*")))
 end
-
 
