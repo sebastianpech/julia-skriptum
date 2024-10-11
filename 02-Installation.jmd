@@ -1,7 +1,6 @@
 # Installation
 
-In diesem Abschnitt werden einige Begriffe, wie z.B. *Terminal* oder *REPL*, verwendet, die Erklärung dieser folgt im Abschnitt Interaktion.
-
+In this chapter ... 
 ## Julia
 Julia ist für Windows, macOS und Linux kostenlos auf der Webseite [julialang.org](https://julialang.org) verfügbar.
 Unter [Downloads](https://julialang.org/downloads/)\footnote{<https://julialang.org/downloads/>} befinden sich die für die Installation notwendigen Dateien.
